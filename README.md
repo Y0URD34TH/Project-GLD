@@ -18,6 +18,9 @@ Pluigns/Scripts tutorial:Drop the Desired Pluing in the Scripts Folder, to devs 
 script example:https://github.com/Y0URD34TH/Project-GLD/blob/main/simple-rezi-script.lua
 
 
+Download Manager Currently SUpport torrent magnets and normal downloads
+
+
 Project Images:
 
 
