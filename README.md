@@ -24,6 +24,9 @@ Download Manager Currently Supports torrent magnets and normal downloads
 the project will be open source when it leaves alpha but if you want access to the source and contibute with code to the source add me in discord:jma#8896
 
 
+the project is free and always will be free, any help with design and coding would be welcome
+
+
 Project Images:
 
 
