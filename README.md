@@ -21,7 +21,7 @@ script example:https://github.com/Y0URD34TH/Project-GLD/blob/main/simple-rezi-sc
 Download Manager Currently Supports torrent magnets and normal downloads
 
 
-the project will be open source when it leaves alpha but if you want access to the source and contibute with code to the source add me in discord:jma8896
+the project will be open source when it leaves alpha but if you want access to the source and contibute with code to the source add me in discord:jma#8896
 
 
 Project Images:
