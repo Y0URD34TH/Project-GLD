@@ -11,6 +11,11 @@ Game List Folder: Documents/Jma/GameList
 
 Credits: pixel (helped in design), Q (Helped in Design), Brisolo32 (Helped in Design)
 
+Pluigns/Scripts tutorial:
+
+
+script example:https://github.com/Y0URD34TH/Project-GLD/blob/main/simple-rezi-script.lua
+
 
 Project Images:
 
