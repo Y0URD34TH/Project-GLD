@@ -11,7 +11,8 @@ Game List Folder: Documents/Jma/GameList
 
 Credits: pixel (helped in design), Q (Helped in Design), Brisolo32 (Helped in Design)
 
-Pluigns/Scripts tutorial:
+
+Pluigns/Scripts tutorial:Drop the Desired Pluing in the Scripts Folder, to devs read the LuaParams to you know what params to use
 
 
 script example:https://github.com/Y0URD34TH/Project-GLD/blob/main/simple-rezi-script.lua
