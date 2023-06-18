@@ -1,0 +1,7 @@
+V0.85
+
+Added Game Library Manager
+Added Game Search Api
+Added Plugin System Based in Lua
+Added Settings System
+Added Download Manager
