@@ -9,7 +9,7 @@ Lua Scripts Folder: Documents/Jma/Scripts
 Game List Folder: Documents/Jma/GameList
 
 
-Credits: pixel (helped in design), Q (Helped in Design), Brisolo32 (Helped in Design)
+Credits: foie (he helped in everything he are the best), pixel (helped in design), Q (Helped in Design), Brisolo32 (Helped in Design)
 
 
 Pluigns/Scripts tutorial:Drop the Desired Pluing (from script example in this github or other source) in the Scripts Folder, to devs read the LuaParams to you know what params to use
