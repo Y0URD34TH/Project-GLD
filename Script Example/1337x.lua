@@ -25,14 +25,14 @@ for match in htmlContent:gmatch(regex) do
     local htmlContent2 = http.get(url, headers)
 
     local searchResult = {
-        name = torrentName,  -- Use the URL as the default name
+        name = torrentName,  
         link = url,
         addtodownloadlist = statebool
     }
 
     for magnetMatch in htmlContent2:gmatch(magnetRegex) do
         searchResult.link = magnetMatch
-        searchResult.name = torrentName  -- Use the URL as the name for magnet links
+        searchResult.name = torrentName  
         table.insert(results, searchResult)
     end
 
