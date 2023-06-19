@@ -15,7 +15,7 @@ Credits: pixel (helped in design), Q (Helped in Design), Brisolo32 (Helped in De
 Pluigns/Scripts tutorial:Drop the Desired Pluing (from script example in this github or other source) in the Scripts Folder, to devs read the LuaParams to you know what params to use
 
 
-script example:https://github.com/Y0URD34TH/Project-GLD/blob/main/simple-rezi-script.lua && https://github.com/Y0URD34TH/Project-GLD/blob/main/Script%20Example/1337x.lua
+script example: https://github.com/Y0URD34TH/Project-GLD/blob/main/Script%20Example/simple-rezi-script.lua && https://github.com/Y0URD34TH/Project-GLD/blob/main/Script%20Example/1337x.lua
 
 
 Download Manager Currently Supports torrent magnets and normal downloads
