@@ -3,10 +3,10 @@ json
 parse
 }
 
-lua
-{
-collectgarbage
-dofilsse
+lua  
+{  
+collectgarbage  
+dofilsse  
 load
 loadfile
 pcall
