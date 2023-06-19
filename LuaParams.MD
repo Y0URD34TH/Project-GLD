@@ -1,86 +1,88 @@
-json
-{
-parse
-}
+Apologies for the confusion. Here's the updated text with two spaces at the end of each line:
 
-lua
-{
-collectgarbage
-dofilsse
-load
-loadfile
-pcall
-print
-xpcall
-getmetatable
-setmetatable
-__nil_callback
-}
+json  
+  {  
+  parse  
+  }  
 
-client
-{
-add_callback
-load_script
-unload_script
-log
-}
+lua  
+  {  
+  collectgarbage  
+  dofilsse  
+  load  
+  loadfile  
+  pcall  
+  print  
+  xpcall  
+  getmetatable  
+  setmetatable  
+  __nil_callback  
+  }  
 
-menu
-{
-next_line
-add_check_box
-add_button
-add_combo_box
-add_slider_int
-add_slider_float
-add_color_picker
-get_bool
-get_int
-get_float
-}
+client  
+  {  
+  add_callback  
+  load_script  
+  unload_script  
+  log  
+  }  
 
-utils
-{
-AtachConsole
-DetachConsole
-ConsolePrint
-}
+menu  
+  {  
+  next_line  
+  add_check_box  
+  add_button  
+  add_combo_box  
+  add_slider_int  
+  add_slider_float  
+  add_color_picker  
+  get_bool  
+  get_int  
+  get_float  
+  }  
 
-file
-{
-append
-write
-read
-}
+utils  
+  {  
+  AtachConsole  
+  DetachConsole  
+  ConsolePrint  
+  }  
 
-game
-{
-getgamename
-}
+file  
+  {  
+  append  
+  write  
+  read  
+  }  
 
-communication
-{
-receiveSearchResults
-}
+game  
+  {  
+  getgamename  
+  }  
 
-Download
-{
-DownloadFile
-GetFileNameFromUrl
-}
+communication  
+  {  
+  receiveSearchResults  
+  }  
 
-lua tables:
-client
-menu
-utils
-http
-file
-game
-communication
-Download
+Download  
+  {  
+  DownloadFile  
+  GetFileNameFromUrl  
+  }  
 
-usage example:
-local gamename = game.getgamename()
-menu.add_check_box("checkbox example")
-utils.AtachConsole()
-utils.ConsolePrint(false, tostring(game.getgamename()))
+lua tables:  
+  client  
+  menu  
+  utils  
+  http  
+  file  
+  game  
+  communication  
+  Download  
+
+usage example:  
+  local gamename = game.getgamename()  
+  menu.add_check_box("checkbox example")  
+  utils.AtachConsole()  
+  utils.ConsolePrint(false, tostring(game.getgamename()))
