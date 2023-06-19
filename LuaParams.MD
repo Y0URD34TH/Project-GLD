@@ -1,4 +1,3 @@
-Apologies for the confusion. Here's the updated text with two spaces at the end of each line:
 
 json  
   {  
