@@ -3,10 +3,10 @@ json
 parse
 }
 
-lua  
-{  
-collectgarbage  
-dofilsse  
+lua
+{
+collectgarbage
+dofilsse
 load
 loadfile
 pcall
@@ -17,7 +17,7 @@ setmetatable
 __nil_callback
 }
 
-client 
+client
 {
 add_callback
 load_script
@@ -25,7 +25,7 @@ unload_script
 log
 }
 
-menu 
+menu
 {
 next_line
 add_check_box
@@ -79,10 +79,8 @@ game
 communication
 Download
 
-
 usage example:
 local gamename = game.getgamename()
 menu.add_check_box("checkbox example")
 utils.AtachConsole()
 utils.ConsolePrint(false, tostring(game.getgamename()))
-
