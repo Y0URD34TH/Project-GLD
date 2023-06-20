@@ -1,5 +1,9 @@
-V0.90
+V0.92
 
+Fixed Uninstall
+Changed the File Dialog to the System one
+Automatic Search When Hits Enter in the Search Tab
+Confirmation to Donwload Torrents Added
 Fixed Torrent Downloads
 Fixed Game Library bugs
 Added Game Library Manager
