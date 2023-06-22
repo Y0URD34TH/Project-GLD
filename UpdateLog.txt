@@ -1,5 +1,6 @@
-V0.92
+ V0.93
 
+Added Minimize Button
 Fixed Uninstall
 Changed the File Dialog to the System one
 Automatic Search When Hits Enter in the Search Tab
