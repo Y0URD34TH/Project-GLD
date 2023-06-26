@@ -1,6 +1,6 @@
 
 # Project-GLD
-Project GLD is a Game Library Manager/ Game Search and Game Downloader, That Supports Community Plugins Based in LUA to Download Games (the plugins are based in lua program is amde in c++)
+Project GLD is a Game Library Manager/ Game Search and Game Downloader, That Supports Community Plugins Based in LUA to Download Games (the plugins are based in lua program is made in c++)
 
 
 The Project is Currently in Alpha
