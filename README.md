@@ -1,18 +1,19 @@
+
 # Project-GLD
-Project GLD is a Game Library Manager/ Game Search and Downloader, That Supports Community Download Plugins Based in LUA
+Project GLD is a Game Library Manager/ Game Search and Game Downloader, That Supports Community Plugins Based in LUA to Download Games (the plugins are based in lua program is amde in c++)
 
 
 The Project is Currently in Alpha
 
 
-Lua Scripts Folder: Documents/Jma/Scripts
+Scripts Folder: Documents/Jma/Scripts
 Game List Folder: Documents/Jma/GameList
 
 
 Credits: foie (he helped in everything he are the best), pixel (helped in design), Q (Helped in Design), Brisolo32 (Helped in Design)
 
 
-Pluigns/Scripts tutorial:Drop the Desired Pluing (from script example in this github or other source) in the Scripts Folder, to devs read the LuaParams to you know what params to use
+Install luigns/Scripts tutorial: Drop the Desired Pluing (from script example in this github or other source) in the Scripts Folder (to devs read the LuaParams to you know what params to use)
 
 
 script example: https://github.com/Y0URD34TH/Project-GLD/blob/main/Script%20Example/simple-rezi-script.lua && https://github.com/Y0URD34TH/Project-GLD/blob/main/Script%20Example/1337x.lua
@@ -29,9 +30,21 @@ the project is free and always will be free, any help with design and coding wou
 Project Images:
 
 
-![Project GLD 18_06_2023 15_48_14](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/321d3645-759e-4917-b215-587f1876ccd1)
-![Project GLD 18_06_2023 15_47_35](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/7daa9372-d5df-43b0-9d6c-9f5adf276994)
-![Project GLD 18_06_2023 15_48_33](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/f62549d0-a846-4a6c-9c94-678c6540b3d4)
-![Download File 18_06_2023 15_48_59](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/b8e3ee10-a975-45e9-8466-dcb472558408)
-![Project GLD 18_06_2023 15_49_40](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/13895d4b-8c13-42ce-9e42-93f4f3b9450b)
+
+
+
+
+![Project GLD 25_06_2023 21_10_18](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/a7a6f0d1-6139-4987-9624-f3d53ad8a334)
+![Uploading Project GLD 25_06_2023 21_10_30.png…]()
+![Project GLD 25_06_2023 21_07_50](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/2d76b96a-a8d7-43fb-aca8-6855ee85f3ea)
+![Uploading Project GLD 25_06_2023 21_07_59.png…]()
+![Uploading Project GLD 25_06_2023 21_08_04.png…]()
+![Uploading Project GLD 25_06_2023 21_09_00.png…]()
+![Uploading Project GLD 25_06_2023 21_09_36.png…]()
+
+
+
+
+
+
 
