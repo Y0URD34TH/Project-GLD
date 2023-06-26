@@ -1,4 +1,4 @@
- V0.95
+V0.95
 
 Improved UI
 Improved Search Tab
