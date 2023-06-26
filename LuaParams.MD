@@ -79,7 +79,8 @@ lua tables:
   communication  
   Download  
 
-usage example:  
+usage example:
+  print("Test", "im a print test")
   local gamename = game.getgamename()  
   menu.add_check_box("checkbox example")  
   utils.AtachConsole()  
