@@ -47,7 +47,7 @@ The Project is Currently in Alpha
 Download Manager Currently Supports torrent magnets and normal downloads
 
 
-the project will be open source when it leaves alpha but if you want access to the source and contibute with code to the source add me in discord:y0urd34th
+the project will be open source when it leaves alpha
 
 the project is free and always will be free, any help with design and coding would be welcome
 
