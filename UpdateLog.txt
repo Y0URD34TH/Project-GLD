@@ -1,14 +1,8 @@
- V0.93
+ V0.95
 
+Improved UI
+Improved Search Tab
+Added Plugin Installer System
+Fixed Some bugs and Issues
+Added Discord Server Button
 Added Minimize Button
-Fixed Uninstall
-Changed the File Dialog to the System one
-Automatic Search When Hits Enter in the Search Tab
-Confirmation to Donwload Torrents Added
-Fixed Torrent Downloads
-Fixed Game Library bugs
-Added Game Library Manager
-Added Game Search Api
-Added Plugin System Based in Lua
-Added Settings System
-Added Download Manager
