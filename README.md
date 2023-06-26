@@ -22,7 +22,7 @@
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
-* [Usage](#usage)
+* [Known Bugs](#Bugs)
 * [Roadmap](#roadmap)
 * [License](#license)
 * [Authors](#authors)
@@ -84,9 +84,10 @@ To install Scripts Just Drop the .lua Script in the (Documents/Jma/Scripts) Dire
 
 3. Enjoy (is recomended to put in a dedicated folder).
 
-## Usage
+## Bugs
 
 Maybe you gonna find delay while searching for a game to download, dont close its take a time to complete the request
+or when clicking in a searched game (because download scritps)
 
 ## Roadmap
 
