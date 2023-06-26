@@ -13,6 +13,9 @@
   </p>
 </p>
 
+[Join The Discord Server](https://discord.gg/FyH6Z34vcZ)
+
+
 ![Downloads](https://img.shields.io/github/downloads/Y0URD34TH/Project-GLD/total) ![Contributors](https://img.shields.io/github/contributors/Y0URD34TH/Project-GLD?color=dark-green) ![Stargazers](https://img.shields.io/github/stars/Y0URD34TH/Project-GLD?style=social) ![Issues](https://img.shields.io/github/issues/Y0URD34TH/Project-GLD) ![License](https://img.shields.io/github/license/Y0URD34TH/Project-GLD) 
 
 ## Table Of Contents
