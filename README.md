@@ -66,10 +66,11 @@ Microsoft Visual Studio 2022
 
 ## Getting Started
 
-to use you only need to execute the aplciation (Project GLD.exe)
-
-
 To install Scripts Just Drop the .lua Script in the (Documents/Jma/Scripts) Directory or Use the Program Script installer
+
+Scripts Examples: https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/1337x.lua && https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/simple-rezi-script.lua
+
+LUA Usage: https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.MD
 
 ### Prerequisites
 
