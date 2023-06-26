@@ -63,7 +63,7 @@ Project Images:
 ![Capturas 25_06_2023 23_44_53](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/6bab9748-33c1-4a88-aed3-768114cccc96)
 ![Project GLD 25_06_2023 23_45_45](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/63fecc6b-0902-4df3-b437-eb538325a31f)
 ![Project GLD 25_06_2023 23_40_50](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/3e72ebb1-4226-48a1-8ed2-822581ccdd35)
-![Project GLD 25_06_2023 23_40_59](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/33cf55e8-cf58-4f2d-bc0d-8551713d4d64)
+![Project GLD 26_06_2023 18_45_25](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/e1f3a8a8-7772-45db-b832-f2c80b80194b)
 ![Project GLD 25_06_2023 23_40_39](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/4a4effe1-93f1-496c-a338-de72478e7867)
 
 
