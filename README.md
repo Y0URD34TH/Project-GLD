@@ -6,7 +6,7 @@ Project GLD is a Game Library Manager/ Game Search and Game Downloader, That Sup
 we are not responsible for any plugin, use the program and plugins at your own risk!
 
 
-DOWNLOAD:https://github.com/Y0URD34TH/Project-GLD/raw/main/Project%20GLD.exe
+Download: https://github.com/Y0URD34TH/Project-GLD/raw/main/Project%20GLD.exe
 
 
 The Project is Currently in Alpha
