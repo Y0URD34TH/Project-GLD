@@ -1,28 +1,44 @@
+<br/>
+<p align="center">
+  <a href="https://github.com/Y0URD34TH/Project-GLD">
+    <img src="https://github.com/Y0URD34TH/Project-GLD/blob/main/Images/favicon.png?raw=true" alt="Logo" width="80" height="80">
+  </a>
 
-# Project-GLD
+  <h3 align="center">Project GLD</h3>
+
+  <p align="center">
+    Project GLD is a Game Library Manager/ Game Search and Game Downloader, That Supports Community Plugins Based in LUA to Download Games
+    <br/>
+    <br/>
+  </p>
+</p>
+
+![Downloads](https://img.shields.io/github/downloads/Y0URD34TH/Project-GLD/total) ![Contributors](https://img.shields.io/github/contributors/Y0URD34TH/Project-GLD?color=dark-green) ![Stargazers](https://img.shields.io/github/stars/Y0URD34TH/Project-GLD?style=social) ![Issues](https://img.shields.io/github/issues/Y0URD34TH/Project-GLD) ![License](https://img.shields.io/github/license/Y0URD34TH/Project-GLD) 
+
+## Table Of Contents
+
+* [About the Project](#about-the-project)
+* [Built With](#built-with)
+* [Getting Started](#getting-started)
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+* [Usage](#usage)
+* [Roadmap](#roadmap)
+* [License](#license)
+* [Authors](#authors)
+* [Acknowledgements](#acknowledgements)
+
+## About The Project
+
+![Screen Shot](https://user-images.githubusercontent.com/58450502/248598365-f51dd764-899d-4e89-8495-9ea2db86bb3a.png)
+
 Project GLD is a Game Library Manager/ Game Search and Game Downloader, That Supports Community Plugins Based in LUA to Download Games (the plugins are based in lua program is made in c++)
 
 
 we are not responsible for any plugin, use the program and plugins at your own risk!
 
 
-Download: https://github.com/Y0URD34TH/Project-GLD/raw/main/Project%20GLD.exe
-
-
 The Project is Currently in Alpha
-
-
-Scripts Folder: Documents/Jma/Scripts
-Game List Folder: Documents/Jma/GameList
-
-
-Credits: foie (he helped in everything he are the best), pixel (helped in design), Q (Helped in Design), Brisolo32 (Helped in Design)
-
-
-Install luigns/Scripts tutorial: Drop the Desired Pluing (from script example in this github or other source) in the Scripts Folder (to devs read the LuaParams to you know what params to use)
-
-
-script example: https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/1337x.lua && https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/simple-rezi-script.lua
 
 
 Download Manager Currently Supports torrent magnets and normal downloads
@@ -43,3 +59,53 @@ Project Images:
 ![Project GLD 25_06_2023 21_09_00](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/61c754ee-ff18-427b-8269-d76214cad58e)
 ![Project GLD 25_06_2023 21_08_04](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/61138752-66bf-40b1-8486-11f8ac560e68)
 ![Project GLD 25_06_2023 21_10_30](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/101989f1-7e2b-4c97-a1ab-e467008c5205)
+
+## Built With
+
+Microsoft Visual Studio 2022
+
+## Getting Started
+
+to use you only need to execute the aplciation (Project GLD.exe)
+
+
+To install Scripts Just Drop the .lua Script in the (Documents/Jma/Scripts) Directory or Use the Program Script installer
+
+### Prerequisites
+
+* Directx 9
+* Microsoft Visual C++ 2015-2022 Redist (x86 and x64)
+
+### Installation
+
+1. Download the Program at [https://github.com/Y0URD34TH/Project-GLD/raw/main/Project%20GLD.exe](https://github.com/Y0URD34TH/Project-GLD/raw/main/Project%20GLD.exe)
+
+2. Execute the Project GLD.exe
+
+3. Enjoy (is recomended to put in a dedicated folder).
+
+## Usage
+
+Maybe you gonna find delay while searching for a game to download, dont close its take a time to complete the request
+
+## Roadmap
+
+See the [open issues](https://github.com/Y0URD34TH/Project-GLD/issues) for a list of proposed features (and known issues).
+
+## License
+
+Distributed under the MIT License. See [LICENSE](https://github.com/Y0URD34TH/Project-GLD/blob/main/LICENSE.md) for more information.
+
+## Authors
+
+* **jma** - ** - [jma](https://github.com/Y0URD34TH) - *Main Programmer*
+* **foie** - ** - [foie]() - *testing, Design and Programing*
+* **Q99** - ** - [Q99](https://github.com/Q99kek) - *Testing and Design*
+* **Pixel** - ** - [Pixel](https://github.com/piqseu) - *Design*
+
+## Acknowledgements
+
+* [ImGui](https://github.com/ocornut/imgui)
+* [CURL](https://github.com/curl/curl)
+* [libtorrent](https://www.libtorrent.org/)
+* [vcpkg](https://vcpkg.io/en/)
