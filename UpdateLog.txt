@@ -1,5 +1,6 @@
-V0.95
+V0.97
 
+Added Notification System
 Improved UI
 Improved Search Tab
 Added Plugin Installer System
