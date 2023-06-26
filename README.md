@@ -13,7 +13,7 @@
   </p>
 </p>
 
-[Join The Discord Server](https://discord.gg/FyH6Z34vcZ)
+
 [![forthebadge](https://forthebadge.com/images/badges/made-with-c-plus-plus.svg)](https://pt.wikipedia.org/wiki/C%2B%2B)
 [![forthebadge](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/cf5eaba6-4040-4c7d-b07f-78a20032a5f7)](https://discord.gg/FyH6Z34vcZ)
 
