@@ -16,7 +16,7 @@ Credits: foie (he helped in everything he are the best), pixel (helped in design
 Install luigns/Scripts tutorial: Drop the Desired Pluing (from script example in this github or other source) in the Scripts Folder (to devs read the LuaParams to you know what params to use)
 
 
-script example: https://github.com/Y0URD34TH/Project-GLD/blob/main/Script%20Example/simple-rezi-script.lua && https://github.com/Y0URD34TH/Project-GLD/blob/main/Script%20Example/1337x.lua
+script example: https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/1337x.lua && https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/simple-rezi-script.lua
 
 
 Download Manager Currently Supports torrent magnets and normal downloads
