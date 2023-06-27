@@ -7,3 +7,4 @@ Added Plugin Installer System
 Fixed Some bugs and Issues
 Added Discord Server Button
 Added Minimize Button
+Fixed some Bugs
