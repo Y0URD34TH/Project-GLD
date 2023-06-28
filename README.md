@@ -109,3 +109,4 @@ Distributed under the MIT License. See [LICENSE](https://github.com/Y0URD34TH/Pr
 * [CURL](https://github.com/curl/curl)
 * [libtorrent](https://www.libtorrent.org/)
 * [vcpkg](https://vcpkg.io/en/)
+* [rezy](https://rezi.one/)
