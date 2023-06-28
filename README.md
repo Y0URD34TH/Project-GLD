@@ -106,7 +106,7 @@ Distributed under the MIT License. See [LICENSE](https://github.com/Y0URD34TH/Pr
 ## Acknowledgements
 
 * [ImGui](https://github.com/ocornut/imgui)
-* [rezy](https://rezi.one/)
+* [Rezi](https://rezi.one/)
 * [CURL](https://github.com/curl/curl)
 * [libtorrent](https://www.libtorrent.org/)
 * [vcpkg](https://vcpkg.io/en/)
