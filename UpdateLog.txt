@@ -1,10 +1,14 @@
-V0.97
+V0.98
 
+Added Multi-Trhead For Search and Lua scripts
+Fixed Issues with Search And Lua Scripts
+Fixed Fonts
+Improved Search System
+Improved Download System
 Added Notification System
 Improved UI
 Improved Search Tab
-Added Plugin Installer System
+Fixed Plugin Installer System
 Fixed Some bugs and Issues
-Added Discord Server Button
-Added Minimize Button
-Fixed some Bugs
+Added Link Opener
+Fixed some Bugs and issues
