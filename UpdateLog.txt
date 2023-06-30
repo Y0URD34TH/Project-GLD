@@ -5,6 +5,7 @@ Fixed Issues with Search And Lua Scripts
 Fixed Fonts
 Improved Search System
 Improved Download System
+Added Option to Change the Download Folder
 Added Notification System
 Improved UI
 Improved Search Tab
@@ -12,3 +13,5 @@ Fixed Plugin Installer System
 Fixed Some bugs and Issues
 Added Link Opener
 Fixed some Bugs and issues
+Join the Discord for request a feature or to report a bug
+https://discord.gg/e7PNeuEw5k
