@@ -1,3 +1,4 @@
+--to view exaples and lua params go in this github page: https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.MD
 
 local headers = {
     ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
@@ -6,12 +7,14 @@ local headers = {
 local regex = "<a href%s*=%s*\"(/torrent/[^\"]+)\""
 local magnetRegex = "href%s*=%s*\"(magnet:[^\"]+)\""
 
-
 local statebool = true
 
-
+ local version = client.GetVersion()
+ if version ~= "V0.99" then
+  Notifications.push_error("Lua Script", "Program is Outdated Please Update to use that Script")
+else
+  Notifications.push_success("Lua Script", "1337x Script Loaded And Working")
 local function request()
-
 local gamename = game.getgamename()
 local urlrequest = "https://www.1377x.to/search/" .. tostring(gamename) .. "/1/"
 urlrequest = urlrequest:gsub(" ", "%%20")
@@ -27,7 +30,8 @@ for match in htmlContent:gmatch(regex) do
     local searchResult = {
         name = torrentName,  
         link = url,
-        addtodownloadlist = statebool
+        addtodownloadlist = statebool,
+		ScriptName = "1337x"
     }
 
     for magnetMatch in htmlContent2:gmatch(magnetRegex) do
@@ -36,7 +40,6 @@ for match in htmlContent:gmatch(regex) do
         table.insert(results, searchResult)
     end
 
-    -- Only add URL results if no magnet links were found
     if searchResult.link == url then
         table.insert(results, searchResult)
     end
@@ -45,4 +48,4 @@ end
 communication.receiveSearchResults(results)
 end
 client.add_callback("on_gameselected", request)--on a game is selected in menu callback
-
+end
