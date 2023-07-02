@@ -23,6 +23,15 @@ client
   load_script  
   unload_script  
   log  
+  GetVersion  
+  }  
+
+Notifications  
+  {  
+  push  
+  push_success  
+  push_error  
+  push_warning  
   }  
 
 menu  
@@ -67,6 +76,7 @@ Download
   {  
   DownloadFile  
   GetFileNameFromUrl  
+  ArchivedotOrgResolver  
   }  
 
 lua tables:  
