@@ -52,8 +52,9 @@ Any contribution to the code or design of the app is very welcome! If you wish t
 
 ![Project GLD 25_06_2023 23_42_19](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/dfa19686-ed94-455e-8d97-89b7f31df20d)
 ![Project GLD 25_06_2023 23_44_13](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/3d9c02b6-da12-4f13-a4e2-98d432d699c8)
-![Capturas 25_06_2023 23_44_53](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/6bab9748-33c1-4a88-aed3-768114cccc96)
 ![Project GLD 02_07_2023 06_07_09](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/d9a59705-4ab9-479f-8762-67ea47a3506c)
+![Project GLD 25_06_2023 23_45_45](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/63fecc6b-0902-4df3-b437-eb538325a31f)
+
 ![Download tab](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/8a92f69f-7ce2-4e6d-8bb7-23149c728547)
 ![Project GLD 25_06_2023 23_40_50](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/3e72ebb1-4226-48a1-8ed2-822581ccdd35)
 ![Project GLD 26_06_2023 18_45_25](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/e1f3a8a8-7772-45db-b832-f2c80b80194b)
