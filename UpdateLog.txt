@@ -2,6 +2,7 @@ V0.99
 
 Improved Download System
 Improved LUA results displaying
+Added archieve.org resolver
 Changed Settings and Script folder
 Added Multi-Trhead For Search and Lua scripts
 Fixed Issues with Search And Lua Scripts
