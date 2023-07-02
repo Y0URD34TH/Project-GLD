@@ -60,12 +60,14 @@ Any contribution to the code or design of the app is very welcome! If you wish t
 
 ## Getting Started
 
-To install scripts, simply place the .lua script file in the "Documents/Jma/Scripts" directory, or use the program's script installer.
+To install scripts, simply place the .lua script file in the "Documents/Project-GLD/Scripts" directory, or use the program's script installer.
+To backup your game library list go to "Documents/Project-GLD/GameList"
+Settings are Saved in th "Documents/Project-GLD/Configs" Folder
 
 Here are a few examples of functional scripts:
 
 * [1337x.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/1337x.lua)
-* [simple-rezi-script.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/simple-rezi-script.lua)
+* [simple-rezi-script.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Rezi.lua)
 
 For instructions on how to use LUA for making scripts, please refer to [this guide](https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.MD).
 
