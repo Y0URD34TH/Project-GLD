@@ -31,7 +31,7 @@ local function substituteRomanNumerals(gameName)
         [" VII"] = " 7",
         [" VIII"] = " 8",
         [" IX"] = " 9",
-        [" X"] = " 10",
+        [" X"] = " 10"
     }
     
     for numeral, substitution in pairs(romans) do
