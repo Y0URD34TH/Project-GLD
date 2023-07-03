@@ -62,6 +62,13 @@ file
   read  
   }  
 
+http  
+  {  
+  get  
+  post  
+  ArchivedotOrgResolver  
+  } 
+
 game  
   {  
   getgamename  
@@ -75,8 +82,7 @@ communication
 Download  
   {  
   DownloadFile  
-  GetFileNameFromUrl  
-  ArchivedotOrgResolver  
+  GetFileNameFromUrl      
   }  
 
 lua tables:  
