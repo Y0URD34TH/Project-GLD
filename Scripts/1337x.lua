@@ -1,8 +1,47 @@
---to view exaples and lua params go in this github page: https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.MD
+--1.12
+local function checkVersion(str, comparison)
+    local serverversion = str:sub(3, 6)
+    return serverversion == comparison
+end
 
 local headers = {
     ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 }
+
+local version = "1.12"
+local githubversion = http.get("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/1337x.lua", headers)
+
+if checkVersion(githubversion, version) then
+else
+    Notifications.push_warning("Script Outdated", "The Script Is Outdated Please Update")
+end
+
+local function endsWith(str, pattern)
+    return string.sub(str, -string.len(pattern)) == pattern
+end
+
+local function substituteRomanNumerals(gameName)
+    local romans = {
+        [" I"] = " 1",
+        [" II"] = " 2",
+        [" III"] = " 3",
+        [" IV"] = " 4",
+        [" V"] = " 5",
+        [" VI"] = " 6",
+        [" VII"] = " 7",
+        [" VIII"] = " 8",
+        [" IX"] = " 9",
+        [" X"] = " 10",
+    }
+    
+    for numeral, substitution in pairs(romans) do
+        if endsWith(gameName, numeral) then
+            gameName = string.sub(gameName, 1, -string.len(numeral) - 1) .. substitution
+        end
+    end
+    
+    return gameName
+end
 
 local regex = "<a href%s*=%s*\"(/torrent/[^\"]+)\""
 local magnetRegex = "href%s*=%s*\"(magnet:[^\"]+)\""
@@ -14,10 +53,28 @@ local statebool = true
   Notifications.push_error("Lua Script", "Program is Outdated Please Update to use that Script")
 else
   Notifications.push_success("Lua Script", "1337x Script Loaded And Working")
+
+menu.add_check_box("Disable Roman Numbers Conversion")
+local romantonormalnumbers = true
+
+local function checkboxstate()
+if menu.get_bool("Disable Roman Numbers Conversion") then
+romantonormalnumbers = false
+else
+romantonormalnumbers = true
+end
+end
+
 local function request()
 local gamename = game.getgamename()
-local urlrequest = "https://www.1377x.to/search/" .. tostring(gamename) .. "/1/"
+
+if romantonormalnumbers then
+gamename = substituteRomanNumerals(gamename)
+end
+
+local urlrequest = "https://www.1377x.to/category-search/" .. tostring(gamename) .. "/Games/1/"
 urlrequest = urlrequest:gsub(" ", "%%20")
+
 local htmlContent = http.get(urlrequest, headers)
 
 local results = {}
@@ -48,4 +105,5 @@ end
 communication.receiveSearchResults(results)
 end
 client.add_callback("on_gameselected", request)--on a game is selected in menu callback
+client.add_callback("on_present", checkboxstate)--on present
 end
