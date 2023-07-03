@@ -1,3 +1,4 @@
+--1.12
 local function checkVersion(str, comparison)
     local serverversion = str:sub(3, 6)
     return serverversion == comparison
