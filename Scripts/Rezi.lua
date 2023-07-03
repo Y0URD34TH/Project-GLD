@@ -1,6 +1,23 @@
+local function checkVersion(str, comparison)
+    local serverversion = str:sub(3, 6)
+    return serverversion == comparison
+end
+
+local updtheaders = {
+    ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+}
+
+local version = "1.12"
+local githubversion = http.get("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/Rezi.lua", updtheaders)
+
+if checkVersion(githubversion, version) then
+else
+    Notifications.push_warning("Script Outdated", "The Script Rezi Is Outdated Please Update")
+end
+
 local version = client.GetVersion()
  if version ~= "V0.99" then
-  Notifications.push_error("Lua Script", "Program is Outdated Please Update to use that Script")
+   Notifications.push_error("Lua Script", "Program is Outdated Please Update to use that Script")
 else
    Notifications.push_success("Lua Script", "Rezi Script Loaded And Working")
 local statebool = false
@@ -48,18 +65,3 @@ local function request()
 end
 client.add_callback("on_gameselected", request)--on a game is selected in menu callback
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
