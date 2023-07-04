@@ -1,5 +1,7 @@
 V0.99
 
+Reworked Plugin System
+Reworked Code Editor
 Improved Download System
 Improved LUA results displaying
 Added archieve.org resolver
