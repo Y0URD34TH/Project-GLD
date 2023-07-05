@@ -1,5 +1,6 @@
 V0.99
 
+Added User Made Language Support
 Reworked Plugin System
 Reworked Code Editor
 Improved Download System
