@@ -74,7 +74,7 @@ For instructions on how to use LUA for making scripts, please refer to [this gui
 
 ### Prerequisites
 
-* [DirectX 9](https://www.filehorse.com/download-directx-9/)
+* [DirectX](https://www.microsoft.com/pt-br/download/details.aspx?id=35)
 * [Microsoft Visual C++ 2015-2022 Redist (x86 and x64)](https://www.microsoft.com/en-us/download/details.aspx?id=48145)
 
 ### Installation
