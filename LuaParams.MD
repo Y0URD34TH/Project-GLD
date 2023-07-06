@@ -1,6 +1,21 @@
 # Lua API Documentation
 
 ## Some working scripts example can be found here: https://github.com/Y0URD34TH/Project-GLD/tree/main/Scripts
+
+
+## Table Of Content
+
+* [client](#namespace-client)
+* [jsonwrapper](#namespace-jsonwrapper)
+* [game](#namespace-game)
+* [menu](#namespace-menu)
+* [http](#namespace-http)
+* [Installation](#namespace-utils)
+* [utils](#namespace-communication)
+* [file](#namespace-file)
+* [Download](#namespace-Download)
+* [Notifications](#namespace-Notifications)
+
 ---
 ## Namespace: JsonWrapper
 
