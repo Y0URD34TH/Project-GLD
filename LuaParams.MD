@@ -252,7 +252,7 @@ utils.ConsolePrint(true, "Response: %s", response)
 
 ### Function: ArchieveOrgResolver
 ```lua
-function http.ArchieveOrgResolver(link: string)
+function http.ArchivedotOrgResolver(link: string)
 ```
 Resolves a link using the Archive.org service.
 
@@ -264,7 +264,7 @@ Resolves a link using the Archive.org service.
 
 #### Usage Example:
 ```lua
-local resolvedLink = http.ArchieveOrgResolver("https://example.com")
+local resolvedLink = http.ArchivedotOrgResolver("https://example.com")
 utils.ConsolePrint(true, "Resolved Link: %s", resolvedLink)
 ```
 
