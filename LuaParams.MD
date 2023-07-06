@@ -543,4 +543,4 @@ Pushes a warning notification with the specified title and text.
 ```lua
 Notifications.push_warning("Warning", "Warning: Low disk space")
 ```
-#### to know how to use lua, please check the original lua documentation here: https://www.lua.org/docs.html
+## to know how to use lua, please check the original lua documentation here: https://www.lua.org/docs.html
