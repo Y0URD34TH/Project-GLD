@@ -1,6 +1,6 @@
 # Lua API Documentation
 
-## Some working scripts example can be found here: https://github.com/Y0URD34TH/Project-GLD/tree/main/Scripts
+## Some working scripts examples can be found here: https://github.com/Y0URD34TH/Project-GLD/tree/main/Scripts
 
 
 ## Table Of Content
