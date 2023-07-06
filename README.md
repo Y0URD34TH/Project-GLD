@@ -115,3 +115,4 @@ Distributed under the MIT License. See [LICENSE](https://github.com/Y0URD34TH/Pr
 * [libtorrent](https://www.libtorrent.org/)
 * [vcpkg](https://vcpkg.io/en/)
 * [LUA](https://www.lua.org/)
+* [nlohmann/json](https://github.com/nlohmann/json)
