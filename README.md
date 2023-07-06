@@ -72,6 +72,8 @@ Here are a few examples of functional scripts:
 
 For instructions on how to use LUA for making scripts, please refer to [this guide](https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.MD).
 
+See our LUA Documentation [Here](https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.MD).
+
 ### Prerequisites
 
 * [DirectX](https://www.microsoft.com/pt-br/download/details.aspx?id=35)
