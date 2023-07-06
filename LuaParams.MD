@@ -1,7 +1,7 @@
 # Lua API Documentation
 
+---
 ## Some working scripts example can be found here: https://github.com/Y0URD34TH/Project-GLD/tree/main/Scripts
-
 ---
 
 ## Namespace: JsonWrapper
