@@ -2,6 +2,28 @@
 
 ## Some working scripts example can be found here: https://github.com/Y0URD34TH/Project-GLD/tree/main/Scripts
 
+## Namespace: JsonWrapper
+
+### Function: parse
+```lua
+function parse(jsonString: string)
+```
+Parses a JSON string and converts it into a Lua object.
+
+#### Parameters:
+- `jsonString` (string): The JSON string to parse.
+
+#### Returns:
+- A Lua object representing the parsed JSON.
+
+#### Usage Example:
+```lua
+local jsonString = '{"name": "John", "age": 30}'
+local luaObject = JsonWrapper.parse(jsonString)
+utils.ConsolePrint(true, "Parsed JSON: %s", tostring(luaObject))
+```
+---
+
 ## Namespace: game
 
 ### Function: getgamename
