@@ -1,18 +1,18 @@
 # Lua API Documentation
 
-## Some working scripts examples can be found here: https://github.com/Y0URD34TH/Project-GLD/tree/main/Scripts
-
+## You can find script examples here: https://github.com/Y0URD34TH/Project-GLD/tree/main/Scripts
+## If you're unfamiliar with or new to LUA, it's highly recommended to first check out the general [LUA documentation](https://www.lua.org/docs.html).
 
 ## Table Of Content
 
-* [client](#namespace-client)
-* [jsonwrapper](#namespace-jsonwrapper)
-* [game](#namespace-game)
-* [menu](#namespace-menu)
-* [http](#namespace-http)
-* [utils](#namespace-utils)
-* [communication](#namespace-communication)
-* [file](#namespace-file)
+* [Client](#namespace-client)
+* [Jsonwrapper](#namespace-jsonwrapper)
+* [Game](#namespace-game)
+* [Menu](#namespace-menu)
+* [HTTP](#namespace-http)
+* [Utils](#namespace-utils)
+* [Communication](#namespace-communication)
+* [File](#namespace-file)
 * [Download](#namespace-Download)
 * [Notifications](#namespace-Notifications)
 
@@ -582,4 +582,3 @@ Pushes a warning notification with the specified title and text.
 ```lua
 Notifications.push_warning("Warning", "Warning: Low disk space")
 ```
-## to know how to use lua, please check the original lua documentation here: https://www.lua.org/docs.html
