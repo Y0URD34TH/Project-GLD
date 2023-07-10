@@ -1,5 +1,9 @@
-V0.99
+V1.00
 
+Added Themes Support
+Fixed Several Bugs
+Improved Intallers tab
+Changed The communitcation with LUA
 Added User Made Language Support
 Reworked Plugin System
 Reworked Code Editor
