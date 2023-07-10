@@ -41,7 +41,7 @@ It's also worth noting that while the scripts are based on LUA, the program itse
 
 You may create and use any scripts at your own risk. We do not take the responsibility for potential consequences or the content obtained through the utilization of community-generated scripts!
 
-The project is currently in alpha and supports torrents, magnet links, and regular downloads.
+The project is currently in beta and supports torrents, magnet links, and regular downloads.
 It's completely free.
 
 Any contribution to the code or design of the app is very welcome! If you wish to help out, you may do so by creating a fork of this repository and submitting a Pull Request with the changes you've made. However, we'd recommend first joining our [Discord server](https://discord.gg/FyH6Z34vcZ) to discuss the features you wish to work on and implement with the other developers.
