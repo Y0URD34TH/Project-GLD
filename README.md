@@ -98,7 +98,7 @@ Check out the [open issues](https://github.com/Y0URD34TH/Project-GLD/issues) for
 
 ## License
 
-Distributed under the MIT License. See [LICENSE](https://github.com/Y0URD34TH/Project-GLD/blob/main/LICENSE.md) for more information.
+Distributed under the 3-Clause BSD License. See [LICENSE](https://github.com/Y0URD34TH/Project-GLD/blob/main/LICENSE.md) for more information.
 
 ## Authors
 
