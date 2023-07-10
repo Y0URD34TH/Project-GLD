@@ -121,8 +121,8 @@
     "View Raw": "View raw",
     "When Enabled you dont need to Click in refresh to new configs show in the list": "When enabled the new configs are automatically shown in the list, without needing to refresh",
     "You are about to start a torrent download.\nIt's recommended to use a VPN before\nproceeding to avoid issues with your ISP.\nWould you like to continue with the download?\n\n": "You are about to start a torrent download.\nIt's recommended to use a VPN before\nproceeding to avoid issues with your ISP.\nWould you like to continue with the download?",
+    "my_select_popup2": "my_select_popup2",
     "Search Game to Download...": "Search game to download...",
-    "Add Game": "Add a game",
     "Search Game...": "Search game...",
     "Scripts": "Scripts",
     "Translations": "Translations",
@@ -130,6 +130,7 @@
     "Community Translations": "Community translations",
     "Open GitHub Translations Page": "Open GitHub translations page",
     "Translation Link": "Translation link",
+    "Install with link": "Install with link",
     "Open Translation Folder": "Open translations folder"
     "Translation Installer Download The Language From github Translations folder of the project": "The translation installer downloads the language from the translations folder in GitHub",
     "Community Themes": "Community themes"
@@ -141,6 +142,5 @@
     "Save Colors": "Save colors"
     "Create Theme File": "Create theme file",
     "Enable Max Active Downloads": "Enable max active downloads",
-    "Max Active": "Max active",
-    "my_select_popup2": "my_select_popup2"
+    "Max Active": "Max active"
 }
