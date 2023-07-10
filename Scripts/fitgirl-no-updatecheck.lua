@@ -120,11 +120,3 @@ local function scraper()
 end
 client.add_callback("on_gameselected", scraper)
 end
-
-
-
-
-
-
-
-
