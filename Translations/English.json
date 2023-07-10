@@ -123,9 +123,7 @@
     "You are about to start a torrent download.\nIt's recommended to use a VPN before\nproceeding to avoid issues with your ISP.\nWould you like to continue with the download?\n\n": "You are about to start a torrent download.\nIt's recommended to use a VPN before\nproceeding to avoid issues with your ISP.\nWould you like to continue with the download?",
     "my_select_popup2": "my_select_popup2",
     "Search Game to Download...": "Search game to download...",
-    "Add Game": "Add a game",
     "Search Game...": "Search game...",
-    "Filter": "Filter",
     "Scripts": "Scripts",
     "Translations": "Translations",
     "Themes": "Themes",
@@ -140,7 +138,6 @@
     "Theme Link": "Theme link",
     "Open Themes Folder": "Open themes folder",
     "Theme Installer Download The Theme From github Theme folder of the project": "The theme installer downloads the theme from the themes folder in GitHub"
-    "Default": "Default",
     "Themes": "Themes",
     "Save Colors": "Save colors"
     "Create Theme File": "Create theme file",
