@@ -467,20 +467,50 @@ utils.ConsolePrint(true, "Client Version: %s", version)
 
 ### Function: receiveSearchResults
 ```lua
-function communication.receiveSearchResults(resultsTable: table)
+function receiveSearchResults(resultsTable: table)
 ```
-Receives search results from a table and processes them.
+Receives search results as a Lua table and processes them.
 
 #### Parameters:
-- `resultsTable` (table): A table containing search results.
+- `resultsTable` (table): The Lua table containing the search results.
 
 #### Usage Example:
 ```lua
-local results = {
-    { name = "Result 1", link = "https://example.com/result1", addtoDownloadlist = true, ScriptName = "Script 1" },
-    { name = "Result 2", link = "https://example.com/result2", addtoDownloadlist = false, ScriptName = "Script 2" },
+-- Define a sample search results table
+local resultsTable = {
+    {
+        name = "Result 1",
+        links = {
+            { name = "Link 1", link = "https://example.com/link1", addtodownloadlist = true },
+            { name = "Link 2", link = "https://example.com/link2", addtodownloadlist = false }
+        },
+        ScriptName = "Script 1"
+    },
+    {
+        name = "Result 2",
+        links = {
+            { name = "Link 3", link = "https://example.com/link3", addtodownloadlist = true },
+            { name = "Link 4", link = "https://example.com/link4", addtodownloadlist = true }
+        },
+        ScriptName = "Script 2"
+    }
 }
-communication.receiveSearchResults(results)
+
+-- Call the receiveSearchResults function
+receiveSearchResults(resultsTable)
+
+-- Access the processed search results
+local sresults = luaresults.get().sresults
+for i, result in ipairs(sresults) do
+    utils.ConsolePrint(true, "Search Result %d: %s", i, result.name)
+    utils.ConsolePrint(true, "Script Name: %s", result.scriptname)
+
+    for j, link in ipairs(result.links) do
+        utils.ConsolePrint(true, "Link %d: %s", j, link.name)
+        utils.ConsolePrint(true, "Link URL: %s", link.link)
+        utils.ConsolePrint(true, "Add to Download List: %s", tostring(link.ShouldAddtoDownloadlist))
+    end
+end
 ```
 
 ---
