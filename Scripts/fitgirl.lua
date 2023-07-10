@@ -1,4 +1,8 @@
 --1.14
+local function checkVersion(str, comparison)
+    local serverversion = str:sub(3, 6)
+    return serverversion == comparison
+end
 local function sanitizeString(input)
     -- Remove leading and trailing whitespaces
     input = input:match("^%s*(.-)%s*$")
