@@ -124,8 +124,6 @@
     "my_select_popup2": "my_select_popup2",
     "Search Game to Download...": "Search game to download...",
     "Search Game...": "Search game...",
-    "Scripts": "Scripts",
-    "Translations": "Translations",
     "Themes": "Themes",
     "Community Translations": "Community translations",
     "Open GitHub Translations Page": "Open GitHub translations page",
@@ -138,7 +136,6 @@
     "Theme Link": "Theme link",
     "Open Themes Folder": "Open themes folder",
     "Theme Installer Download The Theme From github Theme folder of the project": "The theme installer downloads the theme from the themes folder in GitHub"
-    "Themes": "Themes",
     "Save Colors": "Save colors"
     "Create Theme File": "Create theme file",
     "Enable Max Active Downloads": "Enable max active downloads",
