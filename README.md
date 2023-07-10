@@ -17,9 +17,9 @@
 [![forthebadge](https://forthebadge.com/images/badges/made-with-c-plus-plus.svg)](https://pt.wikipedia.org/wiki/C%2B%2B)
 [![forthebadge](https://svgshare.com/i/ufb.svg)](https://github.com/Y0URD34TH/Project-GLD/raw/main/Project%20GLD.exe)
 [![forthebadge](https://svgshare.com/i/uey.svg)](https://discord.gg/FyH6Z34vcZ)
-![License](https://img.shields.io/badge/License-BSD--3--Clause-blue?style=for-the-badge)
 
-![Downloads](https://img.shields.io/github/downloads/Y0URD34TH/Project-GLD/total) ![Contributors](https://img.shields.io/github/contributors/Y0URD34TH/Project-GLD?color=dark-green) ![Stargazers](https://img.shields.io/github/stars/Y0URD34TH/Project-GLD?style=social) ![Issues](https://img.shields.io/github/issues/Y0URD34TH/Project-GLD) 
+
+![Downloads](https://img.shields.io/github/downloads/Y0URD34TH/Project-GLD/total) ![Contributors](https://img.shields.io/github/contributors/Y0URD34TH/Project-GLD?color=dark-green) ![Stargazers](https://img.shields.io/github/stars/Y0URD34TH/Project-GLD?style=social) ![Issues](https://img.shields.io/github/issues/Y0URD34TH/Project-GLD) ![License](https://img.shields.io/badge/License-BSD--3--Clause-blue?style=for-the-badge)
 
 ## Table Of Content
 
