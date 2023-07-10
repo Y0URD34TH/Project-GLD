@@ -498,19 +498,6 @@ local resultsTable = {
 
 -- Call the receiveSearchResults function
 receiveSearchResults(resultsTable)
-
--- Access the processed search results
-local sresults = luaresults.get().sresults
-for i, result in ipairs(sresults) do
-    utils.ConsolePrint(true, "Search Result %d: %s", i, result.name)
-    utils.ConsolePrint(true, "Script Name: %s", result.scriptname)
-
-    for j, link in ipairs(result.links) do
-        utils.ConsolePrint(true, "Link %d: %s", j, link.name)
-        utils.ConsolePrint(true, "Link URL: %s", link.link)
-        utils.ConsolePrint(true, "Add to Download List: %s", tostring(link.ShouldAddtoDownloadlist))
-    end
-end
 ```
 
 ---
