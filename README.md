@@ -18,7 +18,7 @@
 [![forthebadge](https://svgshare.com/i/uey.svg)](https://discord.gg/FyH6Z34vcZ)
 [![forthebadge](https://svgshare.com/i/ufb.svg)](https://github.com/Y0URD34TH/Project-GLD/raw/main/Project%20GLD.exe)
 
-![Downloads](https://img.shields.io/github/downloads/Y0URD34TH/Project-GLD/total) ![Contributors](https://img.shields.io/github/contributors/Y0URD34TH/Project-GLD?color=dark-green) ![Stargazers](https://img.shields.io/github/stars/Y0URD34TH/Project-GLD?style=social) ![Issues](https://img.shields.io/github/issues/Y0URD34TH/Project-GLD) ![License](https://img.shields.io/github/license/Y0URD34TH/Project-GLD) 
+![Downloads](https://img.shields.io/github/downloads/Y0URD34TH/Project-GLD/total) ![Contributors](https://img.shields.io/github/contributors/Y0URD34TH/Project-GLD?color=dark-green) ![Stargazers](https://img.shields.io/github/stars/Y0URD34TH/Project-GLD?style=social) ![Issues](https://img.shields.io/github/issues/Y0URD34TH/Project-GLD) ![License](https://img.shields.io/github/license/Y0URD34TH/Project-GLD)
 
 ## Table Of Content
 
