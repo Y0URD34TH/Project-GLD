@@ -110,7 +110,3 @@ end
 client.add_callback("on_gameselected", request)--on a game is selected in menu callback
 client.add_callback("on_present", checkboxstate)--on present
 end
-
-
-
-
