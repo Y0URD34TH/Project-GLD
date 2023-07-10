@@ -1,5 +1,5 @@
 local version = client.GetVersion()
- if version ~= "V0.99" then
+ if version ~= "V1.00" then
    Notifications.push_error("Lua Script", "Program is Outdated Please Update to use that Script")
 else
    Notifications.push_success("Lua Script", "Rezi Script Loaded And Working")
@@ -28,16 +28,19 @@ local function request()
     for _, result in ipairs(gameResults) do
         local searchResult = {
             name = result.title,
-            link = result.link,
-            addtodownloadlist = statebool,
-            ScriptName = "Rezi"
+
+            links = {
+                { name = "Download", link = result.link, addtodownloadlist = false }
+            },
+            ScriptName = "Rezi2"
         }
 
         if result.link:find("archive.org") then
             local resolvedLink = http.ArchivedotOrgResolver(result.link)
             if resolvedLink then
-                searchResult.link = resolvedLink
-				searchResult.addtodownloadlist = true
+                searchResult.links = {
+                        { name = "Download", link = resolvedLink, addtodownloadlist = true }
+                }
             end
         end
 
@@ -48,3 +51,9 @@ local function request()
 end
 client.add_callback("on_gameselected", request)--on a game is selected in menu callback
 end
+
+
+
+
+
+

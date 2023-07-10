@@ -1,4 +1,4 @@
---1.12
+--1.14
 local function checkVersion(str, comparison)
     local serverversion = str:sub(3, 6)
     return serverversion == comparison
@@ -8,7 +8,7 @@ local headers = {
     ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 }
 
-local version = "1.12"
+local version = "1.14"
 local githubversion = http.get("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/1337x.lua", headers)
 
 if checkVersion(githubversion, version) then
@@ -49,7 +49,7 @@ local magnetRegex = "href%s*=%s*\"(magnet:[^\"]+)\""
 local statebool = true
 
  local version = client.GetVersion()
- if version ~= "V0.99" then
+ if version ~= "V1.00" then
   Notifications.push_error("Lua Script", "Program is Outdated Please Update to use that Script")
 else
   Notifications.push_success("Lua Script", "1337x Script Loaded And Working")
@@ -86,13 +86,16 @@ for match in htmlContent:gmatch(regex) do
 
     local searchResult = {
         name = torrentName,  
-        link = url,
-        addtodownloadlist = statebool,
+        links = {
+            { name = "Download", link = url }
+        },
 		ScriptName = "1337x"
     }
 
     for magnetMatch in htmlContent2:gmatch(magnetRegex) do
-        searchResult.link = magnetMatch
+        searchResult.links = {
+            { name = "Download", link = magnetMatch, addtodownloadlist = statebool}
+        }
         searchResult.name = torrentName  
         table.insert(results, searchResult)
     end
@@ -107,3 +110,7 @@ end
 client.add_callback("on_gameselected", request)--on a game is selected in menu callback
 client.add_callback("on_present", checkboxstate)--on present
 end
+
+
+
+

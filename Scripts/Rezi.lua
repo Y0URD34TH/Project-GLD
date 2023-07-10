@@ -1,4 +1,4 @@
---1.12
+--1.14
 local function checkVersion(str, comparison)
     local serverversion = str:sub(3, 6)
     return serverversion == comparison
@@ -8,7 +8,7 @@ local updtheaders = {
     ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 }
 
-local version = "1.12"
+local version = "1.14"
 local githubversion = http.get("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/Rezi.lua", updtheaders)
 
 if checkVersion(githubversion, version) then
@@ -17,10 +17,11 @@ else
 end
 
 local version = client.GetVersion()
- if version ~= "V0.99" then
+ if version ~= "V1.00" then
    Notifications.push_error("Lua Script", "Program is Outdated Please Update to use that Script")
 else
    Notifications.push_success("Lua Script", "Rezi Script Loaded And Working")
+
 local statebool = false
 
 local function request()
@@ -46,16 +47,19 @@ local function request()
     for _, result in ipairs(gameResults) do
         local searchResult = {
             name = result.title,
-            link = result.link,
-            addtodownloadlist = statebool,
+
+            links = {
+                { name = "Download", link = result.link, addtodownloadlist = false }
+            },
             ScriptName = "Rezi"
         }
 
         if result.link:find("archive.org") then
             local resolvedLink = http.ArchivedotOrgResolver(result.link)
             if resolvedLink then
-                searchResult.link = resolvedLink
-				searchResult.addtodownloadlist = true
+                searchResult.links = {
+                        { name = "Download", link = resolvedLink, addtodownloadlist = true }
+                }
             end
         end
 
@@ -66,3 +70,9 @@ local function request()
 end
 client.add_callback("on_gameselected", request)--on a game is selected in menu callback
 end
+
+
+
+
+
+

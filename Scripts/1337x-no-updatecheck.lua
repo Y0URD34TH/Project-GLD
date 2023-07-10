@@ -35,7 +35,7 @@ local magnetRegex = "href%s*=%s*\"(magnet:[^\"]+)\""
 local statebool = true
 
  local version = client.GetVersion()
- if version ~= "V0.99" then
+ if version ~= "V1.00" then
   Notifications.push_error("Lua Script", "Program is Outdated Please Update to use that Script")
 else
   Notifications.push_success("Lua Script", "1337x Script Loaded And Working")
@@ -72,13 +72,16 @@ for match in htmlContent:gmatch(regex) do
 
     local searchResult = {
         name = torrentName,  
-        link = url,
-        addtodownloadlist = statebool,
-		ScriptName = "1337x"
+        links = {
+            { name = "Download", link = url }
+        },
+		ScriptName = "1337x2"
     }
 
     for magnetMatch in htmlContent2:gmatch(magnetRegex) do
-        searchResult.link = magnetMatch
+        searchResult.links = {
+            { name = "Download", link = magnetMatch, addtodownloadlist = statebool}
+        }
         searchResult.name = torrentName  
         table.insert(results, searchResult)
     end
@@ -93,3 +96,13 @@ end
 client.add_callback("on_gameselected", request)--on a game is selected in menu callback
 client.add_callback("on_present", checkboxstate)--on present
 end
+
+
+
+
+
+
+
+
+
+
