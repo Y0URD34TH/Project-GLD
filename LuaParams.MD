@@ -497,7 +497,7 @@ local resultsTable = {
 }
 
 -- Call the receiveSearchResults function
-receiveSearchResults(resultsTable)
+communication.receiveSearchResults(resultsTable)
 ```
 
 ---
