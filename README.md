@@ -35,8 +35,6 @@
 
 ## About The Project
 
-![Project GLD 25_06_2023 23_42_19](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/dfa19686-ed94-455e-8d97-89b7f31df20d)
-
 
 Project GLD allows you to easily search for, download, and manage games. One of its core features is the native support for community-made scripts written in LUA, allowing you to easily create and implement your own scripts to increase the functionality of the app.
 It's also worth noting that while the scripts are based on LUA, the program itself is developed in C++, making it very light and fast.
@@ -50,13 +48,14 @@ Any contribution to the code or design of the app is very welcome! If you wish t
 
 ## Project Images
 
-![Project GLD 25_06_2023 23_42_19](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/dfa19686-ed94-455e-8d97-89b7f31df20d)
-![Project GLD 25_06_2023 23_44_13](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/3d9c02b6-da12-4f13-a4e2-98d432d699c8)
-![Project GLD 02_07_2023 06_07_09](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/d9a59705-4ab9-479f-8762-67ea47a3506c)
-![Download tab](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/8a92f69f-7ce2-4e6d-8bb7-23149c728547)
-![Project GLD 25_06_2023 23_40_50](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/3e72ebb1-4226-48a1-8ed2-822581ccdd35)
-![Project GLD 26_06_2023 18_45_25](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/e1f3a8a8-7772-45db-b832-f2c80b80194b)
-![Project GLD 02_07_2023 06_08_57](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/0b9943c3-0b57-481c-8f6c-ad0791ebf1aa)
+![Project GLD 10_07_2023 08_58_36](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/86fefb99-e852-4e52-add5-e0ca4c35297b)
+![Project GLD 10_07_2023 08_59_28](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/02774cf7-f3be-4b8d-9787-e887ca9390b3)
+![Project GLD 10_07_2023 09_00_39](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/8c6ef166-ec20-4cdc-8ee6-aba1c54b9271)
+![Project GLD 10_07_2023 09_01_43](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/f07aa875-79b6-4453-b9ce-6b352c0f903d)
+![Project GLD 10_07_2023 09_01_52](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/46ce7738-506b-42ef-a258-f6b699c4b4cf)
+![Project GLD 10_07_2023 09_01_59](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/04fad2b8-6b21-47cf-a3ac-f6fe1b326516)
+![Project GLD 10_07_2023 09_02_03](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/f59de897-dbad-4956-818f-f4e9b7d3b4ca)
+![Project GLD 10_07_2023 09_02_07](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/1213f3fb-da58-4906-8942-d33bbaab1c24)
 
 
 ## Getting Started
