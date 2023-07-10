@@ -7,7 +7,7 @@
   <h3 align="center">Project GLD</h3>
 
   <p align="center">
-    **Project GLD** is a game library and launcher that offers LUA script compatibility for searching and downloading games.
+    Project GLD is a game library and launcher that offers LUA script compatibility for searching and downloading games.
     <br/>
     <br/>
   </p>
