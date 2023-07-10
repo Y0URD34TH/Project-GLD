@@ -51,9 +51,3 @@ local function request()
 end
 client.add_callback("on_gameselected", request)--on a game is selected in menu callback
 end
-
-
-
-
-
-
