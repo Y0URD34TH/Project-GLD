@@ -73,15 +73,12 @@
     "Manage Configs:": "Manage configs:",
     "Modify Game Information": "Modify game information",
     "Name: %s": "Name: %s",
-    "No Download Script Loaded or installed\nTo be Able to Download Add Some Download Script in Installer\nOr Load Some Already Installed Download Plugin in the Scripts Tab": "You have no loaded or installed download scripts.\nTo add a script, click on the installer tab, or load an already installed script in the scripts tab.\nYou MUST load a script in order for it to work.",
-    "(If You Have a Script loaded This Warning Could be Because the script didnt found any results)": "If you already have a loaded script, this error could be due to the script not finding any results.",
     "OK": "OK",
     "Open Configs folder": "Open configs folder",
     "Open Download Path": "Open download path",
     "Open File Browser": "Open File Explorer",
     "Open Git-Hub Page": "Open our GitHub page",
     "Open GitHub Scripts Page": "Open the GitHub scripts page",
-    "Open Languages Folder": "Open Languages Folder",
     "Open Links": "Open links",
     "Open Scripts folder": "Open scripts folder",
     "Open scripts folder": "Open scripts folder",
@@ -122,6 +119,8 @@
     "When Enabled you dont need to Click in refresh to new configs show in the list": "When enabled the new configs are automatically shown in the list, without needing to refresh",
     "You are about to start a torrent download.\nIt's recommended to use a VPN before\nproceeding to avoid issues with your ISP.\nWould you like to continue with the download?\n\n": "You are about to start a torrent download.\nIt's recommended to use a VPN before\nproceeding to avoid issues with your ISP.\nWould you like to continue with the download?",
     "my_select_popup2": "my_select_popup2",
+    "(If You Have a Script loaded This Warning Could be Because the script didnt found any results)": "If you already have a loaded script, this error could be due to the script not finding any results.",
+    "Open Languages Folder": "Open Languages Folder",
     "Search Game to Download...": "Search game to download...",
     "Search Game...": "Search game...",
     "Community Translations": "Community translations",
@@ -137,5 +136,6 @@
     "Save Colors": "Save colors",
     "Create Theme File": "Create theme file",
     "Enable Max Active Downloads": "Enable max active downloads",
-    "Max Active": "Max active"
+    "Max Active": "Max active",
+    "No Download Script Loaded or installed\nTo be Able to Download Add Some Download Script in Installer\nOr Load Some Already Installed Download Plugin in the Scripts Tab": "You have no loaded or installed download scripts.\nTo add a script, click on the installer tab, or load an already installed script in the scripts tab.\nYou MUST load a script in order for it to work."
 }
