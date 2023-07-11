@@ -108,7 +108,7 @@
     "The Program is in the Latest Version\nNo Update Needed\nVersion: %s\nDate: %s": "O Programa está na Versão Mais Recente\nNão é Necessária Atualização\nVersão: %s\nData: %s",
     "The cover image Location (optional)": "Localização da Imagem de Capa (opcional)",
     "The cover image link (optional)": "Link da Imagem de Capa (opcional)",
-    "The program Auto Loads in Startup the Default.cfg\nif you need that the option changed run in startup\njust save the Default.cfg ": "O programa Carrega Automaticamente no Início\nO Default.cfg. se você precisar que a opção alterada\nseja executada no início apenas salve o Default.cfg",
+    "The program Auto Loads in Startup the Default.cfg\nif you need that the option changed run in startup\njust save the Default.cfg ": "O programa Carrega Automaticamente no Início\\n\nO Default.cfg. se você precisar que a opção alterada\\n\nseja executada no início apenas salve o Default.cfg",
     "Torrent Name: %s": "Nome do Torrent: %s",
     "Uninstall": "Desinstalar",
     "Unload Script": "Desativar Script",
