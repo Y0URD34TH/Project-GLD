@@ -38,12 +38,7 @@ if version ~= "V1.01" then
 else
     Notifications.push_success("Lua Script", "1337x Script Loaded and Working")
 
-    menu.add_check_box("Disable Roman Numbers Conversion")
     local romantonormalnumbers = true
-
-    local function checkboxstate1337x()
-        romantonormalnumbers = not menu.get_bool("Disable Roman Numbers Conversion")
-    end
 
     local function request1337x()
         local gamename = game.getgamename()
@@ -67,6 +62,7 @@ else
         end
 
         local results = {}
+        local searchResult -- Declare the searchResult variable outside the loop
 
         for match in htmlContent:gmatch(regex) do
             local url = "https://1377x.to" .. match
@@ -82,7 +78,7 @@ else
                 break
             end
 
-            local searchResult = {
+            searchResult = {
                 name = torrentName,
                 links = {},
                 ScriptName = "1337x2"
@@ -116,7 +112,4 @@ else
     end
 
     client.add_callback("on_gameselected", request1337x) -- Callback when a game is selected in the menu
-    client.add_callback("on_present", checkboxstate1337x) -- Callback on present
 end
-
-
