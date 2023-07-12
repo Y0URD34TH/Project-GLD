@@ -1,5 +1,10 @@
-V1.00
+V1.01
 
+Fixed Translations bug
+Improved settings system to be more intuitive
+improved the way to get results from scripts (more fast)
+fixed bugs and some crashes
+added more user friendly things
 Added Themes Support
 Fixed Several Bugs
 Improved Intallers tab
