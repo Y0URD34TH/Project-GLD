@@ -17,7 +17,7 @@ else
 end
 
 local version = client.GetVersion()
- if version ~= "V1.00" then
+ if version ~= "V1.01" then
    Notifications.push_error("Lua Script", "Program is Outdated Please Update to use that Script")
 else
    Notifications.push_success("Lua Script", "Rezi Script Loaded And Working")

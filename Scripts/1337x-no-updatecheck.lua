@@ -19,80 +19,97 @@ local function substituteRomanNumerals(gameName)
         [" IX"] = " 9",
         [" X"] = " 10"
     }
-    
+
     for numeral, substitution in pairs(romans) do
         if endsWith(gameName, numeral) then
             gameName = string.sub(gameName, 1, -string.len(numeral) - 1) .. substitution
         end
     end
-    
+
     return gameName
 end
 
 local regex = "<a href%s*=%s*\"(/torrent/[^\"]+)\""
 local magnetRegex = "href%s*=%s*\"(magnet:[^\"]+)\""
 
-local statebool = true
-
- local version = client.GetVersion()
- if version ~= "V1.00" then
-  Notifications.push_error("Lua Script", "Program is Outdated Please Update to use that Script")
+local version = client.GetVersion()
+if version ~= "V1.01" then
+    Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
 else
-  Notifications.push_success("Lua Script", "1337x Script Loaded And Working")
+    Notifications.push_success("Lua Script", "1337x Script Loaded and Working")
 
-menu.add_check_box("Disable Roman Numbers Conversion")
-local romantonormalnumbers = true
+    local romantonormalnumbers = true
 
-local function checkboxstate()
-if menu.get_bool("Disable Roman Numbers Conversion") then
-romantonormalnumbers = false
-else
-romantonormalnumbers = true
-end
-end
+    local function request1337x()
+        local gamename = game.getgamename()
 
-local function request()
-local gamename = game.getgamename()
+        if not gamename then
+            print("Error: Failed to retrieve game name.")
+            return
+        end
 
-if romantonormalnumbers then
-gamename = substituteRomanNumerals(gamename)
-end
+        if romantonormalnumbers then
+            gamename = substituteRomanNumerals(gamename)
+        end
 
-local urlrequest = "https://www.1377x.to/category-search/" .. tostring(gamename) .. "/Games/1/"
-urlrequest = urlrequest:gsub(" ", "%%20")
+        local urlrequest = "https://www.1377x.to/category-search/" .. tostring(gamename) .. "/Games/1/"
+        urlrequest = urlrequest:gsub(" ", "%%20")
 
-local htmlContent = http.get(urlrequest, headers)
+        local htmlContent = http.get(urlrequest, headers)
+        if not htmlContent then
+            print("Error: Failed to retrieve HTML content for URL: " .. urlrequest)
+            return
+        end
 
-local results = {}
+        local results = {}
+        local searchResult -- Declare the searchResult variable outside the loop
 
-for match in htmlContent:gmatch(regex) do
-    local url = "https://1377x.to" .. match
-	local torrentName = url:match("/([^/]+)/$")
-    local htmlContent2 = http.get(url, headers)
+        for match in htmlContent:gmatch(regex) do
+            local url = "https://1377x.to" .. match
+            local torrentName = url:match("/([^/]+)/$")
+            if not torrentName then
+                print("Error: Failed to extract torrent name from URL: " .. url)
+                break
+            end
 
-    local searchResult = {
-        name = torrentName,  
-        links = {
-            { name = "Download", link = url }
-        },
-		ScriptName = "1337x2"
-    }
+            local htmlContent2 = http.get(url, headers)
+            if not htmlContent2 then
+                print("Error: Failed to retrieve HTML content for URL: " .. url)
+                break
+            end
 
-    for magnetMatch in htmlContent2:gmatch(magnetRegex) do
-        searchResult.links = {
-            { name = "Download", link = magnetMatch, addtodownloadlist = statebool}
-        }
-        searchResult.name = torrentName  
-        table.insert(results, searchResult)
+            searchResult = {
+                name = torrentName,
+                links = {},
+                ScriptName = "1337x2"
+            }
+
+            for magnetMatch in htmlContent2:gmatch(magnetRegex) do
+                searchResult.links[#searchResult.links + 1] = {
+                    name = "Download",
+                    link = magnetMatch,
+                    addtodownloadlist = true
+                }
+                -- No need to continue the loop if a magnet link is found
+                break
+            end
+
+            if next(searchResult.links) == nil then
+                searchResult.links[#searchResult.links + 1] = {
+                    name = "Download",
+                    link = url
+                }
+            end
+
+            results[#results + 1] = searchResult
+        end
+
+        if next(results) ~= nil then
+            communication.receiveSearchResults(results)
+        else
+            print("No results found.")
+        end
     end
 
-    if searchResult.link == url then
-        table.insert(results, searchResult)
-    end
-end
-
-communication.receiveSearchResults(results)
-end
-client.add_callback("on_gameselected", request)--on a game is selected in menu callback
-client.add_callback("on_present", checkboxstate)--on present
+    client.add_callback("on_gameselected", request1337x) -- Callback when a game is selected in the menu
 end
