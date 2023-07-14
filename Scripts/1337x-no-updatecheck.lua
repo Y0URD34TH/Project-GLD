@@ -1,3 +1,4 @@
+--to view examples and lua params go in this github page: https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.MD
 local headers = {
     ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 }
@@ -33,14 +34,19 @@ local regex = "<a href%s*=%s*\"(/torrent/[^\"]+)\""
 local magnetRegex = "href%s*=%s*\"(magnet:[^\"]+)\""
 
 local version = client.GetVersion()
-if version ~= "V1.01" then
+if version ~= "V1.02" then
     Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
 else
     Notifications.push_success("Lua Script", "1337x Script Loaded and Working")
 
+    menu.add_check_box("Disable Roman Numbers Conversion 1337x-NUC")
     local romantonormalnumbers = true
 
-    local function request1337x()
+    local function checkboxcallNUC()
+        romantonormalnumbers = not menu.get_bool("Disable Roman Numbers Conversion 1337x-NUC")
+    end
+
+    local function request1337xNUC()
         local gamename = game.getgamename()
 
         if not gamename then
@@ -111,5 +117,16 @@ else
         end
     end
 
-    client.add_callback("on_gameselected", request1337x) -- Callback when a game is selected in the menu
+    client.add_callback("on_gameselected", request1337xNUC) -- Callback when a game is selected in the menu
+    client.add_callback("on_present", checkboxcallNUC) -- Callback when a game is selected in the menu
 end
+
+
+
+
+
+
+
+
+
+

@@ -39,7 +39,7 @@ local function sanitizeMagnet(magnet)
     return magnet
 end
  local version = client.GetVersion()
- if version ~= "V1.01" then
+ if version ~= "V1.02" then
   Notifications.push_error("Lua Script", "Program is Outdated Please Update to use that Script")
 else
   Notifications.push_success("Lua Script", "fitgirl Script Loaded And Working")
@@ -120,3 +120,5 @@ local function scraper()
 end
 client.add_callback("on_gameselected", scraper)
 end
+
+
