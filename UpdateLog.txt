@@ -1,5 +1,8 @@
 V1.02
 
+Script Edit Crash fix
+Script Crash Fix
+Translations fix
 Fixed Translations bug
 Improved settings system to be more intuitive
 improved the way to get results from scripts (more fast)
