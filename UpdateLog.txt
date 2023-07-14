@@ -1,4 +1,4 @@
-V1.01
+V1.02
 
 Fixed Translations bug
 Improved settings system to be more intuitive
