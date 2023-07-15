@@ -58,14 +58,3 @@ communication.receiveSearchResults(resultsNUC)
 end
 client.add_callback("on_gameselected", elamigosNUC)
 end
-
-
-
-
-
-
-
-
-
-
-
