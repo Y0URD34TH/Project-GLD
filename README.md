@@ -103,7 +103,7 @@ You might experience a slight delay when searching for and downloading games. Th
 
 Check out the [open issues](https://github.com/Y0URD34TH/Project-GLD/issues) for a list of proposed features and known issues.
 
-also we want to be like the [Stemio](https://www.stremio.com/) for games.
+also we want to be like the [Stremio](https://www.stremio.com/) for games.
 
 ## License
 
