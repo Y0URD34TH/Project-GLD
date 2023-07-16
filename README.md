@@ -75,6 +75,7 @@ Here are a few examples of functional scripts:
 * [fitgirl.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/fitgirl.lua)
 * [elamigos-games.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/elamigos-games.lua)
 * [onlinefix.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/onlinefix.lua)
+* [prowlarr.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/prowlarr.lua)
 
 For instructions on how to use LUA for making scripts, please refer to [this guide](https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.MD).
 
