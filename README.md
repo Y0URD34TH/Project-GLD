@@ -72,6 +72,10 @@ Here are a few examples of functional scripts:
 
 * [1337x.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/1337x.lua)
 * [Rezi.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Rezi.lua)
+* [fitgirl.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/fitgirl.lua)
+* [elamigos-games.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/elamigos-games.lua)
+* [onlinefix.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/onlinefix.lua)
+* [prowlarr.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/prowlarr.lua)
 
 For instructions on how to use LUA for making scripts, please refer to [this guide](https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.MD).
 
@@ -99,6 +103,8 @@ You might experience a slight delay when searching for and downloading games. Th
 ## Roadmap
 
 Check out the [open issues](https://github.com/Y0URD34TH/Project-GLD/issues) for a list of proposed features and known issues.
+
+also we want to be like the [Stremio](https://www.stremio.com/) for games.
 
 ## License
 
