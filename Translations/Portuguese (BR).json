@@ -1,4 +1,4 @@
-{
+﻿{
     "  Scripts Installer": "  Instalador de Scripts",
     " Return": " Voltar",
     "%6d/%-6d %6d lines  | %s | %s | %s | %s": "%6d/%-6d %6d linhas  | %s | %s | %s | %s",
@@ -68,7 +68,7 @@
     "Load Script": "Ativar o script",
     "Loading...": "Carregando...",
     "Lua Menu Items": "Itens do menu Lua",
-    "Lua Script Link:": "Link do Script Lua:",
+    "Lua Script Link:": "Link do ccript Lua:",
     "Lua Scripts": "Scripts Lua",
     "Manage Configs:": "Gerenciar configurações:",
     "Modify Game Information": "Modificar Informações do Jogo",
@@ -218,5 +218,12 @@
     "Tapochek.net": "Tapochek.net",
     "UPTOBOX": "UPTOBOX",
     "View in Site": "Ver no Site",
-    "Use Image Link": "Usar Link da Imagem"
+    "Use Image Link": "Usar Link da Imagem",
+    "Download Speed: - ": "Velocidade de Download: - ",
+    "Open the folder": "Abrir a Pasta",
+    "Remaining Time: -": "Tempo Restante: -",
+    "Remove from list": "Remover da Lista",
+    "Resume": "Continuar",
+    "Status: Paused": "Status: Pausado",
+    "Stop": "Pausar"
 }
