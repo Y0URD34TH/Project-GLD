@@ -52,14 +52,14 @@ Any contribution to the code or design of the app is very welcome! If you wish t
 
 ## Project Images
 
-![Capturas 10_07_2023 09_13_00](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/e548b87e-4329-4b90-8200-8d37584ad611)
-![Project GLD 10_07_2023 08_59_28](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/02774cf7-f3be-4b8d-9787-e887ca9390b3)
-![Project GLD 10_07_2023 09_00_39](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/8c6ef166-ec20-4cdc-8ee6-aba1c54b9271)
-![Project GLD 10_07_2023 09_01_43](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/f07aa875-79b6-4453-b9ce-6b352c0f903d)
-![Project GLD 10_07_2023 09_06_45](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/de97c7c0-82e3-46f1-b82f-3611856976a5)
-![Project GLD 10_07_2023 09_01_59](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/04fad2b8-6b21-47cf-a3ac-f6fe1b326516)
-![Project GLD 10_07_2023 09_02_03](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/f59de897-dbad-4956-818f-f4e9b7d3b4ca)
-![Project GLD 10_07_2023 09_02_07](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/1213f3fb-da58-4906-8942-d33bbaab1c24)
+![Project GLD 19_07_2023 00_31_59](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/7d681005-e24b-4c8e-b170-f0e9161bb214)
+![Project GLD 19_07_2023 00_32_39](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/bdb073a9-6893-49a4-8371-6f8bb8fba628)
+![Project GLD 19_07_2023 00_33_02](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/09f155de-ea20-426c-a03e-67ab55b34b4b)
+![Project GLD 19_07_2023 00_33_55](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/db0abbd9-9335-487d-b6c5-5e9e0167ec93)
+![Project GLD 19_07_2023 00_34_20](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/d31f52d2-7b71-4eaf-a166-30728084ec90)
+![Project GLD 19_07_2023 00_34_41](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/759c602d-588a-4517-9a85-cb28735f7ff2)
+![Project GLD 19_07_2023 00_34_50](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/6c85898b-c237-40dc-bbef-5026a5342a5c)
+![Project GLD 19_07_2023 00_34_55](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/f8b634e4-e20c-4aba-be95-ac570fd3e2ac)
 
 
 ## Getting Started
