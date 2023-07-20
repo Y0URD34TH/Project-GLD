@@ -52,14 +52,14 @@ Any contribution to the code or design of the app is very welcome! If you wish t
 
 ## Project Images
 
-![Project GLD 19_07_2023 00_31_59](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/7d681005-e24b-4c8e-b170-f0e9161bb214)
-![Project GLD 19_07_2023 00_32_39](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/bdb073a9-6893-49a4-8371-6f8bb8fba628)
-![Project GLD 19_07_2023 00_33_02](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/09f155de-ea20-426c-a03e-67ab55b34b4b)
-![Project GLD 19_07_2023 00_33_55](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/db0abbd9-9335-487d-b6c5-5e9e0167ec93)
-![Project GLD 19_07_2023 00_34_20](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/d31f52d2-7b71-4eaf-a166-30728084ec90)
-![Project GLD 19_07_2023 00_34_41](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/759c602d-588a-4517-9a85-cb28735f7ff2)
-![Project GLD 19_07_2023 00_34_50](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/6c85898b-c237-40dc-bbef-5026a5342a5c)
-![Project GLD 19_07_2023 00_34_55](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/f8b634e4-e20c-4aba-be95-ac570fd3e2ac)
+![Project GLD 20_07_2023 17_19_48](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/bb14d018-b92e-4f09-9e2a-30087a3c73f1)
+![Project GLD 20_07_2023 17_21_21](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/8d18369c-1605-404e-846f-034859f21e61)
+![Project GLD 20_07_2023 17_21_52](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/c8f31388-7c2d-469f-9677-be5847e3f9e3)
+![Project GLD 20_07_2023 17_22_59](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/3710eac4-5782-422a-8c7e-becbfa92c865)
+![Project GLD 20_07_2023 17_23_09](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/3f0c765f-ac9a-4b01-aac1-9cbd357b4788)
+![Project GLD 20_07_2023 17_23_17](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/7e81e3ed-f160-4fa3-94f8-cffae4a1fea4)
+![Project GLD 20_07_2023 17_23_28](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/8c993b98-8f57-4758-b829-9b3b0c1346b6)
+![Project GLD 20_07_2023 17_23_35](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/0d57378a-ffb4-4287-aa02-e0f166246e85)
 
 
 ## Getting Started
@@ -117,6 +117,7 @@ Distributed under the 3-Clause BSD License. See [LICENSE](https://github.com/Y0U
 * [Q99](https://github.com/qiracy) - *Tester, Translator and Designer*
 * [Pixel](https://github.com/piqseu) - *Designer*
 * [Brisolo32](https://github.com/Brisolo32) - *Translator and Designer*
+* [Backend](https://github.com/Backend2121) - *Designer Helper and Coding Helper*
 
 ## Acknowledgements
 
