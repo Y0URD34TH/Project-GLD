@@ -1,7 +1,7 @@
 <br/>
 <p align="center">
   <a href="https://github.com/Y0URD34TH/Project-GLD">
-    <img src="https://github.com/Y0URD34TH/Project-GLD/blob/main/Images/favicon.png?raw=true" alt="Logo" width="1280" height="640">
+    <img src="https://github.com/Y0URD34TH/Project-GLD/blob/main/Images/favicon.png?raw=true" alt="Logo" width="640" height="320">
   </a>
 
   <h3 align="center">Project GLD</h3>
