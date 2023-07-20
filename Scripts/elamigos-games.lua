@@ -59,7 +59,7 @@ else
     Notifications.push_warning("Script Outdated", "The Script Is Outdated Please Update")
 end
 local version = client.GetVersion()
-if version ~= "V1.02" then
+if version ~= "V1.12" then
     Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
 else
     Notifications.push_success("Lua Script", "elamigos-games Script Loaded and Working")
@@ -70,3 +70,5 @@ communication.receiveSearchResults(results)
 end
 client.add_callback("on_gameselected", elamigos)
 end
+
+

@@ -1,5 +1,5 @@
 --1.18
-local apikey = "" --YOUR API KEY GOES HERE
+local apikey = "fc99212ac3444bd5aac99556483e9e24" --YOUR API KEY GOES HERE
 local function checkVersion(str, comparison)
     local serverversion = str:sub(3, 6)
     return serverversion == comparison
@@ -35,7 +35,7 @@ else
 end
 
 local version = client.GetVersion()
-if version ~= "V1.02" then
+if version ~= "V1.12" then
     Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
 else
     Notifications.push_success("Lua Script", "prowlarr Script Loaded")
@@ -82,6 +82,10 @@ else
 
     client.add_callback("on_gameselected", prowlarrUC)
 end
+
+
+
+
 
 
 

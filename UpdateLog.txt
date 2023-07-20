@@ -1,5 +1,8 @@
-V1.02
+V1.12
 
+New Game tab on search
+Search tab crash fix
+DirectX device lost crash fix
 Script Edit Crash fix
 Script Crash Fix
 Translations fix
@@ -7,31 +10,17 @@ Fixed Translations bug
 Improved settings system to be more intuitive
 improved the way to get results from scripts (more fast)
 fixed bugs and some crashes
-added more user friendly things
+Maked more user friendly
 Added Themes Support
 Fixed Several Bugs
 Improved Intallers tab
-Changed The communitcation with LUA
 Added User Made Language Support
-Reworked Plugin System
-Reworked Code Editor
-Improved Download System
 Improved LUA results displaying
-Added archieve.org resolver
-Changed Settings and Script folder
-New Lua Params Added
-Added Multi-Trhead For Search and Lua scripts
 Fixed Issues with Search And Lua Scripts
 Fixed Fonts
 Improved Search System
 Improved Download System
-Added Option to Change the Download Folder
-Added Notification System
 Improved UI
 Improved Search Tab
-Fixed Plugin Installer System
-Fixed Some bugs and Issues
-Added Link Opener
-Fixed some Bugs and issues
 Join the Discord for request a feature or to report a bug
 https://discord.gg/e7PNeuEw5k

@@ -47,7 +47,7 @@ local function webScrapeElAmigosGamesNUC(gameName)
 end
 
 local version = client.GetVersion()
-if version ~= "V1.02" then
+if version ~= "V1.12" then
     Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
 else
     Notifications.push_success("Lua Script", "elamigos-games Script Loaded and Working")
@@ -58,3 +58,5 @@ communication.receiveSearchResults(resultsNUC)
 end
 client.add_callback("on_gameselected", elamigosNUC)
 end
+
+

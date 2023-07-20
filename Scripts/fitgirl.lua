@@ -1,4 +1,4 @@
---1.14
+--1.16
 local function checkVersion(str, comparison)
     local serverversion = str:sub(3, 6)
     return serverversion == comparison
@@ -49,7 +49,7 @@ end
     }
 
 
-local version = "1.14"
+local version = "1.16"
 local githubversion = http.get("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/fitgirl.lua", headers)
 
 if checkVersion(githubversion, version) then
@@ -57,7 +57,7 @@ else
     Notifications.push_warning("Script Outdated", "The Script Is Outdated Please Update")
 end
  local version = client.GetVersion()
- if version ~= "V1.02" then
+ if version ~= "V1.12" then
   Notifications.push_error("Lua Script", "Program is Outdated Please Update to use that Script")
 else
   Notifications.push_success("Lua Script", "fitgirl Script Loaded And Working")
@@ -116,11 +116,11 @@ local function scraper()
         for i, entry in ipairs(linkList) do
             if i == 1 and magnetList[1] then
                 local sanitizedMagnet = sanitizeMagnet(magnetList[1])
-                local magnetEntry = { link = sanitizedMagnet, name = "1337x (magnet)", addtodownloadlist = true }
+                local magnetEntry = { link = sanitizedMagnet, name = "1337x [magnet]", addtodownloadlist = true }
                 table.insert(searchResult.links, magnetEntry)
             elseif i == 2 and magnetList[2] then
                 local sanitizedMagnet = sanitizeMagnet(magnetList[2])
-                local magnetEntry = { link = sanitizedMagnet, name = "RuTor (magnet)", addtodownloadlist = true }
+                local magnetEntry = { link = sanitizedMagnet, name = "RuTor [magnet]", addtodownloadlist = true }
                 table.insert(searchResult.links, magnetEntry)
             end
             local mirrorEntry = { link = entry.link, name = entry.name, addtodownloadlist = false }
@@ -135,5 +135,13 @@ local function scraper()
 end
 client.add_callback("on_gameselected", scraper)
 end
+
+
+
+
+
+
+
+
 
 

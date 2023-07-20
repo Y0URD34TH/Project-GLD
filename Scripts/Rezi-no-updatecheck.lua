@@ -1,5 +1,5 @@
 local version = client.GetVersion()
- if version ~= "V1.02" then
+ if version ~= "V1.12" then
    Notifications.push_error("Lua Script", "Program is Outdated Please Update to use that Script")
 else
    Notifications.push_success("Lua Script", "Rezi Script Loaded And Working")
@@ -51,5 +51,7 @@ local function request()
 end
 client.add_callback("on_gameselected", request)--on a game is selected in menu callback
 end
+
+
 
 

@@ -1,7 +1,7 @@
 <br/>
 <p align="center">
   <a href="https://github.com/Y0URD34TH/Project-GLD">
-    <img src="https://github.com/Y0URD34TH/Project-GLD/blob/main/Images/favicon.png?raw=true" alt="Logo" width="80" height="80">
+    <img src="https://github.com/Y0URD34TH/Project-GLD/blob/main/Images/favicon.png?raw=true" alt="Logo" width="640" height="320">
   </a>
 
   <h3 align="center">Project GLD</h3>
@@ -15,10 +15,10 @@
 
 
 
-[![forthebadge](https://svgshare.com/i/ufb.svg)](https://github.com/Y0URD34TH/Project-GLD/raw/main/Project%20GLD.exe)
+[![Download](https://github.com/Y0URD34TH/Project-GLD/blob/main/Images/dl.png)](https://github.com/Y0URD34TH/Project-GLD/raw/main/Project%20GLD.exe)
 
 [![discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/FyH6Z34vcZ)
-[![License](https://img.shields.io/badge/License-BSD--3--Clause-blue?style=for-the-badge)](https://github.com/Y0URD34TH/Project-GLD/blob/main/LICENSE)
+[![License](https://img.shields.io/badge/license-Apache--2.0-blue?style=for-the-badge)](https://github.com/Y0URD34TH/Project-GLD/blob/main/LICENSE)
 
 
 ![Downloads](https://img.shields.io/github/downloads/Y0URD34TH/Project-GLD/total) ![Contributors](https://img.shields.io/github/contributors/Y0URD34TH/Project-GLD?color=dark-green) ![Stargazers](https://img.shields.io/github/stars/Y0URD34TH/Project-GLD?style=social) ![Issues](https://img.shields.io/github/issues/Y0URD34TH/Project-GLD) 
@@ -52,14 +52,14 @@ Any contribution to the code or design of the app is very welcome! If you wish t
 
 ## Project Images
 
-![Capturas 10_07_2023 09_13_00](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/e548b87e-4329-4b90-8200-8d37584ad611)
-![Project GLD 10_07_2023 08_59_28](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/02774cf7-f3be-4b8d-9787-e887ca9390b3)
-![Project GLD 10_07_2023 09_00_39](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/8c6ef166-ec20-4cdc-8ee6-aba1c54b9271)
-![Project GLD 10_07_2023 09_01_43](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/f07aa875-79b6-4453-b9ce-6b352c0f903d)
-![Project GLD 10_07_2023 09_06_45](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/de97c7c0-82e3-46f1-b82f-3611856976a5)
-![Project GLD 10_07_2023 09_01_59](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/04fad2b8-6b21-47cf-a3ac-f6fe1b326516)
-![Project GLD 10_07_2023 09_02_03](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/f59de897-dbad-4956-818f-f4e9b7d3b4ca)
-![Project GLD 10_07_2023 09_02_07](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/1213f3fb-da58-4906-8942-d33bbaab1c24)
+![Project GLD 20_07_2023 17_19_48](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/bb14d018-b92e-4f09-9e2a-30087a3c73f1)
+![Project GLD 20_07_2023 17_21_21](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/8d18369c-1605-404e-846f-034859f21e61)
+![Project GLD 20_07_2023 17_21_52](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/c8f31388-7c2d-469f-9677-be5847e3f9e3)
+![Project GLD 20_07_2023 17_22_59](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/3710eac4-5782-422a-8c7e-becbfa92c865)
+![Project GLD 20_07_2023 17_23_09](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/3f0c765f-ac9a-4b01-aac1-9cbd357b4788)
+![Project GLD 20_07_2023 17_23_17](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/7e81e3ed-f160-4fa3-94f8-cffae4a1fea4)
+![Project GLD 20_07_2023 17_23_28](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/8c993b98-8f57-4758-b829-9b3b0c1346b6)
+![Project GLD 20_07_2023 17_23_35](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/0d57378a-ffb4-4287-aa02-e0f166246e85)
 
 
 ## Getting Started
@@ -108,15 +108,16 @@ also we want to be like the [Stremio](https://www.stremio.com/) for games.
 
 ## License
 
-Distributed under the 3-Clause BSD License. See [LICENSE](https://github.com/Y0URD34TH/Project-GLD/blob/main/LICENSE.md) for more information.
+Distributed under the Apache-2.0 License. See [LICENSE](https://github.com/Y0URD34TH/Project-GLD/blob/main/LICENSE) for more information.
 
 ## Authors
 
 * [jma](https://github.com/Y0URD34TH) - *Lead Developer and Founder*
-* [foie]() - *Tester, Designer, and Developer*
+* [foie](https://github.com/KaylinOwO) - *Tester, Designer, and Developer*
 * [Q99](https://github.com/qiracy) - *Tester, Translator and Designer*
 * [Pixel](https://github.com/piqseu) - *Designer*
 * [Brisolo32](https://github.com/Brisolo32) - *Translator and Designer*
+* [Backend](https://github.com/Backend2121) - *Designer Helper and Coding Helper*
 
 ## Acknowledgements
 
