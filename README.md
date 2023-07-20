@@ -108,7 +108,7 @@ also we want to be like the [Stremio](https://www.stremio.com/) for games.
 
 ## License
 
-Distributed under the 3-Clause BSD License. See [LICENSE](https://github.com/Y0URD34TH/Project-GLD/blob/main/LICENSE.md) for more information.
+Distributed under the Apache-2.0 License. See [LICENSE](https://github.com/Y0URD34TH/Project-GLD/blob/main/LICENSE.md) for more information.
 
 ## Authors
 
