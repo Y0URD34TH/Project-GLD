@@ -113,7 +113,7 @@ Distributed under the Apache-2.0 License. See [LICENSE](https://github.com/Y0URD
 ## Authors
 
 * [jma](https://github.com/Y0URD34TH) - *Lead Developer and Founder*
-* [foie]() - *Tester, Designer, and Developer*
+* [foie](https://github.com/KaylinOwO) - *Tester, Designer, and Developer*
 * [Q99](https://github.com/qiracy) - *Tester, Translator and Designer*
 * [Pixel](https://github.com/piqseu) - *Designer*
 * [Brisolo32](https://github.com/Brisolo32) - *Translator and Designer*
