@@ -1,28 +1,21 @@
-<br/>
-<p align="center">
+<div align=center>
   <a href="https://github.com/Y0URD34TH/Project-GLD">
-    <img src="https://github.com/Y0URD34TH/Project-GLD/blob/main/Images/favicon.png?raw=true" alt="Logo" width="640" height="320">
+    <img src="https://github.com/piqseu/Project-GLD/blob/main/Images/favicon.png?raw=true" alt="Logo" width="640" height="320">
   </a>
-
-  <h3 align="center">Project GLD</h3>
-
-  <p align="center">
+  <h1 align="center">Project GLD</h1>
+  <p>
     Project GLD is a game library and launcher that offers LUA script compatibility for searching and downloading games.
-    <br/>
-    <br/>
   </p>
-</p>
-
-
-
-[![Download](https://github.com/Y0URD34TH/Project-GLD/blob/main/Images/dl.png)](https://github.com/Y0URD34TH/Project-GLD/raw/main/Project%20GLD.exe)
-
+<br/>
+<a href=https://github.com/Y0URD34TH/Project-GLD/releases/latest/download/Project.GLD.exe>
+<img src="https://github.com/Y0URD34TH/Project-GLD/blob/main/Images/dl.png" alt="Download" width="155">
+</a>
+  
 [![discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/FyH6Z34vcZ)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue?style=for-the-badge)](https://github.com/Y0URD34TH/Project-GLD/blob/main/LICENSE)
 
-
 ![Downloads](https://img.shields.io/github/downloads/Y0URD34TH/Project-GLD/total) ![Contributors](https://img.shields.io/github/contributors/Y0URD34TH/Project-GLD?color=dark-green) ![Stargazers](https://img.shields.io/github/stars/Y0URD34TH/Project-GLD?style=social) ![Issues](https://img.shields.io/github/issues/Y0URD34TH/Project-GLD) 
-
+</div>
 
 ## Table Of Content
 
