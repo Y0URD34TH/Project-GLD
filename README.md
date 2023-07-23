@@ -7,7 +7,7 @@
     Project GLD is a game library and launcher that offers LUA script compatibility for searching and downloading games.
   </p>
 <br/>
-<a href=https://github.com/Y0URD34TH/Project-GLD/releases/latest/download/Project.GLD.exe>
+<a href=https://github.com/Y0URD34TH/Project-GLD/releases/latest/download/Project-GLD.exe>
 <img src="https://github.com/Y0URD34TH/Project-GLD/blob/main/Images/dl.png" alt="Download" width="155">
 </a>
   
