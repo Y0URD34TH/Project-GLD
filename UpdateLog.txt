@@ -10,7 +10,7 @@ Translations fix
 Improved settings system to be more intuitive
 Maked more user friendly
 Fixed some bugs and crashes
-Improved Intallers tab
+Improved Installers tab
 Improved Search System
 Improved Download System
 Herobrine Removed
