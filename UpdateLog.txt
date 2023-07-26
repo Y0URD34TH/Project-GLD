@@ -13,3 +13,4 @@ Fixed some bugs and crashes
 Improved Intallers tab
 Improved Search System
 Improved Download System
+Herobrine Removed
