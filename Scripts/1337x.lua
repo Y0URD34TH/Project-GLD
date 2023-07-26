@@ -47,7 +47,7 @@ local regex = "<a href%s*=%s*\"(/torrent/[^\"]+)\""
 local magnetRegex = "href%s*=%s*\"(magnet:[^\"]+)\""
 
 local version = client.GetVersion()
-if version ~= "V1.14" then
+if version ~= "V1.16" then
     Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
 else
     Notifications.push_success("Lua Script", "1337x Script Loaded and Working")
@@ -133,6 +133,8 @@ else
     client.add_callback("on_gameselected", request1337x) -- Callback when a game is selected in the menu
     client.add_callback("on_present", checkboxcall) -- Callback when a game is selected in the menu
 end
+
+
 
 
 

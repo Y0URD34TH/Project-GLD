@@ -35,7 +35,7 @@ else
 end
 
 local version = client.GetVersion()
-if version ~= "V1.14" then
+if version ~= "V1.16" then
     Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
 else
     Notifications.push_success("Lua Script", "prowlarr Script Loaded")
@@ -82,6 +82,8 @@ else
 
     client.add_callback("on_gameselected", prowlarrUC)
 end
+
+
 
 
 
