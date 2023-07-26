@@ -121,3 +121,4 @@ Distributed under the Apache-2.0 License. See [LICENSE](https://github.com/Y0URD
 * [vcpkg](https://vcpkg.io/en/)
 * [LUA](https://www.lua.org/)
 * [nlohmann/json](https://github.com/nlohmann/json)
+* [x360ce](https://github.com/x360ce/x360ce)
