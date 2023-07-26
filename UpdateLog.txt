@@ -1,31 +1,15 @@
 V1.14
 
-no more search freezing!!!
+Added Suport to x360ce
+Added Auto-Updater
 Now Create Texture is multi-threaded
-improved search system
 decreased search time
 improved download info in ui
 New Game tab on search
-Search tab crash fix
-DirectX device lost crash fix
-Script Edit Crash fix
-Script Crash Fix
 Translations fix
-Fixed Translations bug
 Improved settings system to be more intuitive
-improved the way to get results from scripts (more fast)
-fixed bugs and some crashes
 Maked more user friendly
-Added Themes Support
-Fixed Several Bugs
+Fixed some bugs and crashes
 Improved Intallers tab
-Added User Made Language Support
-Improved LUA results displaying
-Fixed Issues with Search And Lua Scripts
-Fixed Fonts
 Improved Search System
 Improved Download System
-Improved UI
-Improved Search Tab
-Join the Discord for request a feature or to report a bug
-https://discord.gg/e7PNeuEw5k
