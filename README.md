@@ -45,8 +45,8 @@ Any contribution to the code or design of the app is very welcome! If you wish t
 
 ## Project Images
 
-![Project GLD 20_07_2023 17_19_48](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/bb14d018-b92e-4f09-9e2a-30087a3c73f1)
-![Project GLD 20_07_2023 17_21_21](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/8d18369c-1605-404e-846f-034859f21e61)
+![Project GLD 28_07_2023 14_42_48](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/77e2efec-f355-4f56-8f1c-7334ddbcc4d5)
+![Project GLD 28_07_2023 14_45_39](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/08747f92-8551-46a8-b505-95a0a9bf9df9)
 ![Project GLD 20_07_2023 17_21_52](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/c8f31388-7c2d-469f-9677-be5847e3f9e3)
 ![Project GLD 20_07_2023 17_22_59](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/3710eac4-5782-422a-8c7e-becbfa92c865)
 ![Project GLD 20_07_2023 17_23_09](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/3f0c765f-ac9a-4b01-aac1-9cbd357b4788)
