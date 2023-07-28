@@ -1,5 +1,8 @@
-V1.16
+V1.17
 
+Improved Library
+Reworked Library and Search
+More Search System
 Added Suport to x360ce
 Added Auto-Updater
 Now Create Texture is multi-threaded
