@@ -8,6 +8,7 @@
 * [Client](#namespace-client)
 * [Jsonwrapper](#namespace-jsonwrapper)
 * [Game](#namespace-game)
+* [Game Library](#namespace-gamelibrary)
 * [Menu](#namespace-menu)
 * [HTTP](#namespace-http)
 * [Utils](#namespace-utils)
