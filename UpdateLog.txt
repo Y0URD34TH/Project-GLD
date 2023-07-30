@@ -1,20 +1,18 @@
-V1.17
+V1.18
 
+Improved LUA API
+Improved Scripts tab
+Improved Installers tab
 Improved Library
 Reworked Library and Search
 Fixed Text Wrap Bugs
 Fixed GIF crash in search
 More Search System
-Added Suport to x360ce
-Added Auto-Updater
-Now Create Texture is multi-threaded
 decreased search time
 improved download info in ui
 Translations fix
-Improved settings system to be more intuitive
 Maked more user friendly
 Fixed some bugs and crashes
-Improved Installers tab
 Improved Search System
 Improved Download System
 Herobrine Removed
