@@ -1,6 +1,7 @@
 V1.18
 
 Improved LUA API
+New Param in LUA API
 Improved Scripts tab
 Improved Installers tab
 Improved Library
