@@ -309,6 +309,122 @@ utils.ConsolePrint(true, "Resolved Link: %s", resolvedLink)
 
 ---
 
+
+### Namespace: utils
+
+The `utils` namespace provides utility functions for console management, logging, and timestamp retrieval.
+
+#### Function: AttachConsole
+
+```lua
+function AttachConsole()
+```
+
+Attaches a new console to the current process, allowing for console output.
+
+#### Usage Example:
+```lua
+-- Attach a console to the current process
+utils.AttachConsole()
+```
+
+---
+
+#### Function: DetachConsole
+
+```lua
+function DetachConsole()
+```
+
+Detaches the console from the current process.
+
+#### Usage Example:
+```lua
+-- Detach the console from the current process
+utils.DetachConsole()
+```
+
+---
+
+#### Function: ConsolePrint
+
+```lua
+function ConsolePrint(logToFile: boolean, fmt: string, ...)
+```
+
+Prints a formatted message to the attached console.
+
+#### Parameters:
+- `logToFile` (boolean): Whether to log the message to a file.
+- `fmt` (string): The format string for the message.
+- `...` (any): Additional parameters for the format string.
+
+#### Usage Example:
+```lua
+-- Print a message to the console and log it to a file
+utils.ConsolePrint(true, "This is a log message")
+```
+
+---
+
+#### Function: Log
+
+```lua
+function Log(fmt: string, ...)
+```
+
+Logs a formatted message to a file.
+
+#### Parameters:
+- `fmt` (string): The format string for the message.
+- `...` (any): Additional parameters for the format string.
+
+#### Usage Example:
+```lua
+-- Log a message to a file
+utils.Log("This is a log message")
+```
+
+---
+
+#### Function: GetTimestamp
+
+```lua
+function GetTimestamp() -> string
+```
+
+Retrieves the current timestamp in a formatted string.
+
+#### Returns:
+- `string`: The current timestamp in the format `"[Day Month DayOfMonth Hour:Minute:Second Year]"`.
+
+#### Usage Example:
+```lua
+-- Get the current timestamp
+local timestamp = utils.GetTimestamp()
+```
+
+---
+
+#### Function: GetTimeString
+
+```lua
+function GetTimeString() -> string
+```
+
+Retrieves the current time in a formatted string.
+
+#### Returns:
+- `string`: The current time in the format `"HH:MM:SS"`.
+
+#### Usage Example:
+```lua
+-- Get the current time as a string
+local timeString = utils.GetTimeString()
+```
+
+---
+
 ## Namespace: file
 
 ### Function: append
@@ -461,6 +577,23 @@ local version = client.GetVersion()
 utils.ConsolePrint(true, "Client Version: %s", version)
 ```
 
+### Function: CleanTextureCache
+```lua
+function CleanTextureCache()
+```
+Cleans the texture cache, releasing the stored textures.
+
+#### Parameters:
+- None.
+
+#### Usage Example:
+```lua
+-- Call the CleanTextureCache function
+CleanTextureCache()
+```
+
+In this example, the `CleanTextureCache` function is called to clean the texture cache, releasing any stored textures.
+
 ---
 
 ## Namespace: communication
@@ -502,38 +635,235 @@ communication.receiveSearchResults(resultsTable)
 
 ---
 
-## Namespace: Download
+### Namespace: Download
 
-### Function: DownloadFile
+The `Download` namespace provides functions to handle downloading files and managing the download path.
+
+#### Function: DownloadFile
+
 ```lua
-function Download.DownloadFile(Downloadurl: string)
+function DownloadFile(downloadurl: string)
 ```
-Downloads a file from the specified URL.
+
+Queues a file download from the specified URL using the internal download manager.
 
 #### Parameters:
-- `Downloadurl` (string): The URL of the file to Download.
+- `downloadurl` (string): The URL of the file to download.
 
 #### Usage Example:
 ```lua
-Download.DownloadFile("https://example.com/file.zip")
+-- Queue a file download from the given URL
+Download.DownloadFile("https://example.com/files/myfile.zip")
 ```
 
-### Function: GetFileNameFromUrl
+---
+
+#### Function: DirectDownload
+
 ```lua
-function Download.GetFileNameFromUrl(url: string)
+function DirectDownload(downloadurl: string, downloadpath: string)
 ```
-Extracts the file name from a URL.
+
+Downloads a file directly from the given URL to the specified local path.
 
 #### Parameters:
-- `url` (string): The URL from which to extract the file name.
+- `downloadurl` (string): The URL of the file to download.
+- `downloadpath` (string): The local path where the downloaded file will be saved.
+
+#### Usage Example:
+```lua
+-- Download a file directly to a specific path
+Download.DirectDownload("https://example.com/files/image.jpg", "C:/Downloads/image.jpg")
+```
+
+---
+
+#### Function: DownloadImage
+
+```lua
+function DownloadImage(imageurl: string) -> string
+```
+
+Downloads an image from the given URL and saves it in the Images folder.
+
+#### Parameters:
+- `imageurl` (string): The URL of the image to download.
 
 #### Returns:
-- The extracted file name as a string.
+- `string`: The local path to the downloaded image.
 
 #### Usage Example:
 ```lua
-local fileName = Download.GetFileNameFromUrl("https://example.com/files/file.zip")
-utils.ConsolePrint(true, "File Name: %s", fileName)
+-- Download an image and get its local path
+local imagePath = Download.DownloadImage("https://example.com/images/image.jpg")
+```
+
+---
+
+#### Function: ChangeDownloadPath
+
+```lua
+function ChangeDownloadPath(path: string)
+```
+
+Changes the default download path to the specified path.
+
+#### Parameters:
+- `path` (string): The new download path.
+
+#### Usage Example:
+```lua
+-- Change the default download path
+Download.ChangeDownloadPath("C:/MyDownloads")
+```
+
+---
+
+#### Function: GetDownloadPath
+
+```lua
+function GetDownloadPath() -> string
+```
+
+Retrieves the current default download path.
+
+#### Returns:
+- `string`: The current download path.
+
+#### Usage Example:
+```lua
+-- Get the current default download path
+local downloadPath = Download.GetDownloadPath()
+```
+
+---
+
+#### Function: GetFileNameFromUrl
+
+```lua
+function GetFileNameFromUrl(url: string)
+```
+
+Extracts the filename from the given URL.
+
+#### Parameters:
+- `url` (string): The URL from which to extract the filename.
+
+#### Usage Example:
+```lua
+-- Extract the filename from a URL
+local fileName = Download.GetFileNameFromUrl("https://example.com/files/myfile.zip")
+```
+
+---
+
+### Namespace: GameLibrary
+
+The `GameLibrary` namespace provides functions to manage a game library, which allows adding and removing games along with retrieving game information.
+
+#### Function: addGame
+
+```lua
+function addGame(exePath: string, imagePath: string, gamename: string, commandline: string)
+```
+
+Adds a new game to the game library.
+
+#### Parameters:
+- `exePath` (string): The path to the game's executable file.
+- `imagePath` (string): The path to the game's image or icon.
+- `gamename` (string): The name of the game.
+- `commandline` (string): The command-line options to launch the game.
+
+#### Usage Example:
+```lua
+-- Add a new game to the library
+GameLibrary.addGame("C:/Games/MyGame.exe", "C:/Games/MyGameIcon.png", "MyGame", "-fullscreen -novid")
+```
+
+---
+
+#### Function: removeGame
+
+```lua
+function removeGame(id: number)
+```
+
+Removes a game from the game library by its unique identifier (id).
+
+#### Parameters:
+- `id` (number): The unique identifier of the game to remove.
+
+#### Usage Example:
+```lua
+-- Remove a game from the library by its id
+GameLibrary.removeGame(2)
+```
+
+---
+
+#### Function: GetGameIdFromName
+
+```lua
+function GetGameIdFromName(name: string) -> number
+```
+
+Retrieves the unique identifier (id) of a game by its name.
+
+#### Parameters:
+- `name` (string): The name of the game.
+
+#### Returns:
+- `number`: The unique identifier (id) of the game.
+
+#### Usage Example:
+```lua
+-- Get the id of a game by its name
+local gameId = GameLibrary.GetGameIdFromName("MyGame")
+```
+
+---
+
+#### Function: GetGameNameFromId
+
+```lua
+function GetGameNameFromId(id: number) -> string
+```
+
+Retrieves the name of a game by its unique identifier (id).
+
+#### Parameters:
+- `id` (number): The unique identifier of the game.
+
+#### Returns:
+- `string`: The name of the game.
+
+#### Usage Example:
+```lua
+-- Get the name of a game by its id
+local gameName = GameLibrary.GetGameNameFromId(3)
+```
+
+---
+
+#### Function: GetGamePath
+
+```lua
+function GetGamePath(id: number) -> string
+```
+
+Retrieves the executable path of a game by its unique identifier (id).
+
+#### Parameters:
+- `id` (number): The unique identifier of the game.
+
+#### Returns:
+- `string`: The path to the game's executable file.
+
+#### Usage Example:
+```lua
+-- Get the executable path of a game by its id
+local gamePath = GameLibrary.GetGamePath(1)
 ```
 
 ---
