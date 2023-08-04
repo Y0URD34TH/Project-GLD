@@ -61,21 +61,6 @@ utils.ConsolePrint(true, "Current Game: %s", gameName)
 
 ## Namespace: menu
 
-### Function: get_visible
-```lua
-function menu.get_visible()
-```
-Checks if the menu is visible.
-
-#### Returns:
-- `true` if the menu is visible, `false` otherwise.
-
-#### Usage Example:
-```lua
-local isVisible = menu.get_visible()
-utils.ConsolePrint(true, "Menu is visible: %s", tostring(isVisible))
-```
-
 ### Function: set_visible
 ```lua
 function menu.set_visible(visible: boolean)
@@ -127,6 +112,23 @@ Adds a button item to the menu.
 #### Usage Example:
 ```lua
 menu.add_button("Click Me")
+```
+
+#### Function: add_text
+
+```lua
+function add_text(text: string)
+```
+
+Adds a text element to the lua menu.
+
+#### Parameters:
+- `text` (string): The text to be displayed.
+
+#### Usage Example:
+```lua
+-- Add a text element to the menu
+menu.add_text("Hello, World!")
 ```
 
 ### Function: add_combo_box
@@ -244,6 +246,107 @@ Gets the value of a floating-point menu item.
 ```lua
 local intensity = menu.get_float("Intensity")
 utils.ConsolePrint(true, "Current Intensity: %.2f", intensity)
+```
+
+#### Function: get_color
+
+```lua
+function get_color(name: string) -> Color
+```
+
+Retrieves the color value of a menu item.
+
+#### Parameters:
+- `name` (string): The name of the menu item.
+
+#### Returns:
+- `Color`: The color value of the specified menu item.
+
+#### Usage Example:
+```lua
+-- Get the color value of a menu item named "MenuTextColor"
+local textColor = menu.get_color("MenuTextColor")
+```
+
+---
+
+#### Function: set_bool
+
+```lua
+function set_bool(name: string, value: boolean)
+```
+
+Sets the boolean value of a menu item.
+
+#### Parameters:
+- `name` (string): The name of the menu item.
+- `value` (boolean): The new boolean value for the menu item.
+
+#### Usage Example:
+```lua
+-- Set the boolean value of a menu item named "ToggleFeature" to true
+menu.set_bool("ToggleFeature", true)
+```
+
+---
+
+#### Function: set_int
+
+```lua
+function set_int(name: string, value: integer)
+```
+
+Sets the integer value of a menu item.
+
+#### Parameters:
+- `name` (string): The name of the menu item.
+- `value` (integer): The new integer value for the menu item.
+
+#### Usage Example:
+```lua
+-- Set the integer value of a menu item named "SliderValue" to 50
+menu.set_int("SliderValue", 50)
+```
+
+---
+
+#### Function: set_float
+
+```lua
+function set_float(name: string, value: float)
+```
+
+Sets the float value of a menu item.
+
+#### Parameters:
+- `name` (string): The name of the menu item.
+- `value` (float): The new float value for the menu item.
+
+#### Usage Example:
+```lua
+-- Set the float value of a menu item named "Sensitivity" to 2.5
+menu.set_float("Sensitivity", 2.5)
+```
+
+---
+
+#### Function: set_color
+
+```lua
+function set_color(name: string, value: Color)
+```
+
+Sets the color value of a menu item.
+
+#### Parameters:
+- `name` (string): The name of the menu item.
+- `value` (Color): The new color value for the menu item.
+
+#### Usage Example:
+```lua
+-- Set the color value of a menu item named "MenuBackgroundColor" to red
+local backgroundColor = Color(1.0, 0.0, 0.0, 1.0) -- Red color
+menu.set_color("MenuBackgroundColor", backgroundColor)
 ```
 
 ---
@@ -424,6 +527,24 @@ Retrieves the current time in a formatted string.
 local timeString = utils.GetTimeString()
 ```
 
+#### Function: GetTimeUnix
+
+```lua
+function GetTimeUnix() -> number
+```
+
+Gets the current Unix timestamp in seconds.
+
+#### Returns:
+- `number`: The current Unix timestamp in seconds.
+
+#### Usage Example:
+```lua
+-- Get the current Unix timestamp
+local timestamp = ns_utils.GetTimeUnix()
+print("Current Unix timestamp:", timestamp)
+```
+
 ---
 
 ## Namespace: file
@@ -503,10 +624,19 @@ Adds a callback function for a specific event.
 
 #### Some CallBacks Event Names:
 - `on_present` always run the function in that callback
-- `on_buttonpressed` only run the function when one button (added by a lua script) is pressed
+- `on_button_(button name)` only run the function when one button (added by a lua script) is pressed, put the button name without ()! and make sure that you added the button before!!!
+- `on_scriptselected` execute the function when a selecte is selected in the search (game) tab
 - `on_gameselected` execute the function when a game is selected in the search tab
-
+- `on_gamesearch` execute the function when you search for a game
 #### Usage Examples:
+```lua
+	menu.add_button("Update Script")--set the button name
+    local function updatebutton()
+      --do your function
+      print("Script Exaple", "Worked!!!")
+    end
+	client.add_callback("on_button_Update Script", updatebutton)--use the button name after the _
+```
 ```lua
 client.add_callback("on_present", function()
     utils.ConsolePrint(true, "Present event triggered")
@@ -515,9 +645,22 @@ end)
 ```lua
 local function example()
   local gamename = game.getgamename()
+  utils.ConsolePrint(true, "A script was selected! game name: %s", gamename)
+end
+client.add_callback("on_scriptselected", example)
+```
+```lua
+local function example2()
+  local gamename = game.getgamename()
   utils.ConsolePrint(true, "A game was selected! game name: %s", gamename)
 end
 client.add_callback("on_gameselected", example)
+```
+```lua
+local function example3()
+  utils.ConsolePrint(true, "A search was done!)
+end
+client.add_callback("on_gamesearch", example)
 ```
 
 ### Function: load_script
@@ -578,22 +721,73 @@ local version = client.GetVersion()
 utils.ConsolePrint(true, "Client Version: %s", version)
 ```
 
-### Function: CleanTextureCache
-```lua
-function CleanTextureCache()
-```
-Cleans the texture cache, releasing the stored textures.
+#### Function: GetDefaultSavePath
 
-#### Parameters:
-- None.
+```lua
+function GetDefaultSavePath() -> string
+```
+
+Retrieves the default save path for the client.
+
+#### Returns:
+- `string`: The default save path for the client.
 
 #### Usage Example:
 ```lua
--- Call the CleanTextureCache function
-CleanTextureCache()
+-- Get the default save path for the client
+local defaultSavePath = client.GetDefaultSavePath()
 ```
 
-In this example, the `CleanTextureCache` function is called to clean the texture cache, releasing any stored textures.
+---
+
+#### Function: GetScriptsPath
+
+```lua
+function GetScriptsPath() -> string
+```
+
+Retrieves the path to the scripts folder for the client.
+
+#### Returns:
+- `string`: The path to the scripts folder for the client.
+
+#### Usage Example:
+```lua
+-- Get the path to the scripts folder for the client
+local scriptsPath = client.GetScriptsPath()
+```
+
+---
+
+#### Function: CleanSearchTextureCache
+
+```lua
+function CleanSearchTextureCache()
+```
+
+Clears the search texture cache in the client.
+
+#### Usage Example:
+```lua
+-- Clean the search texture cache
+client.CleanSearchTextureCache()
+```
+
+---
+
+#### Function: CleanLibraryTextureCache
+
+```lua
+function CleanLibraryTextureCache()
+```
+
+Clears the library texture cache in the client.
+
+#### Usage Example:
+```lua
+-- Clean the library texture cache
+client.CleanLibraryTextureCache()
+```
 
 ---
 
