@@ -541,8 +541,8 @@ Gets the current Unix timestamp in seconds.
 #### Usage Example:
 ```lua
 -- Get the current Unix timestamp
-local timestamp = ns_utils.GetTimeUnix()
-print("Current Unix timestamp:", timestamp)
+local timestamp = utils.GetTimeUnix()
+utils.ConsolePrint(false, "Current Unix timestamp:", timestamp)
 ```
 
 ---
