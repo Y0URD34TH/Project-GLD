@@ -1,2 +1,0 @@
---default lua script
---to view examples and lua params go in this github page: https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.MD
