@@ -1,6 +1,8 @@
-V1.18
+V1.19
 
 Improved LUA API
+Fixed some LUA params dont working
+changed scripts active color to NavHighLight
 New Param in LUA API
 Improved Scripts tab
 Improved Installers tab
