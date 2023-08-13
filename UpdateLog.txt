@@ -1,21 +1,12 @@
-V1.19
+V2.00
 
 Improved LUA API
 Fixed some LUA params dont working
-changed scripts active color to NavHighLight
-New Param in LUA API
-Improved Scripts tab
-Improved Installers tab
-Improved Library
-Reworked Library and Search
-Fixed Text Wrap Bugs
-Fixed GIF crash in search
-More Search System
-decreased search time
-improved download info in ui
-Translations fix
-Maked more user friendly
-Fixed some bugs and crashes
+Fixed LUA Crashes
 Improved Search System
-Improved Download System
+Improved performance and decreased cpu usage
+Fixed bugs and crashes on search system and in LUA API
+New features added
+Improved installation of Scripts, Translations and Themes
+Improved UI
 Herobrine Removed
