@@ -14,6 +14,7 @@
 * [Utils](#namespace-utils)
 * [Communication](#namespace-communication)
 * [File](#namespace-file)
+* [settings](#namespace-settings)
 * [Download](#namespace-Download)
 * [Notifications](#namespace-Notifications)
 
@@ -59,59 +60,89 @@ utils.ConsolePrint(true, "Current Game: %s", gameName)
 
 ---
 
-## Namespace: menu
+### Namespace: menu
 
-### Function: set_visible
+The `menu` namespace provides functions to manage and manipulate menu items and their values.
+
+#### Function: set_visible
+
 ```lua
-function menu.set_visible(visible: boolean)
+function set_visible(visible: boolean)
 ```
-Sets the visibility of the menu.
 
-#### Parameters:
-- `visible` (boolean): `true` to show the menu, `false` to hide it.
+Sets the visibility of the active window.
+
+- `visible` (boolean): Set to `true` to show the window, `false` to minimize it.
 
 #### Usage Example:
 ```lua
+-- Show the window
 menu.set_visible(true)
+
+-- Minimize the window
+menu.set_visible(false)
 ```
 
-### Function: next_line
+#### Function: next_line
+
 ```lua
-function menu.next_line()
+function next_line()
 ```
-Moves the cursor to the next line in the menu.
+
+Adds a new line to the menu.
 
 #### Usage Example:
 ```lua
+-- Add a new line to the menu
 menu.next_line()
 ```
 
-### Function: add_check_box
-```lua
-function menu.add_check_box(name: string)
-```
-Adds a checkbox item to the menu.
+#### Function: add_check_box
 
-#### Parameters:
-- `name` (string): The name of the checkbox item.
+```lua
+function add_check_box(name: string)
+```
+
+Adds a check box item to the menu.
+
+- `name` (string): The name of the check box item.
 
 #### Usage Example:
 ```lua
+-- Add a check box item to the menu
 menu.add_check_box("Enable Feature")
 ```
 
-### Function: add_button
+#### Function: add_input_text
+
 ```lua
-function menu.add_button(name: string)
+function add_input_text(name: string)
 ```
+
+Adds an input text item to the menu.
+
+- `name` (string): The name of the input text item.
+
+#### Usage Example:
+```lua
+-- Add an input text item to the menu
+menu.add_input_text("Player Name")
+```
+
+#### Function: add_button
+
+```lua
+function add_button(name: string)
+```
+
 Adds a button item to the menu.
 
-#### Parameters:
 - `name` (string): The name of the button item.
 
 #### Usage Example:
 ```lua
-menu.add_button("Click Me")
+-- Add a button item to the menu
+menu.add_button("Apply Settings")
 ```
 
 #### Function: add_text
@@ -120,132 +151,181 @@ menu.add_button("Click Me")
 function add_text(text: string)
 ```
 
-Adds a text element to the lua menu.
+Adds a text item to the menu.
 
-#### Parameters:
-- `text` (string): The text to be displayed.
+- `text` (string): The text to display in the menu.
 
 #### Usage Example:
 ```lua
--- Add a text element to the menu
-menu.add_text("Hello, World!")
+-- Add a text item to the menu
+menu.add_text("Welcome to the Menu!")
 ```
 
-### Function: add_combo_box
+#### Function: add_combo_box
+
 ```lua
-function menu.add_combo_box(name: string, labels: table)
+function add_combo_box(name: string, labels: table)
 ```
+
 Adds a combo box item to the menu.
 
-#### Parameters:
 - `name` (string): The name of the combo box item.
-- `labels` (table): A table containing the labels for the combo box options.
+- `labels` (table): A table containing labels for the combo box options.
 
 #### Usage Example:
 ```lua
-local options = { "Option 1", "Option 2", "Option 3" }
-menu.add_combo_box("Choose Option", options)
+-- Add a combo box item to the menu
+menu.add_combo_box("Select Weapon", {"Knife", "Pistol", "Rifle"})
 ```
 
-### Function: add_slider_int
+#### Function: add_slider_int
+
 ```lua
-function menu.add_slider_int(name: string, min: number, max: number)
+function add_slider_int(name: string, min: int, max: int)
 ```
-Adds an integer slider item to the menu.
 
-#### Parameters:
+Adds a slider (integer) item to the menu.
+
 - `name` (string): The name of the slider item.
-- `min` (number): The minimum value of the slider.
-- `max` (number): The maximum value of the slider.
+- `min` (int): The minimum value of the slider.
+- `max` (int): The maximum value of the slider.
 
 #### Usage Example:
 ```lua
+-- Add a slider (integer) item to the menu
 menu.add_slider_int("Volume", 0, 100)
 ```
 
-### Function: add_slider_float
-```lua
-function menu.add_slider_float(name: string, min: number, max: number)
-```
-Adds a floating-point slider item to the menu.
+#### Function: add_slider_float
 
-#### Parameters:
+```lua
+function add_slider_float(name: string, min: float, max: float)
+```
+
+Adds a slider (float) item to the menu.
+
 - `name` (string): The name of the slider item.
-- `min` (number): The minimum value of the slider.
-- `max` (number): The maximum value of the slider.
+- `min` (float): The minimum value of the slider.
+- `max` (float): The maximum value of the slider.
 
 #### Usage Example:
 ```lua
-menu.add_slider_float("Intensity", 0.0, 
-
-````
-
-### Function: add_color_picker
-```lua
-function menu.add_color_picker(name: string)
+-- Add a slider (float) item to the menu
+menu.add_slider_float("Opacity", 0.0, 1.0)
 ```
+
+#### Function: add_input_int
+
+```lua
+function add_input_int(name: string)
+```
+
+Adds an input (integer) item to the menu.
+
+- `name` (string): The name of the input item.
+
+#### Usage Example:
+```lua
+-- Add an input (integer) item to the menu
+menu.add_input_int("Player Health")
+```
+
+#### Function: add_input_float
+
+```lua
+function add_input_float(name: string)
+```
+
+Adds an input (float) item to the menu.
+
+- `name` (string): The name of the input item.
+
+#### Usage Example:
+```lua
+-- Add an input (float) item to the menu
+menu.add_input_float("Player Speed")
+```
+
+#### Function: add_color_picker
+
+```lua
+function add_color_picker(name: string)
+```
+
 Adds a color picker item to the menu.
 
-#### Parameters:
 - `name` (string): The name of the color picker item.
 
 #### Usage Example:
 ```lua
-menu.add_color_picker("Background Color")
+-- Add a color picker item to the menu
+menu.add_color_picker("Highlight Color")
 ```
 
-### Function: get_bool
+#### Function: get_bool
+
 ```lua
-function menu.get_bool(name: string)
+function get_bool(name: string) -> boolean
 ```
-Gets the value of a boolean menu item.
 
-#### Parameters:
+Returns the value of a boolean menu item.
+
 - `name` (string): The name of the boolean menu item.
 
-#### Returns:
-- `true` if the menu item is checked, `false` otherwise.
+#### Usage Example:
+```lua
+-- Get the value of a boolean menu item
+local isEnabled = menu.get_bool("Enable Feature")
+```
+
+#### Function: get_text
+
+```lua
+function get_text(name: string) -> string
+```
+
+Returns the value of a text menu item.
+
+- `name` (string): The name of the text menu item.
 
 #### Usage Example:
 ```lua
-local isEnabled = menu.get_bool("Enable Feature")
-utils.ConsolePrint(true, "Is Feature Enabled: %s", tostring(isEnabled))
+-- Get the value of a text menu item
+local playerName = menu.get_text("Player Name")
 ```
 
-### Function: get_int
+#### Function: get_int
+
 ```lua
-function menu.get_int(name: string)
+function get_int(name: string) -> int
 ```
-Gets the value of an integer menu item.
 
-#### Parameters:
+Returns the value of an integer menu item.
+
 - `name` (string): The name of the integer menu item.
 
-#### Returns:
-- The value of the integer menu item.
-
 #### Usage Example:
 ```lua
+-- Get the value of an integer menu item
 local volume = menu.get_int("Volume")
-utils.ConsolePrint(true, "Current Volume: %d", volume)
 ```
 
-### Function: get_float
+#### Function: get_float
+
 ```lua
-function menu.get_float(name: string)
+function get_float(name: string) -> float
 ```
-Gets the value of a floating-point menu item.
 
-#### Parameters:
-- `name` (string): The name of the floating-point menu item.
+Returns the value of a float menu item
 
-#### Returns:
-- The value of the floating-point menu item.
+.
+
+- `name` (string): The name of the float menu item.
 
 #### Usage Example:
 ```lua
-local intensity = menu.get_float("Intensity")
-utils.ConsolePrint(true, "Current Intensity: %.2f", intensity)
+-- Get the value of a float menu item
+local opacity = menu.get_float("Opacity")
 ```
 
 #### Function: get_color
@@ -254,21 +334,15 @@ utils.ConsolePrint(true, "Current Intensity: %.2f", intensity)
 function get_color(name: string) -> Color
 ```
 
-Retrieves the color value of a menu item.
+Returns the value of a color menu item.
 
-#### Parameters:
-- `name` (string): The name of the menu item.
-
-#### Returns:
-- `Color`: The color value of the specified menu item.
+- `name` (string): The name of the color menu item.
 
 #### Usage Example:
 ```lua
--- Get the color value of a menu item named "MenuTextColor"
-local textColor = menu.get_color("MenuTextColor")
+-- Get the value of a color menu item
+local highlightColor = menu.get_color("Highlight Color")
 ```
-
----
 
 #### Function: set_bool
 
@@ -276,39 +350,50 @@ local textColor = menu.get_color("MenuTextColor")
 function set_bool(name: string, value: boolean)
 ```
 
-Sets the boolean value of a menu item.
+Sets the value of a boolean menu item.
 
-#### Parameters:
-- `name` (string): The name of the menu item.
-- `value` (boolean): The new boolean value for the menu item.
+- `name` (string): The name of the boolean menu item.
+- `value` (boolean): The new value for the boolean item.
 
 #### Usage Example:
 ```lua
--- Set the boolean value of a menu item named "ToggleFeature" to true
-menu.set_bool("ToggleFeature", true)
+-- Set the value of a boolean menu item
+menu.set_bool("Enable Feature", true)
 ```
 
----
+#### Function: set_text
+
+```lua
+function set_text(name: string, value: string)
+```
+
+Sets the value of a text menu item.
+
+- `name` (string): The name of the text menu item.
+- `value` (string): The new value for the text item.
+
+#### Usage Example:
+```lua
+-- Set the value of a text menu item
+menu.set_text("Player Name", "John Doe")
+```
 
 #### Function: set_int
 
 ```lua
-function set_int(name: string, value: integer)
+function set_int(name: string, value: int)
 ```
 
-Sets the integer value of a menu item.
+Sets the value of an integer menu item.
 
-#### Parameters:
-- `name` (string): The name of the menu item.
-- `value` (integer): The new integer value for the menu item.
+- `name` (string): The name of the integer menu item.
+- `value` (int): The new value for the integer item.
 
 #### Usage Example:
 ```lua
--- Set the integer value of a menu item named "SliderValue" to 50
-menu.set_int("SliderValue", 50)
+-- Set the value of an integer menu item
+menu.set_int("Volume", 50)
 ```
-
----
 
 #### Function: set_float
 
@@ -316,19 +401,16 @@ menu.set_int("SliderValue", 50)
 function set_float(name: string, value: float)
 ```
 
-Sets the float value of a menu item.
+Sets the value of a float menu item.
 
-#### Parameters:
-- `name` (string): The name of the menu item.
-- `value` (float): The new float value for the menu item.
+- `name` (string): The name of the float menu item.
+- `value` (float): The new value for the float item.
 
 #### Usage Example:
 ```lua
--- Set the float value of a menu item named "Sensitivity" to 2.5
-menu.set_float("Sensitivity", 2.5)
+-- Set the value of a float menu item
+menu.set_float("Opacity", 0.8)
 ```
-
----
 
 #### Function: set_color
 
@@ -336,18 +418,18 @@ menu.set_float("Sensitivity", 2.5)
 function set_color(name: string, value: Color)
 ```
 
-Sets the color value of a menu item.
+Sets the value of a color menu item.
 
-#### Parameters:
-- `name` (string): The name of the menu item.
-- `value` (Color): The new color value for the menu item.
+- `name` (string): The name of the color menu item.
+- `value` (Color): The new value for the color item.
 
 #### Usage Example:
 ```lua
--- Set the color value of a menu item named "MenuBackgroundColor" to red
-local backgroundColor = Color(1.0, 0.0, 0.0, 1.0) -- Red color
-menu.set_color("MenuBackgroundColor", backgroundColor)
+-- Set the value of a color menu item
+menu.set_color("Highlight Color", Color(1, 0.8, 0))
 ```
+
+Note: The `menu` namespace provides functions to manage and manipulate menu items, their types, and their values. These functions allow you to add various types of menu items, retrieve their values, and update them as needed. The namespace aims to simplify the process of creating and interacting with menus in Lua scripts, providing an efficient way to customize user interface elements.
 
 ---
 
@@ -408,6 +490,24 @@ Resolves a link using the Archive.org service.
 #### Usage Example:
 ```lua
 local resolvedLink = http.ArchivedotOrgResolver("https://example.com")
+utils.ConsolePrint(true, "Resolved Link: %s", resolvedLink)
+```
+
+### Function: mediafireresolver
+```lua
+function http.mediafireresolver(link: string)
+```
+Resolves a link using the mediafire.com service.
+
+#### Parameters:
+- `link` (string): The link to resolve.
+
+#### Returns:
+- The resolved location header.
+
+#### Usage Example:
+```lua
+local resolvedLink = http.mediafireresolver("https://mediafire.com/link")
 utils.ConsolePrint(true, "Resolved Link: %s", resolvedLink)
 ```
 
@@ -628,6 +728,7 @@ Adds a callback function for a specific event.
 - `on_scriptselected` execute the function when a selecte is selected in the search (game) tab
 - `on_gameselected` execute the function when a game is selected in the search tab
 - `on_gamesearch` execute the function when you search for a game
+- `on_gamelaunch` execute the function when a game is launched and retrieve game info
 #### Usage Examples:
 ```lua
 	menu.add_button("Update Script")--set the button name
@@ -654,13 +755,23 @@ local function example2()
   local gamename = game.getgamename()
   utils.ConsolePrint(true, "A game was selected! game name: %s", gamename)
 end
-client.add_callback("on_gameselected", example)
+client.add_callback("on_gameselected", example2)
 ```
 ```lua
 local function example3()
   utils.ConsolePrint(true, "A search was done!)
 end
-client.add_callback("on_gamesearch", example)
+client.add_callback("on_gamesearch", example3)
+```
+```lua
+local function example4(info)
+  print(info.id, info.name)
+  --more values: 
+  --info.initoptions | retrieve command line string
+  --info.imagePath | retrieve game image path
+  --info.exePath | retrieve game path
+end
+client.add_callback("on_gamelaunch", example4)
 ```
 
 ### Function: load_script
@@ -757,6 +868,19 @@ Retrieves the path to the scripts folder for the client.
 local scriptsPath = client.GetScriptsPath()
 ```
 
+#### Function: quit
+
+```lua
+function quit()
+```
+
+close the app/quit from app.
+
+#### Usage Example:
+```lua
+client.quit()
+```
+
 ---
 
 #### Function: CleanSearchTextureCache
@@ -788,6 +912,42 @@ Clears the library texture cache in the client.
 -- Clean the library texture cache
 client.CleanLibraryTextureCache()
 ```
+
+---
+
+### Namespace: settings
+
+The `settings` namespace provides functions to manage and manipulate configuration settings.
+
+#### Function: save
+
+```lua
+function save()
+```
+
+Saves the current configuration settings to a file.
+
+#### Usage Example:
+```lua
+-- Save the current configuration settings
+settings.save()
+```
+
+#### Function: load
+
+```lua
+function load()
+```
+
+Loads configuration settings from a file.
+
+#### Usage Example:
+```lua
+-- Load configuration settings from a file
+settings.load()
+```
+
+Note: The `settings` namespace provides functions to save and load configuration settings. These settings are typically used to customize and persist various aspects of the script or application. The functions allow you to manage configuration files, ensuring that settings can be easily saved and retrieved across different sessions.
 
 ---
 
@@ -827,7 +987,6 @@ local resultsTable = {
 -- Call the receiveSearchResults function
 communication.receiveSearchResults(resultsTable)
 ```
-
 ---
 
 ### Namespace: Download
