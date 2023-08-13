@@ -1,5 +1,5 @@
---1.19
-local apikey = "fc99212ac3444bd5aac99556483e9e24" --YOUR API KEY GOES HERE
+--1.20
+local apikey = "" --YOUR API KEY GOES HERE
 local function checkVersion(str, comparison)
     local serverversion = str:sub(3, 6)
     return serverversion == comparison
@@ -26,7 +26,7 @@ local function isMagnetLinkUC(link)
     return link and string.find(link, "magnet:")
 end
 
-local version = "1.19"
+local version = "1.20"
 local githubversion = http.get("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/prowlarr.lua", headers2)
 
 local outdated = false
@@ -38,7 +38,7 @@ outdated = true
 end
 
 local version = client.GetVersion()
-if version ~= "V1.19" then
+if version ~= "V2.00" then
     Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
 	if outdated then 
 	menu.add_button("Update prowlarr")
@@ -61,7 +61,11 @@ else
     end
 	client.add_callback("on_button_Update prowlarr", updatebutton)
 	end
+	menu.add_input_text("prowlarr key")
+    menu.set_text("prowlarr key", apikey)
+    settings.load()
     local function prowlarrUC()
+        apikey = menu.get_text("prowlarr key")
         local query_fixed = game.getgamename()
         if apikey and apikey ~= nil and apikey ~= "" then
             local url = "http://localhost:9696/api/v1/search?query=" .. query_fixed .. "&type=search&limit=20&offset=0&categories=1000&categories=4050"
@@ -98,10 +102,22 @@ else
         else
                 Notifications.push_error("Prowlarr Script", "no API key provided in script")
         end
+        settings.save()
     end
-
     client.add_callback("on_scriptselected", prowlarrUC)
 end
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

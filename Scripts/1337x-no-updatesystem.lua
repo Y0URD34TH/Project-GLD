@@ -32,19 +32,32 @@ end
 
 local regex = "<a href%s*=%s*\"(/torrent/[^\"]+)\""
 local magnetRegex = "href%s*=%s*\"(magnet:[^\"]+)\""
-
+local provider = 0
+local searchprovider = ""
 local version = client.GetVersion()
-if version ~= "V1.19" then
+if version ~= "V2.00" then
     Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
 else
     Notifications.push_success("Lua Script", "1337x Script Loaded and Working")
 
-	menu.add_check_box("Roman Numbers Conversion 1337x-NUC")
+
+    menu.add_combo_box("1337x Provider(1)", { "1337x.to", "1377x.to", "1337x.so" })
+	menu.add_check_box("Roman Numbers Conversion 1337x-NS")
     local romantonormalnumbers = true
-    menu.set_bool("Roman Numbers Conversion 1337x-NUC", true)
+    menu.set_bool("Roman Numbers Conversion 1337x-NS", true)
 
     local function checkboxcallNUC()
-        romantonormalnumbers = menu.get_bool("Roman Numbers Conversion 1337x-NUC")
+        provider = menu.get_int("1337x Provider(1)")
+        if provider == 0 then
+          searchprovider = "1337x.to"
+        end
+        if provider == 1 then
+          searchprovider = "1377x.to"
+        end
+        if provider == 2 then
+          searchprovider = "1337x.so"
+        end
+        romantonormalnumbers = menu.get_bool("Roman Numbers Conversion 1337x-NS")
     end
 
     local function request1337xNUC()
@@ -58,9 +71,8 @@ else
             gamename = substituteRomanNumerals(gamename)
         end
 
-        local urlrequest = "https://www.1377x.to/category-search/" .. tostring(gamename) .. "/Games/1/"
+        local urlrequest = "https://www." .. searchprovider .. "/category-search/" .. tostring(gamename) .. "/Games/1/"
         urlrequest = urlrequest:gsub(" ", "%%20")
-
         local htmlContent = http.get(urlrequest, headers)
         if not htmlContent then
             return
@@ -70,7 +82,7 @@ else
         local searchResult -- Declare the searchResult variable outside the loop
 
         for match in htmlContent:gmatch(regex) do
-            local url = "https://1377x.to" .. match
+            local url = "https://".. searchprovider .. match
             local torrentName = url:match("/([^/]+)/$")
             if not torrentName then
                 break
@@ -117,6 +129,22 @@ else
     client.add_callback("on_scriptselected", request1337xNUC) -- Callback when a game is selected in the menu
     client.add_callback("on_present", checkboxcallNUC) -- Callback when a game is selected in the menu
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

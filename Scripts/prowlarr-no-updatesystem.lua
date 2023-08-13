@@ -1,4 +1,4 @@
-local apikey = "fc99212ac3444bd5aac99556483e9e24" --YOUR API KEY GOES HERE
+local apikey = "" --YOUR API KEY GOES HERE
 local headers = {
     ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) ApplWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36 Edg/114.0.1788.0",
     ["Accept"] = "application/json, text/javascript, */*; q=0.01",
@@ -17,13 +17,17 @@ local function isMagnetLink(link)
 end
 
 local version = client.GetVersion()
-if version ~= "V1.19" then
+if version ~= "V2.00" then
     Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
 else
     Notifications.push_success("Lua Script", "prowlarr Script Loaded")
     Notifications.push_warning("Prowlarr Script", "Be sure to put your API Key in the lua script!!!")
-
+    
+    menu.add_input_text("prowlarr key NS")
+    menu.set_text("prowlarr key NS", apikey)
+    settings.load()
     local function prowlarr()
+        apikey = menu.get_text("prowlarr key NS")
         local query_fixed = game.getgamename()
         if apikey and apikey ~= nil and apikey ~= "" then
             local url = "http://localhost:9696/api/v1/search?query=" .. query_fixed .. "&type=search&limit=20&offset=0&categories=1000&categories=4050"
@@ -60,10 +64,23 @@ else
         else
                 Notifications.push_error("Prowlarr Script", "no API key provided in script")
         end
+        settings.save()
     end
 
     client.add_callback("on_scriptselected", prowlarr)
 end
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

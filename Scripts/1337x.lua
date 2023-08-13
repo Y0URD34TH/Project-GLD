@@ -1,4 +1,4 @@
---1.17
+--1.18
 local function checkVersion(str, comparison)
     local serverversion = str:sub(3, 6)
     return serverversion == comparison
@@ -8,7 +8,7 @@ local headers = {
     ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 }
 
-local version = "1.17"
+local version = "1.18"
 local githubversion = http.get("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/1337x.lua", headers)
 local outdated = false
 if checkVersion(githubversion, version) then
@@ -49,9 +49,10 @@ end
 
 local regex = "<a href%s*=%s*\"(/torrent/[^\"]+)\""
 local magnetRegex = "href%s*=%s*\"(magnet:[^\"]+)\""
-
+local provider = 0
+local searchprovider = ""
 local version = client.GetVersion()
-if version ~= "V1.19" then
+if version ~= "V2.00" then
     Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
 	if outdated then 
 	menu.add_button("Update 1337x")
@@ -74,11 +75,22 @@ else
     end
 	client.add_callback("on_button_Update 1337x", updatebutton)
 	end
+	menu.add_combo_box("1337x Provider(2)", { "1337x.to", "1377x.to", "1337x.so" })
     menu.add_check_box("Roman Numbers Conversion 1337x")
     local romantonormalnumbers = true
     menu.set_bool("Roman Numbers Conversion 1337x", true)
 
     local function checkboxcall()
+	    provider = menu.get_int("1337x Provider(2)")
+        if provider == 0 then
+          searchprovider = "1337x.to"
+        end
+        if provider == 1 then
+          searchprovider = "1377x.to"
+        end
+        if provider == 2 then
+          searchprovider = "1337x.so"
+        end
         romantonormalnumbers = menu.get_bool("Roman Numbers Conversion 1337x")
     end
 
@@ -93,7 +105,7 @@ else
             gamename = substituteRomanNumerals(gamename)
         end
 
-        local urlrequest = "https://www.1377x.to/category-search/" .. tostring(gamename) .. "/Games/1/"
+        local urlrequest = "https://www." .. searchprovider .. "/category-search/" .. tostring(gamename) .. "/Games/1/"
         urlrequest = urlrequest:gsub(" ", "%%20")
 
         local htmlContent = http.get(urlrequest, headers)
@@ -105,7 +117,7 @@ else
         local searchResult -- Declare the searchResult variable outside the loop
 
         for match in htmlContent:gmatch(regex) do
-            local url = "https://1377x.to" .. match
+            local url = "https://" .. searchprovider .. match
             local torrentName = url:match("/([^/]+)/$")
             if not torrentName then
                 break
