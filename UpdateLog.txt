@@ -9,4 +9,5 @@ Fixed bugs and crashes on search system and in LUA API
 New features added
 Improved installation of Scripts, Translations and Themes
 Improved UI
+Added mediafire.com and archive.org resolver on downloader
 Herobrine Removed
