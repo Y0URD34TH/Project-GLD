@@ -45,14 +45,14 @@ Any contribution to the code or design of the app is very welcome! If you wish t
 
 ## Project Images
 
-![Project GLD 30_07_2023 05_34_03](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/996ff277-326e-4a78-8fd7-b439888a41d1)
-![Project GLD 30_07_2023 05_34_45](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/0fd0907e-4d72-4921-9494-16f72c56b260)
-![Project GLD 30_07_2023 05_35_49](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/87d4356b-d91c-4a6a-b4be-4f9fb4aeb337)
-![Project GLD 30_07_2023 05_36_51](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/be655f28-3b2d-4e50-a32b-9cae6a14776f)
-![Project GLD 30_07_2023 05_37_02](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/24879df2-c58d-490c-b861-cc502157fd7d)
-![Project GLD 30_07_2023 05_37_15](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/499a72f5-3859-4abe-a223-15ac831a3aab)
-![Project GLD 30_07_2023 05_37_22](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/18f7be0f-682c-41d1-afb0-3b52fb3bd0a9)
-![Project GLD 30_07_2023 05_37_25](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/72aec86c-cdd4-4b62-a235-8e62cba06f10)
+![image](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/6cf3b318-1a27-4ae4-8238-b2175cff2440)
+![image](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/51b7d3f5-ea61-4e3a-a299-c099f063d82c)
+![image](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/896dd41a-7ea0-4b14-95c3-8ee3c3147451)
+![image](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/5f4e9704-b97c-4afa-b4be-9a621535e66a)
+![image](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/2faf5db3-c420-4288-995e-18e0d8602287)
+![image](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/c5d3a784-e841-4fc0-92a5-566ccdee7065)
+![image](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/9390a21a-3c49-4d66-b4af-58b831deea68)
+![image](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/0544e3fd-f276-496b-95dc-e802d850d092)
 
 
 ## Getting Started
