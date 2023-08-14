@@ -1,7 +1,7 @@
 --to view examples and lua params go in this github page: https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.md
 menu.add_text("Mediafire Resolver:")
 menu.add_input_text("mediafire link")
-menu.add_text("archive Resolver:")
+menu.add_text("Archive Resolver:")
 menu.add_input_text("archive link")
 menu.add_button("Resolve links")
 
