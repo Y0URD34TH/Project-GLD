@@ -27,7 +27,7 @@ local function request()
 
     for _, result in ipairs(gameResults) do
         local searchResult = {
-            name = result.title,
+            name = result.icon .. " " .. result.title,
 
             links = {
                 { name = "Download", link = result.link, addtodownloadlist = false }
@@ -38,30 +38,30 @@ local function request()
         if result.link:find("archive.org") then
             local resolvedLink = http.ArchivedotOrgResolver(result.link)
             if resolvedLink then
-                searchResult.name = result.title .. " [archieve]"
+                searchResult.name = "(" .. result.icon .. ") ".. result.title .. " [archieve]"
                 searchResult.links = {
                         { name = "Download", link = resolvedLink, addtodownloadlist = true }
                 }
             end
         end
         if result.link:find("myabandonware.com") then
-           searchResult.name = result.title .. " [myabandonware]"
+           searchResult.name = "(" .. result.icon .. ") ".. result.title .. " [myabandonware]"
         end
         if result.link:find("steamrip.com") then
-           searchResult.name = result.title .. " [steamrip]"
+           searchResult.name = "(" .. result.icon .. ") ".. result.title .. " [steamrip]"
         end
         if result.link:find("gamesdrive.net") then
-           searchResult.name = result.title .. " [gamesdrive]"
+           searchResult.name = "(" .. result.icon .. ") ".. result.title .. " [gamesdrive]"
         end
         if result.link:find("madloader.com") then
-           searchResult.name = result.title .. " [madloader]"
+           searchResult.name = "(" .. result.icon .. ") ".. result.title .. " [madloader]"
         end
         if result.link:find("psndl.net") then
-           searchResult.name = result.title .. " [psndl]"
+           searchResult.name = "(" .. result.icon .. ") ".. result.title .. " [psndl]"
         end
         if result.link:find("nopaystation.com") then
-           searchResult.name = result.title .. " [nopaystation]"
-        end
+           searchResult.name = "(" .. result.icon .. ") ".. result.title .. " [nopaystation]"
+        end        
 
         table.insert(results, searchResult)
     end
@@ -70,6 +70,10 @@ local function request()
 end
 client.add_callback("on_scriptselected", request)--on a game is selected in menu callback
 end
+
+
+
+
 
 
 
