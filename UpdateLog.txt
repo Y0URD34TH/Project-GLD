@@ -1,5 +1,7 @@
-V2.00
+V2.02
 
+Small hotfix Update
+New small features added
 Improved LUA API
 Fixed some LUA params dont working
 Fixed LUA Crashes
