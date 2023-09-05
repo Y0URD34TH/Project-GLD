@@ -1,4 +1,4 @@
---1.15
+--1.16
 local function checkVersion(str, comparison)
     local serverversion = str:sub(3, 6)
     return serverversion == comparison
@@ -8,7 +8,7 @@ local updtheaders = {
     ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 }
 
-local version = "1.15"
+local version = "1.16"
 local githubversion = http.get("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/Rezi.lua", updtheaders)
 
 local outdated = false
@@ -20,7 +20,7 @@ outdated = true
 end
 
 local version = client.GetVersion()
- if version ~= "V2.00" then
+ if version ~= "V2.02" then
    Notifications.push_error("Lua Script", "Program is Outdated Please Update to use that Script")
    if outdated then 
 	menu.add_button("Update Rezi")
@@ -77,10 +77,26 @@ local function request()
         if result.link:find("archive.org") then
             local resolvedLink = http.ArchivedotOrgResolver(result.link)
             if resolvedLink then
+                searchResult.name = result.title .. " [archieve]"
                 searchResult.links = {
                         { name = "Download", link = resolvedLink, addtodownloadlist = true }
                 }
             end
+        end
+        if result.link:find("myabandonware.com") then
+           searchResult.name = result.title .. " [myabandonware]"
+        end
+        if result.link:find("steamrip.com") then
+           searchResult.name = result.title .. " [steamrip]"
+        end
+        if result.link:find("gamesdrive.net") then
+           searchResult.name = result.title .. " [gamesdrive]"
+        end
+        if result.link:find("madloader.com") then
+           searchResult.name = result.title .. " [madloader]"
+        end
+        if result.link:find("psndl.net") then
+           searchResult.name = result.title .. " [psndl]"
         end
 
         table.insert(results, searchResult)
@@ -90,6 +106,10 @@ local function request()
 end
 client.add_callback("on_scriptselected", request)--on a game is selected in menu callback
 end
+
+
+
+
 
 
 
