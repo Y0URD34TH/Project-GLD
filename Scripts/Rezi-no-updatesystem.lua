@@ -59,6 +59,9 @@ local function request()
         if result.link:find("psndl.net") then
            searchResult.name = result.title .. " [psndl]"
         end
+        if result.link:find("nopaystation.com") then
+           searchResult.name = result.title .. " [nopaystation]"
+        end
 
         table.insert(results, searchResult)
     end
@@ -67,6 +70,8 @@ local function request()
 end
 client.add_callback("on_scriptselected", request)--on a game is selected in menu callback
 end
+
+
 
 
 
