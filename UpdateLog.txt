@@ -1,15 +1,10 @@
-V2.02
+V2.07
 
-Small hotfix Update
-New small features added
-Improved LUA API
-Fixed some LUA params dont working
-Fixed LUA Crashes
-Improved Search System
-Improved performance and decreased cpu usage
-Fixed bugs and crashes on search system and in LUA API
-New features added
-Improved installation of Scripts, Translations and Themes
-Improved UI
-Added mediafire.com and archive.org resolver on downloader
+Improved search tab
+added favorite system
+fixed them creation doesnt working
+added context box when right click in games (search tab)
+fixed some issues related to lua scripts
+fixed crashes related to corrupted games in gamelibrary json file
+improved performance and stability
 Herobrine Removed
