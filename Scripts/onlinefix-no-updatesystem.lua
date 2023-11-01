@@ -55,7 +55,7 @@ local function webScrapeOnlineFixGamesNUC(searchUrl)
 end
 
 local version = client.GetVersion()
-if version ~= "V2.02" then
+if version ~= "V2.07" then
     Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
 else
     Notifications.push_success("Lua Script", "onlinefix Script Loaded and Working")
