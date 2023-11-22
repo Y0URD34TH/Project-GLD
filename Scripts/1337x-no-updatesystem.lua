@@ -35,7 +35,7 @@ local magnetRegex = "href%s*=%s*\"(magnet:[^\"]+)\""
 local provider = 0
 local searchprovider = ""
 local version = client.GetVersion()
-if version ~= "V2.07" then
+if version ~= "V2.10" then
     Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
 else
     Notifications.push_success("Lua Script", "1337x Script Loaded and Working")

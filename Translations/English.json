@@ -122,6 +122,8 @@
     "Remove": "Remove",
     "Remove From Library": "Remove from library",
     "Require A Download Confirmation To Start Torrent Downloads": "Require a confirmation before starting torrent downloads",
+    "Run at Startup": "Run at Startup",
+    "Set the program to run automatically on windows startup.": "Set the program to run automatically on Windows startup.",
     "Save": "Save",
     "Script Installer Download The Script From github Scripts folder of the project\nand Automatic load the script": "Download the script from GitHub and automatically load it",
     "Script Link:": "Script Link:",
