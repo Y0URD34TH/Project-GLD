@@ -1,7 +1,6 @@
-V2.10
+V2.12
 
-Fixed favorite system dont working correctly in some cases
-Added run at startup option
+Added Share System to create a share code to games
 Fixed bugs in the search system
 improved performance and stability
 Herobrine Removed
