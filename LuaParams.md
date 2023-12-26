@@ -7,6 +7,7 @@
 
 * [Client](#namespace-client)
 * [Jsonwrapper](#namespace-jsonwrapper)
+* [Htmlwrapper](#namespace-htmlwrapper)
 * [Game](#namespace-game)
 * [Game Library](#namespace-gamelibrary)
 * [Menu](#namespace-menu)
@@ -40,6 +41,52 @@ local luaObject = JsonWrapper.parse(jsonString)
 utils.ConsolePrint(true, "Parsed JSON: %s", tostring(luaObject))
 ```
 ---
+
+### Namespace: HtmlWrapper
+
+The `HtmlWrapper` class provides static methods for parsing HTML strings and extracting specific attributes.
+
+#### Method: findAttribute
+
+```cpp
+static sol::table findAttribute(
+    const std::string& htmlString,
+    const std::string& elementTagName,
+    const std::string& elementTermKey,
+    const std::string& elementTermValue,
+    const std::string& desiredResultKey
+);
+```
+
+**Description:**
+Parses an HTML string and finds a specified attribute within a specified HTML element. It returns the result as a Lua table.
+
+**Parameters:**
+- `const std::string& htmlString`: The HTML string to be parsed.
+- `const std::string& elementTagName`: The tag name of the HTML element to search for.
+- `const std::string& elementTermKey`: The key of the attribute used to identify the HTML element.
+- `const std::string& elementTermValue`: The value of the attribute used to identify the HTML element.
+- `const std::string& desiredResultKey`: The key of the attribute whose value is to be retrieved.
+
+**Returns:**
+- `sol::table`: A Lua table containing the result attribute.
+
+**Usage Example:**
+```lua
+-- Assuming a Lua state 's'
+local htmlString = "<html><body><div id='content'>Hello, Lua!</div></body></html>"
+local resulttable = HtmlWrapper.findAttribute(htmlString, "div", "id", "content", "innerText")
+for _, result in ipairs(resulttable) do
+   print("Result:, " .. result)
+end
+```
+
+#### Important Notes:
+- The method filters out comments and metadata from the HTML string before parsing.
+- The parsed HTML is processed using the Gumbo HTML parser.
+- The result is returned as a Lua table.
+
+This method allows Lua scripts to parse HTML strings and extract specific attributes from specified HTML elements. The example demonstrates how to call this method from Lua and access the result.
 
 ## Namespace: game
 
@@ -830,6 +877,50 @@ Returns the version of the client.
 ```lua
 local version = client.GetVersion()
 utils.ConsolePrint(true, "Client Version: %s", version)
+```
+
+#### Function: GetVersionFloat
+
+```cpp
+float GetVersionFloat(sol::this_state s);
+```
+
+**Description:**
+Retrieves the version number as a floating-point value.
+
+**Parameters:**
+- `sol::this_state s`: The Lua state.
+
+**Returns:**
+- `float`: The version number as a floating-point value.
+
+**Usage Example:**
+```lua
+-- Assuming a Lua state 's'
+local version = client.GetVersionFloat(s)
+print("Version (Float): " .. version)
+```
+
+#### Function: GetVersionDouble
+
+```cpp
+double GetVersionDouble(sol::this_state s);
+```
+
+**Description:**
+Retrieves the version number as a double-precision floating-point value.
+
+**Parameters:**
+- `sol::this_state s`: The Lua state.
+
+**Returns:**
+- `double`: The version number as a double-precision floating-point value.
+
+**Usage Example:**
+```lua
+-- Assuming a Lua state 's'
+local version = client.GetVersionDouble(s)
+print("Version (Double): " .. version)
 ```
 
 #### Function: GetDefaultSavePath
