@@ -1,6 +1,8 @@
-V2.12
+V2.14
 
-Added Share System to create a share code to games
+New lua funcs added (html wrapper && get version alternatives)
+Fixed lua results in ui to a mroe compact way
+Support to new scripts added
 Fixed bugs in the search system
 improved performance and stability
 Herobrine Removed
