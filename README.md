@@ -4,7 +4,7 @@
   </a>
   <h1 align="center">Project GLD</h1>
   <p>
-    Project GLD is a game library and launcher that offers LUA script compatibility for searching and downloading games.
+    Project GLD is a game library and launcher that offers Lua script compatibility for searching and downloading games.
   </p>
 <br/>
 <a href=https://github.com/Y0URD34TH/Project-GLD/releases/latest/download/Project-GLD.exe>
@@ -13,11 +13,10 @@
   
 [![discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/FyH6Z34vcZ)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue?style=for-the-badge)](https://github.com/Y0URD34TH/Project-GLD/blob/main/LICENSE)
-
 ![Downloads](https://img.shields.io/github/downloads/Y0URD34TH/Project-GLD/total) ![Contributors](https://img.shields.io/github/contributors/Y0URD34TH/Project-GLD?color=dark-green) ![Stargazers](https://img.shields.io/github/stars/Y0URD34TH/Project-GLD?style=social) ![Issues](https://img.shields.io/github/issues/Y0URD34TH/Project-GLD) 
 </div>
 
-## Table Of Content
+## Table of Content
 
 * [About the Project](#about-the-project)
 * [Project Images](#project-images)
@@ -33,8 +32,8 @@
 ## About The Project
 
 
-Project GLD allows you to easily search for, download, and manage games. One of its core features is the native support for community-made scripts written in LUA, allowing you to easily create and implement your own scripts to increase the functionality of the app.
-It's also worth noting that while the scripts are based on LUA, the program itself is developed in C++, making it very light and fast.
+Project GLD allows you to easily search for, download, and manage games. One of its core features is the native support for community-made scripts written in Lua, allowing you to easily create and implement your own scripts to increase the functionality of the app.
+It's also worth noting that while the scripts are based on Lua, the program itself is developed in C++, making it very light and fast.
 
 You may create and use any scripts at your own risk. We do not take the responsibility for potential consequences or the content obtained through the utilization of community-generated scripts!
 
@@ -70,9 +69,9 @@ Here are a few examples of functional scripts:
 * [onlinefix.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/onlinefix.lua)
 * [prowlarr.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/prowlarr.lua)
 
-For instructions on how to use LUA for making scripts, please refer to [this guide](https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.md).
+For instructions on how to use Lua for making scripts, please refer to [this guide](https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.md).
 
-See our LUA Documentation [Here](https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.md).
+See our Lua Documentation [Here](https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.md).
 
 ### Prerequisites
 
@@ -97,20 +96,18 @@ You might experience a slight delay when searching for and downloading games. Th
 
 Check out the [open issues](https://github.com/Y0URD34TH/Project-GLD/issues) for a list of proposed features and known issues.
 
-also we want to be like the [Stremio](https://www.stremio.com/) for games.
-
 ## License
 
 Distributed under the Apache-2.0 License. See [LICENSE](https://github.com/Y0URD34TH/Project-GLD/blob/main/LICENSE) for more information.
 
 ## Authors
 
-* [jma](https://github.com/Y0URD34TH) - *Lead Developer and Founder*
-* [foie](https://github.com/KaylinOwO) - *Tester, Designer, and Developer*
-* [Q99](https://github.com/qiracy) - *Tester, Translator and Designer*
+* [jma](https://github.com/Y0URD34TH) - *Lead Developer / Founder*
+* [foie](https://github.com/KaylinOwO) - *Tester / Designer / Developer*
+* [qiracy](https://github.com/qiracy) - *Tester / Translator / Designer*
 * [Pixel](https://github.com/piqseu) - *Designer*
-* [Brisolo32](https://github.com/Brisolo32) - *Translator and Designer*
-* [Backend](https://github.com/Backend2121) - *Designer Helper and Coding Helper*
+* [Brisolo32](https://github.com/Brisolo32) - *Translator / Designer*
+* [Backend](https://github.com/Backend2121) - *Designer / Coding Helper*
 
 ## Acknowledgements
 
@@ -119,6 +116,6 @@ Distributed under the Apache-2.0 License. See [LICENSE](https://github.com/Y0URD
 * [CURL](https://github.com/curl/curl)
 * [libtorrent](https://www.libtorrent.org/)
 * [vcpkg](https://vcpkg.io/en/)
-* [LUA](https://www.lua.org/)
+* [Lua](https://www.lua.org/)
 * [nlohmann/json](https://github.com/nlohmann/json)
 * [x360ce](https://github.com/x360ce/x360ce)
