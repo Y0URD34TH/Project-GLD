@@ -82,7 +82,7 @@ See our Lua Documentation [Here](https://github.com/Y0URD34TH/Project-GLD/blob/m
 
 ### Installation
 
-1. Download the program at [https://github.com/Y0URD34TH/Project-GLD/raw/main/Project%20GLD.exe](https://github.com/Y0URD34TH/Project-GLD/raw/main/Project%20GLD.exe).
+1. Download the program at [Download Here](https://github.com/Y0URD34TH/Project-GLD/raw/main/Project%20GLD.exe).
 
 2. Run the Project-GLD.exe.
 
