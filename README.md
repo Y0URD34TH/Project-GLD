@@ -69,6 +69,10 @@ Here are a few examples of functional scripts:
 * [elamigos-games.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/elamigos-games.lua)
 * [onlinefix.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/onlinefix.lua)
 * [prowlarr.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/prowlarr.lua)
+* [steamrip.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/steamrip.lua)
+* [gamedrive.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/gamedrive.lua)
+* [g4u.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/g4u.lua)
+* [img&vids.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/img&vids.lua)
 
 For instructions on how to use Lua for making scripts, please refer to [this guide](https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.md).
 
