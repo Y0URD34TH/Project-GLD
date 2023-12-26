@@ -8,7 +8,7 @@ local headers = {
 }
 local scriptsfolder = client.GetScriptsPath()
 local function webScrapeElAmigosGames(gameName)
-    local searchUrl = "https://www.elamigos-games.com/?q=" .. gameName
+    local searchUrl = "https://www.elamigos-games.net/?q=" .. gameName
     searchUrl = searchUrl:gsub(" ", "%%20")
 
     local responseBody = http.get(searchUrl, headers)
@@ -60,8 +60,9 @@ else
 outdated = true
     Notifications.push_warning("Script Outdated", "The Script Is Outdated Please Update")
 end
-local version = client.GetVersion()
-if version ~= "V2.12" then
+local version = client.GetVersionDouble()
+
+if version < 2.14 then
     Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
 	if outdated then 
 	menu.add_button("Update elamigos-games")
@@ -90,6 +91,10 @@ communication.receiveSearchResults(results)
 end
 client.add_callback("on_scriptselected", elamigos)
 end
+
+
+
+
 
 
 

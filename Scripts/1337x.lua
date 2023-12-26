@@ -51,8 +51,9 @@ local regex = "<a href%s*=%s*\"(/torrent/[^\"]+)\""
 local magnetRegex = "href%s*=%s*\"(magnet:[^\"]+)\""
 local provider = 0
 local searchprovider = ""
-local version = client.GetVersion()
-if version ~= "V2.12" then
+local version = client.GetVersionDouble()
+
+if version < 2.14 then
     Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
 	if outdated then 
 	menu.add_button("Update 1337x")
@@ -75,7 +76,7 @@ else
     end
 	client.add_callback("on_button_Update 1337x", updatebutton)
 	end
-	menu.add_combo_box("1337x Provider(2)", { "1337x.to", "1377x.to", "1337x.so" })
+	menu.add_combo_box("1337x Provider(2)", { "1337x.to", "1377x.to", "1337x.so", "1337x.st" , "x1337x.ws", "x1337x.eu", "x1337x.se" })
     menu.add_check_box("Roman Numbers Conversion 1337x")
     local romantonormalnumbers = true
     menu.set_bool("Roman Numbers Conversion 1337x", true)
@@ -90,6 +91,18 @@ else
         end
         if provider == 2 then
           searchprovider = "1337x.so"
+        end
+        if provider == 3 then
+          searchprovider = "1337x.st"
+        end
+        if provider == 4 then
+          searchprovider = "x1337x.ws"
+        end
+        if provider == 5 then
+          searchprovider = "x1337x.eu"
+        end
+        if provider == 6 then
+          searchprovider = "x1337x.se"
         end
         romantonormalnumbers = menu.get_bool("Roman Numbers Conversion 1337x")
     end
@@ -164,6 +177,10 @@ else
     client.add_callback("on_scriptselected", request1337x) -- Callback when a game is selected in the menu
     client.add_callback("on_present", checkboxcall) -- Callback when a game is selected in the menu
 end
+
+
+
+
 
 
 

@@ -1,5 +1,5 @@
 local function webScrapeElAmigosGamesNUC(gameName)
-    local searchUrl = "https://www.elamigos-games.com/?q=" .. gameName
+    local searchUrl = "https://www.elamigos-games.net/?q=" .. gameName
     searchUrl = searchUrl:gsub(" ", "%%20")
 
     local headers = {
@@ -46,8 +46,9 @@ local function webScrapeElAmigosGamesNUC(gameName)
     return gameResults
 end
 
-local version = client.GetVersion()
-if version ~= "V2.12" then
+local version = client.GetVersionDouble()
+
+if version < 2.14 then
     Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
 else
     Notifications.push_success("Lua Script", "elamigos-games Script Loaded and Working")
@@ -58,6 +59,10 @@ communication.receiveSearchResults(resultsNUC)
 end
 client.add_callback("on_scriptselected", elamigosNUC)
 end
+
+
+
+
 
 
 
