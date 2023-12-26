@@ -58,7 +58,7 @@ Any contribution to the code or design of the app is very welcome! If you wish t
 ## Getting Started
 
 To install scripts, simply place the .lua script file in the "Documents/Project-GLD/Scripts" directory, or use the program's script installer.
-To backup your game library list go to "Documents/Project-GLD/GameList"
+To backup your game library list and favorites list go to "Documents/Project-GLD/GameList"
 Settings are Saved in th "Documents/Project-GLD/Configs" Folder
 
 Here are a few examples of functional scripts:
