@@ -20,7 +20,7 @@
 ## Table of Content
 
 * [About the Project](#about-the-project)
-* [Project Images](#project-images)
+* [Project Showcase](#project-showcase)
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
@@ -43,16 +43,13 @@ It's completely free.
 
 Any contribution to the code or design of the app is very welcome! If you wish to help out, you may do so by creating a fork of this repository and submitting a Pull Request with the changes you've made. However, we'd recommend first joining our [Discord server](https://discord.gg/FyH6Z34vcZ) to discuss the features you wish to work on and implement with the other developers.
 
-## Project Images
+## Project Showcase
 
-![image](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/6cf3b318-1a27-4ae4-8238-b2175cff2440)
-![image](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/51b7d3f5-ea61-4e3a-a299-c099f063d82c)
-![image](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/896dd41a-7ea0-4b14-95c3-8ee3c3147451)
-![image](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/5f4e9704-b97c-4afa-b4be-9a621535e66a)
-![image](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/2faf5db3-c420-4288-995e-18e0d8602287)
-![image](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/c5d3a784-e841-4fc0-92a5-566ccdee7065)
-![image](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/9390a21a-3c49-4d66-b4af-58b831deea68)
-![image](https://github.com/Y0URD34TH/Project-GLD/assets/58450502/0544e3fd-f276-496b-95dc-e802d850d092)
+
+
+https://github.com/Y0URD34TH/Project-GLD/assets/58450502/799cfa79-4988-470e-8477-5889c4e12a4a
+
+
 
 
 ## Getting Started
