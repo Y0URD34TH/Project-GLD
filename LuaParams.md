@@ -558,7 +558,7 @@ local resolvedLink = http.mediafireresolver("https://mediafire.com/link")
 utils.ConsolePrint(true, "Resolved Link: %s", resolvedLink)
 ```
 
-#### Function: resolvepixeldrain
+### Function: resolvepixeldrain
 
 ```cpp
 std::string resolvepixeldrain(
