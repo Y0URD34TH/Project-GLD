@@ -558,6 +558,39 @@ local resolvedLink = http.mediafireresolver("https://mediafire.com/link")
 utils.ConsolePrint(true, "Resolved Link: %s", resolvedLink)
 ```
 
+#### Function: resolvepixeldrain
+
+```cpp
+std::string resolvepixeldrain(
+    sol::this_state s,
+    const std::string& link
+);
+```
+
+**Description:**
+Resolves a Pixeldrain link to its direct download link.
+
+**Parameters:**
+- `sol::this_state s`: The Lua state.
+- `const std::string& link`: The Pixeldrain link to resolve.
+
+**Returns:**
+- `std::string`: The resolved direct download link for Pixeldrain, or the original link if it's not a Pixeldrain link.
+
+**Usage Example:**
+```lua
+-- Assuming a Lua state 's'
+local originalLink = "https://pixeldrain.com/u/somefile123"
+local resolvedLink = http.resolvepixeldrain(s, originalLink)
+print("Resolved Link: " .. resolvedLink)
+```
+
+#### Important Notes:
+- This method checks if the provided link is from Pixeldrain and constructs a direct download link if true.
+- If the link is not from Pixeldrain, it returns the original link.
+- The resolved link can be used for direct downloading from Pixeldrain.
+
+
 ---
 
 
