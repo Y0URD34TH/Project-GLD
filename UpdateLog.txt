@@ -1,8 +1,8 @@
-V2.14
+V2.15
 
-New lua funcs added (html wrapper && get version alternatives)
-Fixed lua results in ui to a mroe compact way
-Support to new scripts added
-Fixed bugs in the search system
-improved performance and stability
+New lua funcs added (pixeldrain resolver)
+Improved Download Manager
+Added pixel drain resolver
+Improved download tab style
+Fixed ui bugs in download tab
 Herobrine Removed
