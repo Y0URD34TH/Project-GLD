@@ -1,4 +1,5 @@
- "results": [
+{
+"results": [
       {
         "aliases": "Grand Theft Auto Five\r\nGTAV\r\nGTA5\r\nGTA V\r\nGTA 5\r\nGTA Online\r\nGrand Theft Auto Online",
         "api_detail_url": "https://www.giantbomb.com/api/game/3030-36765/",
@@ -932,3 +933,4 @@
         "site_detail_url": "https://www.giantbomb.com/forza-horizon-5/3030-82985/"
     }
  ]
+}
