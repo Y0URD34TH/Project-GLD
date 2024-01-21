@@ -1,8 +1,9 @@
-V2.15
+V3.00
 
-New lua funcs added (pixeldrain resolver)
-Improved Download Manager
-Added pixel drain resolver
-Improved download tab style
-Fixed ui bugs in download tab
+Created built-in GLD browser
+Implemented account support
+Improved some styles
+Fixed reported bugs
+Added exit to tray and tray context menu
+Added gameplay time tracker (playtime and last played)
 Herobrine Removed
