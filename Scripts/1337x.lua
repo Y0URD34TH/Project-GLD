@@ -82,28 +82,22 @@ else
     menu.set_bool("Roman Numbers Conversion 1337x", true)
 
     local function checkboxcall()
-	    provider = menu.get_int("1337x Provider(2)")
+	provider = menu.get_int("1337x Provider(2)")
         if provider == 0 then
-          searchprovider = "1337x.to"
-        end
-        if provider == 1 then
-          searchprovider = "1377x.to"
-        end
-        if provider == 2 then
-          searchprovider = "1337x.so"
-        end
-        if provider == 3 then
-          searchprovider = "1337x.st"
-        end
-        if provider == 4 then
-          searchprovider = "x1337x.ws"
-        end
-        if provider == 5 then
-          searchprovider = "x1337x.eu"
-        end
-        if provider == 6 then
           searchprovider = "x1337x.se"
         end
+        if provider == 1 then
+          searchprovider = "x1337x.ws"
+        end
+        if provider == 2 then
+          searchprovider = "1337x.to"
+        end
+        if provider == 3 then
+          searchprovider = "1377x.to"
+        end
+        if provider == 4 then
+          searchprovider = "1337x.tw"
+        end      
         romantonormalnumbers = menu.get_bool("Roman Numbers Conversion 1337x")
     end
 
