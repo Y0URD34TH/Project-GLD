@@ -123,3 +123,4 @@ Distributed under the Apache-2.0 License. See [LICENSE](https://github.com/Y0URD
 * [nlohmann/json](https://github.com/nlohmann/json)
 * [x360ce](https://github.com/x360ce/x360ce)
 * [Gumbo HTML](https://github.com/google/gumbo-parser)
+* [CEF](https://github.com/chromiumembedded/cef)
