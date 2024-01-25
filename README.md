@@ -108,7 +108,7 @@ Distributed under the Apache-2.0 License. See [LICENSE](https://github.com/Y0URD
 * [jma](https://github.com/Y0URD34TH) - *Lead Developer / Founder*
 * [foie](https://github.com/KaylinOwO) - *Tester / Designer / Developer*
 * [qiracy](https://github.com/qiracy) - *Tester / Translator / Designer*
-* [Pixel](https://github.com/piqseu) - *Designer*
+* [piqseu](https://github.com/piqseu) - *Designer*
 * [Brisolo32](https://github.com/Brisolo32) - *Translator / Designer*
 * [Backend](https://github.com/Backend2121) - *Designer / Coding Helper*
 
