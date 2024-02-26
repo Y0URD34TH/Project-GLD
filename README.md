@@ -1,6 +1,6 @@
 <div align=center>
   <a href="https://github.com/Y0URD34TH/Project-GLD">
-    <img src="https://github.com/piqseu/Project-GLD/blob/main/Images/favicon.png?raw=true" alt="Logo" width="640" height="320">
+    <img src="https://github.com/Y0URD34TH/Project-GLD/blob/main/Images/favicon.png?raw=true" alt="Logo" width="640" height="320">
   </a>
   <h1 align="center">Project GLD</h1>
   <p>
