@@ -1495,16 +1495,16 @@ function extract(source: string, destination: string, deleteaftercomplete: boole
 ```
 
 **Description:**
-Asynchronously extracts files from a zip archive.
+Asynchronously extracts files from a compressed archive.
 
 **Parameters:**
-- `source` (string): The path to the zip archive.
+- `source` (string): The path to the compressed archive.
 - `destination` (string): The directory where the files will be extracted.
-- `deleteaftercomplete` (boolean): Whether to delete the zip archive after extraction is complete.
+- `deleteaftercomplete` (boolean): Whether to delete the compressed archive after extraction is complete.
 
 **Usage Example:**
 ```lua
-local source = "archive.zip"
+local source = "archive.zip" --works with .rar, .7z etc
 local destination = "extracted_files"
 local deleteAfterComplete = true
 zip.extract(source, destination, deleteAfterComplete)
