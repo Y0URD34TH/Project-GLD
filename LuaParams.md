@@ -861,7 +861,7 @@ client.add_callback("on_gamelaunch", example4)
 ```lua
 local function example5(path)
   --path is a string
-  print("Extraction Path, path)
+  print("Extraction Path", path)
 end
 client.add_callback("on_extractioncompleted", example5)
 ```
@@ -879,8 +879,8 @@ client.add_callback("on_downloadclick", example6)
 local function example7(path, url)
   --path is a string
   --url is a string
-  print("Download path, path)
-  print("Download url, url)
+  print("Download path", path)
+  print("Download url", url)
 end
 client.add_callback("on_downloadcompleted", example7)
 ```
