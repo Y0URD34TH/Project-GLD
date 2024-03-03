@@ -30,7 +30,7 @@ local function substituteRomanNumerals(gameName)
     return gameName
 end
 
-local regex = "<a href%s*=%s*\"(/torrent/[^\"]+)\""
+local regex = ""
 local magnetRegex = "href%s*=%s*\"(magnet:[^\"]+)\""
 local provider = 0
 local searchprovider = ""
@@ -42,7 +42,7 @@ else
     Notifications.push_success("Lua Script", "1337x Script Loaded and Working")
 
 
-    menu.add_combo_box("1337x Provider(1)", { "1337x.to", "1377x.to", "1337x.so", "1337x.st" , "x1337x.ws", "x1337x.eu", "x1337x.se" })
+    menu.add_combo_box("1337x Provider(1)", { "onion", "mirror", "2nd mirror", "original" })
 	menu.add_check_box("Roman Numbers Conversion 1337x-NS")
     local romantonormalnumbers = true
     menu.set_bool("Roman Numbers Conversion 1337x-NS", true)
@@ -50,25 +50,20 @@ else
     local function checkboxcallNUC()
         provider = menu.get_int("1337x Provider(1)")
         if provider == 0 then
-          searchprovider = "1337x.to"
+          regex = "<a href%s*=%s*\"(//l337xdarkkaqfwzntnfk5bmoaroivtl6xsbatabvlb52umg6v3ch44yd.onion.ly/torrent/[^\"]+)\""
+          searchprovider = "l337xdarkkaqfwzntnfk5bmoaroivtl6xsbatabvlb52umg6v3ch44yd.onion.ly"
         end
         if provider == 1 then
+          regex = "<a href%s*=%s*\"(/torrent/[^\"]+)\""
           searchprovider = "1377x.to"
         end
         if provider == 2 then
-          searchprovider = "1337x.so"
+          regex = "<a href%s*=%s*\"(/torrent/[^\"]+)\""
+          searchprovider = "1337xx.to"
         end
         if provider == 3 then
-          searchprovider = "1337x.st"
-        end
-        if provider == 4 then
-          searchprovider = "x1337x.ws"
-        end
-        if provider == 5 then
-          searchprovider = "x1337x.eu"
-        end
-        if provider == 6 then
-          searchprovider = "x1337x.se"
+          regex = "<a href%s*=%s*\"(/torrent/[^\"]+)\""
+          searchprovider = "1337x.to"
         end
         romantonormalnumbers = menu.get_bool("Roman Numbers Conversion 1337x-NS")
     end
@@ -84,7 +79,7 @@ else
             gamename = substituteRomanNumerals(gamename)
         end
 
-        local urlrequest = "https://www." .. searchprovider .. "/category-search/" .. tostring(gamename) .. "/Games/1/"
+        local urlrequest = "https://" .. searchprovider .. "/category-search/" .. tostring(gamename) .. "/Games/1/"
         urlrequest = urlrequest:gsub(" ", "%%20")
         local htmlContent = http.get(urlrequest, headers)
         if not htmlContent then
@@ -95,7 +90,12 @@ else
         local searchResult -- Declare the searchResult variable outside the loop
 
         for match in htmlContent:gmatch(regex) do
-            local url = "https://".. searchprovider .. match
+       local url = ""
+        if provider == 0 then
+            url = "https:" .. match
+        else
+            url = "https://" .. searchprovider .. match
+        end
             local torrentName = url:match("/([^/]+)/$")
             if not torrentName then
                 break
@@ -142,6 +142,14 @@ else
     client.add_callback("on_scriptselected", request1337xNUC) -- Callback when a game is selected in the menu
     client.add_callback("on_present", checkboxcallNUC) -- Callback when a game is selected in the menu
 end
+
+
+
+
+
+
+
+
 
 
 

@@ -3,6 +3,9 @@ local function checkVersion(str, comparison)
     local serverversion = str:sub(3, 6)
     return serverversion == comparison
 end
+local function isGofileLink(link)
+    return string.find(link, "gofile")
+end
 local scriptsfolder = client.GetScriptsPath()
 local updtheaders = {
     ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
@@ -65,15 +68,23 @@ gameName = gameName:gsub(":", "")
 
                local linksDL = HtmlWrapper.findAttribute(gameResponseBody, "a", "class", "shortc-button medium green ", "href")
                local linksDL2 = HtmlWrapper.findAttribute(gameResponseBody, "a", "class", "shortc-button medium purple ", "href")
-               for _, serverLink in ipairs(linksDL) do
+              for _, serverLink in ipairs(linksDL) do
                  -- Insert into gameResult.links
-                 local serverName = extractDomain("https:" .. serverLink)
+                 local serverName = extractDomainNUC("https:" .. serverLink)
+    if isGofileLink(serverLink) then
+                 table.insert(gameResult.links, { name = serverName, link = "https:" .. serverLink, addtodownloadlist = true })
+else
                  table.insert(gameResult.links, { name = serverName, link = "https:" .. serverLink, addtodownloadlist = false })
+end
                end
                for _, serverLink2 in ipairs(linksDL2) do
                  -- Insert into gameResult.links
-                 local serverName = extractDomain("https:" .. serverLink2)
+                 local serverName = extractDomainNUC("https:" .. serverLink2)
+    if isGofileLink(serverLink2) then
+                 table.insert(gameResult.links, { name = serverName, link = "https:" .. serverLink2, addtodownloadlist = true })
+else
                  table.insert(gameResult.links, { name = serverName, link = "https:" .. serverLink2, addtodownloadlist = false })
+end
                end
 
                 table.insert(gameResults, gameResult)
@@ -86,7 +97,7 @@ end
 
 local version = client.GetVersionDouble()
 
-if version < 2.14 then
+if version < 3.50 then
       Notifications.push_error("Lua Script", "Program is Outdated Please Update to use that Script")
    if outdated then 
 	menu.add_button("Update steamrip")
@@ -115,6 +126,14 @@ communication.receiveSearchResults(results)
 end
 client.add_callback("on_scriptselected", steamrip)
 end
+
+
+
+
+
+
+
+
 
 
 

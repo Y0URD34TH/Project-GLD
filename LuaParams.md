@@ -18,6 +18,8 @@
 * [settings](#namespace-settings)
 * [Download](#namespace-Download)
 * [Notifications](#namespace-Notifications)
+* [SteamApi](#namespace-SteamApi)
+* [zip](#namespace-zip)
 
 ---
 ## Namespace: JsonWrapper
@@ -1406,4 +1408,104 @@ Pushes a warning notification with the specified title and text.
 #### Usage Example:
 ```lua
 Notifications.push_warning("Warning", "Warning: Low disk space")
+```
+
+### Namespace: SteamApi
+
+The `SteamApi` namespace provides functions for interacting with the Steam API.
+
+#### Function: GetSystemRequirementsString
+
+```lua
+function GetSystemRequirementsString(appid: string) -> string
+```
+
+**Description:**
+Retrieves the system requirements string for a specified Steam application.
+
+**Parameters:**
+- `appid` (string): The Steam Application ID of the game.
+
+**Returns:**
+- (string): The system requirements string of the specified game.
+
+**Usage Example:**
+```lua
+local appid = "570" -- Dota 2
+local systemRequirements = SteamApi.GetSystemRequirementsString(appid)
+print("System Requirements: " .. systemRequirements)
+```
+
+---
+
+#### Function: GetGameDataString
+
+```lua
+function GetGameDataString(appid: string) -> string
+```
+
+**Description:**
+Retrieves game data as a JSON string for a specified Steam application.
+
+**Parameters:**
+- `appid` (string): The Steam Application ID of the game.
+
+**Returns:**
+- (string): The game data as a JSON string.
+
+**Usage Example:**
+```lua
+local appid = "570" -- Dota 2
+local gameData = SteamApi.GetGameDataString(appid)
+print("Game Data: " .. gameData)
+```
+
+---
+
+#### Function: GetAppID
+
+```lua
+function GetAppID(name: string) -> string
+```
+
+**Description:**
+Retrieves the Steam Application ID of a game by its name.
+
+**Parameters:**
+- `name` (string): The name of the game.
+
+**Returns:**
+- (string): The Steam Application ID of the game.
+
+**Usage Example:**
+```lua
+local gameName = "Dota 2"
+local appid = SteamApi.GetAppID(gameName)
+print("AppID for " .. gameName .. ": " .. appid)
+```
+
+### Namespace: zip
+
+The `zip` namespace provides functions for extracting files from zip archives.
+
+#### Function: extract
+
+```lua
+function extract(source: string, destination: string, deleteaftercomplete: boolean)
+```
+
+**Description:**
+Asynchronously extracts files from a zip archive.
+
+**Parameters:**
+- `source` (string): The path to the zip archive.
+- `destination` (string): The directory where the files will be extracted.
+- `deleteaftercomplete` (boolean): Whether to delete the zip archive after extraction is complete.
+
+**Usage Example:**
+```lua
+local source = "archive.zip"
+local destination = "extracted_files"
+local deleteAfterComplete = true
+zip.extract(source, destination, deleteAfterComplete)
 ```

@@ -1,13 +1,13 @@
 <div align=center>
   <a href="https://github.com/Y0URD34TH/Project-GLD">
-    <img src="https://github.com/piqseu/Project-GLD/blob/main/Images/favicon.png?raw=true" alt="Logo" width="640" height="320">
+    <img src="https://github.com/Y0URD34TH/Project-GLD/blob/main/Images/favicon.png?raw=true" alt="Logo" width="640" height="320">
   </a>
   <h1 align="center">Project GLD</h1>
   <p>
     Project GLD is a game library and launcher that offers Lua script compatibility for searching and downloading games.
   </p>
 <br/>
-<a href=https://github.com/Y0URD34TH/Project-GLD/releases/latest/download/Project-GLD.exe>
+<a href=https://github.com/Y0URD34TH/Project-GLD/releases/latest/download/GLDSetup.exe>
 <img src="https://github.com/Y0URD34TH/Project-GLD/blob/main/Images/dl.png" alt="Download" width="155">
 </a>
   
@@ -82,13 +82,12 @@ See our Lua Documentation [Here](https://github.com/Y0URD34TH/Project-GLD/blob/m
 
 ### Installation
 
-1. Download the program at [Download Here](https://github.com/Y0URD34TH/Project-GLD/raw/main/Project%20GLD.exe).
+1. Download the program at [Download Here](https://github.com/Y0URD34TH/Project-GLD/releases/latest/download/GLDSetup.exe).
 
-2. Run the Project-GLD.exe.
+2. Install the program.
 
 3. Enjoy!
 
-4. Recommended: Place the program in a dedicated folder for easier navigation.
 
 ## Known Bugs
 
@@ -109,7 +108,7 @@ Distributed under the Apache-2.0 License. See [LICENSE](https://github.com/Y0URD
 * [jma](https://github.com/Y0URD34TH) - *Lead Developer / Founder*
 * [foie](https://github.com/KaylinOwO) - *Tester / Designer / Developer*
 * [qiracy](https://github.com/qiracy) - *Tester / Translator / Designer*
-* [Pixel](https://github.com/piqseu) - *Designer*
+* [piqseu](https://github.com/piqseu) - *Designer*
 * [Brisolo32](https://github.com/Brisolo32) - *Translator / Designer*
 * [Backend](https://github.com/Backend2121) - *Designer / Coding Helper*
 
@@ -124,3 +123,4 @@ Distributed under the Apache-2.0 License. See [LICENSE](https://github.com/Y0URD
 * [nlohmann/json](https://github.com/nlohmann/json)
 * [x360ce](https://github.com/x360ce/x360ce)
 * [Gumbo HTML](https://github.com/google/gumbo-parser)
+* [CEF](https://github.com/chromiumembedded/cef)

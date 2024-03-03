@@ -6,6 +6,9 @@ function extractDomainNUC(url)
 
     return domain
 end
+local function isGofileLink(link)
+    return string.find(link, "gofile")
+end
 local function webScrapesteamripNUC(gameName)
 gameName = gameName:gsub(":", "")
     local searchUrl = "https://steamrip.com/?s=" .. gameName
@@ -49,12 +52,20 @@ gameName = gameName:gsub(":", "")
                for _, serverLink in ipairs(linksDL) do
                  -- Insert into gameResult.links
                  local serverName = extractDomainNUC("https:" .. serverLink)
+    if isGofileLink(serverLink) then
+                 table.insert(gameResult.links, { name = serverName, link = "https:" .. serverLink, addtodownloadlist = true })
+else
                  table.insert(gameResult.links, { name = serverName, link = "https:" .. serverLink, addtodownloadlist = false })
+end
                end
                for _, serverLink2 in ipairs(linksDL2) do
                  -- Insert into gameResult.links
                  local serverName = extractDomainNUC("https:" .. serverLink2)
+    if isGofileLink(serverLink2) then
+                 table.insert(gameResult.links, { name = serverName, link = "https:" .. serverLink2, addtodownloadlist = true })
+else
                  table.insert(gameResult.links, { name = serverName, link = "https:" .. serverLink2, addtodownloadlist = false })
+end
                end
 
                 table.insert(gameResults, gameResult)
@@ -67,7 +78,7 @@ end
 
 local version = client.GetVersionDouble()
 
-if version < 2.14 then
+if version < 3.50 then
     Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
 else
     Notifications.push_success("Lua Script", "steamrip Script Loaded and Working")
@@ -78,6 +89,16 @@ communication.receiveSearchResults(resultsNUC)
 end
 client.add_callback("on_scriptselected", steamripNUC)
 end
+
+
+
+
+
+
+
+
+
+
 
 
 
