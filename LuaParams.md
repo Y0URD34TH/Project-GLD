@@ -811,6 +811,9 @@ Adds a callback function for a specific event.
 - `on_gameselected` execute the function when a game is selected in the search tab
 - `on_gamesearch` execute the function when you search for a game
 - `on_gamelaunch` execute the function when a game is launched and retrieve game info
+- `on_extractioncompleted` execute the function when the extraction progress is completed and retrieve the path to where it got extracted
+- `on_downloadclick` execute the function when you click on some download option in the script (on the game page), retrieve game json and download url
+- `on_downloadcompleted` execute the function when the download is completed and retrieve the download path and download url
 #### Usage Examples:
 ```lua
 	menu.add_button("Update Script")--set the button name
@@ -854,6 +857,32 @@ local function example4(info)
   --info.exePath | retrieve game path
 end
 client.add_callback("on_gamelaunch", example4)
+```
+```lua
+local function example5(path)
+  --path is a string
+  print("Extraction Path, path)
+end
+client.add_callback("on_extractioncompleted", example5)
+```
+```lua
+local function example6(dumpedjson, downloadurl)
+  --downloadurl is a string
+  --dumpedjson is a dumped json string
+  utils.ConsolePrint(true, downloadurl)
+  local gamejson = JsonWrapper.parse(dumpedjson)["results"] --example of game json disponible in https://github.com/Y0URD34TH/Project-GLD/blob/main/External/Recommends.txt
+  print("Game name", gamejson.name)
+end
+client.add_callback("on_downloadclick", example6)
+```
+```lua
+local function example7(path, url)
+  --path is a string
+  --url is a string
+  print("Download path, path)
+  print("Download url, url)
+end
+client.add_callback("on_downloadcompleted", example7)
 ```
 
 ### Function: load_script
