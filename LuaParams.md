@@ -1486,7 +1486,7 @@ print("AppID for " .. gameName .. ": " .. appid)
 
 ### Namespace: zip
 
-The `zip` namespace provides functions for extracting files from zip archives.
+The `zip` namespace provides functions for extracting files from compressed archives.
 
 #### Function: extract
 
