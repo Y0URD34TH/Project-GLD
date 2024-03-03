@@ -1414,10 +1414,10 @@ Notifications.push_warning("Warning", "Warning: Low disk space")
 
 The `SteamApi` namespace provides functions for interacting with the Steam API.
 
-#### Function: GetSystemRequirementsString
+#### Function: GetSystemRequirements
 
 ```lua
-function GetSystemRequirementsString(appid: string) -> string
+function GetSystemRequirements(appid: string) -> string
 ```
 
 **Description:**
@@ -1432,16 +1432,16 @@ Retrieves the system requirements string for a specified Steam application.
 **Usage Example:**
 ```lua
 local appid = "570" -- Dota 2
-local systemRequirements = SteamApi.GetSystemRequirementsString(appid)
+local systemRequirements = SteamApi.GetSystemRequirements(appid)
 print("System Requirements: " .. systemRequirements)
 ```
 
 ---
 
-#### Function: GetGameDataString
+#### Function: GetGameData
 
 ```lua
-function GetGameDataString(appid: string) -> string
+function GetGameData(appid: string) -> string
 ```
 
 **Description:**
@@ -1456,7 +1456,7 @@ Retrieves game data as a JSON string for a specified Steam application.
 **Usage Example:**
 ```lua
 local appid = "570" -- Dota 2
-local gameData = SteamApi.GetGameDataString(appid)
+local gameData = SteamApi.GetGameData(appid)
 print("Game Data: " .. gameData)
 ```
 
