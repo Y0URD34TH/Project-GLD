@@ -121,7 +121,12 @@ local imagelink = ""
 local gamename = ""
 local gamepath = ""
 local extractpath = ""
-local function ondownloadclick(gamejson, downloadurl)
+local shouldprogressextraction = false
+local function ondownloadclick(gamejson, downloadurl, scriptname)
+shouldprogressextraction = false
+if scriptname == "1click" then
+shouldprogressextraction = true
+end
 local jsonResults =JsonWrapper.parse(gamejson)["image"]
 local jsonName = JsonWrapper.parse(gamejson).name
 gamename = jsonName
@@ -129,6 +134,7 @@ imagelink = jsonResults.medium_url
 end
 local pathcheck = ""
 local function ondownloadcompleted(path, url)
+if shouldprogressextraction then
 local gamenametopath = gamename
 gamenametopath = gamenametopath:gsub(":", "")
 defaultdir = menu.get_text("Default Game Dir") .. "/" .. gamenametopath .. "/"
@@ -136,6 +142,7 @@ if url == watchlink2 or url == watchlink1 then
 path = path:gsub("\\", "/")
 pathcheck = defaultdir
 zip.extract(path, defaultdir, true)
+end
 end
 settings.save()
 end
@@ -152,6 +159,8 @@ client.add_callback("on_downloadclick", ondownloadclick)
 client.add_callback("on_downloadcompleted", ondownloadcompleted)
 client.add_callback("on_extractioncompleted", onextractioncompleted)
 end
+
+
 
 
 
