@@ -1,9 +1,5 @@
-V3.50
+V3.52
 
-Added minimum and recommended system requirements
-Enabled 1 click download and install from Steamrip
-Fixed 1337x script (note: results may be slow)
-Fixed YouTube crashing in GLD browser, account system login failure, and other bugs
-Improved app performance, decreased load time, and optimized scripts
-Updated Lua docs, translations, and UTF 8 strings
-Herobrine Removed
+Lua functions have been fixed and updated
+Cloudflare resolver has been added
+Herobrine has been removed (hopefully for good this time)
