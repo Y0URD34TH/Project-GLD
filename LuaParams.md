@@ -593,6 +593,31 @@ print("Resolved Link: " .. resolvedLink)
 - The resolved link can be used for direct downloading from Pixeldrain.
 
 
+
+#### Function: CloudFlareSolver
+
+```lua
+function CloudFlareSolver(url: string)
+```
+
+**Description:**
+Initiates solving Cloudflare protection for a given URL.
+when done returns the callback on "on_cfdone" callback
+
+**Parameters:**
+- `url` (string): The URL protected by Cloudflare.
+
+**Usage Example:**
+```lua
+http.CloudFlareSolver("https://1337x.to/")
+utils.AtachConsole()
+local function cf(cookie, url)
+utils.ConsolePrint(false, url .. " " ..cookie)
+--if u gonna do some request with the cookie then important note is taht u must sue that following user agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 ProjectGLD/2.15
+end
+client.add_callback("on_cfdone", cf)
+```
+
 ---
 
 
@@ -814,6 +839,8 @@ Adds a callback function for a specific event.
 - `on_extractioncompleted` execute the function when the extraction progress is completed and retrieve the path to where it got extracted
 - `on_downloadclick` execute the function when you click on some download option in the script (on the game page), retrieve game json and download url
 - `on_downloadcompleted` execute the function when the download is completed and retrieve the download path and download url
+- `on_cfdone` execute the function when the cloudflare solver resolved the link and returns the cloudflare cookie and url of the request (you need to sue the following user agent alongside with the cookie to work: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 ProjectGLD/2.15)
+  
 #### Usage Examples:
 ```lua
 	menu.add_button("Update Script")--set the button name
@@ -883,6 +910,15 @@ local function example7(path, url)
   print("Download url", url)
 end
 client.add_callback("on_downloadcompleted", example7)
+```
+```lua
+http.CloudFlareSolver("https://1337x.to/")
+utils.AtachConsole()
+local function cf(cookie, url)
+utils.ConsolePrint(false, url .. " " ..cookie)
+--if u gonna do some request with the cookie then important note is taht u must sue that following user agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 ProjectGLD/2.15
+end
+client.add_callback("on_cfdone", cf)
 ```
 
 ### Function: load_script
@@ -1142,6 +1178,22 @@ local resultsTable = {
 -- Call the receiveSearchResults function
 communication.receiveSearchResults(resultsTable)
 ```
+
+### Function: RefreshScriptResults
+
+```lua
+function RefreshScriptResults()
+```
+
+**Description:**
+Refreshes the script results by updating the selected script, triggering a new request, and resetting the loading status.
+
+**Usage Example:**
+```lua
+communication.RefreshScriptResults()
+```
+
+This Lua documentation provides usage instructions for the `RefreshScriptResults` function, allowing users to refresh script results in their Lua scripts.
 ---
 
 ### Namespace: Download
