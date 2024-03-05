@@ -8,6 +8,9 @@ end
 local function isGofileLink(link)
     return string.find(link, "gofile")
 end
+local function isqiwilink(link)
+    return string.find(link, "qiwi.gg")
+end
 local function endsWith(str, pattern)
     return string.sub(str, -string.len(pattern)) == pattern
 end
@@ -84,6 +87,11 @@ utils.ConsolePrint(true, gameName)
 		watchlink1 = "https:" .. serverLink
         table.insert(gameResult.links, { name = serverName, link = "https:" .. serverLink, addtodownloadlist = true })
     end
+	if isqiwilink(serverLink) then
+        local serverName = "2Clicks Download"
+		watchlink1 = "https:" .. serverLink
+        table.insert(gameResult.links, { name = serverName, link = "https:" .. serverLink, addtodownloadlist = false })
+    end
 end
 
 for _, serverLink2 in ipairs(linksDL2) do
@@ -91,6 +99,11 @@ for _, serverLink2 in ipairs(linksDL2) do
         local serverName = "Download"
 		watchlink2 = "https:" .. serverLink2
         table.insert(gameResult.links, { name = serverName, link = "https:" .. serverLink2, addtodownloadlist = true })
+    end
+	if isqiwilink(serverLink2) then
+        local serverName = "2Clicks Download"
+		watchlink2 = "https:" .. serverLink2
+        table.insert(gameResult.links, { name = serverName, link = "https:" .. serverLink2, addtodownloadlist = false })
     end
 end
 
@@ -138,11 +151,11 @@ if shouldprogressextraction then
 local gamenametopath = gamename
 gamenametopath = gamenametopath:gsub(":", "")
 defaultdir = menu.get_text("Default Game Dir") .. "/" .. gamenametopath .. "/"
-if url == watchlink2 or url == watchlink1 then
+--if url == watchlink2 or url == watchlink1 then
 path = path:gsub("\\", "/")
 pathcheck = defaultdir
 zip.extract(path, defaultdir, true)
-end
+--end
 end
 settings.save()
 end
