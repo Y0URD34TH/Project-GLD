@@ -47,7 +47,10 @@ Any contribution to the code or design of the app is very welcome! If you wish t
 
 
 
-https://github.com/Y0URD34TH/Project-GLD/assets/58450502/799cfa79-4988-470e-8477-5889c4e12a4a
+
+
+https://github.com/Y0URD34TH/Project-GLD/assets/58450502/9872093e-63cd-4892-9b7d-e538771b287f
+
 
 
 
@@ -70,6 +73,8 @@ Here are a few examples of functional scripts:
 * [gamedrive.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/gamedrive.lua)
 * [g4u.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/g4u.lua)
 * [img&vids.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/img&vids.lua)
+* [1click](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/1click.lua)
+* [Steam](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Steam.lua)
 
 For instructions on how to use Lua for making scripts, please refer to [this guide](https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.md).
 
