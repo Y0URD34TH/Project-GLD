@@ -69,7 +69,8 @@ if version < 3.52 then
 	end
 else
     Notifications.push_success("Lua Script", "1337x Script Loaded and Working")
-
+    Notifications.push_warning("1337x Script", "1337x is marked as unsafe by many sources only use trusted uploaders from here, you have been warned!")
+	
     if outdated then 
 	menu.add_button("Update 1337x")
     local function updatebutton()
