@@ -2,9 +2,9 @@
 local version = client.GetVersionDouble()
 
 if version < 2.14 then
-   Notifications.push_error("Lua Script", "Program is outdated. Please update the app to use this script!")
+   Notifications.push_error("Lua Script", "Program is Outdated Please Update to use that Script")
 else
-   Notifications.push_success("Lua Script", "gog-games script is loaded and working!")
+   Notifications.push_success("Lua Script", "Gog-Games Script Loaded And Working")
 local statebool = false
 
 local function requestgog()
