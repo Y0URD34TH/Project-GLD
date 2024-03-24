@@ -96,9 +96,9 @@ end
 local version = client.GetVersionDouble()
 
 if version < 2.14 then
-    Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
+    Notifications.push_error("Lua Script", "Program is outdated. Please update the app to use this script!")
 else
-    Notifications.push_success("Lua Script", "dodi-repacks Script Loaded and Working")
+    Notifications.push_success("Lua Script", "dodi-repacks script is loaded and working!")
 local function dodirepacks()
   if cfcookies == nil or cfcookies == "" then
         http.CloudFlareSolver("https://dodi-repacks.site/")
