@@ -63,7 +63,7 @@ else
                 communication.receiveSearchResults(ret_val)
             end
         else
-                Notifications.push_error("Prowlarr Script", "no API key provided in script")
+                Notifications.push_error("Prowlarr Script", "No API key is provided in the script.")
         end
         settings.save()
     end
