@@ -18,7 +18,7 @@ if checkVersion(githubversion, version) then
 outdated = false
 else
 outdated = true
-    Notifications.push_warning("Script Outdated", "The Script Is Outdated Please Update")
+    Notifications.push_warning("Outdated Script", "Please update the script.")
 end
 
 local scriptsfolder = client.GetScriptsPath()
@@ -57,7 +57,7 @@ local searchprovider = ""
 local version = client.GetVersionDouble()
 
 if version < 3.52 then
-    Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
+    Notifications.push_error("Lua Script", "Program is outdated. Please update the app to use this script!")
 	if outdated then 
 	menu.add_button("Update 1337x")
     local function updatebutton()
@@ -68,8 +68,8 @@ if version < 3.52 then
 	client.add_callback("on_button_Update 1337x", updatebutton)
 	end
 else
-    Notifications.push_success("Lua Script", "1337x Script Loaded and Working")
-    Notifications.push_warning("1337x Script", "1337x is marked as unsafe by many sources only use trusted uploaders from here, you have been warned!")
+    Notifications.push_success("Lua Script", "1337x script is loaded and working!")
+    Notifications.push_warning("1337x Script", "1337x is marked as unsafe by many sources, so only use trusted uploaders from here. You have been warned!")
 	
     if outdated then 
 	menu.add_button("Update 1337x")
@@ -80,7 +80,7 @@ else
     end
 	client.add_callback("on_button_Update 1337x", updatebutton)
 	end
-	menu.add_combo_box("1337x Provider(2)", { "original", "2nd original", "mirror", "2nd mirror", "onion" })
+	menu.add_combo_box("1337x Provider(2)", { "Original", "Mirror", ".onion" })
     menu.add_check_box("Roman Numbers Conversion 1337x")
     local romantonormalnumbers = true
     menu.set_bool("Roman Numbers Conversion 1337x", true)
@@ -96,14 +96,6 @@ else
           searchprovider = "x1337x.ws"
         end
         if provider == 2 then
-          regex = "<a href%s*=%s*\"(/torrent/[^\"]+)\""
-          searchprovider = "1377x.to"
-        end
-        if provider == 3 then
-          regex = "<a href%s*=%s*\"(/torrent/[^\"]+)\""
-          searchprovider = "1337xx.to"
-        end
-        if provider == 4 then
           regex = "<a href%s*=%s*\"(//l337xdarkkaqfwzntnfk5bmoaroivtl6xsbatabvlb52umg6v3ch44yd.onion.ly/torrent/[^\"]+)\""
           searchprovider = "l337xdarkkaqfwzntnfk5bmoaroivtl6xsbatabvlb52umg6v3ch44yd.onion.ly"
         end       
@@ -151,7 +143,7 @@ end
 
         for match in htmlContent:gmatch(regex) do
        local url = ""
-        if provider == 4 then
+        if provider == 2 then
             url = "https:" .. match
         else
             url = "https://" .. searchprovider .. match
@@ -221,7 +213,7 @@ end
 
         for match in htmlContent:gmatch(regex) do
        local url = ""
-        if provider == 4 then
+        if provider == 2 then
             url = "https:" .. match
         else
             url = "https://" .. searchprovider .. match
@@ -274,37 +266,3 @@ end
     client.add_callback("on_present", checkboxcall)
 	client.add_callback("on_cfdone", cfcallback)
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
