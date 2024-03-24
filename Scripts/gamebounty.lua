@@ -60,9 +60,9 @@ end
 local version = client.GetVersionDouble()
 
 if version < 2.14 then
-    Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
+    Notifications.push_error("Lua Script", "Program is outdated. Please update the app to use this script!")
 else
-    Notifications.push_success("Lua Script", "gamebounty Script Loaded and Working")
+    Notifications.push_success("Lua Script", "gamebounty script is loaded and working!")
 local function gamebounty()
 Notifications.push_warning("gamebounty", "The default password for the games is: gamebounty")
 local gamename = game.getgamename()  

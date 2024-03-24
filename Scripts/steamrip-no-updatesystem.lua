@@ -79,9 +79,9 @@ end
 local version = client.GetVersionDouble()
 
 if version < 3.50 then
-    Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
+    Notifications.push_error("Lua Script", "Program is outdated. Please update the app to use this script!")
 else
-    Notifications.push_success("Lua Script", "steamrip Script Loaded and Working")
+    Notifications.push_success("Lua Script", "steamrip script is loaded and working!")
 local function steamripNUC()
 local gamenameNUC = game.getgamename()  
 local resultsNUC = webScrapesteamripNUC(gamenameNUC)
@@ -89,16 +89,6 @@ communication.receiveSearchResults(resultsNUC)
 end
 client.add_callback("on_scriptselected", steamripNUC)
 end
-
-
-
-
-
-
-
-
-
-
 
 
 

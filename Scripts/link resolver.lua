@@ -11,24 +11,17 @@ local archiveorglink = menu.get_text("archive link")
 if mediafirelink ~= "" then
 local resolvedmediafirelink = http.mediafireresolver(mediafirelink)
 menu.set_text("mediafire link", resolvedmediafirelink)
-Notifications.push_success("link Resolver", "Mediafire Link Sucessfully Resolved")
+Notifications.push_success("link Resolver", "Mediafire link has been sucessfully resolved!")
 else
-Notifications.push_warning("Mediafire Resolver", "You First need to provide a link!!!")
+Notifications.push_warning("Mediafire Resolver", "You need to provide a link first!")
 end
 if archiveorglink ~= "" then
 local resolvedarchivelink = http.ArchivedotOrgResolver(archiveorglink)
 menu.set_text("archive link", resolvedarchivelink)
-Notifications.push_success("link Resolver", "Archive.org Link Sucessfully Resolved")
+Notifications.push_success("Link Resolver", "Archive.org link has been sucessfully resolved!")
 else
-Notifications.push_warning("Archive.org Resolver", "You First need to provide a link!!!")
+Notifications.push_warning("Archive.org Resolver", "You need to provide a link first!")
 end
 end
 
 client.add_callback("on_button_Resolve links", resolver)
-
-
-
-
-
-
-

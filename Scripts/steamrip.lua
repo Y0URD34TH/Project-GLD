@@ -19,7 +19,7 @@ if checkVersion(githubversion, version) then
 outdated = false
 else
 outdated = true
-    Notifications.push_warning("Script Outdated", "The Script Is Outdated Please Update")
+    Notifications.push_warning("Outdated Script", "Please update the script.")
 end
 
 function extractDomain(url)
@@ -98,7 +98,7 @@ end
 local version = client.GetVersionDouble()
 
 if version < 3.50 then
-      Notifications.push_error("Lua Script", "Program is Outdated Please Update to use that Script")
+      Notifications.push_error("Lua Script", "Program is outdated. Please update the app to use this script!")
    if outdated then 
 	menu.add_button("Update steamrip")
     local function updatebutton()
@@ -109,7 +109,7 @@ if version < 3.50 then
 	client.add_callback("on_button_Update steamrip", updatebutton)
 	end
 else
-   Notifications.push_success("Lua Script", "steamrip Script Loaded And Working")
+   Notifications.push_success("Lua Script", "steamrip script is loaded and working!")
   if outdated then 
 	menu.add_button("Update steamrip")
     local function updatebutton()
@@ -126,51 +126,3 @@ communication.receiveSearchResults(results)
 end
 client.add_callback("on_scriptselected", steamrip)
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

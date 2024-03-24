@@ -72,7 +72,7 @@ Here are a few examples of functional scripts:
 * [Prowlarr.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/prowlarr.lua)
 * [Steamrip.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/steamrip.lua)
 * [Gamedrive.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/gamedrive.lua)
-* [gog-games.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/gog-games.lua)
+* [Gog-games.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/gog-games.lua)
 * [G4U.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/g4u.lua)
 * [1337x.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/1337x.lua) - **⚠️ ONLY DOWNLOAD FROM TRUSTED UPLOADERS!!!**
 * [img&vids.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/img&vids.lua)
@@ -81,7 +81,7 @@ Here are a few examples of functional scripts:
 
 For instructions on how to use Lua for making scripts, please refer to [this guide](https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.md).
 
-See our Lua Documentation [Here](https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.md).
+See our Lua Documentation [here](https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.md).
 
 ### Prerequisites
 
@@ -90,7 +90,7 @@ See our Lua Documentation [Here](https://github.com/Y0URD34TH/Project-GLD/blob/m
 
 ### Installation
 
-1. Download the program at [Download Here](https://github.com/Y0URD34TH/Project-GLD/releases/latest/download/GLDSetup.exe).
+1. Download the program [here](https://github.com/Y0URD34TH/Project-GLD/releases/latest/download/GLDSetup.exe).
 
 2. Install the program.
 
