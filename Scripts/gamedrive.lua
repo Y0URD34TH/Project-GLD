@@ -16,7 +16,7 @@ if checkVersion(githubversion, version) then
 outdated = false
 else
 outdated = true
-    Notifications.push_warning("Script Outdated", "The Script Is Outdated Please Update")
+    Notifications.push_warning("Outdated Script", "Please update the script.")
 end
 local function extractGameName(url)
     local pattern = "gamedrive.org/(.-)/"
@@ -153,7 +153,7 @@ end
 local version = client.GetVersionDouble()
 
 if version < 2.14 then
-    Notifications.push_error("Lua Script", "Program is Outdated Please Update to use that Script")
+    Notifications.push_error("Lua Script", "Program is outdated. Please update the app to use this script!")
    if outdated then 
 	menu.add_button("Update gamedrive")
     local function updatebutton()
@@ -164,7 +164,7 @@ if version < 2.14 then
 	client.add_callback("on_button_Update gamedrive", updatebutton)
 	end
 else
-   Notifications.push_success("Lua Script", "gamedrive Script Loaded And Working")
+   Notifications.push_success("Lua Script", "gamedrive script is loaded and working!")
   if outdated then 
 	menu.add_button("Update gamedrive")
     local function updatebutton()
@@ -181,15 +181,3 @@ communication.receiveSearchResults(results)
 end
 client.add_callback("on_scriptselected", gamedrive)
 end
-
-
-
-
-
-
-
-
-
-
-
-

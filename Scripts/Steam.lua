@@ -2,9 +2,9 @@
 local version = client.GetVersionDouble()
 
 if version < 3.50 then
-   Notifications.push_error("Lua Script", "Program is Outdated Please Update to use that Script")
+   Notifications.push_error("Lua Script", "Program is outdated. Please update the app to use this script!")
 else
-   Notifications.push_success("Lua Script", "Steam Script Loaded And Working")
+   Notifications.push_success("Lua Script", "Steam script is loaded and working!")
 
 local function main()
     local getgamename = game.getgamename()
@@ -23,4 +23,3 @@ end
 
 client.add_callback("on_scriptselected", main)--on a game is selected in menu callback
 end
-

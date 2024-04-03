@@ -8,6 +8,9 @@ end
 local function isGofileLink(link)
     return string.find(link, "gofile")
 end
+local function isqiwilink(link)
+    return string.find(link, "qiwi.gg")
+end
 local function endsWith(str, pattern)
     return string.sub(str, -string.len(pattern)) == pattern
 end
@@ -39,7 +42,6 @@ end
 local function webScrape1clickNUC(gameName)
 gameName = substituteRomanNumerals(gameName)
 gameName = gameName:gsub(":", "")
-utils.ConsolePrint(true, gameName)
     local searchUrl = "https://steamrip.com/?s=" .. gameName
     searchUrl = searchUrl:gsub(" ", "%%20")
 
@@ -84,6 +86,11 @@ utils.ConsolePrint(true, gameName)
 		watchlink1 = "https:" .. serverLink
         table.insert(gameResult.links, { name = serverName, link = "https:" .. serverLink, addtodownloadlist = true })
     end
+	if isqiwilink(serverLink) then
+        local serverName = "2Clicks Download"
+		watchlink1 = "https:" .. serverLink
+        table.insert(gameResult.links, { name = serverName, link = "https:" .. serverLink, addtodownloadlist = false })
+    end
 end
 
 for _, serverLink2 in ipairs(linksDL2) do
@@ -91,6 +98,11 @@ for _, serverLink2 in ipairs(linksDL2) do
         local serverName = "Download"
 		watchlink2 = "https:" .. serverLink2
         table.insert(gameResult.links, { name = serverName, link = "https:" .. serverLink2, addtodownloadlist = true })
+    end
+	if isqiwilink(serverLink2) then
+        local serverName = "2Clicks Download"
+		watchlink2 = "https:" .. serverLink2
+        table.insert(gameResult.links, { name = serverName, link = "https:" .. serverLink2, addtodownloadlist = false })
     end
 end
 
@@ -121,7 +133,12 @@ local imagelink = ""
 local gamename = ""
 local gamepath = ""
 local extractpath = ""
-local function ondownloadclick(gamejson, downloadurl)
+local shouldprogressextraction = false
+local function ondownloadclick(gamejson, downloadurl, scriptname)
+shouldprogressextraction = false
+if scriptname == "1click" then
+shouldprogressextraction = true
+end
 local jsonResults =JsonWrapper.parse(gamejson)["image"]
 local jsonName = JsonWrapper.parse(gamejson).name
 gamename = jsonName
@@ -129,13 +146,15 @@ imagelink = jsonResults.medium_url
 end
 local pathcheck = ""
 local function ondownloadcompleted(path, url)
+if shouldprogressextraction then
 local gamenametopath = gamename
 gamenametopath = gamenametopath:gsub(":", "")
 defaultdir = menu.get_text("Default Game Dir") .. "/" .. gamenametopath .. "/"
-if url == watchlink2 or url == watchlink1 then
+--if url == watchlink2 or url == watchlink1 then
 path = path:gsub("\\", "/")
 pathcheck = defaultdir
 zip.extract(path, defaultdir, true)
+--end
 end
 settings.save()
 end
@@ -152,6 +171,8 @@ client.add_callback("on_downloadclick", ondownloadclick)
 client.add_callback("on_downloadcompleted", ondownloadcompleted)
 client.add_callback("on_extractioncompleted", onextractioncompleted)
 end
+
+
 
 
 

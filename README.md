@@ -47,7 +47,10 @@ Any contribution to the code or design of the app is very welcome! If you wish t
 
 
 
-https://github.com/Y0URD34TH/Project-GLD/assets/58450502/799cfa79-4988-470e-8477-5889c4e12a4a
+
+
+https://github.com/Y0URD34TH/Project-GLD/assets/58450502/9872093e-63cd-4892-9b7d-e538771b287f
+
 
 
 
@@ -55,25 +58,30 @@ https://github.com/Y0URD34TH/Project-GLD/assets/58450502/799cfa79-4988-470e-8477
 ## Getting Started
 
 To install scripts, simply place the .lua script file in the "Documents/Project-GLD/Scripts" directory, or use the program's script installer.
-To backup your game library list and favorites list go to "Documents/Project-GLD/GameList"
-Settings are Saved in th "Documents/Project-GLD/Configs" Folder
+To backup your game library and favorites list go to "Documents/Project-GLD/GameList".
+Settings are saved in the "Documents/Project-GLD/Configs" folder.
 
 Here are a few examples of functional scripts:
 
-* [1337x.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/1337x.lua)
+* [GameBounty.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/gamebounty.lua)
+* [Dodi (Beta).lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/dodi-repacks(beta).lua)
 * [Rezi.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Rezi.lua)
-* [fitgirl.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/fitgirl.lua)
-* [elamigos-games.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/elamigos-games.lua)
-* [onlinefix.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/onlinefix.lua)
-* [prowlarr.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/prowlarr.lua)
-* [steamrip.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/steamrip.lua)
-* [gamedrive.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/gamedrive.lua)
-* [g4u.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/g4u.lua)
+* [FitGirl.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/fitgirl.lua)
+* [ElAmigos-games.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/elamigos-games.lua)
+* [Onlinefix.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/onlinefix.lua)
+* [Prowlarr.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/prowlarr.lua)
+* [Steamrip.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/steamrip.lua)
+* [Gamedrive.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/gamedrive.lua)
+* [Gog-games.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/gog-games.lua)
+* [G4U.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/g4u.lua)
+* [1337x.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/1337x.lua) - **⚠️ ONLY DOWNLOAD FROM TRUSTED UPLOADERS!!!**
 * [img&vids.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/img&vids.lua)
+* [1click](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/1click.lua)
+* [Steam](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Steam.lua)
 
 For instructions on how to use Lua for making scripts, please refer to [this guide](https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.md).
 
-See our Lua Documentation [Here](https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.md).
+See our Lua Documentation [here](https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.md).
 
 ### Prerequisites
 
@@ -82,7 +90,7 @@ See our Lua Documentation [Here](https://github.com/Y0URD34TH/Project-GLD/blob/m
 
 ### Installation
 
-1. Download the program at [Download Here](https://github.com/Y0URD34TH/Project-GLD/releases/latest/download/GLDSetup.exe).
+1. Download the program [here](https://github.com/Y0URD34TH/Project-GLD/releases/latest/download/GLDSetup.exe).
 
 2. Install the program.
 
@@ -96,8 +104,6 @@ You might experience a slight delay when searching for and downloading games. Th
 ## Roadmap
 
 Check out the [open issues](https://github.com/Y0URD34TH/Project-GLD/issues) for a list of proposed features and known issues.
-
-also we want to be like the [Stremio](https://www.stremio.com/) for games.
 
 ## License
 

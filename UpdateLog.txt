@@ -1,9 +1,9 @@
-V3.50
+V3.75
 
-Added minimum and recommended system requirements
-Enabled 1 click download and install from Steamrip
-Fixed 1337x script (note: results may be slow)
-Fixed YouTube crashing in GLD browser, account system login failure, and other bugs
-Improved app performance, decreased load time, and optimized scripts
-Updated Lua docs, translations, and UTF 8 strings
-Herobrine Removed
+Implemented network interface bind for the torrent client (also known as VPN bind)
+Added game discovery search option for finding the latest games and improved search quality
+Enabled notifications in GLD browser and fixed the bug where opening raw files from the installers wouldn't open them in it
+Fixed quit with console bug, gofile bug, and text displaying improperly due to padding/size (dynamic size now)
+Updated and improved a lot of scripts, as well as their notifications
+Added the gog-games.to script
+Added redirect blocker in GLD browser

@@ -19,10 +19,10 @@ end
 local version = client.GetVersionDouble()
 
 if version < 2.14 then
-    Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
+    Notifications.push_error("Lua Script", "Program is outdated. Please update the app to use this script!")
 else
-    Notifications.push_success("Lua Script", "prowlarr Script Loaded")
-    Notifications.push_warning("Prowlarr Script", "Be sure to put your API Key in the lua script!!!")
+    Notifications.push_success("Lua Script", "prowlarr script is loaded!")
+    Notifications.push_warning("Prowlarr Script", "Don't forget to put your API key in the script!")
     
     menu.add_input_text("prowlarr key NS")
     menu.set_text("prowlarr key NS", apikey)
@@ -63,40 +63,10 @@ else
                 communication.receiveSearchResults(ret_val)
             end
         else
-                Notifications.push_error("Prowlarr Script", "no API key provided in script")
+                Notifications.push_error("Prowlarr Script", "No API key is provided in the script.")
         end
         settings.save()
     end
 
     client.add_callback("on_scriptselected", prowlarr)
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

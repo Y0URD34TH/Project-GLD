@@ -593,6 +593,31 @@ print("Resolved Link: " .. resolvedLink)
 - The resolved link can be used for direct downloading from Pixeldrain.
 
 
+
+#### Function: CloudFlareSolver
+
+```lua
+function CloudFlareSolver(url: string)
+```
+
+**Description:**
+Initiates solving Cloudflare protection for a given URL.
+when done returns the callback on "on_cfdone" callback
+
+**Parameters:**
+- `url` (string): The URL protected by Cloudflare.
+
+**Usage Example:**
+```lua
+http.CloudFlareSolver("https://1337x.to/")
+utils.AtachConsole()
+local function cf(cookie, url)
+utils.ConsolePrint(false, url .. " " ..cookie)
+--if u gonna do some request with the cookie then important note is taht u must sue that following user agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 ProjectGLD/2.15
+end
+client.add_callback("on_cfdone", cf)
+```
+
 ---
 
 
@@ -811,12 +836,17 @@ Adds a callback function for a specific event.
 - `on_gameselected` execute the function when a game is selected in the search tab
 - `on_gamesearch` execute the function when you search for a game
 - `on_gamelaunch` execute the function when a game is launched and retrieve game info
+- `on_extractioncompleted` execute the function when the extraction progress is completed and retrieve the path to where it got extracted
+- `on_downloadclick` execute the function when you click on some download option in the script (on the game page), retrieve game json and download url
+- `on_downloadcompleted` execute the function when the download is completed and retrieve the download path and download url
+- `on_cfdone` execute the function when the cloudflare solver resolved the link and returns the cloudflare cookie and url of the request (you need to sue the following user agent alongside with the cookie to work: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 ProjectGLD/2.15)
+  
 #### Usage Examples:
 ```lua
 	menu.add_button("Update Script")--set the button name
     local function updatebutton()
       --do your function
-      print("Script Exaple", "Worked!!!")
+      print("Worked!!!")
     end
 	client.add_callback("on_button_Update Script", updatebutton)--use the button name after the _
 ```
@@ -847,13 +877,48 @@ client.add_callback("on_gamesearch", example3)
 ```
 ```lua
 local function example4(info)
-  print(info.id, info.name)
+  print(info.id .." ".. info.name)
   --more values: 
   --info.initoptions | retrieve command line string
   --info.imagePath | retrieve game image path
   --info.exePath | retrieve game path
 end
 client.add_callback("on_gamelaunch", example4)
+```
+```lua
+local function example5(path)
+  --path is a string
+  print("Extraction Path".." ".. path)
+end
+client.add_callback("on_extractioncompleted", example5)
+```
+```lua
+local function example6(dumpedjson, downloadurl)
+  --downloadurl is a string
+  --dumpedjson is a dumped json string
+  utils.ConsolePrint(true, downloadurl)
+  local gamejson = JsonWrapper.parse(dumpedjson)["results"] --example of game json disponible in https://github.com/Y0URD34TH/Project-GLD/blob/main/External/Recommends.txt
+  print("Game name" .." ".. gamejson.name)
+end
+client.add_callback("on_downloadclick", example6)
+```
+```lua
+local function example7(path, url)
+  --path is a string
+  --url is a string
+  print("Download path" .." ".. path)
+  print("Download url" .." ".. url)
+end
+client.add_callback("on_downloadcompleted", example7)
+```
+```lua
+http.CloudFlareSolver("https://1337x.to/")
+utils.AtachConsole()
+local function cf(cookie, url)
+utils.ConsolePrint(false, url .. " " ..cookie)
+--if u gonna do some request with the cookie then important note is taht u must sue that following user agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 ProjectGLD/2.15
+end
+client.add_callback("on_cfdone", cf)
 ```
 
 ### Function: load_script
@@ -1113,6 +1178,22 @@ local resultsTable = {
 -- Call the receiveSearchResults function
 communication.receiveSearchResults(resultsTable)
 ```
+
+### Function: RefreshScriptResults
+
+```lua
+function RefreshScriptResults()
+```
+
+**Description:**
+Refreshes the script results by updating the selected script, triggering a new request, and resetting the loading status.
+
+**Usage Example:**
+```lua
+communication.RefreshScriptResults()
+```
+
+This Lua documentation provides usage instructions for the `RefreshScriptResults` function, allowing users to refresh script results in their Lua scripts.
 ---
 
 ### Namespace: Download
@@ -1414,10 +1495,10 @@ Notifications.push_warning("Warning", "Warning: Low disk space")
 
 The `SteamApi` namespace provides functions for interacting with the Steam API.
 
-#### Function: GetSystemRequirementsString
+#### Function: GetSystemRequirements
 
 ```lua
-function GetSystemRequirementsString(appid: string) -> string
+function GetSystemRequirements(appid: string) -> string
 ```
 
 **Description:**
@@ -1432,16 +1513,16 @@ Retrieves the system requirements string for a specified Steam application.
 **Usage Example:**
 ```lua
 local appid = "570" -- Dota 2
-local systemRequirements = SteamApi.GetSystemRequirementsString(appid)
+local systemRequirements = SteamApi.GetSystemRequirements(appid)
 print("System Requirements: " .. systemRequirements)
 ```
 
 ---
 
-#### Function: GetGameDataString
+#### Function: GetGameData
 
 ```lua
-function GetGameDataString(appid: string) -> string
+function GetGameData(appid: string) -> string
 ```
 
 **Description:**
@@ -1456,7 +1537,7 @@ Retrieves game data as a JSON string for a specified Steam application.
 **Usage Example:**
 ```lua
 local appid = "570" -- Dota 2
-local gameData = SteamApi.GetGameDataString(appid)
+local gameData = SteamApi.GetGameData(appid)
 print("Game Data: " .. gameData)
 ```
 
@@ -1486,7 +1567,7 @@ print("AppID for " .. gameName .. ": " .. appid)
 
 ### Namespace: zip
 
-The `zip` namespace provides functions for extracting files from zip archives.
+The `zip` namespace provides functions for extracting files from compressed archives.
 
 #### Function: extract
 
@@ -1495,16 +1576,16 @@ function extract(source: string, destination: string, deleteaftercomplete: boole
 ```
 
 **Description:**
-Asynchronously extracts files from a zip archive.
+Asynchronously extracts files from a compressed archive.
 
 **Parameters:**
-- `source` (string): The path to the zip archive.
+- `source` (string): The path to the compressed archive.
 - `destination` (string): The directory where the files will be extracted.
-- `deleteaftercomplete` (boolean): Whether to delete the zip archive after extraction is complete.
+- `deleteaftercomplete` (boolean): Whether to delete the compressed archive after extraction is complete.
 
 **Usage Example:**
 ```lua
-local source = "archive.zip"
+local source = "archive.zip" --works with .rar, .7z etc
 local destination = "extracted_files"
 local deleteAfterComplete = true
 zip.extract(source, destination, deleteAfterComplete)

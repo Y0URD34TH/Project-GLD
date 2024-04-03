@@ -41,9 +41,9 @@ end
 local version = client.GetVersionDouble()
 
 if version < 2.14 then
-  Notifications.push_error("Lua Script", "Program is Outdated Please Update to use that Script")
+  Notifications.push_error("Lua Script", "Program is outdated. Please update the app to use this script!")
 else
-  Notifications.push_success("Lua Script", "fitgirl Script Loaded And Working")
+  Notifications.push_success("Lua Script", "fitgirl script is loaded and working!")
 
 local function scraper()
     local statebool = false
@@ -121,17 +121,3 @@ local function scraper()
 end
 client.add_callback("on_scriptselected", scraper)
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
