@@ -564,7 +564,6 @@ utils.ConsolePrint(true, "Resolved Link: %s", resolvedLink)
 
 ```cpp
 std::string resolvepixeldrain(
-    sol::this_state s,
     const std::string& link
 );
 ```
@@ -573,7 +572,6 @@ std::string resolvepixeldrain(
 Resolves a Pixeldrain link to its direct download link.
 
 **Parameters:**
-- `sol::this_state s`: The Lua state.
 - `const std::string& link`: The Pixeldrain link to resolve.
 
 **Returns:**
@@ -581,9 +579,8 @@ Resolves a Pixeldrain link to its direct download link.
 
 **Usage Example:**
 ```lua
--- Assuming a Lua state 's'
 local originalLink = "https://pixeldrain.com/u/somefile123"
-local resolvedLink = http.resolvepixeldrain(s, originalLink)
+local resolvedLink = http.resolvepixeldrain(originalLink)
 print("Resolved Link: " .. resolvedLink)
 ```
 
@@ -591,6 +588,33 @@ print("Resolved Link: " .. resolvedLink)
 - This method checks if the provided link is from Pixeldrain and constructs a direct download link if true.
 - If the link is not from Pixeldrain, it returns the original link.
 - The resolved link can be used for direct downloading from Pixeldrain.
+
+
+### Function: byetresolver
+
+```cpp
+std::string byetresolver(
+    const std::string& url
+);
+```
+
+**Description:**
+Resolves a link that is hosted in byet returning the cookie that can be used in requests.
+
+**Parameters:**
+- `const std::string& url`: The url that you want to get the cookies.
+
+**Returns:**
+- `std::string`: The cookies to specified url.
+
+**Usage Example:**
+```lua
+-- Assuming a Lua state 's'
+local url = "https://mybyetlink.com"
+local cookie = http.byetresolver(url)
+print("cookie: " .. cookie)
+--then can be used in http requests
+```
 
 
 
