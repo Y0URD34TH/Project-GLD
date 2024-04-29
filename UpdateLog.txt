@@ -1,9 +1,10 @@
-V3.75
+V3.90
 
-Implemented network interface bind for the torrent client (also known as VPN bind)
-Added game discovery search option for finding the latest games and improved search quality
-Enabled notifications in GLD browser and fixed the bug where opening raw files from the installers wouldn't open them in it
-Fixed quit with console bug, gofile bug, and text displaying improperly due to padding/size (dynamic size now)
-Updated and improved a lot of scripts, as well as their notifications
-Added the gog-games.to script
-Added redirect blocker in GLD browser
+Added filters to play time and last played on library
+Fixed bug that would change wrong play time when sorted
+Added new lua functions
+Option to force ShellExcute added on library
+Changed the download complete sound for a better one
+Textbox changed in add download for a more modern way
+Some font related issues fixed
+Crash fix when opening some games
