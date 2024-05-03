@@ -1,5 +1,6 @@
-V3.90
+V3.91
 
+Fixed the bug with incorrect sorting based on playtime
 Added filters to play time and last played on library
 Fixed bug that would change wrong play time when sorted
 Added new lua functions
