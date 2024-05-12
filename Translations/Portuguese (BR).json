@@ -344,5 +344,8 @@
     "Force ShellExecute Launching": "Forçar abertura por ShellExecute",
     "Force the use of ShellExecute when launching the game, it may help if the game doesnt launch.\nWarning: played time counter stops working in that game if u use it": "Force o uso de ShellExecute ao iniciar o jogo, pode ajudar se o jogo não iniciar.\nAviso: o contador de tempo jogado para de funcionar nesse jogo se você usá-lo",
     "Last played": "Ultimo jogado",
+    "Console Key-Bind": "Abrir console (tecla)",
+    "ID": "ID",
+    "Open/Close Gld Console": "Abrir/Fechar GLD Console",
     "Played time": "Tempo jogado"
 }
