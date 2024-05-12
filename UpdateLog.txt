@@ -1,11 +1,8 @@
-V3.91
+V3.95
 
-Fixed the bug with incorrect sorting based on playtime
-Added filters to play time and last played on library
-Fixed bug that would change wrong play time when sorted
-Added new lua functions
-Option to force ShellExcute added on library
-Changed the download complete sound for a better one
-Textbox changed in add download for a more modern way
-Some font related issues fixed
-Crash fix when opening some games
+Added a lot of commands to the GLD console 
+Fixed a bug with ShellExecute being automatically turned on when adding a new game
+Fixed some Lua API bugs
+Fixed some bugs related to crashes
+Fixed the std factory number bug
+Updated the 1click script to support Buzzheavier
