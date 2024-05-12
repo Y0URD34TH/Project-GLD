@@ -7,4 +7,5 @@ Fixed some bugs related to crashes
 Fixed the std factory number bug
 Updated the 1click script to support Buzzheavier
 
-(if gld restart without updating or dont unfreeze after sometime go to gld directory and use the update.exe)
+(gld may freeze while auto updating and its normal!!!)
+(gld pode congelar ao se auto atualizar, isso é normal!!!)
