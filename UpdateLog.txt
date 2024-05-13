@@ -1,5 +1,7 @@
-V3.95
+V3.97
 
+Fixed spam of device lost in console
+Otimized main thread to use less cpu
 Added a lot of commands to the GLD console 
 Fixed a bug with ShellExecute being automatically turned on when adding a new game
 Fixed some Lua API bugs
