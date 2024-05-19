@@ -20,6 +20,7 @@
 * [Notifications](#namespace-Notifications)
 * [SteamApi](#namespace-SteamApi)
 * [zip](#namespace-zip)
+* [gldconsole](#namespace-gldconsole)
 
 ---
 ## Namespace: JsonWrapper
@@ -1613,4 +1614,48 @@ local source = "archive.zip" --works with .rar, .7z etc
 local destination = "extracted_files"
 local deleteAfterComplete = true
 zip.extract(source, destination, deleteAfterComplete)
+```
+
+### Namespace: gldconsole
+
+#### Function: print
+```lua
+function gldconsole.print(text: string)
+```
+Logs/print a message in gld console.
+
+#### Parameters:
+- `text` (string): The content of the log message.
+
+#### Usage Example:
+```lua
+gldconsole.print("Script loaded successfully")
+```
+
+#### Function: show
+
+```lua
+function show()
+```
+
+open/show gld console window.
+
+#### Usage Example:
+```lua
+-- open/show gld console window
+gldconsole.show()
+```
+
+#### Function: close
+
+```lua
+function close()
+```
+
+close gld console window.
+
+#### Usage Example:
+```lua
+-- close gld console window
+gldconsole.close()
 ```
