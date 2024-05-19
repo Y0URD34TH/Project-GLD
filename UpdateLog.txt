@@ -1,13 +1,10 @@
-V3.97
+V3.98
 
-Fixed spam of device lost in console
-Optimized main thread to use less cpu
-Added a lot of commands to the GLD console 
-Fixed a bug with ShellExecute being automatically turned on when adding a new game
-Fixed some Lua API bugs
-Fixed some bugs related to crashes
-Fixed the std factory number bug
-Updated the 1click script to support Buzzheavier
+Fixed console buffer (changed static buffer size of 1024 to a dynamic allocated one)
+Fixed d3d9 texture creation mutex not being properly released on multi threaded texture creation
+Added GLD console functions to Lua API
+Fixed console log so it doesn't crash with some URLs of texture creation anymore (e.g. %20)
+Added Ghost of Tsushima to the recommended games page
 
 (gld may freeze while auto updating and its normal!!!)
 (gld pode congelar ao se auto atualizar, isso é normal!!!)
