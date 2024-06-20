@@ -14,6 +14,9 @@ end
 local function isbuzzlink(link)
     return string.find(link, "buzzheavier.com")
 end
+local function ismegadblink(link)
+    return string.find(link, "megadb.net")
+end
 local function endsWith(str, pattern)
     return string.sub(str, -string.len(pattern)) == pattern
 end
@@ -96,8 +99,13 @@ gameName = gameName:gsub(":", "")
     end
     if isbuzzlink(serverLink) then
         local serverName = "2Clicks Download (buzz)"
-		watchlink2 = "https:" .. serverLink2
-        table.insert(gameResult.links, { name = serverName, link = "https:" .. serverLink2, addtodownloadlist = false })
+		watchlink1 = "https:" .. serverLink
+        table.insert(gameResult.links, { name = serverName, link = "https:" .. serverLink, addtodownloadlist = false })
+    end
+    if ismegadblink(serverLink) then
+        local serverName = "2Clicks Download (megadb)"
+		watchlink1 = "https:" .. serverLink
+        table.insert(gameResult.links, { name = serverName, link = "https:" .. serverLink, addtodownloadlist = false })
     end
 end
 
@@ -114,6 +122,11 @@ for _, serverLink2 in ipairs(linksDL2) do
     end
     if isbuzzlink(serverLink2) then
         local serverName = "2Clicks Download (buzz)"
+		watchlink2 = "https:" .. serverLink2
+        table.insert(gameResult.links, { name = serverName, link = "https:" .. serverLink2, addtodownloadlist = false })
+    end
+    if ismegadblink(serverLink2) then
+        local serverName = "2Clicks Download (megadb)"
 		watchlink2 = "https:" .. serverLink2
         table.insert(gameResult.links, { name = serverName, link = "https:" .. serverLink2, addtodownloadlist = false })
     end
@@ -184,4 +197,3 @@ client.add_callback("on_downloadclick", ondownloadclick)
 client.add_callback("on_downloadcompleted", ondownloadcompleted)
 client.add_callback("on_extractioncompleted", onextractioncompleted)
 end
-
