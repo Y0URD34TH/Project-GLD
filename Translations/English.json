@@ -344,8 +344,14 @@
     "Force ShellExecute Launching": "Force ShellExecute on launch",
     "Force the use of ShellExecute when launching the game, it may help if the game doesnt launch.\nWarning: played time counter stops working in that game if u use it": "Forces the use of ShellExecute on game launch and might help if the game doesn't launch normally.\nWarning: Playtime counter stops working for the game if you use this. ",
     "Last played": "",
-    "Console Key-Bind": "Console keybind:",
+    "Console Key-Bind": "Console keybind",
     "ID": "",
     "Open/Close Gld Console": "Open / close console",
-    "Played time": "Playtime"
+    "Played time": "Playtime",
+    "Buttons/Binds": "Information",
+    "Close": "",
+    "Exit": "",
+    "Open": "",
+    "Close All Scripts": "Close all scripts",
+    "Save and Close": "Save and close"
 }
