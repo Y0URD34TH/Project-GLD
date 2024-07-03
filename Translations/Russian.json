@@ -346,5 +346,11 @@
   "Last played": "Играли",
   "Console Key-Bind": "Привязка консоли к кнопке",
   "Open/Close Gld Console": "Открыть/Закрыть консоль GLD",
-  "Played time": "Время игры"
+  "Played time": "Время игры",
+  "Buttons/Binds": "Information",
+  "Close": "Закрывать",
+  "Exit": "Выход",
+  "Open": "Открыть",
+  "Close All Scripts": "Закрыть все скрипты",
+  "Save and Close": "Сохрани и закрой"
 }
