@@ -337,5 +337,11 @@
     "Last played": "Zadnje igrano",
     "Console Key-Bind": "Shortcut za konzolu",
     "Open/Close Gld Console": "Otvori / zatvori konzolu",
-    "Played time": "Vrijeme igranja"
+    "Played time": "Vrijeme igranja",
+    "Buttons/Binds": "Informacije",
+    "Close": "Zatvori",
+    "Exit": "Izađi",
+    "Open": "Otvori",
+    "Close All Scripts": "Zatvori sve skripte",
+    "Save and Close": "Sačuvaj i zatvori"
 }
