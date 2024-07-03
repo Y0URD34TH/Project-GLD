@@ -1,4 +1,4 @@
-{
+﻿{
   "  Scripts Installer": "  Instaler skripti",
   " Return": " Natrag",
   "%6d/%-6d %6d lines  | %s | %s | %s | %s": "%6d/%-6d %6d linija  | %s | %s | %s | %s",
@@ -212,7 +212,7 @@
   "Filehoster: OneDrive": "Domaćin datoteka: OneDrive",
   "Filehoster: ZippyShare": "Domaćin datoteka: ZippyShare",
   "GOOGLEDRIVE": "GoogleDrive",
-  "Game Rating:": "Ocjena igre:",
+  "Game Rating:": "Ocjena igre",
   "JDownloader2": "JDownloader2",
   "MEDIAFIRE": "MediaFire",
   "MEGA": "MEGA",
@@ -223,8 +223,7 @@
   "RuTor [magnet]": "RuTor [magnet]",
   "TORRENT": "Torrent",
   "Tapochek.net": "Tapochek.net",
-  "UPTOBOX": "UPTOBOX",
-  "View in Site": "Pogledaj na web stranici",
+  "UPTOBOX": "UPTOBOX",  "View in Site": "Pogledaj na web stranici",
   "Use Image Link": "Iskoristi link slike",
   "Download Speed: - ": "Brzina preuzimanja: - ",
   "Open the folder": "Otvori folder",
