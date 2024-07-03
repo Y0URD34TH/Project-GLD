@@ -1,10 +1,10 @@
-V3.98
+V3.99
 
-Fixed console buffer (changed static buffer size of 1024 to a dynamic allocated one)
-Fixed d3d9 texture creation mutex not being properly released on multi threaded texture creation
-Added GLD console functions to Lua API
-Fixed console log so it doesn't crash with some URLs of texture creation anymore (e.g. %20)
-Added Ghost of Tsushima to the recommended games page
+Added tabs to the code editor and improved its performance and themes. You can now edit multiple scripts at once!
+Centered window position
+Made English, French, Russian, Portuguese (Brazilian), and Bosnian the default languages (they come preinstalled)
+Added the Neon Rider theme
+Fixed folder opening bugs
 
 (gld may freeze while auto updating and its normal!!!)
 (gld pode congelar ao se auto atualizar, isso é normal!!!)
