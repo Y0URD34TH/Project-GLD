@@ -164,9 +164,9 @@
     "Open Themes Folder": "Otvori folder za pozadine",
     "Theme Installer Download The Theme From github Theme folder of the project": "Instalater pozadina preuzima pozadine sa GitHub stranice za pozadine.",
     "Save Colors": "Sačuvaj boje",
-    "Search Script..." : "Pretraži skripte...",
-    "Search Translation..." : "Pretraži prijevode...",
-    "Search Theme..." : "Pretraži pozadine...",
+    "Search Script...": "Pretraži skripte...",
+    "Search Translation...": "Pretraži prijevode...",
+    "Search Theme...": "Pretraži pozadine...",
     "Create Theme File": "Napravi fajl za pozadinu",
     "Enable Max Active Downloads": "Postavi maksimalan broj aktivnih preuzimanja",
     "Max Active": "Maksimalan broj preuzimanja",
@@ -309,7 +309,7 @@
     "Zoom In": "Zumiraj naprijed",
     "Zoom Out": "Zumiraj nazad",
     "Zoom Reset": "Poništi zumiranje",
-    "days ago": "dana ranije"
+    "days ago": "dana ranije",
     "": "",
     "32-Bit": "",
     "64-Bit": "",
@@ -336,7 +336,12 @@
     "Force the use of ShellExecute when launching the game, it may help if the game doesnt launch.\nWarning: played time counter stops working in that game if u use it": "Forsiraj ShellExecute pri pokretanju igre, ovo može biti korisno ako se igra ne može pokrenuti normalno.\nUpozorenje: Vrijeme provedeno u igri će se prestati brojati ako se igra ovako pokrene.",
     "Last played": "Zadnje igrano",
     "Console Key-Bind": "Shortcut za konzolu",
-    "ID": "",
     "Open/Close Gld Console": "Otvori / zatvori konzolu",
-    "Played time": "Vrijeme igranja"
+    "Played time": "Vrijeme igranja",
+    "Buttons/Binds": "Informacije",
+    "Close": "Zatvori",
+    "Exit": "Izađi",
+    "Open": "Otvori",
+    "Close All Scripts": "Zatvori sve skripte",
+    "Save and Close": "Sačuvaj i zatvori"
 }
