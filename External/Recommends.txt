@@ -958,3 +958,4 @@
         "site_detail_url": "https://www.giantbomb.com/watch-dogs/3030-38538/"
     }
 ]
+}
