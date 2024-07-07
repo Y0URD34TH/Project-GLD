@@ -799,138 +799,64 @@
         ],
         "site_detail_url": "https://www.giantbomb.com/assassin-s-creed-iv-black-flag/3030-41518/"
     },
-    {
-        "aliases": "WatchDogs\r\nWatch_Dogs",
-        "api_detail_url": "https://www.giantbomb.com/api/game/3030-38538/",
-        "date_added": "2012-06-04 16:20:44",
-        "date_last_updated": "2022-04-29 17:34:27",
-        "deck": "A third-person open-world game from Ubisoft, set in an alternate version of Chicago where the entire city is connected under a single network, and a vigilante named Aiden Pearce uses it to fight back against a conspiracy.",
-        "description": "<h2>Overview</h2><p>Watch Dogs (styled Watch_Dogs in marketing) follows <a href=\"//www.giantbomb.com/aiden-pearce/3005-23427/\" data-ref-id=\"3005-23427\">Aiden Pearce</a>, a hacker who can control the electrical grid and other systems in the city of <a href=\"/chicago/3035-293/\" data-ref-id=\"3035-293\">Chicago</a>. He possesses mobile hacking technology, which allows him to match people's real life identities with their online presences on the fly; he can also shut down mobile phone reception and listen in on phone calls.</p><p>Players can also take on the roles of other Watch Dogs and protect Aiden as he is chased by police. Multiple players exist in the city at one time, although when this multiplayer triggers or what other players would be doing when Aiden is not in trouble is unclear.</p><h2>Gameplay</h2><p>Aiden has multiple smart-phone abilities that affect the environment of the entire city. He can hack into almost any device nearby or via camera feed to do anything from gathering information, to skimming money from their bank account, to distracting or even killing enemies. He can stop trains, raise bridges and security barriers, overload nearby fuse boxes, or black out the entire city for a short period of time to allow him to sneak by or evade enemies. In some parts of the game, he can direct companions through stealth sequences, making use of his hacking abilities to help them through to the goal.</p><p>In combat, Aiden can wield a large variety of weapons including pistols, shotguns, submachineguns, assault rifles, sniper rifles, and even a grenade launcher. He can slow down time to shoot through his special Focus ability that recharges slowly on its own. He can instantly knock out single enemies in melee range with a telescoping police baton.</p><p>As the game progresses, Aiden can learn to craft ability items through parts he picks up or purchases from shops. Everything from remote-controlled IEDs, to communications-jamming devices, to Focus-boosting pills, to a ctOS scanner that can instantly ping all nearby enemies.</p><p>Aiden also carries a persistent reputation meter through the story. When he completes contracts and performs heroic actions, the public will side with him and not call for the police. If Aiden performs enough negative actions, like killing civilians or robbing stores, Aiden's picture will appear on the news and more Chicago citizens will call the police when they see him. Aiden can run up and grab the caller's phone or use his Jam Coms ability to cut off the call.</p><p>In the world itself, Aiden can take on side missions in the form of Fixer Contracts, conduct Investigations into the seedier parts of Chicago, or use his Profiler to find and stop criminal attacks just before they happen. For money, or just for fun, Aiden can compete in drinking games, poker games, slot machines, chess matches, and even a shell game.</p><p>Aiden can take control of a wide variety of vehicles to get around Chicago, including several different kinds of cars or trucks, motorcycles, and even boats, all through hacking them with ctOS. Aiden can hijack cars like the protagonist of a <a href=\"/grand-theft-auto/3025-6/\" data-ref-id=\"3025-6\">Grand Theft Auto</a> game, or call on Jordi to leave a \"pre-owned\" copy of a requested vehicle nearby.</p><h3>Online Contracts</h3><p>Another aspect of Watch_Dogs is the online hacking, where other players can drop into the game as enemy Fixers, and vice-versa. The player sees themselves as Aiden, while the opponent sees them as another randomly-generated character. There are multiple types of Online Contracts:</p><ul><li>ctOS Mobile Challenge: One player uses an iPhone or Android app to take control of a CPD helicopter and try to stop the other player, playing Aiden Pearce, from reaching a goal by calling in various police resources and hacking abilities to stop them. This is the only Online Contract that requires both players to permit the other to invade.</li><li>Online Free Roam: Up to 8 players can join a single session and do whatever they please in Chicago.</li><li>Online Decryption: 4-8 players are split into 2 teams of Fixers. One team must grab the file and hold it to decrypt it while the enemy team must kill the file-holder to finish decrypting it themselves. More teammates near the file-holder helps to decrypt the file faster.</li><li>Online Race: 3-8 players compete in a race around Chicago in one of several varieties of vehicles, including boats and motorcycles.</li><li>Online Hacking: An invading Fixer has five minutes to locate their enemy and start installing a backdoor virus into their phone. The invaded player must then use their Profiler to find the enemy withing a shrinking area before they finish hacking and kill them. If the invader tries to kill the enemy before the download is complete, they automatically lose.</li><li>Online Tailing: Similar to Online Hacking, the invading Fixer must tail the enemy within a certain radius of them without being spotted until their meter reaches 100%. Unlike Online Hacking, the player is not restricted to a small area of the map. The invaded fixer must identify their attacker and then kill them. If the invader is discovered, they can kill their quarry or escape for partial success.</li></ul><h2>Story</h2><p>In 2013, a \"Fixer\" named Aiden Pierce lives and works in Chicago, using his great hacking skills to skim money and information from anyone he needs through a system called \"ctOS\" (Centralized Operating System) that has connected the entire city in one gigantic network. However, after stumbling on some important data he wasn't supposed to find, Aiden's niece is killed in a hit-and-run that was meant for him.</p><p>Aiden's quest for revenge on both the killer and the people who hired him takes him across Chicago, putting him at odds with an old-school mob boss, an Iraq war veteran, a hacktivist from \"DedSec,\" and a disgruntled former employee of the Blume Corporation who originally designed ctOS.</p><h2>Bad Blood</h2><p>About one year after the events of the main Watch Dogs story, Aiden and T-Bone both plan to flee from Chicago and the eyes of ctOS. However, T-Bone receives a panicked call from Tobias Frewer, former Blume colleague and co-creator of ctOS who has become homeless and mentally unstable, as he's kidnapped by Fixers working for Blume. T-Bone reluctantly finds himself staying in Chicago to help Tobias and tie up a few loose ends before he can leave Chicago for good.</p><p>Similar to Aiden, T-Bone can hack connected devices, and acquire and equip the same weapons as Aiden. T-Bone also has a special RC car that can be used to scout ahead, knock out enemies, and extend his hacking range. T-Bone also can carry out \"Street Sweeper\" missions, similar to Aiden's Fixer Contracts, that can be used to gain money, experience points, and other special perks. Some of these missions can be played in co-op mode with another player online, or repeated to get a higher score on the Leaderboards.</p><h2>E3 Demonstrations</h2><p>When the game was announced at the Ubisoft E3 2012 conference, a lengthy gameplay demonstration was shown. In this demonstration, the protagonist is shown controlling the electricity grid, which allows him to manipulate street lights. This power was used to create a pile-up to entrap a digital artist named Joseph Demarco. Another section of the demo shows him trying to gain access to a building. In order to distract the guard at the door he shuts down communications in that area of the city at which point calls are cut off for NPC's. This causes enough confusion that the guard effectively abandons his post and allows the player into the building.</p><p>At Sony's Playstation Meeting where they revealed the PS4, Ubisoft played through a brief open-world section of the game. \"There is no mission,\" they said, as Aiden walked the streets of Chicago. Most NPCs he encountered had dossiers projected for Aiden to see, revealing a homeless man to be an Iraq War veteran and a suited man to be a Tobacco Executive and Pro Life activist. Using a radial menu Aiden hacks the suited man's bank account and takes out of a nearby ATM.</p><p>Aiden cannot control everything. A security camera run by another entity was marked in red and secure. He can, however, using background histories and probabilities, detect the likelihood of events. Because a woman who had recently won a child custody battle was walking near an alley where her former husband was waiting, a crime probability bar began filling up as she walked toward the ambush. Aiden had the choice to help her and he did, interceding when the man put her at knife point. There is then an optional chase sequence where cops are alerted due to gun fire. In an alley, Aiden takes control of an electrical panel, overheats it, and takes down the man. To escape the cops, he stops an El-Line train and hops aboard.</p><p>As well as Aiden's ability to use technology to hack into systems and manipulate electrical devices, he can also employ many other skills to accomplish his goals. These include sneaking around environments and hiding behind cover, parkour-like actions to quickly traverse the city, and the ability to slow down time.</p><p>At the Sony Press Conference at E3 2013, another gameplay demo showed Pierce navigating an alerted city in order to save his colleague T-Bone from discovery. Pierce drove his car stealthily through the city streets, using the mini-map and environmental awareness to avoid patrolling police vehicles. When spotted by a helicopter search light, however, he drove to a hidden parking garage on Chicago's Lower Wacker Drive, losing the cops and taking the back entrance into a humming coffee shop. However, due to his raised alert status, the TV in the shop projected his image and Pierce had to smash the cell phone of a patron calling 911. This sequence demonstrated the real-world impact of a raised alert, where even after breaking line of sight the player must be cautious as any TV could begin the chase anew.</p><p>Pierce reaches his destination of a nondescript building where he hacks into the security cameras, then into a laptop camera to locate T-Bone, who has found a piece of computer hardware that impresses him. Pierce appears to need line of sight in order to hack and affect the world, but he can gain it through any camera in the world. In this case, he sees a screen array that he can turn on to distract the guard and give T-Bone an exit. Pierce then takes on a squad-command role as he directs T-Bone across a courtyard patrolled by guards, with T-Bone following the player's commands. Pierce can turn the lights on the parked cars on to distract guards as well.</p><p>However, they are discovered as they escape and Pierce kills a private security man before being sighted by a police helicopter.</p><p>The \"second-screen\" functionality was then revealed further as Pierce called for a random mobile user's help. This user, on a tablet, is playing at the CtOS system itself. The user shuts down the helicopter's systems for a second, momentarily disabling it but not destroying it, giving Pierce the time to get away.</p><p>He runs into some cops, though, and must employ more gadgetry. On his smart-phone select screen of abilities, he chooses total blackout, which kills every light in the city. He then uses his unexplained slow motion power to aim and shoot out the cop's knee caps before escaping on a boat down the Chicago river</p><h2>Special Editions</h2><table data-max-width=\"true\"><thead><tr><th scope=\"col\">Edition</th><th scope=\"col\">Image</th></tr></thead><tbody><tr><td><h3>Special_Edition</h3><ul><li>A copy of the game</li><li>Breakthrough Pack DLC</li></ul></td><td><a href=\"https://static.giantbomb.com/uploads/original/19/193764/2500787-4259833808-watch.jpg\" rel=\"nofollow \" data-ref-id=\"1300-2500787\"><img alt=\"\" src=\"http://static.giantbomb.com/uploads/scale_medium/19/193764/2500787-4259833808-watch.jpg\" /></a></td></tr><tr><td><h3>Uplay Exclusive_Edition</h3><ul><li>A copy of the game</li><li>SteelBook</li><li>Breakthrough Pack DLC</li><li>Signature Shot DLC</li><li>Palace Pack DLC</li></ul></td><td><a href=\"https://static.giantbomb.com/uploads/original/19/193764/2500786-9478558074-watch.jpg\" rel=\"nofollow \" data-ref-id=\"1300-2500786\"><img alt=\"\" src=\"http://static.giantbomb.com/uploads/scale_medium/19/193764/2500786-9478558074-watch.jpg\" /></a></td></tr><tr><td><h3>Vigilante_Edition</h3><ul><li>A copy of the game</li><li>Collector's Box</li><li>Soundtrack</li><li>Aiden Pierce's Cap</li><li>Aiden Pierce's Mask</li><li>Palace Pack DLC</li></ul></td><td><p><a href=\"https://static.giantbomb.com/uploads/original/19/193764/2500785-4115421610-watch.jpg\" rel=\"nofollow \" data-ref-id=\"1300-2500785\"><img alt=\"\" src=\"http://static.giantbomb.com/uploads/scale_medium/19/193764/2500785-4115421610-watch.jpg\" /></a></p></td></tr><tr><td><h3>DEDSEC_Edition</h3><ul><li>A copy of the game</li><li>SteelBook</li><li>Collector's Box</li><li>Soundtrack</li><li>Artbook</li><li>Map of Chicago</li><li>3 Badges</li><li>4 AR Cards</li><li>Aiden Pierce Statue</li><li>Breakthrough Pack DLC</li><li>Signature Shot DLC</li><li>Palace Pack DLC</li></ul></td><td><p><a href=\"https://static.giantbomb.com/uploads/original/19/193764/2500782-3029483424-watch.jpg\" rel=\"nofollow \" data-ref-id=\"1300-2500782\"><img alt=\"\" src=\"http://static.giantbomb.com/uploads/scale_medium/19/193764/2500782-3029483424-watch.jpg\" /></a></p></td></tr><tr><td><h3>Limited Edition</h3><ul><li>A copy of the game</li><li>Aiden Pierce Statue</li><li>SteelBook</li><li>Collector's Box</li><li>Aiden Pierce's Mask</li><li>Artbook</li><li>Soundtrack</li></ul></td><td><p><a href=\"https://static.giantbomb.com/uploads/original/0/9493/2517007-watch-dogs_limited-edition_bundle-small.jpg\" rel=\"nofollow \" data-ref-id=\"1300-2517007\"><img alt=\"\" src=\"http://static.giantbomb.com/uploads/scale_medium/0/9493/2517007-watch-dogs_limited-edition_bundle-small.jpg\" /></a></p></td></tr><tr><td><h3>ANZ_SPECIAL_EDITION</h3><ul><li>A copy of the game</li><li>Breakthrough Pack DLC</li><li>Untouchables Pack DLC</li><li>DedSec Shadow DLC</li><li>Club Justice DLC</li></ul></td><td><a href=\"https://static.giantbomb.com/uploads/original/22/223122/2640288-5151491092-16270.jpg\" rel=\"nofollow \"><img alt=\"\" src=\"http://www.giantbomb.com/api/image/scale_medium/2640288-5151491092-16270.jpg\" /></a></td></tr></tbody></table><h2>PC System Requirements</h2><h3>Base</h3><ul><li><strong>Operating System:</strong> Windows Vista (SP2), Windows 7 (SP1) or Windows 8 <ul><li>64 bit OSs only.</li></ul></li><li><strong>DVD-ROM:</strong> DVD-ROM Dual Layer</li><li><strong>Hard Drive Space:</strong> 20 GB</li><li><strong>Sound:</strong> DirectX 9.0c compatible sound card with latest drivers</li><li><strong>Internet:</strong> Broadband connection and service required for multiplayer mode</li></ul><h3>Minimum</h3><ul><li><strong>GPU:</strong> DirectX 11 graphics card with 1 GB Video RAM</li><li><strong>CPU:</strong> Quad core</li><li><strong>RAM:</strong> 4GB</li></ul><h4>Example 1</h4><ul><li><strong>GPU:</strong> NVidia GTX 460</li><li><strong>CPU:</strong> Intel Core2 Quad Q6600</li></ul><h4>Example 2</h4><ul><li><strong>GPU:</strong> AMD Radeon HD 5770</li><li><strong>CPU:</strong> AMD Phenom X4 9750</li></ul><h3>Recommended</h3><ul><li><strong>GPU:</strong> DirectX 11 graphics card with 2 GB Video RAM</li><li><strong>CPU:</strong> Eight core</li><li><strong>RAM:</strong> 8GB</li></ul><h4>Example 1</h4><ul><li><strong>GPU:</strong> NVidia GTX 760</li><li><strong>CPU:</strong> Intel Core i7-3770</li></ul><h4>Example 2</h4><ul><li><strong>GPU: </strong>AMD Radeon R9 270X</li><li><strong>CPU:</strong> AMD FX-8350 Eight-Core</li></ul><h3>Ultra</h3><ul><li><strong>GPU:</strong> Latest DirectX 11 graphics card with 3 GB Video RAM or more</li><li><strong>CPU:</strong> Latest Eight core or more</li><li><strong>RAM:</strong> 8GB or more</li></ul><h4>Example 1</h4><ul><li><strong>GPU:</strong> Nvidia GTX 780 Ti</li><li><strong>CPU:</strong> Intel Core i7-3930K</li></ul><h4>Example 2</h4><ul><li><strong>GPU:</strong> AMD Radeon R9 290X</li><li><strong>CPU:</strong> AMD FX-9370 Eight-Core</li></ul>",
+     {
+        "aliases": "FH5",
+        "api_detail_url": "https://www.giantbomb.com/api/game/3030-82985/",
+        "date_added": "2021-06-13 11:09:08",
+        "date_last_updated": "2021-12-19 15:49:21",
+        "deck": "The series' fifth entry brings players to the streets and wilderness of Mexico.",
+        "description": "<h2>Overview</h2><figure data-align=\"right\" data-size=\"small\" data-img-src=\"https://www.giantbomb.com/a/uploads/original/0/8273/3328760-1.jpg\" data-ref-id=\"1300-3328760\" data-ratio=\"0.66701030927835\" data-width=\"970\" data-embed-type=\"image\" style=\"width: 970px\"><a class=\"fluid-height\" style=\"padding-bottom:66.7%\" href=\"https://www.giantbomb.com/a/uploads/original/0/8273/3328760-1.jpg\" data-ref-id=\"1300-3328760\"><img alt=\"No Caption Provided\" src=\"https://www.giantbomb.com/a/uploads/scale_small/0/8273/3328760-1.jpg\" srcset=\"https://www.giantbomb.com/a/uploads/original/0/8273/3328760-1.jpg 970w, https://www.giantbomb.com/a/uploads/scale_super/0/8273/3328760-1.jpg 960w, https://www.giantbomb.com/a/uploads/scale_medium/0/8273/3328760-1.jpg 480w, https://www.giantbomb.com/a/uploads/scale_small/0/8273/3328760-1.jpg 320w\" sizes=\"(max-width: 320px) 100vw, 320px\" data-width=\"320\"></a></figure><p>Forza Horizon 5 is an open world racing game developed by <a href=\"/playground-games/3010-7899/\" data-ref-id=\"3010-7899\">Playground Games</a> and published by <a href=\"/xbox-game-studios/3010-340/\" data-ref-id=\"3010-340\">Microsoft Game Studios</a> for <a href=\"/pc/3045-94/\" data-ref-id=\"3045-94\">PC</a>, <a href=\"/xbox-one/3045-145/\" data-ref-id=\"3045-145\">Xbox One</a>, and <a href=\"/xbox-series-xs/3045-179/\" data-ref-id=\"3045-179\">Xbox Series S/X</a>.</p><h2>System Requirements</h2><table data-max-width=\"true\"><thead><tr><th scope=\"col\">Minimum</th><th scope=\"col\">Recommended</th></tr></thead><tbody><tr><td><strong>OS:</strong> Windows 10 version 18362.0 or higher</td><td><strong>OS:</strong> Windows 10 version 18362.0 or higher</td></tr><tr><td><strong>Architecture:</strong> x64</td><td><strong>Architecture:</strong> x64</td></tr><tr><td><strong>Memory:</strong> 8 GB</td><td><strong>Memory:</strong> Not Specified</td></tr><tr><td><strong>Video Memory:</strong> 2 GB</td><td><strong>Video Memory:</strong> Not Specified</td></tr><tr><td><strong>Processor:</strong> i3-4170 @ 3.7Ghz or i5-750 @ 2.67Ghz or AMD FX-6300</td><td><strong>Processor:</strong> Not Specified</td></tr><tr><td><strong>Graphics:</strong> NVidia GTX 760 or AMD RX 460</td><td><strong>Graphics:</strong> Not Specified</td></tr><tr><td><strong>Free disk size:</strong> Approximate 80 GB</td><td><strong>Free disk size:</strong> Not Specified</td></tr></tbody></table>",
         "expected_release_day": null,
         "expected_release_month": null,
         "expected_release_quarter": null,
         "expected_release_year": null,
-        "guid": "3030-38538",
-        "id": 38538,
+        "guid": "3030-82985",
+        "id": 82985,
         "image": {
-            "icon_url": "https://www.giantbomb.com/a/uploads/square_avatar/8/82063/2557095-wdclean.jpg",
-            "image_tags": "All Images,Box Art",
-            "medium_url": "https://www.giantbomb.com/a/uploads/scale_medium/8/82063/2557095-wdclean.jpg",
-            "original_url": "https://www.giantbomb.com/a/uploads/original/8/82063/2557095-wdclean.jpg",
-            "screen_large_url": "https://www.giantbomb.com/a/uploads/screen_kubrick/8/82063/2557095-wdclean.jpg",
-            "screen_url": "https://www.giantbomb.com/a/uploads/screen_medium/8/82063/2557095-wdclean.jpg",
-            "small_url": "https://www.giantbomb.com/a/uploads/scale_small/8/82063/2557095-wdclean.jpg",
-            "super_url": "https://www.giantbomb.com/a/uploads/scale_large/8/82063/2557095-wdclean.jpg",
-            "thumb_url": "https://www.giantbomb.com/a/uploads/scale_avatar/8/82063/2557095-wdclean.jpg",
-            "tiny_url": "https://www.giantbomb.com/a/uploads/square_mini/8/82063/2557095-wdclean.jpg"
+            "icon_url": "https://www.giantbomb.com/a/uploads/square_avatar/0/1992/3326454-screenshot2021-11-07at6.45.30pm.png",
+            "image_tags": "All Images",
+            "medium_url": "https://www.giantbomb.com/a/uploads/scale_medium/0/1992/3326454-screenshot2021-11-07at6.45.30pm.png",
+            "original_url": "https://www.giantbomb.com/a/uploads/original/0/1992/3326454-screenshot2021-11-07at6.45.30pm.png",
+            "screen_large_url": "https://www.giantbomb.com/a/uploads/screen_kubrick/0/1992/3326454-screenshot2021-11-07at6.45.30pm.png",
+            "screen_url": "https://www.giantbomb.com/a/uploads/screen_medium/0/1992/3326454-screenshot2021-11-07at6.45.30pm.png",
+            "small_url": "https://www.giantbomb.com/a/uploads/scale_small/0/1992/3326454-screenshot2021-11-07at6.45.30pm.png",
+            "super_url": "https://www.giantbomb.com/a/uploads/scale_large/0/1992/3326454-screenshot2021-11-07at6.45.30pm.png",
+            "thumb_url": "https://www.giantbomb.com/a/uploads/scale_avatar/0/1992/3326454-screenshot2021-11-07at6.45.30pm.png",
+            "tiny_url": "https://www.giantbomb.com/a/uploads/square_mini/0/1992/3326454-screenshot2021-11-07at6.45.30pm.png"
         },
         "image_tags": [
             {
-                "api_detail_url": "https://www.giantbomb.com/api/images/3030-38538/?filter=image_tag:All%20Images",
+                "api_detail_url": "https://www.giantbomb.com/api/images/3030-82985/?filter=image_tag:All%20Images",
                 "name": "All Images",
-                "total": 110
+                "total": 16
             },
             {
-                "api_detail_url": "https://www.giantbomb.com/api/images/3030-38538/?filter=image_tag:Box%20Art",
-                "name": "Box Art",
-                "total": 6
+                "api_detail_url": "https://www.giantbomb.com/api/images/3030-82985/?filter=image_tag:E3%202021%20trailer",
+                "name": "E3 2021 trailer",
+                "total": 5
             },
             {
-                "api_detail_url": "https://www.giantbomb.com/api/images/3030-38538/?filter=image_tag:Logo",
-                "name": "Logo",
-                "total": 1
-            },
-            {
-                "api_detail_url": "https://www.giantbomb.com/api/images/3030-38538/?filter=image_tag:PAX%20East%202013",
-                "name": "PAX East 2013",
-                "total": 4
-            },
-            {
-                "api_detail_url": "https://www.giantbomb.com/api/images/3030-38538/?filter=image_tag:PAX%20East%202014",
-                "name": "PAX East 2014",
-                "total": 2
-            },
-            {
-                "api_detail_url": "https://www.giantbomb.com/api/images/3030-38538/?filter=image_tag:PAX%20Prime%202013",
-                "name": "PAX Prime 2013",
-                "total": 2
-            },
-            {
-                "api_detail_url": "https://www.giantbomb.com/api/images/3030-38538/?filter=image_tag:PS4%20Screenshots",
-                "name": "PS4 Screenshots",
-                "total": 38
-            },
-            {
-                "api_detail_url": "https://www.giantbomb.com/api/images/3030-38538/?filter=image_tag:Screenshots",
+                "api_detail_url": "https://www.giantbomb.com/api/images/3030-82985/?filter=image_tag:Screenshots",
                 "name": "Screenshots",
-                "total": 63
+                "total": 8
             },
             {
-                "api_detail_url": "https://www.giantbomb.com/api/images/3030-38538/?filter=image_tag:Wii%20U%20Screenshots",
-                "name": "Wii U Screenshots",
-                "total": 20
+                "api_detail_url": "https://www.giantbomb.com/api/images/3030-82985/?filter=image_tag:XSX%20Screenshots",
+                "name": "XSX Screenshots",
+                "total": 8
             }
         ],
-        "name": "Watch Dogs",
+        "name": "Forza Horizon 5",
         "number_of_user_reviews": 0,
-        "original_game_rating": [
-            {
-                "api_detail_url": "https://www.giantbomb.com/api/game_rating/3065-16/",
-                "id": 16,
-                "name": "ESRB: M"
-            },
-            {
-                "api_detail_url": "https://www.giantbomb.com/api/game_rating/3065-39/",
-                "id": 39,
-                "name": "OFLC: R18+"
-            },
-            {
-                "api_detail_url": "https://www.giantbomb.com/api/game_rating/3065-37/",
-                "id": 37,
-                "name": "PEGI: 18+"
-            },
-            {
-                "api_detail_url": "https://www.giantbomb.com/api/game_rating/3065-34/",
-                "id": 34,
-                "name": "CERO: Z"
-            }
-        ],
-        "original_release_date": "2014-05-27",
+        "original_game_rating": null,
+        "original_release_date": "2021-11-09",
         "platforms": [
-            {
-                "abbreviation": "X360",
-                "api_detail_url": "https://www.giantbomb.com/api/platform/3045-20/",
-                "id": 20,
-                "name": "Xbox 360",
-                "site_detail_url": "https://www.giantbomb.com/xbox-360/3045-20/"
-            },
-            {
-                "abbreviation": "PS3",
-                "api_detail_url": "https://www.giantbomb.com/api/platform/3045-35/",
-                "id": 35,
-                "name": "PlayStation 3",
-                "site_detail_url": "https://www.giantbomb.com/playstation-3/3045-35/"
-            },
-            {
-                "abbreviation": "PS3N",
-                "api_detail_url": "https://www.giantbomb.com/api/platform/3045-88/",
-                "id": 88,
-                "name": "PlayStation Network (PS3)",
-                "site_detail_url": "https://www.giantbomb.com/playstation-network-ps3/3045-88/"
-            },
             {
                 "abbreviation": "PC",
                 "api_detail_url": "https://www.giantbomb.com/api/platform/3045-94/",
                 "id": 94,
                 "name": "PC",
                 "site_detail_url": "https://www.giantbomb.com/pc/3045-94/"
-            },
-            {
-                "abbreviation": "WiiU",
-                "api_detail_url": "https://www.giantbomb.com/api/platform/3045-139/",
-                "id": 139,
-                "name": "Wii U",
-                "site_detail_url": "https://www.giantbomb.com/wii-u/3045-139/"
             },
             {
                 "abbreviation": "XONE",
@@ -940,22 +866,14 @@
                 "site_detail_url": "https://www.giantbomb.com/xbox-one/3045-145/"
             },
             {
-                "abbreviation": "PS4",
-                "api_detail_url": "https://www.giantbomb.com/api/platform/3045-146/",
-                "id": 146,
-                "name": "PlayStation 4",
-                "site_detail_url": "https://www.giantbomb.com/playstation-4/3045-146/"
-            },
-            {
-                "abbreviation": "LUNA",
-                "api_detail_url": "https://www.giantbomb.com/api/platform/3045-199/",
-                "id": 199,
-                "name": "Amazon Luna",
-                "site_detail_url": "https://www.giantbomb.com/amazon-luna/3045-199/"
+                "abbreviation": "XSX",
+                "api_detail_url": "https://www.giantbomb.com/api/platform/3045-179/",
+                "id": 179,
+                "name": "Xbox Series X|S",
+                "site_detail_url": "https://www.giantbomb.com/xbox-series-xs/3045-179/"
             }
         ],
-        "resource_type": "game",
-        "site_detail_url": "https://www.giantbomb.com/watch-dogs/3030-38538/"
+        "site_detail_url": "https://www.giantbomb.com/forza-horizon-5/3030-82985/"
     }
-]
+ ]
 }
