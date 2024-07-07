@@ -4,7 +4,7 @@
   </a>
   <h1 align="center">Project GLD</h1>
   <p>
-    Project GLD is a game library and launcher that offers Lua script compatibility for searching and downloading games.
+    Project GLD is a game library and launcher that offers Lua script compatibility for finding and downloading games.
   </p>
 <br/>
 <a href=https://github.com/Y0URD34TH/Project-GLD/releases/latest/download/GLDSetup.exe>
@@ -19,9 +19,19 @@
 
 ## Table of Content
 
-* [About the Project](#about-the-project)
+* [Features](#features)
+  * [Game Library](#-game-library)
+  * [Game Search](#-game-search)
+  * [Game Download](#-game-download)
+  * [Torrent Client](#-torrent-client)
+  * [Lua Scripts](#-lua-scripts)
+  * [Browser](#-browser)
+  * [Customization](#%EF%B8%8F-customization)
+  * [Console](#-console)
+  * [Account System](#-account-system)
 * [Project Showcase](#project-showcase)
 * [Getting Started](#getting-started)
+  * [Scripts](#currently-available-scripts)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
 * [Known Bugs](#known-bugs)
@@ -30,54 +40,84 @@
 * [Authors](#authors)
 * [Acknowledgements](#acknowledgements)
 
-## About The Project
+## Features
 
+Project GLD offers a variety of features to explore and utilize for your use case.
 
-Project GLD allows you to easily search for, download, and manage games. One of its core features is the native support for community-made scripts written in Lua, allowing you to easily create and implement your own scripts to increase the functionality of the app.
-It's also worth noting that while the scripts are based on Lua, the program itself is developed in C++, making it very light and fast.
+### [📁] Game Library
+* Playtime tracking and sorting based on playtime, last played, favorites, ID, or alphabetically
+* Joystick configuration
+* Command line arguments
 
-You may create and use any scripts at your own risk. We do not take the responsibility for potential consequences or the content obtained through the utilization of community-generated scripts!
+### **[🔎] Game Search**
+* Discover new games
+* View game's images/trailers/videos
+* View game's platforms, rating, min and max requirements
 
-The project is currently in beta and supports torrents, magnet links, and regular downloads.
-It's completely free.
+### **[🎮] Game Download**
+* Download a game from any source via Lua scripts
+* Built-in download manager and Real-Debrid support
+* Start multiple downloads at the same time
 
-Any contribution to the code or design of the app is very welcome! If you wish to help out, you may do so by creating a fork of this repository and submitting a Pull Request with the changes you've made. However, we'd recommend first joining our [Discord server](https://discord.gg/FyH6Z34vcZ) to discuss the features you wish to work on and implement with the other developers.
+### **[🧲] Torrent Client**
+* Minimalist built-in torrent client based on Libtorrent
+* VPN bind/killswitch available
+* Download confirmation on torrents (optional)
+
+### **[🌙] Lua Scripts**
+* Built-in Lua code editor with tabs and themes
+* Easily create a script for any source you'd like with our **[Lua API](https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.md)**
+* Customizable Lua settings and permissions
+
+### **[🌐] Browser**
+* Built-in lightweight browser with ad, popup, and redirect blockers
+* CF and Byet bypass
+
+### **[🖼️] Customization**
+* Built-in theme editor and fully customizable UI
+* You can change the language of the app or make your own translation for it
+
+### **[💻] Console**
+* Interact with GLD via CLI instead of the GUI
+* Extract games via the console
+
+### **[👥] Account System**
+* Save your library and settings
+* Follow your friends and see what they're playing
 
 ## Project Showcase
 
-
-
-
-
 https://github.com/Y0URD34TH/Project-GLD/assets/58450502/9872093e-63cd-4892-9b7d-e538771b287f
-
-
-
-
 
 ## Getting Started
 
 To install scripts, simply place the .lua script file in the "Documents/Project-GLD/Scripts" directory, or use the program's script installer.
+
 To backup your game library and favorites list go to "Documents/Project-GLD/GameList".
+
 Settings are saved in the "Documents/Project-GLD/Configs" folder.
 
-Here are a few examples of functional scripts:
+### Currently available scripts:
 
-* [GameBounty.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/gamebounty.lua)
-* [Dodi (Beta).lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/dodi-repacks(beta).lua)
-* [Rezi.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Rezi.lua)
-* [FitGirl.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/fitgirl.lua)
-* [ElAmigos-games.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/elamigos-games.lua)
-* [Onlinefix.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/onlinefix.lua)
-* [Prowlarr.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/prowlarr.lua)
-* [Steamrip.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/steamrip.lua)
-* [Gamedrive.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/gamedrive.lua)
-* [Gog-games.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/gog-games.lua)
-* [G4U.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/g4u.lua)
-* [1337x.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/1337x.lua) - **⚠️ ONLY DOWNLOAD FROM TRUSTED UPLOADERS!!!**
-* [img&vids.lua](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/img&vids.lua)
-* [1click](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/1click.lua)
-* [Steam](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Steam.lua)
+⭐ **Recommended:**
+- [**FitGirl**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/fitgirl.lua) [🧲] [📥]
+- [**1click**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/1click.lua) [📥]
+- [**Steamrip**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/steamrip.lua) [📥]
+- [**Rezi**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Rezi.lua) [📥]
+
+**Preinstalled:**
+- [**Images and Videos**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/0-img%26vids.lua) [🎬]
+- [**Prowlarr**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/prowlarr.lua) [🧲]
+- **[Steam](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Steam.lua)** [📥]
+
+**Other:**
+- [**GameBounty**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/gamebounty.lua) [📥]
+- [**Dodi (Beta)**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/dodi-repacks(beta).lua) [🧲] [📥]
+- [**Elamigos**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/elamigos-games.lua) [📥]
+- [**G4U**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/g4u.lua) [📥]
+- [**Gamedrive**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/gamedrive.lua) [📥]
+- [**Online fix**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/onlinefix.lua) [📥]
+- [**1337x**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/1337x.lua) **[🧲] [⚠️] ONLY DOWNLOAD FROM TRUSTED UPLOADERS!!!**
 
 For instructions on how to use Lua for making scripts, please refer to [this guide](https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.md).
 
