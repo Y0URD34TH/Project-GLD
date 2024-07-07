@@ -2,10 +2,10 @@
 
 ### Guidelines / Tips for adding translations
 
--   Only add translations for things you are 100% sure about. You don't have to translate everything, partially translating files is fine as well.
--   Quality > quantity.
--   If you are unsure about a translation, leave it blank. It is better to have a blank translation than a wrong one.
+-   Quality > quantity. If you are unsure about a translation, leave it blank. It is better to have a blank translation than a wrong one.
 -   It's always better to translate strings on a way that sounds more natural / makes more sense to a native speaker, even if you'd use completely different words or phrases to accomplish it. Translations don't have to be 100% literal.
+-   Do not change / translate any strings that have **%** or **##** in front of them, e.g. "**%f**", **"##popup"**.
+-   If your translation is a lot longer than the initial string, please use \n to add a new line to ensure the entire translation will be visible.
 -   Feel free to join our **[Discord](https://discord.gg/FyH6Z34vcZ)** if you have any questions!
 
 ## How to Translate
