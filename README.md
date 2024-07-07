@@ -100,23 +100,30 @@ Settings are saved in the "Documents/Project-GLD/Configs" folder.
 ### Currently available scripts:
 
 ⭐ **Recommended:**
-- [**FitGirl**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/fitgirl.lua) [🧲] [📥]
+- **[FitGirl](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/FitGirl.lua) / [2](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/FitGirl_2%20(Torrent).lua)** [🧲] [📥]
 - [**1click**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/1click.lua) [📥]
-- [**Steamrip**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/steamrip.lua) [📥]
+- [**Steamrip**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Steamrip.lua) [📥]
 - [**Rezi**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Rezi.lua) [📥]
 
 **Preinstalled:**
-- [**Images and Videos**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/0-img%26vids.lua) [🎬]
-- [**Prowlarr**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/prowlarr.lua) [🧲]
+- [**Images and Videos**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Images&Videos.lua) [🎬]
+- [**Prowlarr**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Prowlarr.lua) [🧲]
 - **[Steam](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Steam.lua)** [📥]
+- **[Hydra_Sources](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Hydra_Sources.lua)** [🧲]
 
 **Other:**
-- [**GameBounty**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/gamebounty.lua) [📥]
-- [**Dodi (Beta)**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/dodi-repacks(beta).lua) [🧲] [📥]
-- [**Elamigos**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/elamigos-games.lua) [📥]
-- [**G4U**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/g4u.lua) [📥]
-- [**Gamedrive**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/gamedrive.lua) [📥]
-- [**Online fix**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/onlinefix.lua) [📥]
+- **[Dodi DDL](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Dodi-repacks%20(DDL).lua) / [Torrent](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Dodi-repacks%20(Torrent).lua)** [🧲] [📥]
+- **[GOG-games DDL](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/GOG-games%20(DDL).lua ) / [Torrent](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/GOG-games%20(Torrent).lua)** [🧲] [📥]
+- [**G4U**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/G4U.lua) [📥]
+- [**Elamigos**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Elamigos-games.lua) [📥]
+- [**Online fix**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Online-Fix.lua) [🧲]
+- **[Xatab](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Xatab.lua)** [🧲]
+- **[Tiny-repacks](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Tiny-repacks.lua)** [🧲]
+- **[Steam Amiga](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Steam-Amiga.lua)** [🧲]
+- **[KaOsKrew](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/KaOsKrew.lua)** [🧲]
+- **[Empress](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Empress.lua)** [🧲]
+- [**GameBounty**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/GameBounty.lua) [📥]
+- [**Gamedrive**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Gamedrive.lua) [📥]
 - [**1337x**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/1337x.lua) **[🧲] [⚠️] ONLY DOWNLOAD FROM TRUSTED UPLOADERS!!!**
 
 For instructions on how to use Lua for making scripts, please refer to [this guide](https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.md).
