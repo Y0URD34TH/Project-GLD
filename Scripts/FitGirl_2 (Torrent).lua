@@ -37,11 +37,11 @@ local function search_game(downloads, game_name, name_script)
       local patchresult = {
             name = "[" .. download.fileSize .. "] " .. download.title,
             links = {},
-            tooltip = "Size: " .. download.fileSize .. " | Upload Date: " .. download.uploadDate,
+            tooltip = "Size: " .. download.fileSize .. " | Upload date: " .. download.uploadDate,
             ScriptName = name_script
         }
       for index, uri in ipairs(download.uris) do
-            table.insert(patchresult.links, { name = "Download Option " .. tostring(index), link = uri, addtodownloadlist = true })       
+            table.insert(patchresult.links, { name = "Download option " .. tostring(index), link = uri, addtodownloadlist = true })       
       end
       table.insert(results, patchresult)
     end
@@ -50,7 +50,7 @@ local function search_game(downloads, game_name, name_script)
 end
 
 if version < 2.14 then
-   Notifications.push_error("Lua Script", "Program is Outdated Please Update to use that Script")
+   Notifications.push_error("Lua Script", "Program is outdated. Please update it to use the script!")
 else
 local statebool = false
 
