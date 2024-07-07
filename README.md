@@ -105,13 +105,13 @@ Settings are saved in the "Documents/Project-GLD/Configs" folder.
 - [**Steamrip**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Steamrip.lua) [📥]
 - [**Rezi**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Rezi.lua) [📥]
 
-**Preinstalled:**
+✅ **Preinstalled:**
 - [**Images and Videos**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Images&Videos.lua) [🎬]
 - [**Prowlarr**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Prowlarr.lua) [🧲]
 - **[Steam](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Steam.lua)** [📥]
 - **[Hydra_Sources](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Hydra_Sources.lua)** [🧲]
 
-**Other:**
+🗂️ **Other:**
 - **[Dodi DDL](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Dodi-repacks%20(DDL).lua) / [Torrent](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Dodi-repacks%20(Torrent).lua)** [🧲] [📥]
 - **[GOG-games DDL](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/GOG-games%20(DDL).lua ) / [Torrent](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/GOG-games%20(Torrent).lua)** [🧲] [📥]
 - [**G4U**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/G4U.lua) [📥]
