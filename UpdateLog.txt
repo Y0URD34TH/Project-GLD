@@ -1,10 +1,22 @@
-V3.99
+V4.00
 
-Added tabs to the code editor and improved its performance and themes. You can now edit multiple scripts at once!
-Centered window position
-Made English, French, Russian, Portuguese (Brazilian), and Bosnian the default languages (they come preinstalled)
-Added the Neon Rider theme
-Fixed folder opening bugs
+Implemented Real-Debrid support and fixed bugs related to it
+Completely redesigned left child to make it less bloated and fixed the GLD logo
+Removed useless/broken filters from the Search tab and made small UI/UX adjustments
+Fixed a lot of Lua issues/crashes and made it significantly more thread safe
+Added Hydra sources support that allows you to instantly generate a Lua script for any Hydra source
+Added scripts for A LOT of new sources (thanks to Hydra) and improved/fixed all old scripts
+Fixed the search bug with 2 scripts having the same name (took 5k lines to fix)
+Fixed account log in/out issues and redesigned the avatars to display a spinner while loading
+Added a bunch of .json sanity checks to prevent translation/theme related crashes
+Fixed issues with window positioning and made it so GLD launches in the center
+Added a button to delete themes inside GLD
+Made it possible to rename, load, unload, and edit scripts by right clicking on them
+Fixed a lot of code editor fuckery which would result in concurrent access leading to a crash
+Added new strings to the translations and improved some of them
+Added new Lua API params and improved some existing ones
+Fixed all font related issues
+Fixed bugs related to having multiple games with the same name
 
 (gld may freeze while auto updating and its normal!!!)
 (gld pode congelar ao se auto atualizar, isso é normal!!!)
