@@ -1,17 +1,19 @@
 local function extractGameName(url)
-    local start_index, end_index = url:find("/%d+%-([%a%-]+)%-")
-    if start_index then
-        return url:sub(start_index + 1, end_index - 1)
+    -- Attempt to find the game name in the pattern "/%d+%-([%a%d%-]+)%-"
+    local start_index, end_index, game_name = url:find("/%d+%-([%a%d%-]+)%-")
+    if game_name and game_name ~= "" then
+        return game_name
     else
-        -- If the URL doesn't match the pattern, try to extract the game name directly
-        local start_index, end_index = url:find("/([%a%-]+)/?$") -- Also consider a possible trailing slash
-        if start_index then
-            return url:sub(start_index + 1, end_index)
+        -- If the URL doesn't match the first pattern, try to extract the game name directly
+        start_index, end_index, game_name = url:find("/([%a%d%-]+)/?$") -- Also consider a possible trailing slash
+        if game_name and game_name ~= "" then
+            return game_name
         else
             return nil
         end
     end
 end
+
 function remove_duplicates(urls)
    local unique_urls = {}
     for _, url in ipairs(urls) do
@@ -40,22 +42,9 @@ function extractDownloadLinks(html)
     return links
 end
 
-local cfcookies = ""
-
 local headers = {
+  ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 }
-
-local function cfcallback(cookie, url)
-if url == "https://dodi-repacks.site/" then
-cfcookies = cookie
-local cfclearence = "cf_clearance=" .. tostring(cfcookies)
-headers = {
-    ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 ProjectGLD/2.15",
-    ["Cookie"] = cfclearence
-}
-communication.RefreshScriptResults()
-end
-end
 
 local function webScrapedodi(gameName)
     local searchUrl = "https://dodi-repacks.site/?s=" .. gameName
@@ -73,7 +62,7 @@ local function webScrapedodi(gameName)
     for i = 1, #gameLinks do
         local gameResponseBody = http.get(gameLinks[i], headers)
 
-        if gameResponseBody then
+        if gameResponseBody and extractGameName(gameLinks[i]) ~= "" then
                 local gameResult = {
                     name = extractGameName(gameLinks[i]),
                     links = {},
@@ -98,16 +87,11 @@ local version = client.GetVersionDouble()
 if version < 2.14 then
     Notifications.push_error("Lua Script", "Program is outdated. Please update the app to use this script!")
 else
-    Notifications.push_success("Lua Script", "dodi-repacks script is loaded and working!")
+    Notifications.push_success("Lua Script", "Dodi-repacks script is loaded and working!")
 local function dodirepacks()
-  if cfcookies == nil or cfcookies == "" then
-        http.CloudFlareSolver("https://dodi-repacks.site/")
-   else
         local gamename = game.getgamename()  
         local results = webScrapedodi(gamename)
         communication.receiveSearchResults(results)
 end
-end
 client.add_callback("on_scriptselected", dodirepacks)
-client.add_callback("on_cfdone", cfcallback)
 end
