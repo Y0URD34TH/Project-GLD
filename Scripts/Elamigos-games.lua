@@ -71,7 +71,7 @@ if version < 2.14 then
 	   client.unload_script("Elamigos-games.lua")
 	   client.load_script("Elamigos-games.lua")
     end
-	client.add_callback("on_button_Update elamigos-games", updatebutton)
+	client.add_callback("on_button_Update Elamigos-games", updatebutton)
 	end
 else
     Notifications.push_success("Lua Script", "Elamigos-games script is loaded and working!")
