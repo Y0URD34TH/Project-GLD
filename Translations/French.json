@@ -1,4 +1,4 @@
-﻿{
+{
   "  Scripts Installer": "Installateur de scripts",
   " Return": "Retour",
   "%6d/%-6d %6d lines  | %s | %s | %s | %s": "%6d/%-6d %6d lignes  | %s | %s | %s | %s",
@@ -351,5 +351,18 @@
   "Exit": "Sortie",
   "Open": "Ouvrir",
   "Close All Scripts": "Fermer tous les scripts",
-  "Save and Close": "Enregistrer et fermer"
+  "Save and Close": "Enregistrer et fermer",
+  "Browser": "Navigateur",
+"Use Real-Debrid to download torrent":"Utilisez Real-Debrid pour télécharger torrent",
+"Real-Debrid API TOKEN":"Jeton API Real-Debrid",
+"It use Real-Debrid Service to download the torrent files":"Il utilise le service Real-Debrid pour télécharger tous les fichiers torrent.",
+"Rename":"Renommer",
+"Home":"Page d'accueil",
+"Rename Script Popup":"Script de renommage popup",
+"Delete Theme":"Supprimer le thème",
+"Edit" :"Éditer",
+"Source Link":"Lien source",
+"Link of the Source (compatilbe with hydra Sources) to be added":"Lien de la source (compatible avec les sources Hydra) à ajouter",
+"Add source":"Ajouter une source",
+"Create an Script for the source link specified\nFormat needs to be the same as hydra ones and must be json!":"Créez un script pour le lien source spécifié.\nLe format doit être .json et le même que celui d'Hydra !"
 }
