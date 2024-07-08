@@ -7,6 +7,21 @@ local scriptsfolder = client.GetScriptsPath()
 local updtheaders = {
     ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 }
+local function extractGameName(url)
+    -- Attempt to find the game name in the pattern "/%d+%-([%a%d%-]+)%-"
+    local start_index, end_index, game_name = url:find("/%d+%-([%a%d%-]+)%-")
+    if game_name and game_name ~= "" then
+        return game_name
+    else
+        -- If the URL doesn't match the first pattern, try to extract the game name directly
+        start_index, end_index, game_name = url:find("/([%a%d%-]+)/?$") -- Also consider a possible trailing slash
+        if game_name and game_name ~= "" then
+            return game_name
+        else
+            return nil
+        end
+    end
+end
 
 local version = "1.02"
 local githubversion = http.get("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/G4U.lua", updtheaders)
@@ -79,7 +94,7 @@ local function filterCompleteAndRemoveDuplicates(links)
 end
 local function webScrapeg4u(gameName)
     local searchUrl = "https://g4u.to/en/search/?str=" .. gameName
-    searchUrl = searchUrl:gsub(" ", "%%20")
+    searchUrl = searchUrl:gsub(" ", "+")
     local gamenamemod = gameName
     gamenamemod = gamenamemod:gsub(" ", "-")
     gamenamemod = gamenamemod:gsub(":", "")
@@ -90,14 +105,12 @@ local function webScrapeg4u(gameName)
     }
 
     local responseBody = http.get(searchUrl, headers)
-cout(gamenamemod)
     local gameLinks = {}
     
     local gameResultsL = filterLinksByGameName(filterLinks(HtmlWrapper.findAttribute(responseBody, "a", "", "", "href")), gamenamemod)
     local gameResults = {}
 
     for _, link in ipairs(gameResultsL) do
-cout(link)
         table.insert(gameLinks, "https://g4u.to" .. link)
     end
 
