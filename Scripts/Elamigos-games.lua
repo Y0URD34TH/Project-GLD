@@ -33,7 +33,7 @@ local function webScrapeElAmigosGames(gameName)
                 local gameResult = {
                     name = gameNames[i],
                     links = {},
-                    ScriptName = "elamigos-games"
+                    ScriptName = "Elamigos-games"
                 }
 
                 for serverLink, serverName in downloadServersSection:gmatch('<a href="(.-)".->(.-)</a>') do
@@ -52,7 +52,7 @@ local function webScrapeElAmigosGames(gameName)
     return gameResults
 end
 local version = "1.12"
-local githubversion = http.get("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/elamigos-games.lua", headers)
+local githubversion = http.get("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/Elamigos-games.lua", headers)
 local outdated = false
 if checkVersion(githubversion, version) then
 outdated = false
@@ -65,22 +65,22 @@ local version = client.GetVersionDouble()
 if version < 2.14 then
     Notifications.push_error("Lua Script", "Program is outdated. Please update the app to use this script!")
 	if outdated then 
-	menu.add_button("Update elamigos-games")
+	menu.add_button("Update Elamigos-games")
     local function updatebutton()
-       Download.DirectDownload("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/elamigos-games.lua", scriptsfolder .. "elamigos-games.lua")
-	   client.unload_script("elamigos-games.lua")
-	   client.load_script("elamigos-games.lua")
+       Download.DirectDownload("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/Elamigos-games.lua", scriptsfolder .. "Elamigos-games.lua")
+	   client.unload_script("Elamigos-games.lua")
+	   client.load_script("Elamigos-games.lua")
     end
 	client.add_callback("on_button_Update elamigos-games", updatebutton)
 	end
 else
-    Notifications.push_success("Lua Script", "elamigos-games script is loaded and working!")
+    Notifications.push_success("Lua Script", "Elamigos-games script is loaded and working!")
 	if outdated then 
-	menu.add_button("Update elamigos-games")
+	menu.add_button("Update Elamigos-games")
     local function updatebutton()
-       Download.DirectDownload("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/elamigos-games.lua", scriptsfolder .. "elamigos-games.lua")
-	   client.unload_script("elamigos-games.lua")
-	   client.load_script("elamigos-games.lua")
+       Download.DirectDownload("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/Elamigos-games.lua", scriptsfolder .. "Elamigos-games.lua")
+	   client.unload_script("Elamigos-games.lua")
+	   client.load_script("Elamigos-games.lua")
     end
 	client.add_callback("on_button_Update elamigos-games", updatebutton)
 	end
