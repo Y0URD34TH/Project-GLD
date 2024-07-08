@@ -974,6 +974,22 @@ Unloads a script by name.
 client.unload_script("myscript.lua")
 ```
 
+### Function: create_script
+```lua
+function client.create_script(name: string, data: string)
+```
+Creates an script in scripts folder.
+
+#### Parameters:
+- `name` (string): The name of the script to be created (without .lua in it).
+- `data` (string): The data of script (content) to be writen.
+- 
+#### Usage Example:
+```lua
+local scriptdata = "local fucntion..."
+client.create_script("myscript", scriptdata)
+```
+
 ### Function: log
 ```lua
 function client.log(title: string, text: string)
@@ -1188,6 +1204,7 @@ local resultsTable = {
             { name = "Link 1", link = "https://example.com/link1", addtodownloadlist = true },
             { name = "Link 2", link = "https://example.com/link2", addtodownloadlist = false }
         },
+        tooltip = "test tooltip",
         ScriptName = "Script 1"
     },
     {
@@ -1196,6 +1213,7 @@ local resultsTable = {
             { name = "Link 3", link = "https://example.com/link3", addtodownloadlist = true },
             { name = "Link 4", link = "https://example.com/link4", addtodownloadlist = true }
         },
+        tooltip = "test tooltip",
         ScriptName = "Script 2"
     }
 }
