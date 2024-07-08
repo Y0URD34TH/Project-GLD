@@ -65,7 +65,7 @@ local function search_game(downloads, game_name, name_script)
 end
 
 if version < 2.14 then
-   Notifications.push_error("Lua Script", "Program is Outdated Please Update to use that Script")
+   Notifications.push_error("Lua Script", "Program is outdated. Please update it to use the script!")
 else
 local statebool = false
 
