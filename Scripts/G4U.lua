@@ -9,14 +9,14 @@ local updtheaders = {
 }
 
 local version = "1.02"
-local githubversion = http.get("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/g4u.lua", updtheaders)
+local githubversion = http.get("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/G4U.lua", updtheaders)
 
 local outdated = false
 if checkVersion(githubversion, version) then
 outdated = false
 else
 outdated = true
-    Notifications.push_warning("Script Outdated", "The Script Is Outdated Please Update")
+    Notifications.push_warning("Script Outdated", "This script is outdated. Please update it!")
 end
 
 function extractDomain(url)
@@ -142,24 +142,24 @@ local version = client.GetVersionDouble()
 if version < 2.14 then
      Notifications.push_error("Lua Script", "Program is outdated. Please update the app to use this script!")
    if outdated then 
-	menu.add_button("Update g4u")
+	menu.add_button("Update G4U")
     local function updatebutton()
-       Download.DirectDownload("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/g4u.lua", scriptsfolder .. "g4u.lua")
-	   client.unload_script("g4u.lua")
-	   client.load_script("g4u.lua")
+       Download.DirectDownload("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/G4U.lua", scriptsfolder .. "G4U.lua")
+	   client.unload_script("G4U.lua")
+	   client.load_script("G4U.lua")
     end
-	client.add_callback("on_button_Update g4u", updatebutton)
+	client.add_callback("on_button_Update G4U", updatebutton)
 	end
 else
-   Notifications.push_success("Lua Script", "g4u script is loaded and working!")
+   Notifications.push_success("Lua Script", "G4U script is loaded and working!")
   if outdated then 
-	menu.add_button("Update g4u")
+	menu.add_button("Update G4U")
     local function updatebutton()
-       Download.DirectDownload("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/g4u.lua", scriptsfolder .. "g4u.lua")
-	   client.unload_script("g4u.lua")
-	   client.load_script("g4u.lua")
+       Download.DirectDownload("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/G4U.lua", scriptsfolder .. "G4U.lua")
+	   client.unload_script("G4U.lua")
+	   client.load_script("G4U.lua")
     end
-	client.add_callback("on_button_Update g4u", updatebutton)
+	client.add_callback("on_button_Update G4U", updatebutton)
 	end
 	local function g4u()
 local gamename = game.getgamename()  
