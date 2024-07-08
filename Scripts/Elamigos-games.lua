@@ -82,7 +82,7 @@ else
 	   client.unload_script("Elamigos-games.lua")
 	   client.load_script("Elamigos-games.lua")
     end
-	client.add_callback("on_button_Update elamigos-games", updatebutton)
+	client.add_callback("on_button_Update Elamigos-games", updatebutton)
 	end
 local function elamigos()
 local gamename = game.getgamename()  
