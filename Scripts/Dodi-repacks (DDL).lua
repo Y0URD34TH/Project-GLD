@@ -87,7 +87,7 @@ local version = client.GetVersionDouble()
 if version < 2.14 then
     Notifications.push_error("Lua Script", "Program is outdated. Please update the app to use this script!")
 else
-    Notifications.push_success("Lua Script", "Dodi-repacks script is loaded and working!")
+    Notifications.push_success("Lua Script", "dodi-repacks script is loaded and working!")
 local function dodirepacks()
         local gamename = game.getgamename()  
         local results = webScrapedodi(gamename)
