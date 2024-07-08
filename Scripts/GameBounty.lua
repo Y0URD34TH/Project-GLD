@@ -21,10 +21,9 @@ local function webScrapegamebounty(gameName)
     }
 
     local responseBody = http.get(searchUrl, headers)
-
     local gameLinks = {}
     
-    local gameResultsL = HtmlWrapper.findAttribute(responseBody, "a", "target", "_self", "href")
+    local gameResultsL = HtmlWrapper.findAttribute(responseBody, "a", "rel", "bookmark", "href")
     local gameResults = {}
 
     for _, link in ipairs(gameResultsL) do

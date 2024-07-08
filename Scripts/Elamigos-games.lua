@@ -3,9 +3,23 @@ local function checkVersion(str, comparison)
     local serverversion = str:sub(3, 6)
     return serverversion == comparison
 end
+local cfcookieseg = ""
+
 local headers = {
-     ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 }
+
+local function cfcallback(cookie, url)
+if url == "https://www.elamigos-games.net/" then
+cfcookieseg = cookie
+local cfclearence = "cf_clearance=" .. tostring(cfcookieseg)
+headers = {
+    ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 ProjectGLD/2.15",
+    ["Cookie"] = cfclearence
+}
+communication.RefreshScriptResults()
+end
+end
+
 local scriptsfolder = client.GetScriptsPath()
 local function webScrapeElAmigosGames(gameName)
     local searchUrl = "https://www.elamigos-games.net/?q=" .. gameName
@@ -85,9 +99,14 @@ else
 	client.add_callback("on_button_Update Elamigos-games", updatebutton)
 	end
 local function elamigos()
-local gamename = game.getgamename()  
-local results = webScrapeElAmigosGames(gamename)
-communication.receiveSearchResults(results)
+ if cfcookieseg == nil or cfcookieseg == "" then
+        http.CloudFlareSolver("https://www.elamigos-games.net/")
+   else
+        local gamename = game.getgamename()  
+        local results = webScrapeElAmigosGames(gamename)
+        communication.receiveSearchResults(results)
+end
 end
 client.add_callback("on_scriptselected", elamigos)
+client.add_callback("on_cfdone", cfcallback)
 end
