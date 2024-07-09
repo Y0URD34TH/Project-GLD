@@ -1,4 +1,4 @@
-{
+﻿{
   "  Scripts Installer": "  Установщик скриптов",
   " Return": " Вернуться",
   "%6d/%-6d %6d lines  | %s | %s | %s | %s": "%6d/%-6d %6d строк  | %s | %s | %s | %s",
@@ -364,5 +364,6 @@
 "Source Link":"Ссылка на источник",
 "Link of the Source (compatilbe with hydra Sources) to be added":"Ссылка на источник (совместимый с источниками Hydra) для добавления",
 "Add source":"Добавить источник",
-"Create an Script for the source link specified\nFormat needs to be the same as hydra ones and must be json!":"Создайте скрипт для указанной исходной ссылки.\nФормат должен быть .json и таким же, как у Гидры!"
+"Create an Script for the source link specified\nFormat needs to be the same as hydra ones and must be json!":"Создайте скрипт для указанной исходной ссылки.\nФормат должен быть .json и таким же, как у Гидры!",
+"It will erease the game folder!!!\nIf the game is not in an own folder dont do it!!!": "Папка с игрой будет удалена!!!\nЕсли игры нет в отдельной папке, не делайте этого!!!"
 }

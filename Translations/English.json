@@ -365,5 +365,6 @@
 "Source Link":"Source link",
 "Link of the Source (compatilbe with hydra Sources) to be added":"Link of the source (compatible with Hydra sources) to be added",
 "Add source":"",
-"Create an Script for the source link specified\nFormat needs to be the same as hydra ones and must be json!":"Create a script for the specified source link.\nFormat must be .json and the same as Hydra ones!"
+"Create an Script for the source link specified\nFormat needs to be the same as hydra ones and must be json!":"Create a script for the specified source link.\nFormat must be .json and the same as Hydra ones!",
+"It will erease the game folder!!!\nIf the game is not in an own folder dont do it!!!": ""
 }

@@ -1,4 +1,4 @@
-{
+﻿{
   "  Scripts Installer": "Installateur de scripts",
   " Return": "Retour",
   "%6d/%-6d %6d lines  | %s | %s | %s | %s": "%6d/%-6d %6d lignes  | %s | %s | %s | %s",
@@ -364,5 +364,6 @@
 "Source Link":"Lien source",
 "Link of the Source (compatilbe with hydra Sources) to be added":"Lien de la source (compatible avec les sources Hydra) à ajouter",
 "Add source":"Ajouter une source",
-"Create an Script for the source link specified\nFormat needs to be the same as hydra ones and must be json!":"Créez un script pour le lien source spécifié.\nLe format doit être .json et le même que celui d'Hydra !"
+"Create an Script for the source link specified\nFormat needs to be the same as hydra ones and must be json!":"Créez un script pour le lien source spécifié.\nLe format doit être .json et le même que celui d'Hydra !",
+"It will erease the game folder!!!\nIf the game is not in an own folder dont do it!!!": "Cela effacera le dossier du jeu !!!\nSi le jeu n'est pas dans un propre dossier, ne le faites pas !!!"
 }

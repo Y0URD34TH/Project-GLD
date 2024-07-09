@@ -1,4 +1,4 @@
-{
+﻿{
   "  Scripts Installer": "  Instaler skripti",
   " Return": " Natrag",
   "%6d/%-6d %6d lines  | %s | %s | %s | %s": "%6d/%-6d %6d linija  | %s | %s | %s | %s",
@@ -364,5 +364,6 @@
 "Source Link":"Link izvora",
 "Link of the Source (compatilbe with hydra Sources) to be added":"Link izvora (koji je kompatibilan sa Hydra izvorima) za dodati",
 "Add source":"Dodaj izvor",
-"Create an Script for the source link specified\nFormat needs to be the same as hydra ones and must be json!":"Napravi skriptu za dati izvor.\nFormat mora biti .json i isti kao Hydrini!"
+"Create an Script for the source link specified\nFormat needs to be the same as hydra ones and must be json!":"Napravi skriptu za dati izvor.\nFormat mora biti .json i isti kao Hydrini!",
+"It will erease the game folder!!!\nIf the game is not in an own folder dont do it!!!": "To će izbrisati fasciklu igre!!!\nAko igra nije u sopstvenom folderu nemojte to raditi!!!"
 }
