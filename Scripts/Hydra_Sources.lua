@@ -85,7 +85,6 @@ local function substituteRomanNumeralsFromEntireString(gameName)
     return gameName
 end
 
-
 local function generateVariations(input)
     local variations = {}
 
@@ -99,6 +98,8 @@ local function generateVariations(input)
     table.insert(variations, lower_spaces_to_dot)
     local lower_spaces_to_dot_no_roman = replace_spaces(lower_input_no_roman, ".")
     table.insert(variations, lower_spaces_to_dot_no_roman)
+    local lower_spaces_to_dot1 = replace_symbol(lower_input, ".")
+    table.insert(variations, lower_spaces_to_dot1)
     local lower_no_symbols = replace_symbol(lower_input, "")
     table.insert(variations, lower_no_symbols)
     local lower_no_symbols_no_roman = replace_symbol(lower_input_no_roman, "")
@@ -117,13 +118,17 @@ local function generateVariations(input)
     table.insert(variations, lower_no_symbols_spaces_to_dot_no_roman2)
 
     -- Additional variations combining existing ones
-    -- Combine lower_input_no_roman with lower_no_symbols_spaces_to_dot
+    -- Combine lower_input_no_roman with lower_spaces_to_dot
     local combined1 = replace_spaces(lower_input_no_roman, ".")
     table.insert(variations, combined1)
 
     -- Combine lower_no_symbols with lower_no_symbols_no_roman
     local combined2 = replace_symbol(lower_no_symbols, "")
     table.insert(variations, combined2)
+
+    -- Combine lower_no_symbols with replace_symbol2
+    local combined22 = replace_symbol2(lower_no_symbols, "")
+    table.insert(variations, combined22)
 
     -- Combine lower_spaces_to_dot with lower_no_symbols_no_roman2
     local combined3 = replace_spaces(lower_spaces_to_dot, "")
@@ -136,6 +141,10 @@ local function generateVariations(input)
     -- Combine lower_no_symbols_no_roman with lower_no_symbols2
     local combined5 = replace_symbol(lower_no_symbols_no_roman, "")
     table.insert(variations, combined5)
+
+    -- Combine lower_no_symbols_no_roman with replace_symbol2
+    local combined52 = replace_symbol2(lower_no_symbols_no_roman, "")
+    table.insert(variations, combined52)
 
     -- Combine lower_spaces_to_dot_no_roman with lower_no_symbols_spaces_to_dot2
     local combined6 = replace_spaces(lower_spaces_to_dot_no_roman, "")
@@ -161,6 +170,10 @@ local function generateVariations(input)
     local combined11 = replace_symbol(lower_no_symbols_no_roman, "")
     table.insert(variations, combined11)
 
+    -- Combine lower_no_symbols_no_roman with replace_symbol2
+    local combined112 = replace_symbol2(lower_no_symbols_no_roman, "")
+    table.insert(variations, combined112)
+
     -- Combine lower_no_symbols_spaces_to_dot with lower_no_symbols2
     local combined12 = replace_spaces(lower_no_symbols_spaces_to_dot, "")
     table.insert(variations, combined12)
@@ -168,6 +181,30 @@ local function generateVariations(input)
     -- Combine lower_no_symbols_no_roman2 with lower_no_symbols_spaces_to_dot_no_roman2
     local combined13 = replace_spaces(lower_no_symbols_no_roman2, "")
     table.insert(variations, combined13)
+
+    -- Combine lower_spaces_to_dot with lower_spaces_to_dot_no_roman
+    local combined14 = replace_spaces(lower_spaces_to_dot, ".")
+    table.insert(variations, combined14)
+
+    -- Combine lower_spaces_to_dot with lower_no_symbols_spaces_to_dot
+    local combined15 = replace_spaces(lower_spaces_to_dot, ".")
+    table.insert(variations, combined15)
+
+    -- Combine lower_spaces_to_dot with lower_no_symbols_spaces_to_dot_no_roman
+    local combined16 = replace_spaces(lower_spaces_to_dot, ".")
+    table.insert(variations, combined16)
+
+    -- Combine lower_spaces_to_dot_no_roman with lower_no_symbols_spaces_to_dot_no_roman
+    local combined17 = replace_spaces(lower_spaces_to_dot_no_roman, ".")
+    table.insert(variations, combined17)
+
+    -- Combine lower_spaces_to_dot_no_roman with lower_no_symbols_spaces_to_dot_no_roman2
+    local combined18 = replace_spaces(lower_spaces_to_dot_no_roman, ".")
+    table.insert(variations, combined18)
+
+    -- Combine lower_spaces_to_dot_no_roman with lower_no_symbols_spaces_to_dot
+    local combined19 = replace_spaces(lower_spaces_to_dot_no_roman, ".")
+    table.insert(variations, combined19)
 
     return variations
 end
@@ -244,6 +281,8 @@ end
 end
 client.add_callback("on_button_Add source", onsourceadd)
 end
+
+
 
 
 
