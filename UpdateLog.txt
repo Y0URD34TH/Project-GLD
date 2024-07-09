@@ -1,4 +1,4 @@
-V4.00
+V4.01
 
 Implemented Real-Debrid support and fixed bugs related to it
 Completely redesigned left child to make it less bloated and fixed the GLD logo
@@ -17,6 +17,7 @@ Added new strings to the translations and improved some of them
 Added new Lua API params and improved some existing ones
 Fixed all font related issues
 Fixed bugs related to having multiple games with the same name
+Fixed gld torrent client deleting the entire downloads folder when no peers on cancel (sorry)
 
 (gld may freeze while auto updating and its normal!!!)
 (gld pode congelar ao se auto atualizar, isso é normal!!!)
