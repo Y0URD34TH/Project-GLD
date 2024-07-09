@@ -6,13 +6,25 @@ end
 local function isGofileLink(link)
     return string.find(link, "gofile")
 end
+local function isqiwilink(link)
+    return string.find(link, "qiwi.gg")
+end
+local function isbuzzlink(link)
+    return string.find(link, "buzzheavier.com")
+end
+local function ismegadblink(link)
+    return string.find(link, "megadb.net")
+end
+local function endsWith(str, pattern)
+    return string.sub(str, -string.len(pattern)) == pattern
+end
 local scriptsfolder = client.GetScriptsPath()
 local updtheaders = {
     ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 }
 
 local version = "1.01"
-local githubversion = http.get("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/steamrip.lua", updtheaders)
+local githubversion = http.get("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/Steamrip.lua", updtheaders)
 
 local outdated = false
 if checkVersion(githubversion, version) then
@@ -28,7 +40,30 @@ function extractDomain(url)
 
     return domain
 end
+local function substituteRomanNumerals(gameName)
+    local romans = {
+        [" I"] = " 1",
+        [" II"] = " 2",
+        [" III"] = " 3",
+        [" IV"] = " 4",
+        [" V"] = " 5",
+        [" VI"] = " 6",
+        [" VII"] = " 7",
+        [" VIII"] = " 8",
+        [" IX"] = " 9",
+        [" X"] = " 10"
+    }
+
+    for numeral, substitution in pairs(romans) do
+        if endsWith(gameName, numeral) then
+            gameName = string.sub(gameName, 1, -string.len(numeral) - 1) .. substitution
+        end
+    end
+
+    return gameName
+end
 local function webScrapesteamrip(gameName)
+gameName = substituteRomanNumerals(gameName)
 gameName = gameName:gsub(":", "")
     local searchUrl = "https://steamrip.com/?s=" .. gameName
     searchUrl = searchUrl:gsub(" ", "%%20")
@@ -65,27 +100,56 @@ gameName = gameName:gsub(":", "")
                     links = {},
                     ScriptName = "steamrip"
                 }
-
+               table.insert(gameResult.links,{name = "View Page", link = gameLinks[i], addtodownloadlist = false})
                local linksDL = HtmlWrapper.findAttribute(gameResponseBody, "a", "class", "shortc-button medium green ", "href")
                local linksDL2 = HtmlWrapper.findAttribute(gameResponseBody, "a", "class", "shortc-button medium purple ", "href")
               for _, serverLink in ipairs(linksDL) do
                  -- Insert into gameResult.links
                  local serverName = extractDomainNUC("https:" .. serverLink)
-    if isGofileLink(serverLink) then
-                 table.insert(gameResult.links, { name = serverName, link = "https:" .. serverLink, addtodownloadlist = true })
-else
-                 table.insert(gameResult.links, { name = serverName, link = "https:" .. serverLink, addtodownloadlist = false })
+  if isGofileLink(serverLink) then
+        local serverName = "GoFile"
+		watchlink1 = "https:" .. serverLink
+        table.insert(gameResult.links, { name = serverName, link = "https:" .. serverLink, addtodownloadlist = true })
+    end
+	if isqiwilink(serverLink) then
+        local serverName = "kiwi"
+		watchlink1 = "https:" .. serverLink
+        table.insert(gameResult.links, { name = serverName, link = "https:" .. serverLink, addtodownloadlist = false })
+    end
+    if isbuzzlink(serverLink) then
+        local serverName = "buzzheavier"
+		watchlink1 = "https:" .. serverLink
+        table.insert(gameResult.links, { name = serverName, link = "https:" .. serverLink, addtodownloadlist = false })
+    end
+    if ismegadblink(serverLink) then
+        local serverName = "megadb"
+		watchlink1 = "https:" .. serverLink
+        table.insert(gameResult.links, { name = serverName, link = "https:" .. serverLink, addtodownloadlist = false })
+    end
 end
-               end
-               for _, serverLink2 in ipairs(linksDL2) do
-                 -- Insert into gameResult.links
-                 local serverName = extractDomainNUC("https:" .. serverLink2)
+
+for _, serverLink2 in ipairs(linksDL2) do
     if isGofileLink(serverLink2) then
-                 table.insert(gameResult.links, { name = serverName, link = "https:" .. serverLink2, addtodownloadlist = true })
-else
-                 table.insert(gameResult.links, { name = serverName, link = "https:" .. serverLink2, addtodownloadlist = false })
+        local serverName = "GoFile"
+		watchlink2 = "https:" .. serverLink2
+        table.insert(gameResult.links, { name = serverName, link = "https:" .. serverLink2, addtodownloadlist = true })
+    end
+	if isqiwilink(serverLink2) then
+        local serverName = "kiwi"
+		watchlink2 = "https:" .. serverLink2
+        table.insert(gameResult.links, { name = serverName, link = "https:" .. serverLink2, addtodownloadlist = false })
+    end
+    if isbuzzlink(serverLink2) then
+        local serverName = "buzzheavier"
+		watchlink2 = "https:" .. serverLink2
+        table.insert(gameResult.links, { name = serverName, link = "https:" .. serverLink2, addtodownloadlist = false })
+    end
+    if ismegadblink(serverLink2) then
+        local serverName = "megadb"
+		watchlink2 = "https:" .. serverLink2
+        table.insert(gameResult.links, { name = serverName, link = "https:" .. serverLink2, addtodownloadlist = false })
+    end
 end
-               end
 
                 table.insert(gameResults, gameResult)
         else
@@ -126,3 +190,5 @@ communication.receiveSearchResults(results)
 end
 client.add_callback("on_scriptselected", steamrip)
 end
+
+
