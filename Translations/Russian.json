@@ -365,5 +365,8 @@
 "Link of the Source (compatilbe with hydra Sources) to be added":"Ссылка на источник (совместимый с источниками Hydra) для добавления",
 "Add source":"Добавить источник",
 "Create an Script for the source link specified\nFormat needs to be the same as hydra ones and must be json!":"Создайте скрипт для указанной исходной ссылки.\nФормат должен быть .json и таким же, как у Гидры!",
-"It will erease the game folder!!!\nIf the game is not in an own folder dont do it!!!": "Папка с игрой будет удалена!!!\nЕсли игры нет в отдельной папке, не делайте этого!!!"
+"It will erease the game folder!!!\nIf the game is not in an own folder dont do it!!!": "Папка с игрой будет удалена!!!\nЕсли игры нет в отдельной папке, не делайте этого!!!",
+"Max timeout": "Макс тайм-аут",
+"Torrent max time out (in seconds) for connecting to peers before restarting download.\nLess than 5 seconds makes it goes off.": "Максимальное время ожидания торрента (в секундах) для подключения к узлам перед возобновлением загрузки.\nМенее 5 секунд приводит к отключению торрента.",
+"If torrent may seem stuck on connecting to peers it will auto restart after %d seconds.\nYou can change this time in max timeout on settings tab.\nYou can manually restart too.": "Если торрент может показаться зависшим при подключении к узлам, он автоматически перезапустится через %d секунд.\nВы можете изменить это время в максимальном тайм-ауте на вкладке настроек.\nВы также можете перезапустить вручную."
 }

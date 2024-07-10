@@ -365,5 +365,8 @@
 "Link of the Source (compatilbe with hydra Sources) to be added":"Enlace de la fuente (compatible con las fuentes de Hydra) que se va a añadir",
 "Add source":"Agregar fuente",
 "Create an Script for the source link specified\nFormat needs to be the same as hydra ones and must be json!":"Cree un script para el enlace de origen especificado.\n¡El formato debe ser.json y el mismo que los de Hydra!",
-"It will erease the game folder!!!\nIf the game is not in an own folder dont do it!!!": "¡¡¡Borrará la carpeta del juego!!!\nSi el juego no está en una carpeta propia, ¡¡¡no lo hagas!!!"
+"It will erease the game folder!!!\nIf the game is not in an own folder dont do it!!!": "¡¡¡Borrará la carpeta del juego!!!\nSi el juego no está en una carpeta propia, ¡¡¡no lo hagas!!!",
+"Max timeout": "Espera máxima",
+"Torrent max time out (in seconds) for connecting to peers before restarting download.\nLess than 5 seconds makes it goes off.": "Tiempo de espera máximo del torrent (en segundos) para conectarse con pares antes de reiniciar la descarga.\nMenos de 5 segundos hace que se apague.",
+"If torrent may seem stuck on connecting to peers it will auto restart after %d seconds.\nYou can change this time in max timeout on settings tab.\nYou can manually restart too.": "Si parece que Torrent se atasca al conectarse con pares, se reiniciará automáticamente después de %d segundos.\nPuedes cambiar este tiempo en el tiempo de espera máximo en la pestaña de configuración.\nTambién puedes reiniciar manualmente."
 }
