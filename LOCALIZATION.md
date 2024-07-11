@@ -34,6 +34,7 @@ There are two ways of doing it:<br>
 
 ## Credits:
 
+    Ziad Senior: Arabic translation 🇸🇦
     qiracy: Bosnian translation 🇧🇦
     disc0000: Dutch translation 🇳🇱
     Pantabi95 (PPORCH3bis): French translation 🇫🇷
