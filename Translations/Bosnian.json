@@ -365,8 +365,8 @@
 "Link of the Source (compatilbe with hydra Sources) to be added":"Link izvora (koji je kompatibilan sa Hydra izvorima) za dodati",
 "Add source":"Dodaj izvor",
 "Create an Script for the source link specified\nFormat needs to be the same as hydra ones and must be json!":"Napravi skriptu za dati izvor.\nFormat mora biti .json i isti kao Hydrini!",
-"It will erease the game folder!!!\nIf the game is not in an own folder dont do it!!!": "To će izbrisati fasciklu igre!!!\nAko igra nije u sopstvenom folderu nemojte to raditi!!!",
-"Max timeout": "Ograničenje",
-"Torrent max time out (in seconds) for connecting to peers before restarting download.\nLess than 5 seconds makes it goes off.": "Maksimalno vrijeme za torent (u sekundama) za povezivanje s kolegama prije ponovnog pokretanja preuzimanja.\nZa manje od 5 sekundi se gasi.",
-"If torrent may seem stuck on connecting to peers it will auto restart after %d seconds.\nYou can change this time in max timeout on settings tab.\nYou can manually restart too.": "Ako se torrent može činiti zaglavljenim pri povezivanju s kolegama, automatski će se ponovo pokrenuti nakon %d sekundi.\nOvo vrijeme možete promijeniti u maksimalnom vremenskom ograničenju na kartici postavki.\nMožete i ručno ponovo pokrenuti."
+"It will erease the game folder!!!\nIf the game is not in an own folder dont do it!!!": "Ovo će izbrisati folder igre!!!\nAko igra nije u sopstvenom folderu nemoj ovo uraditi!!!",
+"Max timeout": "",
+"Torrent max time out (in seconds) for connecting to peers before restarting download.\nLess than 5 seconds makes it goes off.": "Maksimalno vrijeme (u sekundama) za povezivanje sa peerovima prije restartovanja torrenta.\nManje od 5 sekundi će isključiti ovu postavku.",
+"If torrent may seem stuck on connecting to peers it will auto restart after %d seconds.\nYou can change this time in max timeout on settings tab.\nYou can manually restart too.": "Ako je torrent zaglavljen na povezivanju s peerovima automatski će se restartovati nakon %d sekundi.\nMožes promjeniti ovo vrijeme u postavkama.\nTakođer možes ručno restartovati torrent preuzimanje."
 }
