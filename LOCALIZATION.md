@@ -38,6 +38,7 @@ There are two ways of doing it:<br>
     qiracy: Bosnian translation 🇧🇦
     disc0000: Dutch translation 🇳🇱
     Pantabi95 (PPORCH3bis): French translation 🇫🇷
+    3DShitWizard: German translation 🇩🇪
     Qrs_Yami: Italian translation 🇮🇹
     Brisolo32: Portuguese (Brazilian) translation 🇧🇷
     LU0HGZ4N: Spanish translation 🇪🇸
