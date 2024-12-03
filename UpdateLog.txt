@@ -3,7 +3,7 @@ V4.50
 Added achievement support & you don't need steam API key to use it!
 Added pop-up notification & sound on achievement completion (both customizable!)
 Made achievements progress bar & up to 4 achievements show on user profiles
-Added TorBox support, it really came in clutch after RD stopped supporting piracy. We highly recommend it if you're interested in using debrids!
+Added TorBox support, it really came in clutch after RD stopped supporting piracy.
 Added a "install" button which appears if you add a game to the library without specifying the .exe location
 Fixed font inconsistency and issues
 Made it so only one instance of GLD can be open at a time to prevent annoying bugs & chromium opening
