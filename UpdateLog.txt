@@ -1,6 +1,6 @@
 V4.50
 
-Added achievement support & you don't need steam API key to use it! (works for: 3dm, codex, rune, onlinefix, goldberg (steam only), skidrow, creamapi, empress (steam only), razor 1911 (steam only), and smartsteamemu)
+Added achievement support & you don't need steam API key to use it!
 Added pop-up notification & sound on achievement completion (both customizable!)
 Made achievements progress bar & up to 4 achievements show on user profiles
 Added TorBox support, it really came in clutch after RD stopped supporting piracy. We highly recommend it if you're interested in using debrids!
