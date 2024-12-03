@@ -1,26 +1,15 @@
-V4.05
+V4.50
 
-Implemented Real-Debrid support and fixed bugs related to it
-Completely redesigned left child to make it less bloated and fixed the GLD logo
-Removed useless/broken filters from the Search tab and made small UI/UX adjustments
-Fixed a lot of Lua issues/crashes and made it significantly more thread safe
-Added Hydra sources support that allows you to instantly generate a Lua script for any Hydra source
-Added scripts for A LOT of new sources (thanks to Hydra) and improved/fixed all old scripts
-Fixed the search bug with 2 scripts having the same name (took 5k lines to fix)
-Fixed account log in/out issues and redesigned the avatars to display a spinner while loading
-Added a bunch of .json sanity checks to prevent translation/theme related crashes
-Fixed issues with window positioning and made it so GLD launches in the center
-Added a button to delete themes inside GLD
-Made it possible to rename, load, unload, and edit scripts by right clicking on them
-Fixed a lot of code editor fuckery which would result in concurrent access leading to a crash
-Added new strings to the translations and improved some of them
-Added new Lua API params and improved some existing ones
-Fixed all font related issues
-Fixed bugs related to having multiple games with the same name
-Fixed gld torrent client deleting the entire downloads folder when no peers on cancel (sorry)
-Fixed script generation (more accurate)
-Fixed gld torrents having unknown name after metadata being available
-Fixed issue where torrent was stuck on connecting to peers
+Added achievement support & you don't need steam API key to use it! (works for: 3dm, codex, rune, onlinefix, goldberg (steam only), skidrow, creamapi, empress (steam only), razor 1911 (steam only), and smartsteamemu)
+Added pop-up notification & sound on achievement completion (both customizable!)
+Made achievements progress bar & up to 4 achievements show on user profiles
+Added TorBox support, it really came in clutch after RD stopped supporting piracy. We highly recommend it if you're interested in using debrids!
+Added a "install" button which appears if you add a game to the library without specifying the .exe location
+Fixed font inconsistency and issues
+Made it so only one instance of GLD can be open at a time to prevent annoying bugs & chromium opening
+Added a "syncing account data" window on exit to prevent account bugs related to reopening GLD before it finished sync
+Improved the design of checkboxes
+Fixed browser related issues & crashes
 
 (gld may freeze while auto updating and its normal!!!)
 (gld pode congelar ao se auto atualizar, isso é normal!!!)
