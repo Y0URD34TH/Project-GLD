@@ -87,7 +87,9 @@ Project GLD offers a variety of features to explore and utilize for your use cas
 
 ## Project Showcase
 
-https://github.com/Y0URD34TH/Project-GLD/assets/58450502/7393425d-0dc9-43c1-acb5-cdac23c265e3
+
+https://github.com/user-attachments/assets/b078f7a2-f542-4c3f-ad08-50ba4173d5ac
+
 
 ## Getting Started
 
