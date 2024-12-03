@@ -45,9 +45,9 @@
 Project GLD offers a variety of features to explore and utilize for your use case.
 
 ### [📁] Game Library
+* Achievements support (pop-up notification + sound on completion)
 * Playtime tracking and sorting based on playtime, last played, favorites, ID, or alphabetically
-* Joystick configuration
-* Command line arguments
+* Joystick configuration & command line arguments
 
 ### **[🔎] Game Search**
 * Discover new games
@@ -56,7 +56,7 @@ Project GLD offers a variety of features to explore and utilize for your use cas
 
 ### **[🎮] Game Download**
 * Download a game from any source via Lua scripts
-* Built-in download manager and Real-Debrid support
+* Built-in download manager and Real-Debrid & TorBox support
 * Start multiple downloads at the same time
 
 ### **[🧲] Torrent Client**
