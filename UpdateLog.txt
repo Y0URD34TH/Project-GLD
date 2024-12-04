@@ -1,5 +1,6 @@
-V4.50
+V4.55
 
+Fixed slow game librayr loading (first time will be slow)
 Added achievement support & you don't need steam API key to use it!
 Added pop-up notification & sound on achievement completion (both customizable!)
 Made achievements progress bar & up to 4 achievements show on user profiles
