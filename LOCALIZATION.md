@@ -6,6 +6,7 @@
 -   It's always better to translate strings on a way that sounds more natural / makes more sense to a native speaker, even if you'd use completely different words or phrases to accomplish it. Translations don't have to be 100% literal.
 -   Do not change / translate any strings that have **%** or **##** in front of them, e.g. "**%f**", **"##popup"**.
 -   If your translation is a lot longer than the initial string, please use \n to add a new line to ensure the entire translation will be visible.
+-   Translation name needs to be in the IETF/BCP 47 format.
 -   Feel free to join our **[Discord](https://discord.gg/FyH6Z34vcZ)** if you have any questions!
 
 ## How to Translate
