@@ -1,6 +1,8 @@
-V4.55
+V4.60
 
-Fixed slow game librayr loading (first time will be slow)
+Improved torbox support
+Fixed small memory leak
+Fixed slow game library loading (first time will be slow)
 Added achievement support & you don't need steam API key to use it!
 Added pop-up notification & sound on achievement completion (both customizable!)
 Made achievements progress bar & up to 4 achievements show on user profiles
