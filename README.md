@@ -20,24 +20,12 @@
 ## Table of Content
 
 * [Features](#features)
-  * [Game Library](#-game-library)
-  * [Game Search](#-game-search)
-  * [Game Download](#-game-download)
-  * [Torrent Client](#-torrent-client)
-  * [Lua Scripts](#-lua-scripts)
-  * [Browser](#-browser)
-  * [Customization](#%EF%B8%8F-customization)
-  * [Console](#-console)
-  * [Account System](#-account-system)
 * [Project Showcase](#project-showcase)
 * [Getting Started](#getting-started)
-  * [Scripts](#currently-available-scripts)
-  * [Prerequisites](#prerequisites)
-  * [Installation](#installation)
 * [Known Bugs](#known-bugs)
-* [Roadmap](#roadmap)
-* [License](#license)
 * [Authors](#authors)
+* [Sponsors](#sponsors)
+* [How to Sponsor](#how-to-sponsor)
 * [Acknowledgements](#acknowledgements)
 
 ## Features
@@ -150,13 +138,6 @@ See our Lua Documentation [here](https://github.com/Y0URD34TH/Project-GLD/blob/m
 
 You might experience a slight delay when searching for and downloading games. This is normal, so please refrain from closing the app as it simply needs some more time to fulfill your request, especially when initiating a download script for the searched game.
 
-## Roadmap
-
-Check out the [open issues](https://github.com/Y0URD34TH/Project-GLD/issues) for a list of proposed features and known issues.
-
-## License
-
-Distributed under the Apache-2.0 License. See [LICENSE](https://github.com/Y0URD34TH/Project-GLD/blob/main/LICENSE) for more information.
 
 ## Authors
 
@@ -166,6 +147,23 @@ Distributed under the Apache-2.0 License. See [LICENSE](https://github.com/Y0URD
 * [piqseu](https://github.com/piqseu) - *Designer*
 * [Brisolo32](https://github.com/Brisolo32) - *Translator / Designer*
 * [Backend](https://github.com/Backend2121) - *Designer / Coding Helper*
+
+## Sponsors
+
+Thanks to those kind people and organizations, GLD got the funds to keep on going and improving.
+
+![tb](https://i.ibb.co/TWTvThN/1144442816781635634.webp)
+
+**[TorBox](https://torbox.app/)** / **[Guide](https://rentry.co/torbox-gld)**
+
+
+## How to Sponsor
+
+Want to sponsor GLD yourself? 
+
+Feel free to send us donations via our Bitcoin wallet: `bc1q4tuvrhftmgwff90q5czupehksh237upeng364c`. 
+
+If you contact us via [Discord](kPHb6xz4v7) or [make an issue on GitHub](https://github.com/Y0URD34TH/Project-GLD/issues) with proof of payment, we will prioritize a feature of your choice! You will also obtain a special role in our Discord server, as well as our eternal gratitude.
 
 ## Acknowledgements
 
