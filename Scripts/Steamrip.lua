@@ -236,7 +236,7 @@ if version < 2.14 then
    Notifications.push_error("Lua Script", "Program is Outdated Please Update to use that Script")
 else
 local statebool = false
-
+Notifications.push_success("Lua Script", "Steamrip script is loaded and working!")
 local function requestfromsource()
     local getgamename = game.getgamename()
 
