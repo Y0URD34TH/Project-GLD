@@ -10,7 +10,7 @@ end
 
 function replace_symbol(input, replacement)
     input = string.gsub(input, "'", replacement)
-    return string.gsub(input, "’", replacement)
+    return string.gsub(input, "â€™", replacement)
 end
 
 function replace_symbol2(input, replacement)
@@ -237,8 +237,8 @@ if version < 3.50 then --3.50
     Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
 else
     Notifications.push_success("Lua Script", "1click Script Loaded and Working")
-    menu.add_input_text("Default Game Dir")
-    menu.set_text("Default Game Dir", defaultdir)
+    menu.add_input_text("1click Game Dir")
+    menu.set_text("1click Game Dir", defaultdir)
     settings.load()
 local function click1NUC()
 settings.save()
@@ -275,7 +275,7 @@ local function ondownloadcompleted(path, url)
 if shouldprogressextraction then
 local gamenametopath = gamename
 gamenametopath = gamenametopath:gsub(":", "")
-defaultdir = menu.get_text("Default Game Dir") .. "/" .. gamenametopath .. "/"
+defaultdir = menu.get_text("1click Game Dir") .. "/" .. gamenametopath .. "/"
 --if url == watchlink2 or url == watchlink1 then
 path = path:gsub("\\", "/")
 pathcheck = defaultdir
