@@ -145,7 +145,7 @@ local defaultdir = "C:/Games"
 if version < 3.50 then --3.50
     Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
 else
-    Notifications.push_success("Lua Script", "1click-alternative Script Loaded and Working")
+    Notifications.push_success("Lua Script", "2clicks Script Loaded and Working")
     menu.add_input_text("Default Game Dir 2")
     menu.set_text("Default Game Dir 2", defaultdir)
     settings.load()
