@@ -146,8 +146,8 @@ if version < 3.50 then --3.50
     Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
 else
     Notifications.push_success("Lua Script", "1click-alternative Script Loaded and Working")
-    menu.add_input_text("Default Game Dir")
-    menu.set_text("Default Game Dir", defaultdir)
+    menu.add_input_text("Default Game Dir 2")
+    menu.set_text("Default Game Dir 2", defaultdir)
     settings.load()
 local function click1NUC()
 settings.save()
@@ -175,7 +175,7 @@ local function ondownloadcompleted(path, url)
 if shouldprogressextraction then
 local gamenametopath = gamename
 gamenametopath = gamenametopath:gsub(":", "")
-defaultdir = menu.get_text("Default Game Dir") .. "/" .. gamenametopath .. "/"
+defaultdir = menu.get_text("Default Game Dir 2") .. "/" .. gamenametopath .. "/"
 --if url == watchlink2 or url == watchlink1 then
 path = path:gsub("\\", "/")
 pathcheck = defaultdir
