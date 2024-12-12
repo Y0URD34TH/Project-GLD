@@ -146,8 +146,8 @@ if version < 3.50 then --3.50
     Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
 else
     Notifications.push_success("Lua Script", "2clicks Script Loaded and Working")
-    menu.add_input_text("Default Game Dir 2")
-    menu.set_text("Default Game Dir 2", defaultdir)
+    menu.add_input_text("2clicks Game Dir 2")
+    menu.set_text("2clicks Game Dir 2", defaultdir)
     settings.load()
 local function click1NUC()
 settings.save()
@@ -175,7 +175,7 @@ local function ondownloadcompleted(path, url)
 if shouldprogressextraction then
 local gamenametopath = gamename
 gamenametopath = gamenametopath:gsub(":", "")
-defaultdir = menu.get_text("Default Game Dir 2") .. "/" .. gamenametopath .. "/"
+defaultdir = menu.get_text("2clicks Game Dir") .. "/" .. gamenametopath .. "/"
 --if url == watchlink2 or url == watchlink1 then
 path = path:gsub("\\", "/")
 pathcheck = defaultdir
@@ -189,8 +189,8 @@ if pathcheck == path then
 path = path:gsub("/", "\\")
 local imagePath = Download.DownloadImage(imagelink)
 GameLibrary.addGame(path, imagePath, gamename, "")
-Notifications.push_success("1Click Script", "Game Successfully Installed!")
-Notifications.push_warning("1Click Script", "Please got to the library and modify the game path!")
+Notifications.push_success("2clicks Script", "Game Successfully Installed!")
+Notifications.push_warning("2clicks Script", "Please got to the library and modify the game path!")
 end
 end
 client.add_callback("on_scriptselected", click1NUC)
