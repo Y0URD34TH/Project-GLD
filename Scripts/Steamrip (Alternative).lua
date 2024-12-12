@@ -173,7 +173,7 @@ if version < 3.50 then
 	client.add_callback("on_button_Update steamrip", updatebutton)
 	end
 else
-   Notifications.push_success("Lua Script", "steamrip script is loaded and working!")
+   Notifications.push_success("Lua Script", "Steamrip (alternative) script is loaded and working!")
   if outdated then 
 	menu.add_button("Update steamrip")
     local function updatebutton()
