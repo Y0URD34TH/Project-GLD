@@ -142,7 +142,7 @@ end
 end
 local version = client.GetVersionDouble()
 local defaultdir = "C:/Games"
-if version < 3.50 then --3.50
+if version < 3.50 then
     Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
 else
     Notifications.push_success("Lua Script", "2clicks Script Loaded and Working")
@@ -198,7 +198,3 @@ client.add_callback("on_downloadclick", ondownloadclick)
 client.add_callback("on_downloadcompleted", ondownloadcompleted)
 client.add_callback("on_extractioncompleted", onextractioncompleted)
 end
-
-
-
-
