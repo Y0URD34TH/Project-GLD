@@ -1,6 +1,6 @@
 <div align=center>
   <a href="https://github.com/Y0URD34TH/Project-GLD">
-    <img src="https://github.com/Y0URD34TH/Project-GLD/blob/main/Images/favicon.png?raw=true" alt="Logo" width="640" height="320">
+    <img src="https://github.com/Y0URD34TH/Project-GLD/blob/main/Images/sho_now_1.png" alt="Logo" width="640" height="320">
   </a>
   <h1 align="center">Project GLD</h1>
   <p>
@@ -8,7 +8,7 @@
   </p>
 <br/>
 <a href=https://github.com/Y0URD34TH/Project-GLD/releases/latest/download/GLDSetup.exe>
-<img src="https://github.com/Y0URD34TH/Project-GLD/blob/main/Images/dl.png" alt="Download" width="155">
+<img src="https://i.ibb.co/ftwCb9c/Download-Now-Button-PNG-Image-1283096933.png" alt="Download" width="155">
 </a>
   
 [![discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/FyH6Z34vcZ)
@@ -144,7 +144,6 @@ You might experience a slight delay when searching for and downloading games. Th
 * [jma](https://github.com/Y0URD34TH) - *Lead Developer / Founder*
 * [foie](https://github.com/KaylinOwO) - *Tester / Designer / Developer*
 * [qiracy](https://github.com/qiracy) - *Tester / Translator / Designer*
-* [piqseu](https://github.com/piqseu) - *Designer*
 * [Brisolo32](https://github.com/Brisolo32) - *Translator / Designer*
 * [Backend](https://github.com/Backend2121) - *Designer / Coding Helper*
 
