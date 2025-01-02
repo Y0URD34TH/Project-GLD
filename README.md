@@ -8,7 +8,7 @@
   </p>
 <br/>
 <a href=https://github.com/Y0URD34TH/Project-GLD/releases/latest/download/GLDSetup.exe>
-<img src="https://i.ibb.co/ftwCb9c/Download-Now-Button-PNG-Image-1283096933.png" alt="Download" width="155">
+<img src="https://i.ibb.co/F7B1NKZ/1b7f18c64777e092025c1a7531e90f08.png" alt="Download" width="200">
 </a>
   
 [![discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/FyH6Z34vcZ)
