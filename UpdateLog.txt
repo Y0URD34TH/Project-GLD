@@ -1,18 +1,10 @@
-V4.60
+V4.70
 
-Improved torbox support
-Fixed small memory leak
-Fixed slow game library loading (first time will be slow)
-Added achievement support & you don't need steam API key to use it!
-Added pop-up notification & sound on achievement completion (both customizable!)
-Made achievements progress bar & up to 4 achievements show on user profiles
-Added TorBox support, it really came in clutch after RD stopped supporting piracy.
-Added a "install" button which appears if you add a game to the library without specifying the .exe location
-Fixed font inconsistency and issues
-Made it so only one instance of GLD can be open at a time to prevent annoying bugs & chromium opening
-Added a "syncing account data" window on exit to prevent account bugs related to reopening GLD before it finished sync
-Improved the design of checkboxes
-Fixed browser related issues & crashes
+Made GLD resizable by adjusting the DPI value of it (automatically detects the best one for your resolution & can be changed manually from 50% (smallest) to 200% (biggest) in settings)
+Added the option to change Steam ID of game in library in case it's getting the wrong achievements due to wrong ID
+Made it so achievement sound and popup appear at the same time (no more wondering where the strange music came from)
+Improved font/text quality of app
+Fixed random crashes sometimes happening on app launch
 
 (gld may freeze while auto updating and its normal!!!)
 (gld pode congelar ao se auto atualizar, isso é normal!!!)
