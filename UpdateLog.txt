@@ -1,6 +1,6 @@
 V4.70
 
-Made GLD resizable by adjusting the DPI value of it (automatically detects the best one for your resolution & can be changed manually from 50% (smallest) to 200% (biggest) in settings)
+Made GLD resizable by adjusting the DPI value of it (automatically detects the best one for your resolution)
 Added the option to change Steam ID of game in library in case it's getting the wrong achievements due to wrong ID
 Made it so achievement sound and popup appear at the same time (no more wondering where the strange music came from)
 Improved font/text quality of app
