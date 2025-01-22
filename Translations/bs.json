@@ -1,4 +1,9 @@
 ﻿{
+"Manually select your DPI size (app scale) here.": "Manuelno odaberite svoju DPI veličinu (veličinu aplikacije) ovdje.",
+  "DPI Scale": "DPI skala",
+  "Automatic adapts GLD DPI size based on resolution.": "Automatski prilagođava GLD-ijevu DPI veličinu prema rezoluciji vašeg monitora.",
+  "Automatic DPI Size": "Automatska DPI veličina",
+  "Image Path (Supports urls)": "Put do slike (podržava URL-ove)",
   "  Scripts Installer": "  Instaler skripti",
   " Return": " Natrag",
   "%6d/%-6d %6d lines  | %s | %s | %s | %s": "%6d/%-6d %6d linija  | %s | %s | %s | %s",
@@ -412,5 +417,7 @@
   "Unlocked Achievements (%s):": "Otključana dostignuća (%s):",
   "Use English for achievements": "Prikaži dostinuća na engleskom",
   "Warner": "Warner",
+  "See on store": "Vidi u prodavnici",
+  "If for some reason GLD got wrong steam id (or if its empty) for that game u can change it here!": "Ako je iz nekog razloga GLD dobio pogrešan steam ID (ili ako je prazan) za tu igru, možete ga promijeniti ovdje!",
   "GLD is syncing data to your account!\nDONT CLOSE THIS WINDOW.\nPlease wait, it will automatically close when finished.": "GLD azurira podatke vaseg racuna.\nNEMOJTE ZATVORITI OVAJ PROZOR!\nAutomatski ce se zatvoriti kada se azuriranje zavrsi."
 }

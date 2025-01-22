@@ -1,4 +1,9 @@
 ﻿{
+  "Manually select your DPI size (app scale) here.": "Вручную выберите размер DPI (масштаб приложения) здесь.",
+  "DPI Scale": "Масштаб DPI",
+  "Automatic adapts GLD DPI size based on resolution.": "Автоматическая адаптация размера DPI GLD в зависимости от вашего разрешения.",
+  "Automatic DPI Size": "Автоматический размер DPI",
+  "Image Path (Supports urls)": "Путь к изображению (с поддержкой URL-адресов)",
   "  Scripts Installer": "  Установщик скриптов",
   " Return": " Вернуться",
   "%6d/%-6d %6d lines  | %s | %s | %s | %s": "%6d/%-6d %6d строк  | %s | %s | %s | %s",
@@ -196,9 +201,10 @@
   "1337x": "1337x",
   "1337x [magnet]": "1337x [magnet]",
   "1FICHIER": "1FICHIER",
-  "Add Game From Search Popup": "Всплывающее окно добавления игры из поиска",
+ "Add Game From Search Popup": "Всплывающее окно добавления игры из поиска",
   "Add to library": "Добавить в библиотеку",
-  "DDOWNLOAD": "DDOWNLOAD","DROPAPK": "DropAPK",
+  "DDOWNLOAD": "DDOWNLOAD",
+  "DROPAPK": "DropAPK",
   "Filehoster: BayFiles": "Файлообменник: BayFiles",
   "Filehoster: MultiUpload": "Файлообменник: MultiUpload",
   "Filehoster: OneDrive": "Файлообменник: OneDrive",
@@ -411,5 +417,7 @@
   "Unlocked Achievements (%s):": "Разблокированные достижения (%s):",
   "Use English for achievements": "Показать достижения на английском языке",
   "Warner": "Warner",
+  "See on store": "Посмотреть в магазине",
+  "If for some reason GLD got wrong steam id (or if its empty) for that game u can change it here!": "Если по какой-то причине GLD получил неправильный Steam ID (или он пуст) для этой игры, вы можете изменить его здесь!",
   "GLD is syncing data to your account!\nDONT CLOSE THIS WINDOW.\nPlease wait, it will automatically close when finished.": "GLD is syncing data to your account!\nDON'T CLOSE THIS WINDOW.\nPlease wait, it will automatically close when finished."
 }

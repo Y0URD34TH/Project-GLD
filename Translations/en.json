@@ -1,4 +1,9 @@
 {
+ "Manually select your DPI size (app scale) here.": "",
+  "DPI Scale": "DPI scale",
+  "Automatic adapts GLD DPI size based on resolution.": "Automatically adapts GLD's DPI size based on your resolution.",
+  "Automatic DPI Size": "Automatic DPI size",
+  "Image Path (Supports urls)": "Image path (supports URL's)",
   "  Scripts Installer": "  Scripts Installer",
   " Return": " Return",
   "%6d/%-6d %6d lines  | %s | %s | %s | %s": "%6d/%-6d %6d lines  | %s | %s | %s | %s",
@@ -412,5 +417,7 @@
   "Unlocked Achievements (%s):": "Unlocked achievements (%s):",
   "Use English for achievements": "Display the achievements in English",
   "Warner": "Warner",
+  "See on store": "",
+  "If for some reason GLD got wrong steam id (or if its empty) for that game u can change it here!": "",
   "GLD is syncing data to your account!\nDONT CLOSE THIS WINDOW.\nPlease wait, it will automatically close when finished.": "GLD is syncing data to your account.\nDON'T CLOSE THIS WINDOW!\nPlease wait, it will automatically close when finished."
 }

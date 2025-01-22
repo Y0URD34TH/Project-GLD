@@ -1,4 +1,9 @@
 ﻿{
+    "Manually select your DPI size (app scale) here.": "Selecione manualmente o tamanho do DPI (escala do aplicativo) aqui.",
+    "DPI Scale": "Escala de DPI",
+    "Automatic adapts GLD DPI size based on resolution.": "Adapta automaticamente a escala do GLD com base na sua resolução",
+    "Automatic DPI Size": "DPI Automatico",
+    "Image Path (Supports urls)": "Local da imagem (suporta URLs)",
     "  Scripts Installer": "  Instalador de Scripts",
     " Return": " Voltar",
     "%6d/%-6d %6d lines  | %s | %s | %s | %s": "%6d/%-6d %6d linhas  | %s | %s | %s | %s",
@@ -412,6 +417,8 @@
     "Unlocked Achievements (%s):": "Conquistas Desbloqueadas (%s):",
     "Use English for achievements": "Usar o Ingles nas conquistas",
     "Warner": "Warner",
+    "See on store": "Ver na loja",
+    "If for some reason GLD got wrong steam id (or if its empty) for that game u can change it here!": "Se por alguma razão a steam id do game esa incorretta (ou vazia) você pode modificala aqui!",
     "GLD is syncing data to your account!\nDONT CLOSE THIS WINDOW.\nPlease wait, it will automatically close when finished.": "GLD esta sincronizando dados para sua conta!\nNAO FECHE ESTA JANELA.\nEspere, isto ira fechar automaticamente quando terminar.",
 "Torrent max time out (in seconds) for connecting to peers before restarting download.\nLess than 5 seconds makes it goes off.": "Tempo limite máximo do torrent (em segundos) para conexão com pares antes de reiniciar o download.\nMenos de 5 segundos faz com que ele desligue.",
 "If torrent may seem stuck on connecting to peers it will auto restart after %d seconds.\nYou can change this time in max timeout on settings tab.\nYou can manually restart too.": "Se o torrent parecer travado na conexão com peers, ele será reiniciado automaticamente após %d segundos.\nVocê pode alterar esse tempo no tempo limite máximo na guia de configurações.\nVocê também pode reiniciar manualmente."
