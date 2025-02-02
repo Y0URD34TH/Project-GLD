@@ -79,42 +79,53 @@
         ],
         "site_detail_url": "https://www.giantbomb.com/red-dead-redemption-ii/3030-56725/"
     },
-    {
-        "aliases": "S.T.A.L.K.E.R. 2: Heart of Chernobyl",
-        "api_detail_url": "https://www.giantbomb.com/api/game/3030-32327/",
-        "date_added": "2010-08-13 15:10:27",
-        "date_last_updated": "2024-07-25 06:06:42",
-        "deck": "The formerly-cancelled sequel to S.T.A.L.K.E.R.",
-        "description": "<h2>Overview</h2><h3>First Announcement</h3><p>On August 13th, 2010, <a href=\"/gsc-game-world/3010-1607/\" data-ref-id=\"3010-1607\">GSC Game World</a> announced that a full fledged sequel to <a href=\"/stalker-shadow-of-chernobyl/3030-11725/\" data-ref-id=\"3030-11725\">S.T.A.L.K.E.R. : Shadow of Chernobyl</a> was in the works and was slated to be released in 2012. Billed as \"the next chapter\" in the series by CEO Sergiy Grygorovych, the game was to use a new multi-platform engine built off of X-Ray, that the design team was building from the ground up. No other details were given at the time of the announcement.</p><p>On December 9th, 2011, the <a href=\"http://ukranews.com/ru/news/ukraine/2011/12/09/59663\" rel=\"nofollow \">Ukrainian News Agency</a> (then UkraNews) announced that GSC Game World would be closing down. Rumors claimed the closure was because of CEO/founder Grigorovich's unhappiness with the development progress of S.T.A.L.K.E.R. 2, a claim which was later refuted in a Twitter post by GSC, a post which would later be taken down. Beyond commenting on the rumor, the GSC Twitter also stated \"We will do our best to continue. However, at this moment, nothing is certain.\" Soon after, a number of GSC employees formed <a href=\"/vostok-games/3010-7991/\" data-ref-id=\"3010-7991\">Vostok Games</a> and began developing <a href=\"/survarium/3030-38126/\" data-ref-id=\"3030-38126\">Survarium</a>.</p><h3>Second Announcement</h3><p>Following a revival in 2014, GSC Game World <a href=\"https://twitter.com/GSC_GW/status/996521779798605824\" data-target=\"true\" target=\"_blank\" rel=\"noopener nofollow\">posted</a> on May 15th, 2018 that development of S.T.A.L.K.E.R. 2 had been restarted, with a projected released date of 2021. This was further confirmed the following day on Sergei Grigorovich's Facebook page.</p><p>On July 23rd 2020, a first-look trailer for S.T.A.L.K.E.R. 2 was shown as part of the July Xbox Series X event, with the game slated to be a timed exclusive to Xbox Series X and PC, alongside being part of <a href=\"/xbox-game-pass/3015-9235/\" data-ref-id=\"3015-9235\">Game Pass</a> at launch. New details were added to the official website, including news that development has shifted from a proprietary engine to <a href=\"/unreal-engine-5/3015-9652/\" data-ref-id=\"3015-9652\">Unreal Engine 5</a>. During Microsoft's <a href=\"/e3-2021/3015-9615/\" data-ref-id=\"3015-9615\">E3 2021</a> presentation, a second trailer was shown, showcasing characters, combat, and environments from the game. The trailer included a tentative release date of April 28, 2022, and a new subtitle, \"Heart of Chernobyl\". On January 12, 2022, the game was delayed to a new release date of December 8, 2022.</p><p>In March of the same year, the subtitle was changed to \"Heart of Chornobyl\", replacing the location's Russian spelling with the Ukrainian spelling, a move that was assumed to be related to the Russian invasion of Ukraine begun in February 2022. As a result of the invasion, part of GSC's development team was <a href=\"https://www.gamesradar.com/stalker-2-development-reportedly-continuing-in-the-czech-republic/\" data-target=\"true\" target=\"_blank\" rel=\"noopener nofollow\">reportedly</a> relocated from their <a href=\"/kyiv/3035-5815/\" data-ref-id=\"3035-5815\">Kyiv</a> headquarters to <a href=\"/prague/3035-879/\" data-ref-id=\"3035-879\">Prague</a>.</p>",
+      {
+        "aliases": null,
+        "api_detail_url": "https://www.giantbomb.com/api/game/3030-83881/",
+        "date_added": "2021-09-09 13:39:32",
+        "date_last_updated": "2024-12-30 10:53:17",
+        "deck": "Marvel's Spider-Man 2 sees the return of Peter Parker and Miles Morales as they team up to face Venom and Kraven the Hunter.",
+        "description": null,
         "expected_release_day": null,
         "expected_release_month": null,
         "expected_release_quarter": null,
         "expected_release_year": null,
-        "guid": "3030-32327",
-        "id": 32327,
+        "guid": "3030-83881",
+        "id": 83881,
         "image": {
-            "icon_url": "https://www.giantbomb.com/a/uploads/square_avatar/33/338034/3421086-5522618033-EGS_STALKER2HeartofChornobyl_GSCGameWorld_S2_1200x1600-15b4c44396ad63e7dd881b3a5ef353cc.jpg",
+            "icon_url": "https://www.giantbomb.com/a/uploads/square_avatar/20/201266/3533936-5655705013-co79v.png",
             "image_tags": "All Images",
-            "medium_url": "https://www.giantbomb.com/a/uploads/scale_medium/33/338034/3421086-5522618033-EGS_STALKER2HeartofChornobyl_GSCGameWorld_S2_1200x1600-15b4c44396ad63e7dd881b3a5ef353cc.jpg",
-            "original_url": "https://www.giantbomb.com/a/uploads/original/33/338034/3421086-5522618033-EGS_STALKER2HeartofChornobyl_GSCGameWorld_S2_1200x1600-15b4c44396ad63e7dd881b3a5ef353cc.jpg",
-            "screen_large_url": "https://www.giantbomb.com/a/uploads/screen_kubrick/33/338034/3421086-5522618033-EGS_STALKER2HeartofChornobyl_GSCGameWorld_S2_1200x1600-15b4c44396ad63e7dd881b3a5ef353cc.jpg",
-            "screen_url": "https://www.giantbomb.com/a/uploads/screen_medium/33/338034/3421086-5522618033-EGS_STALKER2HeartofChornobyl_GSCGameWorld_S2_1200x1600-15b4c44396ad63e7dd881b3a5ef353cc.jpg",
-            "small_url": "https://www.giantbomb.com/a/uploads/scale_small/33/338034/3421086-5522618033-EGS_STALKER2HeartofChornobyl_GSCGameWorld_S2_1200x1600-15b4c44396ad63e7dd881b3a5ef353cc.jpg",
-            "super_url": "https://www.giantbomb.com/a/uploads/scale_large/33/338034/3421086-5522618033-EGS_STALKER2HeartofChornobyl_GSCGameWorld_S2_1200x1600-15b4c44396ad63e7dd881b3a5ef353cc.jpg",
-            "thumb_url": "https://www.giantbomb.com/a/uploads/scale_avatar/33/338034/3421086-5522618033-EGS_STALKER2HeartofChornobyl_GSCGameWorld_S2_1200x1600-15b4c44396ad63e7dd881b3a5ef353cc.jpg",
-            "tiny_url": "https://www.giantbomb.com/a/uploads/square_mini/33/338034/3421086-5522618033-EGS_STALKER2HeartofChornobyl_GSCGameWorld_S2_1200x1600-15b4c44396ad63e7dd881b3a5ef353cc.jpg"
+            "medium_url": "https://www.giantbomb.com/a/uploads/scale_medium/20/201266/3533936-5655705013-co79v.png",
+            "original_url": "https://www.giantbomb.com/a/uploads/original/20/201266/3533936-5655705013-co79v.png",
+            "screen_large_url": "https://www.giantbomb.com/a/uploads/screen_kubrick/20/201266/3533936-5655705013-co79v.png",
+            "screen_url": "https://www.giantbomb.com/a/uploads/screen_medium/20/201266/3533936-5655705013-co79v.png",
+            "small_url": "https://www.giantbomb.com/a/uploads/scale_small/20/201266/3533936-5655705013-co79v.png",
+            "super_url": "https://www.giantbomb.com/a/uploads/scale_large/20/201266/3533936-5655705013-co79v.png",
+            "thumb_url": "https://www.giantbomb.com/a/uploads/scale_avatar/20/201266/3533936-5655705013-co79v.png",
+            "tiny_url": "https://www.giantbomb.com/a/uploads/square_mini/20/201266/3533936-5655705013-co79v.png"
         },
         "image_tags": [
             {
-                "api_detail_url": "https://www.giantbomb.com/api/images/3030-32327/?filter=image_tag:All%20Images",
+                "api_detail_url": "https://www.giantbomb.com/api/images/3030-83881/?filter=image_tag:All%20Images",
                 "name": "All Images",
-                "total": 9
+                "total": 91
+            },
+            {
+                "api_detail_url": "https://www.giantbomb.com/api/images/3030-83881/?filter=image_tag:Screenshots",
+                "name": "Screenshots",
+                "total": 80
             }
         ],
-        "name": "S.T.A.L.K.E.R. 2: Heart of Chornobyl",
+        "name": "Marvel's Spider-Man 2",
         "number_of_user_reviews": 0,
-        "original_game_rating": null,
-        "original_release_date": "2024-11-20",
+        "original_game_rating": [
+            {
+                "api_detail_url": "https://www.giantbomb.com/api/game_rating/3065-1/",
+                "id": 1,
+                "name": "ESRB: T"
+            }
+        ],
+        "original_release_date": "2023-10-20",
         "platforms": [
             {
                 "abbreviation": "PC",
@@ -124,15 +135,15 @@
                 "site_detail_url": "https://www.giantbomb.com/pc/3045-94/"
             },
             {
-                "abbreviation": "XSX",
-                "api_detail_url": "https://www.giantbomb.com/api/platform/3045-179/",
-                "id": 179,
-                "name": "Xbox Series X|S",
-                "site_detail_url": "https://www.giantbomb.com/xbox-series-xs/3045-179/"
+                "abbreviation": "PS5",
+                "api_detail_url": "https://www.giantbomb.com/api/platform/3045-176/",
+                "id": 176,
+                "name": "PlayStation 5",
+                "site_detail_url": "https://www.giantbomb.com/playstation-5/3045-176/"
             }
         ],
         "resource_type": "game",
-        "site_detail_url": "https://www.giantbomb.com/stalker-2-heart-of-chornobyl/3030-32327/"
+        "site_detail_url": "https://www.giantbomb.com/marvels-spider-man-2/3030-83881/"
     },
     {
         "aliases": "Dead Don't Ride",
