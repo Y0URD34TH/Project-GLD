@@ -9,15 +9,3 @@ end
 end
 
 client.add_callback("on_gamelaunch", gamelaunchc)
-
-
-
-
-
-
-
-
-
-
-
-
