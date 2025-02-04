@@ -12,10 +12,3 @@ end
 
 client.add_callback("on_button_Attach Console", Attach)
 client.add_callback("on_button_Detach Console", Detach)
-
-
-
-
-
-
-
