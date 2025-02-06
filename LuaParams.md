@@ -21,6 +21,7 @@
 * [SteamApi](#namespace-SteamApi)
 * [zip](#namespace-zip)
 * [gldconsole](#namespace-gldconsole)
+* [dll](#namespace-dll)
 
 ---
 ## Namespace: JsonWrapper
@@ -132,6 +133,36 @@ menu.set_visible(true)
 -- Minimize the window
 menu.set_visible(false)
 ```
+
+---
+
+## **Function: set_dpi**
+
+### **Synopsis**
+Sets the DPI scaling factor for the UI.
+
+### **Declaration**
+```lua
+menu.set_dpi(dpi: number)
+```
+
+### **Parameters**
+- **`dpi` (number)**: The new DPI scaling factor.
+
+### **Returns**
+- **`nil`**: This function does not return a value.
+
+### **Description**
+- This function updates the DPI scaling factor for the user interface.
+- It sets `g_Options.dpi_scale` to the specified `dpi` value.
+- It also enables `g_Options.rescaleall`, which triggers a rescaling of the entire UI.
+
+### **Example Usage**
+```lua
+menu.set_dpi(1.5) -- Set DPI scaling to 150%
+```
+
+---
 
 #### Function: next_line
 
@@ -840,6 +871,68 @@ local content = file.read("log.txt")
 utils.ConsolePrint(true, "File Content: %s", content)
 ```
 
+### **Function: delete**
+
+#### **Synopsis**
+Deletes a specified file or directory.
+
+#### **Declaration**
+```lua
+file.delete(path)
+```
+
+### **Parameters**
+- **path** (`string`): The file or directory path to be deleted.
+
+### **Returns**
+- **None**
+
+### **Description**
+- This function deletes a file or a directory at the specified path.
+- Before deleting, it checks if file operations are allowed.
+- If the path points to a directory, it deletes the directory and all its contents.
+- If the path points to a file, it deletes the file.
+- The function ensures that the user cannot accidentally delete the `downloadpath`.
+
+### **Example Usage**
+```lua
+file.delete("C:\\Users\\User\\Documents\\temp.txt") -- Deletes a file
+file.delete("C:\\Users\\User\\Documents\\temp_folder") -- Deletes a folder and its contents
+```
+
+
+### **Function: exists**
+
+#### **Synopsis**
+Checks if a file or directory exists at the given path.
+
+#### **Declaration**
+```lua
+file.exists(path) -> boolean
+```
+
+#### **Parameters**
+- **path** (`string`): The file or directory path to check.
+
+#### **Returns**
+- **`true`** if the file or directory exists.
+- **`false`** if it does not exist or if file operations are not allowed (`g_Options.allow_file` is disabled).
+
+#### **Description**
+- This function verifies the existence of a file or directory at the specified path.
+- If file operations are disabled (`g_Options.allow_file == false`), it logs an error, unloads the script, and returns `false`.
+- If the path exists, it returns `true`; otherwise, it returns `false`.
+
+#### **Example Usage**
+```lua
+if file.exists("C:\\Users\\User\\Documents\\test.txt") then
+    print("File exists!")
+else
+    print("File does not exist.")
+end
+```
+
+
 ---
 
 ## Namespace: client
@@ -1079,6 +1172,56 @@ Retrieves the default save path for the client.
 ```lua
 -- Get the default save path for the client
 local defaultSavePath = client.GetDefaultSavePath()
+```
+
+---
+
+## **Function: GetScreenHeight**
+
+### **Synopsis**
+Retrieves the height of the screen in pixels.
+
+### **Declaration**
+```lua
+client.GetScreenHeight() -> integer
+```
+
+### **Returns**
+- **`integer`**: The height of the screen in pixels.
+
+### **Description**
+- This function returns the vertical resolution of the primary display.
+- It uses the `GetSystemMetrics(SM_CYSCREEN)` function from the Windows API to determine the screen height.
+
+### **Example Usage**
+```lua
+local height = client.GetScreenHeight()
+print("Screen Height: " .. height)
+```
+
+---
+
+## **Function: GetScreenWidth**
+
+### **Synopsis**
+Retrieves the width of the screen in pixels.
+
+### **Declaration**
+```lua
+client.GetScreenWidth() -> integer
+```
+
+### **Returns**
+- **`integer`**: The width of the screen in pixels.
+
+### **Description**
+- This function returns the horizontal resolution of the primary display.
+- It uses the `GetSystemMetrics(SM_CXSCREEN)` function from the Windows API to determine the screen width.
+
+### **Example Usage**
+```lua
+local width = client.GetScreenWidth()
+print("Screen Width: " .. width)
 ```
 
 ---
@@ -1406,6 +1549,46 @@ GameLibrary.removeGame(2)
 
 ---
 
+
+## **Function: GetGameList**
+
+### **Synopsis**
+Retrieves a list of games stored in the game library.
+
+### **Declaration**
+```lua
+gameList = GameLibrary.GetGameList()
+```
+
+### **Parameters**
+- **None**
+
+### **Returns**
+- **`table[]`**: A list of tables, each representing a game in the library.  
+  Each game table contains the following fields:
+  - **`id` (number)**: The unique identifier of the game.
+  - **`name` (string)**: The name of the game.
+  - **`exePath` (string)**: The path to the game's executable.
+  - **`imagePath` (string)**: The path to the game's image (same as `exePath`).
+  - **`initoptions` (string)**: Initialization options for the game (same as `exePath`).
+
+### **Description**
+- This function retrieves all stored games from the `GameLibrary` and returns them as a list of Lua tables.
+- Each game is represented as a table with details such as its ID, name, executable path, and initialization options.
+- The function allows Lua scripts to access and manipulate the stored game data.
+
+### **Example Usage**
+```lua
+local games = GameLibrary.GetGameList()
+for _, mgame in ipairs(games) do
+    print("Game ID:", mgame.id)
+    print("Name:", mgame.name)
+    print("Executable:", mgame.exePath)
+end
+```
+
+---
+
 #### Function: GetGameIdFromName
 
 ```lua
@@ -1615,7 +1798,7 @@ The `zip` namespace provides functions for extracting files from compressed arch
 #### Function: extract
 
 ```lua
-function extract(source: string, destination: string, deleteaftercomplete: boolean)
+function extract(source: string, destination: string, deleteaftercomplete: boolean, password: string) --passowrd is optional.
 ```
 
 **Description:**
@@ -1625,6 +1808,7 @@ Asynchronously extracts files from a compressed archive.
 - `source` (string): The path to the compressed archive.
 - `destination` (string): The directory where the files will be extracted.
 - `deleteaftercomplete` (boolean): Whether to delete the compressed archive after extraction is complete.
+- `password` (string): This is optional, use if the file u want to extract is protected by an password.
 
 **Usage Example:**
 ```lua
@@ -1633,6 +1817,56 @@ local destination = "extracted_files"
 local deleteAfterComplete = true
 zip.extract(source, destination, deleteAfterComplete)
 ```
+
+```lua
+local source = "archive.zip" --works with .rar, .7z etc
+local destination = "extracted_files"
+local deleteAfterComplete = true
+local pass = "1234"
+zip.extract(source, destination, deleteAfterComplete, pass)
+```
+
+### Namespace: dll
+
+The `dll` namespace provides functions for injecting dlls.
+
+
+## **Function: inject**
+
+### **Synopsis**
+Injects a DLL into a specified process.
+
+### **Declaration**
+```lua
+success = dll.inject(process_name, dll_path, delay)
+```
+
+### **Parameters**
+- **process_name** (`string`): The name of the process to inject the DLL into (e.g., `"GoW.exe"`).
+- **dll_path** (`string`): The full file path of the DLL to inject.
+- **delay** (`integer`): The delay in milliseconds before the injection occurs (e.g., `300` for 300 milliseconds).
+
+### **Returns**
+- **boolean**: `true` if the injection was successful, `false` otherwise.
+
+### **Description**
+- This function injects a DLL into a running process.
+- It first verifies that file access is allowed (`Lua Read/Write`).
+- If a delay is specified, the function waits before attempting injection.
+- The process ID is determined using `DLL::GetPID()`, and the DLL file existence is checked.
+- If the injection succeeds, a success message is logged; otherwise, an error message is displayed.
+
+### **Example Usage**
+```lua
+local success = dll.inject("GoW.exe", "C:\\path\\to\\inject.dll", 300)
+
+if success then
+    print("Injection successful!")
+else
+    print("Injection failed!")
+end
+```
+
 
 ### Namespace: gldconsole
 
