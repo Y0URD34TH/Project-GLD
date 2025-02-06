@@ -1,10 +1,12 @@
-V4.70
+V4.80
 
-Made GLD resizable by adjusting the DPI value of it (automatically detects the best one for your resolution)
-Added the option to change Steam ID of game in library in case it's getting the wrong achievements due to wrong ID
-Made it so achievement sound and popup appear at the same time (no more wondering where the strange music came from)
-Improved font/text quality of app
-Fixed random crashes sometimes happening on app launch
+We've fixed some issues with DPI scaling on integrated intel graphics and increased the DPI range up to 300%
+Added the toggle for automatically launching steam on game launch
+Added subcategories in the installers tab for game sources, utilities and mods
+Massively improved the Lua API and added a lot more functions 
+Added a prompt to launch in safe mode in case GLD crashed previously due to a corrupted script or anything else
+Improved GLD launch speed by optimizing the Lua API
+Defeated jma's arch nemesis, the random scroll bar on update popup
 
 (gld may freeze while auto updating and its normal!!!)
 (gld pode congelar ao se auto atualizar, isso é normal!!!)
