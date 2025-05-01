@@ -1,12 +1,12 @@
-V4.80
+V5.00
 
-We've fixed some issues with DPI scaling on integrated intel graphics and increased the DPI range up to 300%
-Added the toggle for automatically launching steam on game launch
-Added subcategories in the installers tab for game sources, utilities and mods
-Massively improved the Lua API and added a lot more functions 
-Added a prompt to launch in safe mode in case GLD crashed previously due to a corrupted script or anything else
-Improved GLD launch speed by optimizing the Lua API
-Defeated jma's arch nemesis, the random scroll bar on update popup
+Added a COMPLETELY FREE AND CUSTOMIZABLE cloud save system, as well as options to locally back up/restore your game save files
+Redesigned and improved the profile system
+Added a prompt which asks you if you'd like to import your data from your account or keep your current local data and have your account sync to it
+Placed the automatic Steam launcher toggle in its own thread so that it doesn't interrupt the main UI / freeze the app until Steam opens
+Fixed / improved button size of some buttons
+Fixed some Lua API functions, such as the AddGame function
+Added GLD protocol to CEF
 
 (gld may freeze while auto updating and its normal!!!)
 (gld pode congelar ao se auto atualizar, isso é normal!!!)
