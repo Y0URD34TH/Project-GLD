@@ -1,12 +1,9 @@
-V5.00
+V5.15
 
-Added a COMPLETELY FREE AND CUSTOMIZABLE cloud save system, as well as options to locally back up/restore your game save files
-Redesigned and improved the profile system
-Added a prompt which asks you if you'd like to import your data from your account or keep your current local data and have your account sync to it
-Placed the automatic Steam launcher toggle in its own thread so that it doesn't interrupt the main UI / freeze the app until Steam opens
-Fixed / improved button size of some buttons
-Fixed some Lua API functions, such as the AddGame function
-Added GLD protocol to CEF
+Fixed ludusavi memory leak
+Fixed ludusavi not saving settings after changing provider
+Added save and cloud operations to our Lua API
+Added "on launch" and "on quit" as Lua API callback
 
 (gld may freeze while auto updating and its normal!!!)
 (gld pode congelar ao se auto atualizar, isso é normal!!!)
