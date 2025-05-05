@@ -120,10 +120,7 @@ Settings are saved in the "Documents/Project-GLD/Configs" folder.
 - [**GameBounty**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/GameBounty.lua) [📥]
 - [**Gamedrive**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Gamedrive.lua) [📥]
 - [**CPGRepacks (NSFW)**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/CPGRepacks%20(NSFW).lua) [🧲]
-- [**Fonte Kazumi**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Fonte%20Kazumi.lua) [🧲]
 - [**Repack-Games**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Repack-Games.lua) [🧲]
-- [**Shisuys Source**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Shisuys%20Source.lua) [🧲]
-- [**Wkeynhk Source**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Wkeynhk%20Source.lua) [🧲]
 - [**1337x**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/1337x.lua) **[🧲] [⚠️] ONLY DOWNLOAD FROM TRUSTED UPLOADERS!!!**
 
 For instructions on how to use Lua for making scripts, please refer to [this guide](https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.md).
