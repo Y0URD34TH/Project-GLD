@@ -42,6 +42,11 @@ Project GLD offers a variety of features to explore and utilize for your use cas
 * View game's images/trailers/videos
 * View game's platforms, rating, min and max requirements
 
+### **[ ☁️ ] Cloud Saving**
+* Back up your games and save them on cloud thanks to [Rclone](https://rclone.org/) and [ludusavi](https://github.com/mtkennerly/ludusavi)
+* Support for Gdrive, Box, dropbox, onedrive, ftp, smb, webdav and custom providers
+* Automatic back up, restore, and cloud sync available
+
 ### **[🎮] Game Download**
 * Download a game from any source via Lua scripts
 * Built-in download manager and Real-Debrid & TorBox support
@@ -114,6 +119,11 @@ Settings are saved in the "Documents/Project-GLD/Configs" folder.
 - **[Empress](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Empress.lua)** [🧲]
 - [**GameBounty**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/GameBounty.lua) [📥]
 - [**Gamedrive**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Gamedrive.lua) [📥]
+- [**CPGRepacks (NSFW)**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/CPGRepacks%20(NSFW).lua) [🧲]
+- [**Fonte Kazumi**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Fonte%20Kazumi.lua) [🧲]
+- [**Repack-Games**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Repack-Games.lua) [🧲]
+- [**Shisuys Source**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Shisuys%20Source.lua) [🧲]
+- [**Wkeynhk Source**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Wkeynhk%20Source.lua) [🧲]
 - [**1337x**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/1337x.lua) **[🧲] [⚠️] ONLY DOWNLOAD FROM TRUSTED UPLOADERS!!!**
 
 For instructions on how to use Lua for making scripts, please refer to [this guide](https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.md).
@@ -142,10 +152,8 @@ You might experience a slight delay when searching for and downloading games. Th
 ## Authors
 
 * [jma](https://github.com/Y0URD34TH) - *Lead Developer / Founder*
-* [foie](https://github.com/KaylinOwO) - *Tester / Designer / Developer*
 * [qiracy](https://github.com/qiracy) - *Tester / Translator / Designer*
 * [Brisolo32](https://github.com/Brisolo32) - *Translator / Designer*
-* [Backend](https://github.com/Backend2121) - *Designer / Coding Helper*
 
 ## Sponsors
 
