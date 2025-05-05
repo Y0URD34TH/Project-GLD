@@ -153,7 +153,7 @@ You might experience a slight delay when searching for and downloading games. Th
 
 * [jma](https://github.com/Y0URD34TH) - *Lead Developer / Founder*
 * [qiracy](https://github.com/qiracy) - *Tester / Translator / Designer*
-* [Brisolo32](https://github.com/Brisolo32) - *Translator / Designer*
+* [argonptg](https://github.com/argonptg) - *Translator / Designer / Profile system developer*
 
 ## Sponsors
 
