@@ -119,8 +119,6 @@ Settings are saved in the "Documents/Project-GLD/Configs" folder.
 - **[Empress](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Empress.lua)** [🧲]
 - [**GameBounty**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/GameBounty.lua) [📥]
 - [**Gamedrive**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Gamedrive.lua) [📥]
-- [**CPGRepacks (NSFW)**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/CPGRepacks%20(NSFW).lua) [🧲]
-- [**Repack-Games**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Repack-Games.lua) [🧲]
 - [**1337x**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/1337x.lua) **[🧲] [⚠️] ONLY DOWNLOAD FROM TRUSTED UPLOADERS!!!**
 
 For instructions on how to use Lua for making scripts, please refer to [this guide](https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.md).
@@ -181,3 +179,6 @@ If you contact us via [Discord](kPHb6xz4v7) or [make an issue on GitHub](https:/
 * [x360ce](https://github.com/x360ce/x360ce)
 * [Gumbo HTML](https://github.com/google/gumbo-parser)
 * [CEF](https://github.com/chromiumembedded/cef)
+* [ludusavi](https://github.com/mtkennerly/ludusavi)
+* [Rclone](https://rclone.org/)
+  
