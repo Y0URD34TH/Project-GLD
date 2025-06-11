@@ -42,6 +42,7 @@ There are two ways of doing it:<br>
     3DShitWizard: German translation 🇩🇪
     3DShitWizard: Greek translation 🇬🇷
     Qrs_Yami: Italian translation 🇮🇹
+    qbixor: Polish translation 🇵🇱
     Brisolo32: Portuguese (Brazilian) translation 🇧🇷
     LU0HGZ4N: Spanish translation 🇪🇸
     alient: Turkish translation 🇹🇷
