@@ -1,9 +1,19 @@
-V5.15
+V6.20
+Major Features:
+Switched from DX9 to DX11
+Instant game search (thanks to IGDB)
+New search filters (genre, theme, releases, ratings)
+Auto-extract/setup for 1click, FitGirl, Dodi, etc.
+Better achievement watcher ("Force GLD Watcher" option)
+Faster achievement loading & game info
+New shortcuts, store image button & power options
 
-Fixed ludusavi memory leak
-Fixed ludusavi not saving settings after changing provider
-Added save and cloud operations to our Lua API
-Added "on launch" and "on quit" as Lua API callback
+Design Changes:
+Redesigned tabs (scripts, settings, themes, game page)
+Custom background images (Lake/Dawn/Flow themes)
+DPI scale on top bar
+Gaussian blur (Win11 only)
 
-(gld may freeze while auto updating and its normal!!!)
-(gld pode congelar ao se auto atualizar, isso é normal!!!)
+Extras:
+50+ hidden app achievements
+Full joystick navigation support
