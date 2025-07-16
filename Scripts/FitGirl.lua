@@ -1,5 +1,4 @@
--- to view examples and lua params go in this github page: https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.md
-local sourcelink = "https://hydralinks.cloud/sources/steamrip.json"
+local sourcelink = "https://hydralinks.cloud/sources/fitgirl.json"
 local function endsWith(str, pattern)
     return string.sub(str, -string.len(pattern)) == pattern
 end
@@ -187,10 +186,6 @@ local function generateVariations(input)
     return variations
 end
 
-local function isFrom1Fichier(url)
-    return url:find("1fichier") ~= nil
-end
-
 local function search_game(downloads, game_name, name_script)
     local results = {}
     local game_name_variations = generateVariations(game_name)
@@ -198,7 +193,7 @@ local function search_game(downloads, game_name, name_script)
     for _, download in ipairs(downloads) do
         local lower_title = download.title:lower()
         local lower_title_variations = generateVariations(lower_title)
-
+        
         local add_result = false
         for _, game_variation in ipairs(game_name_variations) do
             for _, title_variation in ipairs(lower_title_variations) do
@@ -220,13 +215,7 @@ local function search_game(downloads, game_name, name_script)
                 ScriptName = name_script
             }
             for index, uri in ipairs(download.uris) do
-                if not isFrom1Fichier(uri) then
-                    table.insert(patchresult.links, {
-                        name = "Download Option " .. tostring(index),
-                        link = uri,
-                        addtodownloadlist = true
-                    })
-                end
+                table.insert(patchresult.links, { name = "Download Option " .. tostring(index), link = uri, addtodownloadlist = true })       
             end
             table.insert(results, patchresult)
         end
@@ -236,38 +225,36 @@ local function search_game(downloads, game_name, name_script)
 end
 
 local version = client.GetVersionDouble()
-local defaultdir = "C:/Games"
-if version < 6.00 then -- 3.50
+if version < 6.00 then
     Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
 else
-    Notifications.push_success("Lua Script", "1click Script Loaded and Working")
-    menu.add_input_text("1click Game Dir")
-    menu.set_text("1click Game Dir", defaultdir)
-    settings.load()
-    local function click1NUC()
-        settings.save()
+    Notifications.push_success("Lua Script", "FitGirl Script Loaded and Working")
+    
+    local imagelink = ""
+    local gamename = ""
+    local gamepath = ""
+    local extractpath = ""
+    local shouldrunsetup = false
+    
+    local function requestfromsource()
         local getgamename = game.getgamename()
 
         local headers = {
-            ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+         ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
         }
-        local response = http.get(sourcelink, headers) -- Use the dynamic link here
+        local response = http.get(sourcelink, headers)
         local gameResults = JsonWrapper.parse(response)["downloads"]
-        local scriptname = "1click"
+        local scriptname = "FitGirl 1"
 
         local results = search_game(gameResults, getgamename, scriptname)
 
         communication.receiveSearchResults(results)
     end
-    local imagelink = ""
-    local gamename = ""
-    local gamepath = ""
-    local extractpath = ""
-    local shouldprogressextraction = false
+    
     local function ondownloadclick(gamejson, downloadurl, scriptname)
-        shouldprogressextraction = false
-        if scriptname == "1click" then
-            shouldprogressextraction = true
+        shouldrunsetup = false
+        if scriptname == "FitGirl 1" then
+            shouldrunsetup = true
         end
         local jsonResults = JsonWrapper.parse(gamejson)
         local coverImageUrl = jsonResults["cover"]["url"]
@@ -282,68 +269,77 @@ else
         local jsonName = JsonWrapper.parse(gamejson).name
         gamename = jsonName
         imagelink = coverImageUrl
-    end
-    local pathcheck = ""
-    local function ondownloadcompleted(path, url)
-        if shouldprogressextraction then
-            local gamenametopath = gamename
-            gamenametopath = gamenametopath:gsub(":", "")
-            defaultdir = menu.get_text("1click Game Dir") .. "/" .. gamenametopath .. "/"
-            -- if url == watchlink2 or url == watchlink1 then
-            path = path:gsub("\\", "/")
-            pathcheck = defaultdir
-            zip.extract(path, defaultdir, true)
-            -- end
-        end
-        settings.save()
-    end
-    local function onextractioncompleted(path)
-        if pathcheck == path then
-            path = path:gsub("/", "\\")
-            local folders = file.listfolders(path)
-
-            local secondFolder = folders[1]
-            if secondFolder then
-                local fullFolderPath = path .. "\\" .. secondFolder
-
-                local executables = file.listexecutables(fullFolderPath) -- Returns a vector
+    end   
+    
+local function setupcompletedf(from, destination)
+                local executables = file.listexecutables(destination) -- Returns a vector
 
                 -- Get the first executable (assuming executables[1] exists)
                 if executables and #executables >= 1 then
                     local firstExecutable = executables[1]
 
-                    local fullExecutablePath = fullFolderPath .. "\\" .. firstExecutable
+                    local fullExecutablePath = destination .. "\\" .. firstExecutable
                     local gameidl = GameLibrary.GetGameIdFromName(gamename)
                     if gameidl == -1 then
                        local imagePath = Download.DownloadImage(imagelink)
                        GameLibrary.addGame(fullExecutablePath, imagePath, gamename, "")
-                       Notifications.push_success("1Click Script", "Game Successfully Installed!")
+                       Notifications.push_success("FitGirl Script", "Game Successfully Installed!")
                     else
                        GameLibrary.changeGameinfo(gameidl, fullExecutablePath)
-                       Notifications.push_success("1Click Script", "Game Successfully Installed!")
+                       Notifications.push_success("FitGirl Script", "Game Successfully Installed!")
                     end
                 else
-                    local executables2 = file.listexecutablesrecursive(fullFolderPath) -- Returns a vector
+                    local executables2 = file.listexecutablesrecursive(destination) -- Returns a vector
                     if executables2 and #executables2 >= 1 then
                         local firstExecutable = executables2[1]
                         local gameidl = GameLibrary.GetGameIdFromName(gamename)
                         if gameidl == -1 then
                            local imagePath = Download.DownloadImage(imagelink)
                            GameLibrary.addGame(firstExecutable, imagePath, gamename, "")
-                           Notifications.push_success("1Click Script", "Game Successfully Installed!")
+                           Notifications.push_success("FitGirl Script", "Game Successfully Installed!")
                         else
                            GameLibrary.changeGameinfo(gameidl, firstExecutable)
-                           Notifications.push_success("1Click Script", "Game Successfully Installed!")  
+                           Notifications.push_success("FitGirl Script", "Game Successfully Installed!")  
                         end
                     end
                 end
+end
+        
+local function ondownloadcompleted(path, url)    
+    if shouldrunsetup then     
+        -- Prepare game name for path
+        local gamenametopath = gamename:gsub(":", "")
+        path = path:gsub("\\", "/")           
+
+        -- Search for setup executables
+        local executables = file.listexecutables(path)
+        if #executables == 0 then
+            Notifications.push_warning("FitGirl Script", "No executables found in download folder")
+            return
+        end
+        
+        -- Look for setup executable
+        local setupFound = false
+        for _, exe in ipairs(executables) do
+            if exe:lower():find("setup") then
+                local setupPath = path .. "/" .. exe
+                exec(setupPath, 5000, "", true, "setup.tmp")
+                Notifications.push_success("FitGirl Script", "Setup.exe launched successfully!")
+                client.add_callback("on_setupcompleted", setupcompletedf)   
+                setupFound = true
+                break
             end
         end
-    end
-    client.add_callback("on_scriptselected", click1NUC)
-    client.add_callback("on_downloadclick", ondownloadclick)
-    client.add_callback("on_downloadcompleted", ondownloadcompleted)
-    client.add_callback("on_extractioncompleted", onextractioncompleted)
+        
+        if not setupFound then
+            Notifications.push_warning("FitGirl Script", "No valid setup executable found")
+        end
+    end    
+end
+
+client.add_callback("on_scriptselected", requestfromsource)
+client.add_callback("on_downloadclick", ondownloadclick)
+client.add_callback("on_downloadcompleted", ondownloadcompleted)
 end
 
 

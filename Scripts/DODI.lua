@@ -1,5 +1,5 @@
--- to view examples and lua params go in this github page: https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.md
-local sourcelink = "https://hydralinks.cloud/sources/steamrip.json"
+--to view examples and lua params go in this github page: https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.md
+local sourcelink = "https://hydralinks.cloud/sources/dodi.json"
 local function endsWith(str, pattern)
     return string.sub(str, -string.len(pattern)) == pattern
 end
@@ -57,7 +57,6 @@ local function substituteRomanNumeralsFromEntireString(gameName)
         gameName = gameName:gsub(numeral, substitution)
     end
 
-    -- Handle cases where Roman numerals are at the beginning or end of the string
     gameName = substituteRomanNumerals(gameName)
 
     return gameName
@@ -66,7 +65,6 @@ end
 local function generateVariations(input)
     local variations = {}
 
-    -- Original variations
     table.insert(variations, input)
     local lower_input = input:lower()
     table.insert(variations, lower_input)
@@ -95,100 +93,52 @@ local function generateVariations(input)
     local lower_no_symbols_spaces_to_dot_no_roman2 = replace_spaces(lower_no_symbols_no_roman2, ".")
     table.insert(variations, lower_no_symbols_spaces_to_dot_no_roman2)
 
-    -- Additional variations combining existing ones
-    -- Combine lower_input_no_roman with lower_spaces_to_dot
     local combined1 = replace_spaces(lower_input_no_roman, ".")
     table.insert(variations, combined1)
-
-    -- Combine lower_no_symbols with lower_no_symbols_no_roman
     local combined2 = replace_symbol(lower_no_symbols, "")
     table.insert(variations, combined2)
-
-    -- Combine lower_no_symbols with replace_symbol2
     local combined22 = replace_symbol2(lower_no_symbols, "")
     table.insert(variations, combined22)
-
-    -- Combine lower_spaces_to_dot with lower_no_symbols_no_roman2
     local combined3 = replace_spaces(lower_spaces_to_dot, "")
     table.insert(variations, combined3)
-
-    -- Combine lower_no_symbols_spaces_to_dot with lower_no_symbols_spaces_to_dot_no_roman2
     local combined4 = replace_spaces(lower_no_symbols_spaces_to_dot, "")
     table.insert(variations, combined4)
-
-    -- Combine lower_no_symbols_no_roman with lower_no_symbols2
     local combined5 = replace_symbol(lower_no_symbols_no_roman, "")
     table.insert(variations, combined5)
-
-    -- Combine lower_no_symbols_no_roman with replace_symbol2
     local combined52 = replace_symbol2(lower_no_symbols_no_roman, "")
     table.insert(variations, combined52)
-
-    -- Combine lower_spaces_to_dot_no_roman with lower_no_symbols_spaces_to_dot2
     local combined6 = replace_spaces(lower_spaces_to_dot_no_roman, "")
     table.insert(variations, combined6)
-
-    -- Combine lower_no_symbols_spaces_to_dot_no_roman with lower_no_symbols_spaces_to_dot_no_roman2
     local combined7 = replace_spaces(lower_no_symbols_spaces_to_dot_no_roman, "")
     table.insert(variations, combined7)
-
-    -- Combine lower_no_symbols_spaces_to_dot_no_roman with lower_no_symbols_spaces_to_dot2
     local combined8 = replace_spaces(lower_no_symbols_spaces_to_dot_no_roman, "")
     table.insert(variations, combined8)
-
-    -- Combine lower_no_symbols_spaces_to_dot with lower_no_symbols_spaces_to_dot_no_roman2
     local combined9 = replace_spaces(lower_no_symbols_spaces_to_dot, "")
     table.insert(variations, combined9)
-
-    -- Combine lower_no_symbols_spaces_to_dot_no_roman with lower_no_symbols_no_roman2
     local combined10 = replace_spaces(lower_no_symbols_spaces_to_dot_no_roman, "")
     table.insert(variations, combined10)
-
-    -- Combine lower_no_symbols_no_roman with lower_no_symbols_spaces_to_dot2
     local combined11 = replace_symbol(lower_no_symbols_no_roman, "")
     table.insert(variations, combined11)
-
-    -- Combine lower_no_symbols_no_roman with replace_symbol2
     local combined112 = replace_symbol2(lower_no_symbols_no_roman, "")
     table.insert(variations, combined112)
-
-    -- Combine lower_no_symbols_spaces_to_dot with lower_no_symbols2
     local combined12 = replace_spaces(lower_no_symbols_spaces_to_dot, "")
     table.insert(variations, combined12)
-
-    -- Combine lower_no_symbols_no_roman2 with lower_no_symbols_spaces_to_dot_no_roman2
     local combined13 = replace_spaces(lower_no_symbols_no_roman2, "")
     table.insert(variations, combined13)
-
-    -- Combine lower_spaces_to_dot with lower_spaces_to_dot_no_roman
     local combined14 = replace_spaces(lower_spaces_to_dot, ".")
     table.insert(variations, combined14)
-
-    -- Combine lower_spaces_to_dot with lower_no_symbols_spaces_to_dot
     local combined15 = replace_spaces(lower_spaces_to_dot, ".")
     table.insert(variations, combined15)
-
-    -- Combine lower_spaces_to_dot with lower_no_symbols_spaces_to_dot_no_roman
     local combined16 = replace_spaces(lower_spaces_to_dot, ".")
     table.insert(variations, combined16)
-
-    -- Combine lower_spaces_to_dot_no_roman with lower_no_symbols_spaces_to_dot_no_roman
     local combined17 = replace_spaces(lower_spaces_to_dot_no_roman, ".")
     table.insert(variations, combined17)
-
-    -- Combine lower_spaces_to_dot_no_roman with lower_no_symbols_spaces_to_dot_no_roman2
     local combined18 = replace_spaces(lower_spaces_to_dot_no_roman, ".")
     table.insert(variations, combined18)
-
-    -- Combine lower_spaces_to_dot_no_roman with lower_no_symbols_spaces_to_dot
     local combined19 = replace_spaces(lower_spaces_to_dot_no_roman, ".")
     table.insert(variations, combined19)
 
     return variations
-end
-
-local function isFrom1Fichier(url)
-    return url:find("1fichier") ~= nil
 end
 
 local function search_game(downloads, game_name, name_script)
@@ -198,7 +148,7 @@ local function search_game(downloads, game_name, name_script)
     for _, download in ipairs(downloads) do
         local lower_title = download.title:lower()
         local lower_title_variations = generateVariations(lower_title)
-
+        
         local add_result = false
         for _, game_variation in ipairs(game_name_variations) do
             for _, title_variation in ipairs(lower_title_variations) do
@@ -220,13 +170,7 @@ local function search_game(downloads, game_name, name_script)
                 ScriptName = name_script
             }
             for index, uri in ipairs(download.uris) do
-                if not isFrom1Fichier(uri) then
-                    table.insert(patchresult.links, {
-                        name = "Download Option " .. tostring(index),
-                        link = uri,
-                        addtodownloadlist = true
-                    })
-                end
+                table.insert(patchresult.links, { name = "Download Option " .. tostring(index), link = uri, addtodownloadlist = true })       
             end
             table.insert(results, patchresult)
         end
@@ -236,38 +180,35 @@ local function search_game(downloads, game_name, name_script)
 end
 
 local version = client.GetVersionDouble()
-local defaultdir = "C:/Games"
-if version < 6.00 then -- 3.50
+if version < 6.00 then
     Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
 else
-    Notifications.push_success("Lua Script", "1click Script Loaded and Working")
-    menu.add_input_text("1click Game Dir")
-    menu.set_text("1click Game Dir", defaultdir)
-    settings.load()
-    local function click1NUC()
-        settings.save()
+    Notifications.push_success("Lua Script", "Dodi Script Loaded and Working")
+    local imagelink = ""
+    local gamename = ""
+    local gamepath = ""
+    local extractpath = ""
+    local shouldrunsetup = false
+    
+    local function requestfromsource()
         local getgamename = game.getgamename()
 
         local headers = {
-            ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+         ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
         }
-        local response = http.get(sourcelink, headers) -- Use the dynamic link here
+        local response = http.get(sourcelink, headers)
         local gameResults = JsonWrapper.parse(response)["downloads"]
-        local scriptname = "1click"
+        local scriptname = "Dodi 1"
 
         local results = search_game(gameResults, getgamename, scriptname)
 
         communication.receiveSearchResults(results)
     end
-    local imagelink = ""
-    local gamename = ""
-    local gamepath = ""
-    local extractpath = ""
-    local shouldprogressextraction = false
+    
     local function ondownloadclick(gamejson, downloadurl, scriptname)
-        shouldprogressextraction = false
-        if scriptname == "1click" then
-            shouldprogressextraction = true
+        shouldrunsetup = false
+        if scriptname == "Dodi 1" then
+            shouldrunsetup = true
         end
         local jsonResults = JsonWrapper.parse(gamejson)
         local coverImageUrl = jsonResults["cover"]["url"]
@@ -283,67 +224,74 @@ else
         gamename = jsonName
         imagelink = coverImageUrl
     end
-    local pathcheck = ""
-    local function ondownloadcompleted(path, url)
-        if shouldprogressextraction then
-            local gamenametopath = gamename
-            gamenametopath = gamenametopath:gsub(":", "")
-            defaultdir = menu.get_text("1click Game Dir") .. "/" .. gamenametopath .. "/"
-            -- if url == watchlink2 or url == watchlink1 then
-            path = path:gsub("\\", "/")
-            pathcheck = defaultdir
-            zip.extract(path, defaultdir, true)
-            -- end
-        end
-        settings.save()
-    end
-    local function onextractioncompleted(path)
-        if pathcheck == path then
-            path = path:gsub("/", "\\")
-            local folders = file.listfolders(path)
-
-            local secondFolder = folders[1]
-            if secondFolder then
-                local fullFolderPath = path .. "\\" .. secondFolder
-
-                local executables = file.listexecutables(fullFolderPath) -- Returns a vector
+    
+       local function setupcompleted(from, destination)
+                local executables = file.listexecutables(destination) -- Returns a vector
 
                 -- Get the first executable (assuming executables[1] exists)
                 if executables and #executables >= 1 then
                     local firstExecutable = executables[1]
 
-                    local fullExecutablePath = fullFolderPath .. "\\" .. firstExecutable
+                    local fullExecutablePath = destination .. "\\" .. firstExecutable
+
                     local gameidl = GameLibrary.GetGameIdFromName(gamename)
                     if gameidl == -1 then
                        local imagePath = Download.DownloadImage(imagelink)
                        GameLibrary.addGame(fullExecutablePath, imagePath, gamename, "")
-                       Notifications.push_success("1Click Script", "Game Successfully Installed!")
+                       Notifications.push_success("DODI Script", "Game Successfully Installed!")
                     else
                        GameLibrary.changeGameinfo(gameidl, fullExecutablePath)
-                       Notifications.push_success("1Click Script", "Game Successfully Installed!")
+                       Notifications.push_success("DODI Script", "Game Successfully Installed!")
                     end
                 else
-                    local executables2 = file.listexecutablesrecursive(fullFolderPath) -- Returns a vector
+                    local executables2 = file.listexecutablesrecursive(destination) -- Returns a vector
                     if executables2 and #executables2 >= 1 then
                         local firstExecutable = executables2[1]
                         local gameidl = GameLibrary.GetGameIdFromName(gamename)
                         if gameidl == -1 then
                            local imagePath = Download.DownloadImage(imagelink)
                            GameLibrary.addGame(firstExecutable, imagePath, gamename, "")
-                           Notifications.push_success("1Click Script", "Game Successfully Installed!")
+                           Notifications.push_success("DODI Script", "Game Successfully Installed!")
                         else
                            GameLibrary.changeGameinfo(gameidl, firstExecutable)
-                           Notifications.push_success("1Click Script", "Game Successfully Installed!")  
+                           Notifications.push_success("DODI Script", "Game Successfully Installed!")  
                         end
                     end
                 end
-            end
-        end
     end
-    client.add_callback("on_scriptselected", click1NUC)
+    
+    local function ondownloadcompleted(path, url)
+        if shouldrunsetup then            
+            local gamenametopath = gamename:gsub(":", "")
+            path = path:gsub("\\", "/")
+            
+            local executables = file.listexecutables(path)
+            if #executables == 0 then
+                Notifications.push_warning("Dodi Script", "No executables found in download folder")
+                return
+            end           
+            
+            local setupFound = false
+            for _, exe in ipairs(executables) do
+                if exe:lower():find("setup") then
+                    local setupPath = path .. "/" .. exe
+                    exec(setupPath, 5000, "", true, "Setup.tmp")
+                    Notifications.push_success("Dodi Script", "Setup.exe launched successfully!")
+                    client.add_callback("on_setupcompleted", setupcompleted)
+                    setupFound = true
+                    break
+                end
+            end
+            
+            if not setupFound then
+                Notifications.push_warning("Dodi Script", "No valid setup executable found")
+            end
+        end        
+    end
+    
+    client.add_callback("on_scriptselected", requestfromsource)
     client.add_callback("on_downloadclick", ondownloadclick)
     client.add_callback("on_downloadcompleted", ondownloadcompleted)
-    client.add_callback("on_extractioncompleted", onextractioncompleted)
 end
 
 

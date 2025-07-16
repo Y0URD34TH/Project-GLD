@@ -57,7 +57,7 @@ local function substituteRomanNumeralsFromEntireString(gameName)
     end
 
     -- Handle cases where Roman numerals are at the beginning or end of the string
-    gameName =substituteRomanNumerals(gameName)
+    gameName = substituteRomanNumerals(gameName)
 
     return gameName
 end
@@ -193,7 +193,7 @@ local function search_game(downloads, game_name, name_script)
     for _, download in ipairs(downloads) do
         local lower_title = download.title:lower()
         local lower_title_variations = generateVariations(lower_title)
-        
+
         local add_result = false
         for _, game_variation in ipairs(game_name_variations) do
             for _, title_variation in ipairs(lower_title_variations) do
@@ -215,7 +215,11 @@ local function search_game(downloads, game_name, name_script)
                 ScriptName = name_script
             }
             for index, uri in ipairs(download.uris) do
-                table.insert(patchresult.links, { name = "Download Option " .. tostring(index), link = uri, addtodownloadlist = true })       
+                table.insert(patchresult.links, {
+                    name = "Download Option " .. tostring(index),
+                    link = uri,
+                    addtodownloadlist = true
+                })
             end
             table.insert(results, patchresult)
         end
@@ -225,25 +229,124 @@ local function search_game(downloads, game_name, name_script)
 end
 
 local version = client.GetVersionDouble()
+local defaultdir = "C:/Games"
 
-if version < 2.14 then
-   Notifications.push_error("Lua Script", "Program is Outdated Please Update to use that Script")
+if version < 6.00 then
+    Notifications.push_error("Lua Script", "Program is Outdated Please Update to use that Script")
 else
-local statebool = false
+    menu.add_input_text("OF Game Dir")
+    menu.set_text("OF Game Dir", defaultdir)
+    settings.load()
+    local function requestfromsource()
+        local getgamename = game.getgamename()
 
-local function requestfromsource()
-    local getgamename = game.getgamename()
+        local headers = {
+            ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+        }
+        local response = http.get(sourcelink, headers) -- Use the dynamic link here
+        local gameResults = JsonWrapper.parse(response)["downloads"]
+        local scriptname = "onlinefix"
 
-    local headers = {
-     ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-    }
-    local response = http.get(sourcelink, headers)  -- Use the dynamic link here
-    local gameResults = JsonWrapper.parse(response)["downloads"]
-    local scriptname = JsonWrapper.parse(response)["name"]
+        local results = search_game(gameResults, getgamename, scriptname)
 
-    local results = search_game(gameResults, getgamename, scriptname)
+        communication.receiveSearchResults(results)
+    end
+    local imagelink = ""
+    local gamename = ""
+    local gamepath = ""
+    local extractpath = ""
+    local shouldprogressextraction = false
+    local function ondownloadclick(gamejson, downloadurl, scriptname)
+        shouldprogressextraction = false
+        if scriptname == "onlinefix" then
+            shouldprogressextraction = true
+        end
+        local jsonResults = JsonWrapper.parse(gamejson)
+        local coverImageUrl = jsonResults["cover"]["url"]
 
-    communication.receiveSearchResults(results)
+        if coverImageUrl and coverImageUrl:sub(1, 2) == "//" then
+            coverImageUrl = "https:" .. coverImageUrl
+        end
+        if coverImageUrl then
+            coverImageUrl = coverImageUrl:gsub("t_thumb", "t_cover_big")
+        end
+
+        local jsonName = JsonWrapper.parse(gamejson).name
+        gamename = jsonName
+        imagelink = coverImageUrl
+    end
+    local pathcheck = ""
+    local function ondownloadcompleted(path, url)
+        if shouldprogressextraction then
+            local gamenametopath = gamename
+            gamenametopath = gamenametopath:gsub(":", "")
+            defaultdir = menu.get_text("OF Game Dir") .. "/" .. gamenametopath .. "/"
+            -- if url == watchlink2 or url == watchlink1 then
+            path = path:gsub("\\", "/")
+            pathcheck = defaultdir
+            local zipfiles = file.listcompactedfiles(path) -- Returns a vector
+
+                -- Get the first executable (assuming executables[1] exists)
+            if zipfiles and #zipfiles >= 1 then
+                 local firstcompactedfile = zipfiles[1]
+                 local fullextractionpath = path .. "/" .. firstcompactedfile
+                 zip.extract(fullextractionpath, defaultdir, true, "online-fix.me")
+            end
+        end
+        settings.save()
+    end
+    local function onextractioncompleted(path)
+        if pathcheck == path then
+            path = path:gsub("/", "\\")
+            local folders = file.listfolders(path)
+
+            local secondFolder = folders[1]
+            if secondFolder then
+                local fullFolderPath = path .. "\\" .. secondFolder
+
+                local executables = file.listexecutables(fullFolderPath) -- Returns a vector
+
+                -- Get the first executable (assuming executables[1] exists)
+                if executables and #executables >= 1 then
+                    local firstExecutable = executables[1]
+
+                    local fullExecutablePath = fullFolderPath .. "\\" .. firstExecutable
+                    local gameidl = GameLibrary.GetGameIdFromName(gamename)
+                    if gameidl == -1 then
+                       local imagePath = Download.DownloadImage(imagelink)
+                       GameLibrary.addGame(fullExecutablePath, imagePath, gamename, "")
+                       Notifications.push_success("Online-Fix Script", "Game Successfully Installed!")
+                    else
+                       GameLibrary.changeGameinfo(gameidl, fullExecutablePath)
+                       Notifications.push_success("Online-Fix Script", "Game Successfully Installed!")
+                    end
+                else
+                    local executables2 = file.listexecutablesrecursive(fullFolderPath) -- Returns a vector
+                    if executables2 and #executables2 >= 1 then
+                        local firstExecutable = executables2[1]
+                        local gameidl = GameLibrary.GetGameIdFromName(gamename)
+                        if gameidl == -1 then
+                           local imagePath = Download.DownloadImage(imagelink)
+                           GameLibrary.addGame(firstExecutable, imagePath, gamename, "")
+                           Notifications.push_success("Online-Fix Script", "Game Successfully Installed!")
+                        else
+                           GameLibrary.changeGameinfo(gameidl, firstExecutable)
+                           Notifications.push_success("Online-Fix Script", "Game Successfully Installed!")  
+                        end
+                    end
+                end
+            end
+        end
+    end
+    client.add_callback("on_scriptselected", requestfromsource) -- on a game is selected in menu callback
+    client.add_callback("on_downloadclick", ondownloadclick)
+    client.add_callback("on_downloadcompleted", ondownloadcompleted)
+    client.add_callback("on_extractioncompleted", onextractioncompleted)
 end
-client.add_callback("on_scriptselected", requestfromsource)  -- on a game is selected in menu callback
-end
+
+
+
+
+
+
+
