@@ -17,3 +17,6 @@ Gaussian blur (Win11 only)
 Extras:
 50+ hidden app achievements
 Full joystick navigation support
+
+(gld may freeze while auto updating and its normal!!!)
+(gld pode congelar ao se auto atualizar, isso é normal!!!)
