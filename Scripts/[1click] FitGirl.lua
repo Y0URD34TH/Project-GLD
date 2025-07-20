@@ -1,4 +1,4 @@
-﻿local sourcelink = "https://hydralinks.cloud/sources/steamrip.json"
+local sourcelink = "https://hydralinks.cloud/sources/fitgirl.json"
 local function endsWith(str, pattern)
     return string.sub(str, -string.len(pattern)) == pattern
 end
@@ -57,7 +57,7 @@ local function substituteRomanNumeralsFromEntireString(gameName)
     end
 
     -- Handle cases where Roman numerals are at the beginning or end of the string
-    gameName =substituteRomanNumerals(gameName)
+    gameName = substituteRomanNumerals(gameName)
 
     return gameName
 end
@@ -186,10 +186,6 @@ local function generateVariations(input)
     return variations
 end
 
-local function isFrom1Fichier(url)
-    return url:find("1fichier") ~= nil
-end
-
 local function search_game(downloads, game_name, name_script)
     local results = {}
     local game_name_variations = generateVariations(game_name)
@@ -219,10 +215,8 @@ local function search_game(downloads, game_name, name_script)
                 ScriptName = name_script
             }
             for index, uri in ipairs(download.uris) do
-                if not isFrom1Fichier(uri) then
-                   table.insert(patchresult.links, { name = "Download Option " .. tostring(index), link = uri, addtodownloadlist = true })  
-                end		            
-			end
+                table.insert(patchresult.links, { name = "Download Option " .. tostring(index), link = uri, addtodownloadlist = true })       
+            end
             table.insert(results, patchresult)
         end
     end
@@ -231,25 +225,124 @@ local function search_game(downloads, game_name, name_script)
 end
 
 local version = client.GetVersionDouble()
-
-if version < 2.14 then
-   Notifications.push_error("Lua Script", "Program is Outdated Please Update to use that Script")
+if version < 6.00 then
+    Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
 else
-local statebool = false
-Notifications.push_success("Lua Script", "Steamrip script is loaded and working!")
-local function requestfromsource()
-    local getgamename = game.getgamename()
+    Notifications.push_success("Lua Script", "FitGirl Script Loaded and Working")
+    
+    local imagelink = ""
+    local gamename = ""
+    local gamepath = ""
+    local extractpath = ""
+    local shouldrunsetup = false
+    
+    local function requestfromsource()
+        local getgamename = game.getgamename()
 
-    local headers = {
-     ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-    }
-    local response = http.get(sourcelink, headers)  -- Use the dynamic link here
-    local gameResults = JsonWrapper.parse(response)["downloads"]
-    local scriptname = JsonWrapper.parse(response)["name"]
+        local headers = {
+         ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+        }
+        local response = http.get(sourcelink, headers)
+        local gameResults = JsonWrapper.parse(response)["downloads"]
+        local scriptname = "FitGirl 1"
 
-    local results = search_game(gameResults, getgamename, scriptname)
+        local results = search_game(gameResults, getgamename, scriptname)
 
-    communication.receiveSearchResults(results)
+        communication.receiveSearchResults(results)
+    end
+    
+    local function ondownloadclick(gamejson, downloadurl, scriptname)
+        shouldrunsetup = false
+        if scriptname == "FitGirl 1" then
+            shouldrunsetup = true
+        end
+        local jsonResults = JsonWrapper.parse(gamejson)
+        local coverImageUrl = jsonResults["cover"]["url"]
+
+        if coverImageUrl and coverImageUrl:sub(1, 2) == "//" then
+            coverImageUrl = "https:" .. coverImageUrl
+        end
+        if coverImageUrl then
+            coverImageUrl = coverImageUrl:gsub("t_thumb", "t_cover_big")
+        end
+
+        local jsonName = JsonWrapper.parse(gamejson).name
+        gamename = jsonName
+        imagelink = coverImageUrl
+    end   
+    
+local function setupcompletedf(from, destination)
+                local executables = file.listexecutables(destination) -- Returns a vector
+
+                -- Get the first executable (assuming executables[1] exists)
+                if executables and #executables >= 1 then
+                    local firstExecutable = executables[1]
+
+                    local fullExecutablePath = destination .. "\\" .. firstExecutable
+                    local gameidl = GameLibrary.GetGameIdFromName(gamename)
+                    if gameidl == -1 then
+                       local imagePath = Download.DownloadImage(imagelink)
+                       GameLibrary.addGame(fullExecutablePath, imagePath, gamename, "")
+                       Notifications.push_success("FitGirl Script", "Game Successfully Installed!")
+                    else
+                       GameLibrary.changeGameinfo(gameidl, fullExecutablePath)
+                       Notifications.push_success("FitGirl Script", "Game Successfully Installed!")
+                    end
+                else
+                    local executables2 = file.listexecutablesrecursive(destination) -- Returns a vector
+                    if executables2 and #executables2 >= 1 then
+                        local firstExecutable = executables2[1]
+                        local gameidl = GameLibrary.GetGameIdFromName(gamename)
+                        if gameidl == -1 then
+                           local imagePath = Download.DownloadImage(imagelink)
+                           GameLibrary.addGame(firstExecutable, imagePath, gamename, "")
+                           Notifications.push_success("FitGirl Script", "Game Successfully Installed!")
+                        else
+                           GameLibrary.changeGameinfo(gameidl, firstExecutable)
+                           Notifications.push_success("FitGirl Script", "Game Successfully Installed!")  
+                        end
+                    end
+                end
 end
-client.add_callback("on_scriptselected", requestfromsource)  -- on a game is selected in menu callback
+        
+local function ondownloadcompleted(path, url)    
+    if shouldrunsetup then     
+        -- Prepare game name for path
+        local gamenametopath = gamename:gsub(":", "")
+        path = path:gsub("\\", "/")           
+
+        -- Search for setup executables
+        local executables = file.listexecutables(path)
+        if #executables == 0 then
+            Notifications.push_warning("FitGirl Script", "No executables found in download folder")
+            return
+        end
+        
+        -- Look for setup executable
+        local setupFound = false
+        for _, exe in ipairs(executables) do
+            if exe:lower():find("setup") then
+                local setupPath = path .. "/" .. exe
+                exec(setupPath, 5000, "", true, "setup.tmp")
+                Notifications.push_success("FitGirl Script", "Setup.exe launched successfully!")
+                client.add_callback("on_setupcompleted", setupcompletedf)   
+                setupFound = true
+                break
+            end
+        end
+        
+        if not setupFound then
+            Notifications.push_warning("FitGirl Script", "No valid setup executable found")
+        end
+    end    
 end
+
+client.add_callback("on_scriptselected", requestfromsource)
+client.add_callback("on_downloadclick", ondownloadclick)
+client.add_callback("on_downloadcompleted", ondownloadcompleted)
+end
+
+
+
+
+
