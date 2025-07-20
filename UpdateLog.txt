@@ -1,22 +1,13 @@
-V6.20
-Major Features:
-Switched from DX9 to DX11
-Instant game search (thanks to IGDB)
-New search filters (genre, theme, releases, ratings)
-Auto-extract/setup for 1click, FitGirl, Dodi, etc.
-Better achievement watcher ("Force GLD Watcher" option)
-Faster achievement loading & game info
-New shortcuts, store image button & power options
+V6.30
 
-Design Changes:
-Redesigned tabs (scripts, settings, themes, game page)
-Custom background images (Lake/Dawn/Flow themes)
-DPI scale on top bar
-Gaussian blur (Win11 only)
+Bug fixes:
+Fixed favorites category in the search tab
+Fixed add image popup not resizing in different DPI
+Fixed account sync message DPI and added utf-8 support to it
 
-Extras:
-50+ hidden app achievements
-Full joystick navigation support
+Scripts:
+Added Support to Ankergames script
+Properly organized scripts and labeled ones which support 1 click downloads
 
 (gld may freeze while auto updating and its normal!!!)
 (gld pode congelar ao se auto atualizar, isso é normal!!!)
