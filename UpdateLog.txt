@@ -1,13 +1,11 @@
-V6.30
+V6.50
 
-Bug fixes:
-Fixed favorites category in the search tab
-Fixed add image popup not resizing in different DPI
-Fixed account sync message DPI and added utf-8 support to it
-
-Scripts:
-Added Support to Ankergames script
-Properly organized scripts and labeled ones which support 1 click downloads
+Made a new game image system where images are saved locally in images.json
+Added createimage param
+Fixed game duplicates glitch
+Fixed random crashes 
+Fixed update popup to be centered and DPIresizable now
+Fixed gaussian blur issues which made it stop working in some cases
 
 (gld may freeze while auto updating and its normal!!!)
 (gld pode congelar ao se auto atualizar, isso é normal!!!)
