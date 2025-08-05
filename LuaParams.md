@@ -8,6 +8,46 @@ Project-GLD provides a comprehensive Lua scripting API for game launcher functio
 
 - For using AI to make scripts please send (copy and paste) to your AI our compact documentation of lua ready for AI: https://github.com/Y0URD34TH/Project-GLD/blob/main/Ai-Lua.txt 
 
+## Table of Contents
+
+- [Overview](#overview)
+- [Important Notes](#important-notes)
+- [Global Functions](#global-functions)
+- [Core Objects](#core-objects)
+  - [JsonWrapper](#jsonwrapper)
+  - [HtmlWrapper](#htmlwrapper)
+  - [GameInfo Object](#gameinfo-object)
+- [API Namespaces](#api-namespaces)
+  - [Client (`client`)](#client-client)
+  - [Notifications (`Notifications`)](#notifications-notifications)
+  - [Menu (`menu`)](#menu-menu)
+  - [Utilities (`utils`)](#utilities-utils)
+  - [HTTP (`http`)](#http-http)
+  - [File System (`file`)](#file-system-file)
+  - [Game (`game`)](#game-game)
+  - [DLL Injection (`dll`)](#dll-injection-dll)
+  - [Browser (`browser`)](#browser-browser)
+  - [Communication (`communication`)](#communication-communication)
+  - [Steam API (`SteamApi`)](#steam-api-steamapi)
+  - [Downloads (`Download`)](#downloads-download)
+  - [Game Library (`GameLibrary`)](#game-library-gamelibrary)
+  - [Settings (`settings`)](#settings-settings)
+  - [Archive Extraction (`zip`)](#archive-extraction-zip)
+  - [GLD Console (`gldconsole`)](#gld-console-gldconsole)
+  - [Save Management (`save`)](#save-management-save)
+- [Event Callbacks](#event-callbacks)
+  - [Application Lifecycle](#application-lifecycle)
+  - [Game Events](#game-events)
+  - [Download Events](#download-events)
+  - [CloudFlare Events](#cloudflare-events)
+  - [Extraction Events](#extraction-events)
+  - [Setup Events](#setup-events)
+  - [Button Events](#button-events)
+- [Example Usage](#example-usage)
+  - [Basic Script Structure](#basic-script-structure)
+  - [HTTP Request Example](#http-request-example)
+  - [File Operations Example](#file-operations-example)
+
 ## Global Functions
 
 ### Basic Functions
@@ -57,7 +97,7 @@ client.add_callback(eventname, function) -- Add event callback
 -- Available events: see Callbacks section below
 ```
 
-#### System Information
+#### System/GLD Information
 ```lua
 client.log(title, text)            -- Log message
 client.quit()                      -- Quit application
