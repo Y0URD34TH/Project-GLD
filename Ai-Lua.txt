@@ -1,0 +1,249 @@
+	// Global Project-GLD lua exports
+	// sol::this_state arguments into function call are ignored into lua for exmaple: 	client[("add_callback")] = ns_client::add_callback; void add_callback(sol::this_state s, std::string eventname, sol::protected_function func) becomes: cliend.add_callback("on_gamesearch") in lua
+	// arguments that has = on it for example:  int delay = 0 are optional
+	// sol::nil are functions that doesnt exists into gld
+	lua = sol::state(sol::c_call<decltype(&lua_panic), &lua_panic>);	
+
+	lua.open_libraries(sol::lib::base, sol::lib::string, sol::lib::math, sol::lib::table, sol::lib::debug, sol::lib::package);
+	lua.new_usertype<JsonWrapper>("JsonWrapper",
+		"parse", &JsonWrapper::parse
+		); // 	static sol::object parse(const std::string& jsonString)
+	lua.new_usertype<HtmlWrapper>("HtmlWrapper",
+		"findAttribute", &HtmlWrapper::findAttribute
+	); // static sol::table findAttribute(const std::string& htmlString,	const std::string& elementTagName,		const std::string& elementTermKey,		const std::string& elementTermValue,		const std::string& desiredResultKey)
+	lua[("collectgarbage")] = sol::nil;
+	lua[("dofilsse")] = sol::nil;
+	lua[("load")] = sol::nil;
+	lua[("loadfile")] = sol::nil;
+	lua[("pcall")] = sol::nil;
+	lua[("print")] = ns_client::Print; //	void Print(std::string stringtoprint)
+	lua[("exec")] = ns_file::exec; // 	void exec(sol::this_state s, std::string& execpath, int delay = 0, std::string commandline = "", bool isinnosetup = false, std::string innoproccess = "")
+	lua[("sleep")] = luasleep; // void luasleep(int ms)
+
+#if _DEBUG
+	lua[("cout")] = Cout; // not used into gld main version (only into debug) [ignore it]
+#endif
+	lua[("xpcall")] = sol::nil;
+	lua[("getmetatable")] = sol::nil;
+	lua[("setmetatable")] = sol::nil;
+	lua[("__nil_callback")] = [](){};
+
+	lua.new_usertype <GameInfo>(("GameInfo"), sol::constructors <>(),
+		(std::string)"id", &GameInfo::id,
+		(std::string)"name", &GameInfo::name,
+		(std::string)"initoptions", &GameInfo::initoptions,
+		(std::string)"imagePath", &GameInfo::imagePath,
+		(std::string)"exePath", &GameInfo::exePath
+		);
+
+	auto client = lua.create_table();
+	client[("add_callback")] = ns_client::add_callback; // 	void add_callback(sol::this_state s, std::string eventname, sol::protected_function func)
+	client[("load_script")] = ns_client::load_script; // 	void load_script(std::string name)
+	client[("unload_script")] = ns_client::unload_script; // void unload_script(std::string name)
+	client[("create_script")] = ns_client::create_script; // void create_script(std::string name, std::string data)
+	client[("log")] = ns_client::log; // 	void log(std::string title, std::string text)
+	client[("quit")] = ns_client::quit; // 	void quit(sol::this_state s)
+	client[("GetVersion")] = ns_client::GetVersion; // 	std::string GetVersion(sol::this_state s)
+	client[("GetVersionFloat")] = ns_client::GetVersionFloat; // 	float GetVersionFloat(sol::this_state s)
+	client[("GetVersionDouble")] = ns_client::GetVersionDouble; // 	double GetVersionDouble(sol::this_state s)
+	client[("CleanSearchTextureCache")] = ns_client::CleanSearchTextureCache; //	void CleanSearchTextureCache(sol::this_state s)
+	client[("CleanLibraryTextureCache")] = ns_client::CleanLibraryTextureCache; // 	void CleanLibraryTextureCache(sol::this_state s)
+	client[("GetScriptsPath")] = ns_client::GetScriptsPath; // 	std::string GetScriptsPath(sol::this_state s)
+	client[("GetDefaultSavePath")] = ns_client::GetDefaultSavePath; // 	std::string GetDefaultSavePath(sol::this_state s)
+	client[("GetScreenHeight")] = ns_client::GetScreenHeight; // 	int GetScreenHeight()
+	client[("GetScreenWidth")] = ns_client::GetScreenWidth; // 	int GetScreenWidth()
+
+	auto notifications = lua.create_table();
+	notifications[("push")] = ns_notifications::push; // 	void push(std::string title, std::string text)
+	notifications[("push_success")] = ns_notifications::push_success; // 	void push_success(std::string title, std::string text)
+	notifications[("push_error")] = ns_notifications::push_error; // 	void push_error(std::string title, std::string text)
+	notifications[("push_warning")] = ns_notifications::push_warning; // 	void push_warning(std::string title, std::string text)
+
+	auto menu = lua.create_table();
+	menu[("set_dpi")] = ns_menu::set_dpi; // 	void set_dpi(double dpi)
+	menu[("set_visible")] = ns_menu::set_visible; // 	void set_visible(bool visible)
+	menu[("next_line")] = ns_menu::next_line; //	void next_line(sol::this_state s)
+	menu[("add_check_box")] = ns_menu::add_check_box; // 	void add_check_box(sol::this_state s, const std::string& name)
+	menu[("add_button")] = ns_menu::add_button; // 	void add_button(sol::this_state s, const std::string& name)
+	menu[("add_text")] = ns_menu::add_text; // 	void add_text(sol::this_state s, const std::string& text)
+	menu[("add_input_text")] = ns_menu::add_input_text; //	void add_input_text(sol::this_state s, const std::string& name)
+	menu[("add_input_int")] = ns_menu::add_input_int; // 	void add_slider_int(sol::this_state s, const std::string& name, int min, int max)
+	menu[("add_input_float")] = ns_menu::add_input_float; // 	void add_slider_float(sol::this_state s, const std::string& name, float min, float max)
+	menu[("add_combo_box")] = ns_menu::add_combo_box; // 	void add_combo_box(sol::this_state s, std::string name, std::vector <std::string> labels) //-V813
+	menu[("add_slider_int")] = ns_menu::add_slider_int; // 	void add_input_int(sol::this_state s, const std::string& name)
+	menu[("add_slider_float")] = ns_menu::add_slider_float; // 	void add_input_float(sol::this_state s, const std::string& name)
+	menu[("add_color_picker")] = ns_menu::add_color_picker; // 	void add_color_picker(sol::this_state s, const std::string& name)
+	menu[("get_bool")] = ns_menu::get_bool; // 	bool get_bool(std::string name)
+	menu[("get_text")] = ns_menu::get_text; // 	std::string get_text(std::string name)
+	menu[("get_int")] = ns_menu::get_int; // 	int get_int(std::string name)
+	menu[("get_float")] = ns_menu::get_float; // 	float get_float(std::string name)
+	menu[("get_color")] = ns_menu::get_color; // 	Color get_color(std::string name)
+	menu[("set_bool")] = ns_menu::set_bool; // 	void set_bool(std::string name, bool value)
+	menu[("set_text")] = ns_menu::set_text; // 	void set_text(std::string name, std::string value)
+	menu[("set_int")] = ns_menu::set_int; // 	void set_int(std::string name, int value)
+	menu[("set_float")] = ns_menu::set_float; // 	void set_float(std::string name, float value)
+	menu[("set_color")] = ns_menu::set_color; // 	void set_color(std::string name, Color value)
+	// all added menu variables uses the get_ and the set_ specific for it to get the current status or to set it, buttons use the client callback - `on_button_(button name)` only run the function when one button (added by a lua script) is pressed, put the button name without ()! and make sure that you added the button before!!![you must add the client callback to then listen to button getting pressed{client.add_callback}]
+
+	auto utils = lua.create_table();
+	utils[("AttachConsole")] = Utils::AttachConsole;//	void AttachConsole()
+	utils[("DetachConsole")] = Utils::DetachConsole;//	void DetachConsole()
+	utils[("ConsolePrint")] = Utils::ConsolePrint;//	bool ConsolePrint(bool logToFile, const char* fmt, ...) {
+	utils[("GetTimeString")] = Utils::GetTimeString;//	std::string GetTimeString()
+	utils[("GetTimestamp")] = Utils::GetTimestamp;//	std::string GetTimestamp()
+	utils[("GetTimeUnix")] = ns_utils::GetTimeUnix;//	int GetTimeUnix()
+	utils[("Log")] = Utils::Log;//	void Log(const char* fmt, ...) 
+	//log function logs to an file called Project-GLD.log at the same folder as gld exe, ConsolePrint needs to be called after attach console!
+
+	auto http = lua.create_table();
+	http[("get")] = ns_http::get;//	std::string get(sol::this_state s, std::string& link, const sol::table& headers)
+	http[("post")] = ns_http::post;//	std::string post(sol::this_state s, const std::string& link, const std::string& params, const sol::table& headers)
+	http[("ArchivedotOrgResolver")] = ns_http::ArchieveOrgResolver; // 	std::string ArchieveOrgResolver(sol::this_state s, const std::string& link)
+	http[("mediafireresolver")] = ns_http::mediafireresolver; // 	std::string mediafireresolver(sol::this_state s, const std::string& mediafireurl)
+	http[("resolvepixeldrain")] = ns_http::resolvePixeldrainLink; // 	std::string resolvePixeldrainLink(sol::this_state s, const std::string& link) {
+	http[("CloudFlareSolver")] = ImGui::CloudFlareSolver; // void ImGui::CloudFlareSolver(const std::string& url)
+	http[("byetresolver")] = ns_http::byetresolver; // 	std::string byetresolver(sol::this_state s, const std::string& url)
+	//function CloudFlareSolver returns an callback at client callbacks : - `on_cfdone` execute the function when the cloudflare solver resolved the link and returns the cloudflare cookie and url of the request (you need to use the following user agent alongside with the cookie to work: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 ProjectGLD/2.15) [soo make sure to do the cliend.add_callback if you want to listen to when cloudflare resolver is done
+
+	auto file = lua.create_table();
+	file[("append")] = ns_file::append; //	void append(sol::this_state s, std::string& path, std::string& data)
+	file[("write")] = ns_file::write;//	void write(sol::this_state s, std::string& path, std::string& data)
+	file[("read")] = ns_file::read;//	std::string read(sol::this_state s, std::string& path)
+	file[("delete")] = ns_file::erase;//	void erase(sol::this_state s, std::string& path)
+	file[("exists")] = ns_file::exists;//	bool exists(sol::this_state s, std::string& path)
+	file[("exec")] = ns_file::exec;//	void exec(sol::this_state s, std::string& execpath, int delay = 0, std::string commandline = "", bool isinnosetup = false, std::string innoproccess = "")
+	file[("listfolders")] = ns_file::listfolders;//	std::vector<std::string> listfolders(std::string path)
+	file[("listexecutables")] = ns_file::listexecutables;//	std::vector<std::string> listexecutables(std::string path)
+	file[("listexecutablesrecursive")] = ns_file::listexecutablesrecursive;//	std::vector<std::string> listexecutablesrecursive(std::string path)
+	file[("listcompactedfiles")] = ns_file::listcompactedfiles;//	std::vector<std::string> listcompactedfiles(std::string path) zip,rar,7z,tar, etc.
+
+	auto game = lua.create_table();
+	game["getgamename"] = ns_game::getgamename; // 	std::string getgamename(sol::this_state s) gets the game name from serach  [into game page]
+
+	auto dll = lua.create_table();
+	dll["inject"] = ns_dll::inject; // 	bool inject(sol::this_state s, std::string processexename, std::string dllpath, int delay) // processexename ex: GoW.exe | delay ex: 300 (means 300 milliseconds)
+	dll["injectx86"] = ns_dll::injectx86; // 	bool injectx86(sol::this_state s, std::string processexename, std::string dllpath, int delay) // processexename ex: GoW.exe | delay ex: 300 (means 300 milliseconds)
+	dll["innohook"] = ns_dll::innohook; // 	bool innohook(sol::this_state s, std::string processname)
+	// innohook fucntion calls an callback at on_setupcompleted soo make sure to add this callback using client.add_callback to listen to reuslts when its done
+
+	auto browser = lua.create_table();
+	browser["open"] = ns_browser::openlink; // 	void openlink(sol::this_state s, std::string link) {
+
+	auto communication = lua.create_table();
+	communication["receiveSearchResults"] = ns_communication::receiveSearchResults; // 	void receiveSearchResults(const sol::table& resultsTable)
+	communication["RefreshScriptResults"] = Menu::RefreshScriptResults; //     void RefreshScriptResults()
+
+	auto steamapi = lua.create_table();
+	steamapi["GetAppID"] = SteamApi::GetAppID; // std::string SteamApi::GetAppID(const std::string& name)
+	steamapi["GetSystemRequirements"] = SteamApi::GetSystemRequirementsString; // std::string SteamApi::GetSystemRequirementsString(const std::string& appid)
+	steamapi["GetGameData"] = SteamApi::GetGameDataString; // std::string SteamApi::GetGameDataString(const std::string& appid)
+	steamapi["OpenSteam"] = SteamApi::OpenSteam; // void SteamApi::OpenSteam()
+	steamapi["IsSteamRunning"] = SteamApi::IsSteamRunning; // bool SteamApi::IsSteamRunning()
+
+	auto download = lua.create_table();
+	download["DownloadFile"] = ns_download::DownloadFile; // 	void DownloadFile(sol::this_state s, std::string downloadurl)
+	download["GetFileNameFromUrl"] = ns_download::GetFileNameFromUrl; // 	std::string GetFileNameFromUrl(sol::this_state s, std::string url)
+	download["DirectDownload"] = ns_download::DirectDownload; // 	void DirectDownload(sol::this_state s, std::string downloadurl, std::string downloadpath)
+	download["DownloadImage"] = ns_download::DownloadImage; // 	std::string DownloadImage(sol::this_state s, std::string imageurl)
+	download["ChangeDownloadPath"] = ns_download::ChangeDownloadPath; // 	void ChangeDownloadPath(sol::this_state s, std::string path)
+	download["GetDownloadPath"] = ns_download::GetDownloadPath; // 	std::string GetDownloadPath(sol::this_state s)
+
+	auto gamelibrary = lua.create_table();
+	gamelibrary["launch"] = ns_gamelibrary::Launchgame; // 	bool Launchgame(int id)
+	gamelibrary["close"] = ns_gamelibrary::CloseGame;
+	gamelibrary["addGame"] = ns_gamelibrary::addGame; // 	void addGame(sol::this_state s, std::string& exePath, std::string& imagePath, std::string& gamename, std::string& commandline)
+	gamelibrary["changeGameinfo"] = ns_gamelibrary::changeGameinfo; // 	void changeGameinfo(sol::this_state s, int id, std::string exePath = "", std::string imagePath = "", std::string gamename = "", std::string commandline = "")
+	gamelibrary["removeGame"] = ns_gamelibrary::removeGame; // 	void removeGame(sol::this_state s, int id)
+	gamelibrary["GetGameIdFromName"] = ns_gamelibrary::GetGameIdFromName; // 	int GetGameIdFromName(std::string name)
+	gamelibrary["GetGameNameFromId"] = ns_gamelibrary::GetGameNameFromId; // 	std::string GetGameNameFromId(int id)
+	gamelibrary["GetGamePath"] = ns_gamelibrary::GetGamePath; // 	std::string GetGamePath(int id)
+	gamelibrary["GetGameList"] = ns_gamelibrary::GetGameList; // 	std::vector<sol::table> GetGameList(sol::this_state s)
+
+	auto settings = lua.create_table();
+	settings["save"] = ns_settings::save; // 	void save()
+	settings["load"] = ns_settings::load; // 	void load()
+
+	auto zip = lua.create_table();
+	zip["extract"] = Features::ExtractFile; //     void ExtractFile(std::string source, std::string destination, bool deleteaftercomplete, std::string pass)
+	// extract function call an client callback: - `on_extractioncompleted` execute the function when the extraction progress is completed and retrieve the path to where it got extracted
+    // make sure to call taht callback with client.add_callback to listen to itss results
+
+	auto gldconsole = lua.create_table();
+	gldconsole["print"] = ns_gldconsole::AddLog; // 	void AddLog(std::string fmt)
+	gldconsole["show"] = ns_gldconsole::ShowConsole; // 	void ShowConsole()
+	gldconsole["close"] = ns_gldconsole::CloseConsole; // 	void CloseConsole()
+
+	auto saves = lua.create_table();
+	saves["Backup"] = ns_save::Backup; // 	void Backup(const std::string& name) {
+	saves["Restore"] = ns_save::Restore; // 	void Restore(const std::string& name) {
+	saves["BackupAll"] = ns_save::BackupAll; // 	void BackupAll() {
+	saves["RestoreAll"] = ns_save::RestoreAll; // 	void RestoreAll() {
+	saves["Download"] = ns_save::Download; // 	void Download(const std::string& name) {
+	saves["Upload"] = ns_save::Upload; // 	void Upload(const std::string& name) {
+	saves["UploadAll"] = ns_save::UploadAll; // 	void UploadAll() {
+	saves["DownloadAll"] = ns_save::DownloadAll; // 	void DownloadAll() {
+	saves["RefreshBackup"] = ns_save::RefreshBackup; // 	void RefreshBackup() {
+	saves["RefreshRestore"] = ns_save::RefreshRestore; // 	void RefreshRestore() {
+	saves["RefreshCloud"] = ns_save::RefreshCLoud; // 	void RefreshCLoud() {
+	saves["RefreshAll"] = ns_save::RefreshAll; // 	void RefreshAll() {
+	saves["GetBackupGamesList"] = ns_save::GetBackupGamesList; // 	void RefreshAll() {
+	saves["GetRestoreGamesList"] = ns_save::GetRestoreGamesList; // 	std::string GetRestoreGamesList()
+	saves["GetCloudGamesList"] = ns_save::GetCloudGamesList; // 	std::vector<std::string> GetCloudGamesList()
+
+	// these are how you call each lua table in lua for example on lua: cliend.add_callback("on_gamesearch")
+	lua[("client")] = client;
+	lua[("menu")] = menu;
+	lua[("utils")] = utils;
+	lua[("http")] = http;
+	lua[("file")] = file;
+	lua[("game")] = game;
+	lua[("communication")] = communication;
+	lua[("SteamApi")] = steamapi;
+	lua[("Download")] = download; 
+	lua[("GameLibrary")] = gamelibrary; 
+	lua[("Notifications")] = notifications; 
+	lua[("settings")] = settings; 
+	lua[("zip")] = zip; 
+	lua[("dll")] = dll; 
+	lua[("gldconsole")] = gldconsole; 
+	lua[("save")] = saves; 
+	lua[("browser")] = browser;
+
+	/*
+	* LUA CALLBACKS:
+			        for (auto current : lua.hooks.getHooks("on_launch")) -- when gld is launched
+			        current.func();
+
+				    for (auto current : lua.hooks.getHooks("on_present")) -- main project loop
+				    current.func();
+
+	 				for (auto current : lua.hooks.getHooks("on_gameselected")) -- when game is selected on search
+					current.func();
+
+					for (auto current : lua.hooks.getHooks("on_gamelaunch")) -- when game is launched
+					current.func(g_Options.gamelaunched); -- refer to 	lua.new_usertype <GameInfo>(("GameInfo"), sol::constructors <>(),
+
+					for (auto current : lua.hooks.getHooks("on_gamesearch")) -- when an game is searched
+					current.func();
+
+					for (auto current : lua.hooks.getHooks("on_extractioncompleted")) -- called when zip.extract is completed
+					current.func(g_Options.isextractiondonepath); -- destination path (string)
+
+					for (auto current : lua.hooks.getHooks("on_downloadclick")) -- when you click in download into game page
+					current.func(g_Options.ondownloadclickcallbackitem.dump(), g_Options.ondownloadclickcallbackitemurl, g_Options.ondownloadclickcallbackscriptname); -- all are strings
+
+					for (auto current : lua.hooks.getHooks("on_cfdone")) -- when http.CloudFlareSolver is finished
+					current.func(g_Options.ongetcloudflarecookiec, g_Options.ongetcloudflarecookieurl); -- all string, first is the cookied then second is url
+
+					for (auto current : lua.hooks.getHooks("on_downloadcompleted")) -- when an download is completed
+					current.func(g_Options.ondownloadcompletedcallbackpath, g_Options.ondownloadcompletedcallbackurl); -- all strings
+
+					for (auto current : lua.hooks.getHooks("on_setupcompleted")) when dll.innohook is completed
+					current.func(g_Options.oninnopathextractioncallbackissfrom, g_Options.oninnopathextractioncallbackissto); -- all string, from the file getting extracted, to the destination where it extarcted
+
+					auto hooks = lua.hooks.getHooksFromScript(script, "on_scriptselected"); --  execute the function when a selecte is selected in the search (game) tab
+
+				   for (auto current : lua.hooks.getHooks("on_quit")) -- when gld is exiting
+			       current.func();
+
+	*/
