@@ -291,14 +291,15 @@ else
             defaultdir = menu.get_text("1click Game Dir") .. "/" .. gamenametopath .. "/"
             -- if url == watchlink2 or url == watchlink1 then
             path = path:gsub("\\", "/")
-            pathcheck = defaultdir
+            pathcheck = path
             zip.extract(path, defaultdir, false)
             -- end
         end
         settings.save()
     end
-    local function onextractioncompleted(path)
-        if pathcheck == path then
+    local function onextractioncompleted(origin, path)
+        if shouldprogressextraction then
+        if pathcheck == origin then
             path = path:gsub("/", "\\")
             local folders = file.listfolders(path)
 
@@ -340,6 +341,7 @@ else
             end
         end
     end
+end
     client.add_callback("on_scriptselected", click1NUC)
     client.add_callback("on_downloadclick", ondownloadclick)
     client.add_callback("on_downloadcompleted", ondownloadcompleted)

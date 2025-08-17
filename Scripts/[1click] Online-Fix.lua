@@ -283,7 +283,7 @@ else
             defaultdir = menu.get_text("OF Game Dir") .. "/" .. gamenametopath .. "/"
             -- if url == watchlink2 or url == watchlink1 then
             path = path:gsub("\\", "/")
-            pathcheck = defaultdir
+            pathcheck = path
             local zipfiles = file.listcompactedfiles(path) -- Returns a vector
 
                 -- Get the first executable (assuming executables[1] exists)
@@ -295,8 +295,9 @@ else
         end
         settings.save()
     end
-    local function onextractioncompleted(path)
-        if pathcheck == path then
+    local function onextractioncompleted(origin, path)
+        if shouldprogressextraction then
+        if pathcheck == origin then
             path = path:gsub("/", "\\")
             local folders = file.listfolders(path)
 
@@ -337,6 +338,7 @@ else
                 end
             end
         end
+    end
     end
     client.add_callback("on_scriptselected", requestfromsource) -- on a game is selected in menu callback
     client.add_callback("on_downloadclick", ondownloadclick)
