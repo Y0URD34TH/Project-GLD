@@ -1,11 +1,19 @@
-V6.50
+V6.60
 
-Made a new game image system where images are saved locally in images.json
-Added createimage param
-Fixed game duplicates glitch
-Fixed random crashes 
-Fixed update popup to be centered and DPIresizable now
-Fixed gaussian blur issues which made it stop working in some cases
+Improvements
+Added IGDB search filters for multiplayer, co-op and single player games
+Made file read, write, and execute permissions enabled by default due to them being necessary for 1click scripts
+Improved Anker games script to have only 10 sec wait time (the limit of page)
+Made extraction window minimizable
+Made an easier and more intuitive way to select extraction path for game extraction popup
+Installing games via 1click scripts automatically gets the game ID from IGDB
+Improved extraction detection to include origin
+Updated scripts to use the new extraction detection popup
+Improved auto-update to clean and fix the settings
+
+Bug-fixes
+Fixed controller inputs working even while GLD window isn't focused
+Fixed account shit not synchronizing correctly (like favorites)
 
 (gld may freeze while auto updating and its normal!!!)
 (gld pode congelar ao se auto atualizar, isso é normal!!!)
