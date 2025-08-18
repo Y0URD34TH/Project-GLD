@@ -1,4 +1,4 @@
-V6.60
+V6.65
 
 Improvements
 Added IGDB search filters for multiplayer, co-op and single player games
@@ -10,10 +10,12 @@ Installing games via 1click scripts automatically gets the game ID from IGDB
 Improved extraction detection to include origin
 Updated scripts to use the new extraction detection popup
 Improved auto-update to clean and fix the settings
+Added getusername to lua to get the windows user name (for file operations)
 
 Bug-fixes
 Fixed controller inputs working even while GLD window isn't focused
 Fixed account shit not synchronizing correctly (like favorites)
+Fixed translations not working bug
 
 (gld may freeze while auto updating and its normal!!!)
 (gld pode congelar ao se auto atualizar, isso é normal!!!)
