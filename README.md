@@ -86,12 +86,12 @@ Project GLD offers a variety of features to explore and utilize for your use cas
 
 ### **[🕹️] Joystick**
 * Native joystick support - you can navigate GLD with just your joystick!
-KEY(START | MENU) = launch game
-KEY(BACK | VIEW | SHARE) = open achievements popup
-KEY(R1 | RB) = open game settings popup
-KEY(L1 | LB) = open image change popup
-KEY(R2 | RT) = add game from favorites
-KEY(L2 | LT) = quit from popup (similar to esc key)
+* KEY(START | MENU) = launch game
+* KEY(BACK | VIEW | SHARE) = open achievements popup
+* KEY(R1 | RB) = open game settings popup
+* KEY(L1 | LB) = open image change popup
+* KEY(R2 | RT) = add game from favorites
+* KEY(L2 | LT) = quit from popup (similar to esc key)
 
 ## Project Showcase
 
@@ -108,7 +108,7 @@ https://github.com/user-attachments/assets/b078f7a2-f542-4c3f-ad08-50ba4173d5ac
 ### Currently available scripts:
 
 ⭐ **Recommended:**
-- **[FitGirl]**(https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/%5B1click%5D%20FitGirl.lua) [🧲]
+- **[FitGirl](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/%5B1click%5D%20FitGirl.lua)** [🧲]
 - [**Steamrip**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/%5B1click%5D%20SteamRip.lua) / [**Alternative**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/%5B1click%5D%20SteamRip%20(Alternative).lua) [📥]
 - [**Online-fix**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/%5B1click%5D%20Online-Fix.lua) [🧲]
 - [**Rezi**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Rezi.lua) [📥]
@@ -121,7 +121,7 @@ https://github.com/user-attachments/assets/b078f7a2-f542-4c3f-ad08-50ba4173d5ac
 
 🗂️ **Other:**
 - **[Dodi](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/%5B1click%5D%20DODI.lua)** [🧲]
-- **[GOG-games DDL](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/GOG-games.lua )** [🧲]
+- **[GOG-games](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/GOG-games.lua )** [🧲]
 - [**G4U**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/G4U.lua) [📥]
 - [**Elamigos**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Elamigos-games.lua) [📥]
 - **[Xatab](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Xatab.lua)** [🧲]
