@@ -22,7 +22,6 @@
 * [Features](#features)
 * [Project Showcase](#project-showcase)
 * [Getting Started](#getting-started)
-* [Known Bugs](#known-bugs)
 * [Authors](#authors)
 * [Sponsors](#sponsors)
 * [How to Sponsor](#how-to-sponsor)
@@ -33,22 +32,23 @@
 Project GLD offers a variety of features to explore and utilize for your use case.
 
 ### [📁] Game Library
-* Achievements support (pop-up notification + sound on completion)
+* Achievement support (pop-up notification + sound on completion)
 * Playtime tracking and sorting based on playtime, last played, favorites, ID, or alphabetically
-* Joystick configuration & command line arguments
+* Support for joystick configuration, command-line arguments & shortcuts
 
 ### **[🔎] Game Search**
-* Discover new games
-* View game's images/trailers/videos
-* View game's platforms, rating, min and max requirements
+* Discover new games & get results immediately
+* Filter games by genre, game mode, theme, game studio, new releases, top rated...
+* View game's platforms, rating, game modes, perspectives, age ratings, min and max requirements
 
 ### **[ ☁️ ] Cloud Saving**
-* Back up your games and save them on cloud thanks to [Rclone](https://rclone.org/) and [ludusavi](https://github.com/mtkennerly/ludusavi)
+* Back up your games and save them to cloud thanks to [Rclone](https://rclone.org/) and [ludusavi](https://github.com/mtkennerly/ludusavi)
 * Support for Gdrive, Box, dropbox, onedrive, ftp, smb, webdav and custom providers
 * Automatic back up, restore, and cloud sync available
 
 ### **[🎮] Game Download**
 * Download a game from any source via Lua scripts
+* Have the game automatically extracted/setup and placed in library with the correct .exe path (works for 1click, 2clicks, FitGirl, Dodi, and Online-fix scripts)
 * Built-in download manager and Real-Debrid & TorBox support
 * Start multiple downloads at the same time
 
@@ -68,7 +68,8 @@ Project GLD offers a variety of features to explore and utilize for your use cas
 
 ### **[🖼️] Customization**
 * Built-in theme editor and fully customizable UI
-* You can change the language of the app or make your own translation for it
+* Custom background images support
+* 10+ translations available & you can easily make your own
 
 ### **[💻] Console**
 * Interact with GLD via CLI instead of the GUI
@@ -78,6 +79,20 @@ Project GLD offers a variety of features to explore and utilize for your use cas
 * Save your library and settings
 * Follow your friends and see what they're playing
 
+### **[🍄] Misc fun shit**
+* Over 50 in-app achievements you can unlock by discovering cool shit in GLD
+* Power options (timer for PC shut down, sleep, restart, etc.)
+* Link opener tool
+
+### **[🕹️] Joystick**
+* Native joystick support - you can navigate GLD with just your joystick!
+KEY(START | MENU) = launch game
+KEY(BACK | VIEW | SHARE) = open achievements popup
+KEY(R1 | RB) = open game settings popup
+KEY(L1 | LB) = open image change popup
+KEY(R2 | RT) = add game from favorites
+KEY(L2 | LT) = quit from popup (similar to esc key)
+
 ## Project Showcase
 
 
@@ -86,18 +101,16 @@ https://github.com/user-attachments/assets/b078f7a2-f542-4c3f-ad08-50ba4173d5ac
 
 ## Getting Started
 
-To install scripts, simply place the .lua script file in the "Documents/Project-GLD/Scripts" directory, or use the program's script installer.
-
-To backup your game library and favorites list go to "Documents/Project-GLD/GameList".
-
-Settings are saved in the "Documents/Project-GLD/Configs" folder.
+* To install scripts, simply navigate to the Installers tab in GLD. Alternatively, you can place a script file in "Documents/Project-GLD/Scripts".
+* To back up your game library and favorites list go to "Documents/Project-GLD/GameList".
+* Settings are saved in the "Documents/Project-GLD/Configs" folder.
 
 ### Currently available scripts:
 
 ⭐ **Recommended:**
-- **[FitGirl](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/FitGirl.lua) / [2](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/FitGirl_2%20(Torrent).lua)** [🧲] [📥]
-- [**1click**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/1click.lua) [📥]
-- [**Steamrip**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Steamrip.lua) [📥]
+- **[FitGirl]**(https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/%5B1click%5D%20FitGirl.lua) [🧲]
+- [**Steamrip**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/%5B1click%5D%20SteamRip.lua) / [**Alternative**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/%5B1click%5D%20SteamRip%20(Alternative).lua) [📥]
+- [**Online-fix**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/%5B1click%5D%20Online-Fix.lua) [🧲]
 - [**Rezi**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Rezi.lua) [📥]
 
 ✅ **Preinstalled:**
@@ -107,11 +120,10 @@ Settings are saved in the "Documents/Project-GLD/Configs" folder.
 - **[Hydra_Sources](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Hydra_Sources.lua)** [🧲]
 
 🗂️ **Other:**
-- **[Dodi DDL](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Dodi-repacks%20(DDL).lua) / [Torrent](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Dodi-repacks%20(Torrent).lua)** [🧲] [📥]
-- **[GOG-games DDL](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/GOG-games%20(DDL).lua ) / [Torrent](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/GOG-games%20(Torrent).lua)** [🧲] [📥]
+- **[Dodi](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/%5B1click%5D%20DODI.lua)** [🧲]
+- **[GOG-games DDL](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/GOG-games.lua )** [🧲]
 - [**G4U**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/G4U.lua) [📥]
 - [**Elamigos**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Elamigos-games.lua) [📥]
-- [**Online fix**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Online-Fix.lua) [🧲]
 - **[Xatab](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Xatab.lua)** [🧲]
 - **[Tiny-repacks](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Tiny-repacks.lua)** [🧲]
 - **[Steam Amiga](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Steam-Amiga.lua)** [🧲]
@@ -137,12 +149,6 @@ See our Lua Documentation [here](https://github.com/Y0URD34TH/Project-GLD/blob/m
 2. Install the program.
 
 3. Enjoy!
-
-
-## Known Bugs
-
-You might experience a slight delay when searching for and downloading games. This is normal, so please refrain from closing the app as it simply needs some more time to fulfill your request, especially when initiating a download script for the searched game.
-
 
 ## Authors
 
