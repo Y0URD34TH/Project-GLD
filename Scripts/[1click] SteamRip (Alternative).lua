@@ -46,9 +46,23 @@ local function substituteRomanNumerals(gameName)
     return gameName
 end
 
+local cfcookiessr = ""
+
 local headers = {
-    ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 ProjectGLD/2.15"
+	 ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 ProjectGLD/2.15"
 }
+
+local function cfcallback(cookie, url)
+if url == "https://steamrip.com/" then
+cfcookiessr = cookie
+local cfclearence = "cf_clearance=" .. tostring(cfcookiessr)
+headers = {
+    ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 ProjectGLD/2.15",
+   ["Cookie"] = cfclearence
+}
+communication.RefreshScriptResults()
+end
+end
 
 local function webScrape1clickNUC(gameName)
     gameName = substituteRomanNumerals(gameName)
@@ -184,10 +198,14 @@ else
     menu.set_text("2clicks Game Dir", defaultdir)
     settings.load()
     local function click1NUC()
+    if cfcookiessr == nil or cfcookiessr == "" then
+        http.CloudFlareSolver("https://steamrip.com/")
+    else
         settings.save()
         local gamenameNUC = game.getgamename()
         local resultsNUC = webScrape1clickNUC(gamenameNUC)
         communication.receiveSearchResults(resultsNUC)
+        end
     end
     local imagelink = ""
     local gamename = ""
@@ -275,7 +293,14 @@ else
     client.add_callback("on_downloadclick", ondownloadclick)
     client.add_callback("on_downloadcompleted", ondownloadcompleted)
     client.add_callback("on_extractioncompleted", onextractioncompleted)
+    client.add_callback("on_cfdone", cfcallback)
 end
+
+
+
+
+
+
 
 
 
