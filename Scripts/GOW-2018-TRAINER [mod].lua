@@ -29,7 +29,7 @@ then
 
 local processname = get_exe_name(info.exePath)
 local mainpath = get_directory(info.exePath)
-local dllpath = mainpath .. "\\GOW\\cheat.dll"
+local dllpath = mainpath .. "\\cheat.dll"
 
 if file.exists(dllpath) then
 
@@ -61,6 +61,8 @@ end
 
 client.add_callback("on_gamelaunch", EnableTrainer)
 end
+
+
 
 
 

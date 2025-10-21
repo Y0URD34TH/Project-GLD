@@ -11,13 +11,12 @@ else
     end
 
     local function EnableTrainer(info)
-
         if info.name == "SCH1" or info.name == "Schedule" or info.name == "Schedule I" or info.name == "Schedule i" or info.name ==
             "schedule i" or info.name == "Schedule 1" or info.name == "schedule" or info.name == "schedule 1" then
 
             local processname = get_exe_name(info.exePath)
             local mainpath = get_directory(info.exePath)
-            local dllpath = mainpath .. "\\SCH1\\cheat.dll"
+            local dllpath = mainpath .. "\\Schedule420.dll"
 
             if file.exists(dllpath) then
                 if dll.inject(processname, dllpath, 10000) then
@@ -37,4 +36,6 @@ else
 
     client.add_callback("on_gamelaunch", EnableTrainer)
 end
+
+
 
