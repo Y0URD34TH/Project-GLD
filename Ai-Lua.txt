@@ -106,16 +106,24 @@
 	//function CloudFlareSolver returns an callback at client callbacks : - `on_cfdone` execute the function when the cloudflare solver resolved the link and returns the cloudflare cookie and url of the request (you need to use the following user agent alongside with the cookie to work: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 ProjectGLD/2.15) [soo make sure to do the cliend.add_callback if you want to listen to when cloudflare resolver is done
 
 	auto file = lua.create_table();
-	file[("append")] = ns_file::append; //	void append(sol::this_state s, std::string& path, std::string& data)
+	file[("append")] = ns_file::append; // void append(sol::this_state s, std::string& path, std::string& data)
 	file[("write")] = ns_file::write;//	void write(sol::this_state s, std::string& path, std::string& data)
-	file[("read")] = ns_file::read;//	std::string read(sol::this_state s, std::string& path)
-	file[("delete")] = ns_file::erase;//	void erase(sol::this_state s, std::string& path)
-	file[("exists")] = ns_file::exists;//	bool exists(sol::this_state s, std::string& path)
-	file[("exec")] = ns_file::exec;//	void exec(sol::this_state s, std::string& execpath, int delay = 0, std::string commandline = "", bool isinnosetup = false, std::string innoproccess = "")
+	file[("read")] = ns_file::read;// std::string read(sol::this_state s, std::string& path)
+	file[("delete")] = ns_file::erase;// void erase(sol::this_state s, std::string& path)
+	file[("exists")] = ns_file::exists;// bool exists(sol::this_state s, std::string& path)
+	file[("exec")] = ns_file::exec;// void exec(sol::this_state s, std::string& execpath, int delay = 0, std::string commandline = "", bool isinnosetup = false, std::string innoproccess = "")
 	file[("listfolders")] = ns_file::listfolders;//	std::vector<std::string> listfolders(std::string path)
 	file[("listexecutables")] = ns_file::listexecutables;//	std::vector<std::string> listexecutables(std::string path)
-	file[("listexecutablesrecursive")] = ns_file::listexecutablesrecursive;//	std::vector<std::string> listexecutablesrecursive(std::string path)
-	file[("listcompactedfiles")] = ns_file::listcompactedfiles;//	std::vector<std::string> listcompactedfiles(std::string path) zip,rar,7z,tar, etc.
+	file[("listexecutablesrecursive")] = ns_file::listexecutablesrecursive;// std::vector<std::string> listexecutablesrecursive(std::string path)
+	file[("listcompactedfiles")] = ns_file::listcompactedfiles;// std::vector<std::string> listcompactedfiles(std::string path) zip,rar,7z,tar, etc.
+	file[("getusername")] = ns_file::GetWindowsUserName(); // std::string GetWindowsUserName()
+	file["create_directory"] = ns_file::create_directory;   // void create_directory(std::string& path)
+	file["copy_file"] = ns_file::copy_file;                 // void copy_file(std::string& src, std::string& dst)
+	file["move_file"] = ns_file::move_file;                 // void move_file(std::string& src, std::string& dst)
+	file["get_filename"] = ns_file::get_filename;           // std::string get_filename(std::string& path)
+	file["get_extension"] = ns_file::get_extension;         // std::string get_extension(std::string& path)
+	file["get_parent_path"] = ns_file::get_parent_path;     // std::string get_parent_path(std::string& path)
+	file["list_directory"] = ns_file::list_directory;       // sol::table list_directory(std::string& path)
 
 	auto game = lua.create_table();
 	game["getgamename"] = ns_game::getgamename; // 	std::string getgamename(sol::this_state s) gets the game name from serach  [into game page]
@@ -151,7 +159,7 @@
 	auto gamelibrary = lua.create_table();
 	gamelibrary["launch"] = ns_gamelibrary::Launchgame; // 	bool Launchgame(int id)
 	gamelibrary["close"] = ns_gamelibrary::CloseGame;
-	gamelibrary["addGame"] = ns_gamelibrary::addGame; // 	void addGame(sol::this_state s, std::string& exePath, std::string& imagePath, std::string& gamename, std::string& commandline)
+	gamelibrary["addGame"] = ns_gamelibrary::addGame; // 	void addGame(sol::this_state s, std::string& exePath, std::string& imagePath, std::string& gamename, std::string& commandline, bool disableigdbid = false)
 	gamelibrary["changeGameinfo"] = ns_gamelibrary::changeGameinfo; // 	void changeGameinfo(sol::this_state s, int id, std::string exePath = "", std::string imagePath = "", std::string gamename = "", std::string commandline = "")
 	gamelibrary["removeGame"] = ns_gamelibrary::removeGame; // 	void removeGame(sol::this_state s, int id)
 	gamelibrary["GetGameIdFromName"] = ns_gamelibrary::GetGameIdFromName; // 	int GetGameIdFromName(std::string name)
@@ -165,7 +173,7 @@
 
 	auto zip = lua.create_table();
 	zip["extract"] = Features::ExtractFile; //     void ExtractFile(std::string source, std::string destination, bool deleteaftercomplete, std::string pass)
-	// extract function call an client callback: - `on_extractioncompleted` execute the function when the extraction progress is completed and retrieve the path to where it got extracted
+	// extract function call an client callback: - `on_extractioncompleted` execute the function when the extraction progress is completed and retrieve the path to where it got extracted and from wich file it got extracted
     // make sure to call taht callback with client.add_callback to listen to itss results
 
 	auto gldconsole = lua.create_table();
@@ -227,7 +235,7 @@
 					current.func();
 
 					for (auto current : lua.hooks.getHooks("on_extractioncompleted")) -- called when zip.extract is completed
-					current.func(g_Options.isextractiondonepath); -- destination path (string)
+					current.func(g_Options.isextractiondoneorigin, g_Options.isextractiondonepath); -- origin (file wich it got extracted from) and destination path (string)
 
 					for (auto current : lua.hooks.getHooks("on_downloadclick")) -- when you click in download into game page
 					current.func(g_Options.ondownloadclickcallbackitem.dump(), g_Options.ondownloadclickcallbackitemurl, g_Options.ondownloadclickcallbackscriptname); -- all are strings
