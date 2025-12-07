@@ -1,8 +1,5 @@
---1.22
-local function checkVersion(str, comparison)
-    local serverversion = str:sub(3, 6)
-    return serverversion == comparison
-end
+local VERSION = "1.0.0"
+client.auto_script_update("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/1337x.lua", VERSION)
 
 local headers = {
     ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
@@ -10,16 +7,6 @@ local headers = {
 
 local headers2 = {
 }
-
-local version = "1.22"
-local githubversion = http.get("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/1337x.lua", headers)
-local outdated = false
-if checkVersion(githubversion, version) then
-outdated = false
-else
-outdated = true
-    Notifications.push_warning("Outdated Script", "Please update the script.")
-end
 
 local scriptsfolder = client.GetScriptsPath()
 
@@ -58,28 +45,10 @@ local version = client.GetVersionDouble()
 
 if version < 3.52 then
     Notifications.push_error("Lua Script", "Program is outdated. Please update the app to use this script!")
-	if outdated then 
-	menu.add_button("Update 1337x")
-    local function updatebutton()
-       Download.DirectDownload("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/1337x.lua", scriptsfolder .. "1337x.lua")
-	   client.unload_script("1337x.lua")
-	   client.load_script("1337x.lua")
-    end
-	client.add_callback("on_button_Update 1337x", updatebutton)
-	end
 else
     Notifications.push_success("Lua Script", "1337x script is loaded and working!")
     Notifications.push_warning("1337x Script", "1337x is marked as unsafe by many sources, so only use trusted uploaders from here. You have been warned!")
 	
-    if outdated then 
-	menu.add_button("Update 1337x")
-    local function updatebutton()
-       Download.DirectDownload("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/1337x.lua", scriptsfolder .. "1337x.lua")
-	   client.unload_script("1337x.lua")
-	   client.load_script("1337x.lua")
-    end
-	client.add_callback("on_button_Update 1337x", updatebutton)
-	end
 	menu.add_combo_box("1337x Provider(2)", { "Original", "Mirror", ".onion" })
     menu.add_check_box("Roman Numbers Conversion 1337x")
     local romantonormalnumbers = true
@@ -266,3 +235,4 @@ end
     client.add_callback("on_present", checkboxcall)
 	client.add_callback("on_cfdone", cfcallback)
 end
+
