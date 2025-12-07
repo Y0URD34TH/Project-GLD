@@ -1,19 +1,31 @@
-V6.90
+V6.95
 
-improvements:
-Added automatic game scan to scan for games on your PC
-Added game size information
-Improved library in general, added more filters and a loading indicator
-Added the ability to see how much space you have left in each drive
-Improved search (so you don't see a bunch of DLCs & editions when searching for a game)
-Added the option to choose where gld will store its data on the config.ini
-Added games.json local backup
-Added the option to see which .exe the game is being launched
+New features:
+Added auto suggest and search history at Search tab
+Added Discord RPC support
+Changed DDL download manager to aria2
+Made the download manager resume downloads automatically after reopening GLD
+Added Discord to game list on game scan
+Added a setting to control maximum amount of connections (1-16)
+Added a method to check if main window is active via Lua API
+Added the ability to right click on install button to set the .exe path
 
 Bug fixes:
-Fixed some library loading crashes
-Fixed see on store bug
-Fixed a lot of misc crashes
+Fixed locked achievements being empty or not showing up
+Fixed changing game size when changing game folder to a folder of size 0
+Fixed GLD not exiting properly when system turns off and when closed by window management or task manager
+Fixed high CPU usage when minimized 
+Fixed online-fix script automatic install 
+Fixed how can it fit achievement displaying all the time
+Fixed crash on download manager when adding multiple files
+Fixed issues with max active downloads
+Fixed quit on game launch (Lua)
+
+General improvements:
+Improved & simplified automatic save backup in games
+Improve game size and did game size caching
+Made achievements load faster
+Added a way to automatically update scripts
 
 (gld may freeze while auto updating and its normal!!!)
 (gld pode congelar ao se auto atualizar, isso é normal!!!)
