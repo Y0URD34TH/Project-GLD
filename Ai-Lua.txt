@@ -41,6 +41,7 @@
 	client[("load_script")] = ns_client::load_script; // 	void load_script(std::string name)
 	client[("unload_script")] = ns_client::unload_script; // void unload_script(std::string name)
 	client[("create_script")] = ns_client::create_script; // void create_script(std::string name, std::string data)
+	client[("auto_script_update")] = ns_client::auto_script_update; // void auto_script_update(std::string scripturl, std::string scriptversion) expects local VERSION = "" into the scriptversion (defined in lua as local VERSION = "")
 	client[("log")] = ns_client::log; // 	void log(std::string title, std::string text)
 	client[("quit")] = ns_client::quit; // 	void quit(sol::this_state s)
 	client[("GetVersion")] = ns_client::GetVersion; // 	std::string GetVersion(sol::this_state s)
@@ -62,6 +63,7 @@
 	auto menu = lua.create_table();
 	menu[("set_dpi")] = ns_menu::set_dpi; // 	void set_dpi(double dpi)
 	menu[("set_visible")] = ns_menu::set_visible; // 	void set_visible(bool visible)
+	menu[("is_main_window_active")] = ns_menu::is_main_window_active; // 	bool is_main_window_active()
 	menu[("next_line")] = ns_menu::next_line; //	void next_line(sol::this_state s)
 	menu[("add_check_box")] = ns_menu::add_check_box; // 	void add_check_box(sol::this_state s, const std::string& name)
 	menu[("add_button")] = ns_menu::add_button; // 	void add_button(sol::this_state s, const std::string& name)
@@ -155,6 +157,10 @@
 	download["DownloadImage"] = ns_download::DownloadImage; // 	std::string DownloadImage(sol::this_state s, std::string imageurl)
 	download["ChangeDownloadPath"] = ns_download::ChangeDownloadPath; // 	void ChangeDownloadPath(sol::this_state s, std::string path)
 	download["GetDownloadPath"] = ns_download::GetDownloadPath; // 	std::string GetDownloadPath(sol::this_state s)
+	download["ChangeMaxActiveDownloads"] = ns_download::ChangeMaxActiveDownloads; // 	void MaxActiveDownloads(int maxdownloads)
+	download["GetMaxActiveDownloads"] = ns_download::GetMaxActiveDownloads; // int GetMaxActiveDownloads()
+	download["SetMaxConnections"] = ns_download::SetMaxConnections; // void SetMaxConnections(int maxconnections)
+	download["GetMaxConnections"] = ns_download::GetMaxConnections; // int GetMaxConnections()
 
 	auto gamelibrary = lua.create_table();
 	gamelibrary["launch"] = ns_gamelibrary::Launchgame; // 	bool Launchgame(int id)
