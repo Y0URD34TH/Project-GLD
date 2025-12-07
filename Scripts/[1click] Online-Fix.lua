@@ -295,14 +295,14 @@ else
             gamenametopath = gamenametopath:gsub(":", "")
             defaultdir = menu.get_text("OF Game Dir") .. "/" .. gamenametopath .. "/"
             -- if url == watchlink2 or url == watchlink1 then
-            path = path:gsub("\\", "/")
-            pathcheck = path
+            path = path:gsub("\\", "/")       
             local zipfiles = file.listcompactedfiles(path) -- Returns a vector
 
                 -- Get the first executable (assuming executables[1] exists)
             if zipfiles and #zipfiles >= 1 then
                  local firstcompactedfile = zipfiles[1]
                  local fullextractionpath = path .. "/" .. firstcompactedfile
+                 pathcheck = fullextractionpath
                  zip.extract(fullextractionpath, defaultdir, true, "online-fix.me")
             end
         end
@@ -358,6 +358,7 @@ else
     client.add_callback("on_downloadcompleted", ondownloadcompleted)
     client.add_callback("on_extractioncompleted", onextractioncompleted)
 end
+
 
 
 
