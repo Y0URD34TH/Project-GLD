@@ -34,7 +34,6 @@ Project-GLD exposes a comprehensive Lua API for creating scripts and extensions.
 
 ### Important Notes
 
-- For using AI to make scripts please send (copy and paste) to your AI our compact documentation of lua ready for AI: https://github.com/Y0URD34TH/Project-GLD/blob/main/Ai-Lua.txt 
 - **Optional Parameters**: Parameters with default values (e.g., `int delay = 0`) are optional in Lua
 - **sol::this_state**: These C++ parameters are automatically handled and not visible in Lua
 - **Disabled Functions**: The following standard Lua functions are disabled for security:
@@ -425,6 +424,33 @@ print("Screen width: " .. width)
 
 ---
 
+### client.auto_script_update()
+```lua
+client.auto_script_update(scripturl, scriptversion)
+```
+Enables automatic script updates from a remote URL.
+
+**Parameters:**
+- `scripturl` (string): URL to the raw script file
+- `scriptversion` (string): Current script version (expects `local VERSION = ""` defined in the script)
+
+**Note:** The script should define a `VERSION` variable at the top:
+```lua
+local VERSION = "1.0.0"
+```
+
+**Example:**
+```lua
+local VERSION = "1.2.5"
+
+client.auto_script_update(
+    "https://raw.githubusercontent.com/user/repo/main/myscript.lua",
+    VERSION
+)
+```
+
+---
+
 ## Menu API
 
 Create and manage custom UI elements in the Project-GLD interface.
@@ -457,6 +483,26 @@ Shows or hides the menu.
 **Example:**
 ```lua
 menu.set_visible(true)
+```
+
+---
+
+### menu.is_main_window_active()
+```lua
+menu.is_main_window_active()
+```
+Checks if the main GLD window is currently active/focused.
+
+**Returns:**
+- (boolean): true if main window is active, false otherwise
+
+**Example:**
+```lua
+if menu.is_main_window_active() then
+    print("Main window is focused")
+else
+    print("Main window is not focused")
+end
 ```
 
 ---
@@ -1922,6 +1968,74 @@ print("Downloads go to: " .. downloadPath)
 
 ---
 
+### Download.ChangeMaxActiveDownloads()
+```lua
+Download.ChangeMaxActiveDownloads(maxdownloads)
+```
+Sets the maximum number of simultaneous downloads allowed.
+
+**Parameters:**
+- `maxdownloads` (number): Maximum number of concurrent downloads
+
+**Example:**
+```lua
+-- Allow up to 3 simultaneous downloads
+Download.ChangeMaxActiveDownloads(3)
+```
+
+---
+
+### Download.GetMaxActiveDownloads()
+```lua
+Download.GetMaxActiveDownloads()
+```
+Gets the current maximum number of simultaneous downloads.
+
+**Returns:**
+- (number): Maximum concurrent downloads
+
+**Example:**
+```lua
+local maxDownloads = Download.GetMaxActiveDownloads()
+print("Max concurrent downloads: " .. maxDownloads)
+```
+
+---
+
+### Download.SetMaxConnections()
+```lua
+Download.SetMaxConnections(maxconnections)
+```
+Sets the maximum number of connections per download.
+
+**Parameters:**
+- `maxconnections` (number): Maximum connections per download
+
+**Example:**
+```lua
+-- Use 8 connections per download for faster speeds
+Download.SetMaxConnections(8)
+```
+
+---
+
+### Download.GetMaxConnections()
+```lua
+Download.GetMaxConnections()
+```
+Gets the current maximum number of connections per download.
+
+**Returns:**
+- (number): Maximum connections per download
+
+**Example:**
+```lua
+local maxConnections = Download.GetMaxConnections()
+print("Connections per download: " .. maxConnections)
+```
+
+---
+
 ## Game Library API
 
 Manage games in the Project-GLD library.
@@ -2838,3 +2952,720 @@ end)
 ```
 
 ---
+
+### Example 3: Mod Manager with Menu
+
+```lua
+-- Create menu interface
+menu.add_text("=== Mod Manager ===")
+menu.next_line()
+
+menu.add_check_box("enable_mods")
+menu.set_bool("enable_mods", true)
+menu.add_text("Enable Mods")
+menu.next_line()
+
+menu.add_input_text("mod_dll_path")
+menu.set_text("mod_dll_path", "C:\\Mods\\mod.dll")
+menu.add_text("Mod DLL Path")
+menu.next_line()
+
+menu.add_input_int("injection_delay")
+menu.set_int("injection_delay", 2000)
+menu.add_text("Injection Delay (ms)")
+menu.next_line()
+
+menu.add_button("InjectNow")
+menu.next_line()
+
+-- Handle mod injection when game launches
+client.add_callback("on_gamelaunch", function(gameInfo)
+    if menu.get_bool("enable_mods") then
+        local dllPath = menu.get_text("mod_dll_path")
+        local delay = menu.get_int("injection_delay")
+        
+        if file.exists(dllPath) then
+            Notifications.push("Mod Manager", "Injecting mods in " .. delay .. "ms...")
+            
+            -- Wait for delay
+            sleep(delay)
+            
+            -- Get process name from exe path
+            local processName = file.get_filename(gameInfo.exePath)
+            
+            -- Inject DLL
+            local success = dll.inject(processName, dllPath, 0)
+            
+            if success then
+                Notifications.push_success("Success", "Mods injected!")
+            else
+                Notifications.push_error("Error", "Failed to inject mods")
+            end
+        else
+            Notifications.push_error("Error", "Mod DLL not found: " .. dllPath)
+        end
+    end
+end)
+
+-- Manual injection button
+client.add_callback("on_button_InjectNow", function()
+    local dllPath = menu.get_text("mod_dll_path")
+    
+    if not file.exists(dllPath) then
+        Notifications.push_error("Error", "Mod DLL not found")
+        return
+    end
+    
+    -- Get all running game processes
+    Notifications.push("Mod Manager", "Attempting manual injection...")
+    
+    -- You would need to specify the target process
+    local processName = "game.exe"  -- This should be configurable
+    local success = dll.inject(processName, dllPath, 0)
+    
+    if success then
+        Notifications.push_success("Success", "Mods injected!")
+    else
+        Notifications.push_error("Error", "Failed to inject. Is the game running?")
+    end
+end)
+```
+
+---
+
+### Example 4: Save Game Backup Automation
+
+```lua
+-- Auto-backup saves when game closes
+local lastLaunchedGame = nil
+
+client.add_callback("on_gamelaunch", function(gameInfo)
+    lastLaunchedGame = gameInfo.name
+    print("Game launched: " .. lastLaunchedGame)
+end)
+
+-- Periodic check for running games (on_present runs every frame)
+local checkCounter = 0
+local checkInterval = 60 * 60 -- Check every 60 frames (roughly 1 second at 60fps)
+
+client.add_callback("on_present", function()
+    checkCounter = checkCounter + 1
+    
+    if checkCounter >= checkInterval then
+        checkCounter = 0
+        
+        if lastLaunchedGame then
+            -- In a real implementation, you'd check if the game is still running
+            -- For this example, we'll just backup periodically
+            save.Backup(lastLaunchedGame)
+            gldconsole.print("Auto-backed up: " .. lastLaunchedGame)
+        end
+    end
+end)
+
+-- Manual backup management menu
+menu.add_text("=== Save Backup Manager ===")
+menu.next_line()
+
+menu.add_button("BackupAll")
+menu.add_button("RestoreAll")
+menu.next_line()
+
+menu.add_button("UploadCloud")
+menu.add_button("DownloadCloud")
+menu.next_line()
+
+client.add_callback("on_button_BackupAll", function()
+    Notifications.push("Backup", "Backing up all saves...")
+    save.BackupAll()
+    sleep(1000)
+    save.RefreshBackup()
+    Notifications.push_success("Complete", "All saves backed up!")
+end)
+
+client.add_callback("on_button_RestoreAll", function()
+    Notifications.push("Restore", "Restoring all saves...")
+    save.RestoreAll()
+    sleep(1000)
+    save.RefreshRestore()
+    Notifications.push_success("Complete", "All saves restored!")
+end)
+
+client.add_callback("on_button_UploadCloud", function()
+    Notifications.push("Upload", "Uploading saves to cloud...")
+    save.UploadAll()
+    sleep(1000)
+    save.RefreshCloud()
+    Notifications.push_success("Complete", "Saves uploaded to cloud!")
+end)
+
+client.add_callback("on_button_DownloadCloud", function()
+    Notifications.push("Download", "Downloading saves from cloud...")
+    save.DownloadAll()
+    sleep(1000)
+    save.RefreshAll()
+    Notifications.push_success("Complete", "Saves downloaded from cloud!")
+end)
+```
+
+---
+
+### Example 5: Cloudflare-Protected Download Handler
+
+```lua
+-- Handle Cloudflare-protected downloads
+local pendingDownloadUrl = nil
+
+client.add_callback("on_downloadclick", function(item, url, scriptname)
+    local itemData = JsonWrapper.parse(item)
+    
+    Notifications.push("Download", "Checking URL: " .. itemData.name)
+    
+    -- Check if URL needs Cloudflare solving
+    if url:find("cloudflare") or url:find("ddos%-guard") then
+        pendingDownloadUrl = url
+        Notifications.push("Cloudflare", "Solving Cloudflare challenge...")
+        http.CloudFlareSolver(url)
+    else
+        -- Direct download
+        Download.DownloadFile(url)
+    end
+end)
+
+-- Handle Cloudflare resolution
+client.add_callback("on_cfdone", function(cookie, url)
+    Notifications.push_success("Cloudflare", "Challenge solved!")
+    
+    if pendingDownloadUrl then
+        -- Now we can download with the cookie
+        local headers = {
+            ["Cookie"] = cookie,
+            ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 ProjectGLD/2.15"
+        }
+        
+        -- Get the actual download page
+        local pageContent = http.get(url, headers)
+        
+        -- Parse the page to find the real download link
+        -- This depends on the site structure
+        local downloadLink = HtmlWrapper.findAttribute(
+            pageContent,
+            "a",
+            "class",
+            "download-button",
+            "href"
+        )
+        
+        if downloadLink then
+            Download.DownloadFile(downloadLink[1])
+        else
+            Notifications.push_error("Error", "Could not find download link")
+        end
+        
+        pendingDownloadUrl = nil
+    end
+end)
+```
+
+---
+
+### Example 6: Steam Integration Script
+
+```lua
+-- Add Steam game information to search results
+menu.add_text("=== Steam Integration ===")
+menu.next_line()
+
+menu.add_check_box("show_steam_info")
+menu.set_bool("show_steam_info", true)
+menu.add_text("Show Steam Requirements")
+menu.next_line()
+
+menu.add_button("OpenSteam")
+menu.next_line()
+
+client.add_callback("on_gameselected", function()
+    if menu.get_bool("show_steam_info") then
+        local gameName = game.getgamename()
+        
+        gldconsole.print("Getting Steam info for: " .. gameName)
+        
+        -- Get Steam App ID
+        local appId = SteamApi.GetAppID(gameName)
+        
+        if appId and appId ~= "" then
+            gldconsole.print("Found Steam App ID: " .. appId)
+            
+            -- Get system requirements
+            local requirements = SteamApi.GetSystemRequirements(appId)
+            local reqData = JsonWrapper.parse(requirements)
+            
+            if reqData then
+                gldconsole.print("=== System Requirements ===")
+                gldconsole.print("Minimum: " .. (reqData.minimum or "N/A"))
+                gldconsole.print("Recommended: " .. (reqData.recommended or "N/A"))
+            end
+            
+            -- Get game data
+            local gameData = SteamApi.GetGameData(appId)
+            local data = JsonWrapper.parse(gameData)
+            
+            if data then
+                gldconsole.print("=== Game Info ===")
+                gldconsole.print("Release Date: " .. (data.release_date or "N/A"))
+                gldconsole.print("Developers: " .. (data.developers or "N/A"))
+                gldconsole.print("Publishers: " .. (data.publishers or "N/A"))
+            end
+            
+            gldconsole.show()
+        else
+            gldconsole.print("Game not found on Steam: " .. gameName)
+        end
+    end
+end)
+
+client.add_callback("on_button_OpenSteam", function()
+    if SteamApi.IsSteamRunning() then
+        Notifications.push("Steam", "Steam is already running")
+    else
+        Notifications.push("Steam", "Opening Steam...")
+        SteamApi.OpenSteam()
+    end
+end)
+```
+
+---
+
+## Best Practices
+
+### Performance Considerations
+
+1. **Avoid Heavy Operations in on_present**: This callback runs every frame (60+ times per second). Keep operations here minimal.
+
+```lua
+-- BAD: Heavy operation every frame
+client.add_callback("on_present", function()
+    local files = file.listexecutablesrecursive("C:\\") -- Too slow!
+end)
+
+-- GOOD: Use a counter to throttle
+local counter = 0
+client.add_callback("on_present", function()
+    counter = counter + 1
+    if counter >= 600 then -- Every ~10 seconds at 60fps
+        counter = 0
+        -- Do periodic check here
+    end
+end)
+```
+
+2. **Cache Results**: Don't make repeated HTTP requests for the same data.
+
+```lua
+local cachedData = {}
+
+function getGameData(gameName)
+    if cachedData[gameName] then
+        return cachedData[gameName]
+    end
+    
+    local data = http.get("https://api.example.com/game/" .. gameName, {})
+    cachedData[gameName] = data
+    return data
+end
+```
+
+3. **Use Asynchronous Patterns**: Let callbacks handle long operations.
+
+```lua
+-- Start download and let callback handle completion
+Download.DownloadFile(url)
+
+client.add_callback("on_downloadcompleted", function(path, url)
+    -- Process downloaded file here
+    zip.extract(path, destination, true, "")
+end)
+```
+
+---
+
+### Error Handling
+
+Always check for errors and provide user feedback:
+
+```lua
+client.add_callback("on_downloadclick", function(item, url, scriptname)
+    -- Check if file operations will succeed
+    if not file.exists(Download.GetDownloadPath()) then
+        Notifications.push_error("Error", "Download path does not exist")
+        return
+    end
+    
+    -- Validate URL
+    if not url or url == "" then
+        Notifications.push_error("Error", "Invalid download URL")
+        return
+    end
+    
+    -- Check disk space (custom function)
+    local freeSpace = getFreeSpace(Download.GetDownloadPath())
+    if freeSpace < 1000000000 then -- Less than 1GB
+        Notifications.push_warning("Warning", "Low disk space")
+    end
+    
+    Download.DownloadFile(url)
+end)
+```
+
+---
+
+### User Experience
+
+1. **Provide Feedback**: Always inform users about what's happening.
+
+```lua
+Notifications.push("Info", "Starting download...")
+Download.DownloadFile(url)
+-- Completion notification will come from on_downloadcompleted callback
+```
+
+2. **Use Appropriate Notification Types**:
+   - `push()` - General information
+   - `push_success()` - Successful operations
+   - `push_error()` - Errors that need attention
+   - `push_warning()` - Warnings or cautions
+
+3. **Progressive Enhancement**: Start simple, add features gradually.
+
+```lua
+-- Start with basic functionality
+menu.add_button("Download")
+
+client.add_callback("on_button_Download", function()
+    Download.DownloadFile("https://example.com/file.zip")
+end)
+
+-- Add advanced options later
+menu.add_input_text("custom_url")
+menu.add_check_box("auto_extract")
+-- etc.
+```
+
+---
+
+### Security Considerations
+
+1. **Validate Inputs**: Never trust user input or external data.
+
+```lua
+local url = menu.get_text("download_url")
+
+-- Validate URL format
+if not url:match("^https?://") then
+    Notifications.push_error("Error", "Invalid URL format")
+    return
+end
+
+-- Check for suspicious patterns
+if url:find("%.%.") then -- Path traversal attempt
+    Notifications.push_error("Error", "Suspicious URL detected")
+    return
+end
+```
+
+2. **Be Careful with File Paths**: Sanitize paths to prevent directory traversal.
+
+```lua
+function sanitizePath(path)
+    -- Remove suspicious patterns
+    path = path:gsub("%.%.", "")
+    path = path:gsub("//", "/")
+    return path
+end
+```
+
+3. **Limit External Access**: Only make HTTP requests to trusted sources.
+
+---
+
+### Code Organization
+
+Structure your scripts for maintainability:
+
+```lua
+-- Configuration at the top
+local CONFIG = {
+    API_URL = "https://api.example.com",
+    USER_AGENT = "Project-GLD Script",
+    CACHE_DURATION = 3600,
+    AUTO_BACKUP = true
+}
+
+-- Utility functions
+local function logDebug(message)
+    if CONFIG.DEBUG_MODE then
+        gldconsole.print("[DEBUG] " .. message)
+    end
+end
+
+local function showNotification(type, title, message)
+    if type == "success" then
+        Notifications.push_success(title, message)
+    elseif type == "error" then
+        Notifications.push_error(title, message)
+    else
+        Notifications.push(title, message)
+    end
+end
+
+-- Main functionality
+local function initializeScript()
+    logDebug("Initializing script...")
+    
+    -- Setup menu
+    menu.add_text("=== My Script ===")
+    menu.next_line()
+    
+    -- Register callbacks
+    registerCallbacks()
+    
+    logDebug("Script initialized")
+end
+
+local function registerCallbacks()
+    client.add_callback("on_launch", onLaunch)
+    client.add_callback("on_gamesearch", onGameSearch)
+    -- etc.
+end
+
+-- Callback handlers
+function onLaunch()
+    showNotification("info", "Script", "Loaded successfully")
+end
+
+function onGameSearch()
+    -- Handle search
+end
+
+-- Initialize when script loads
+initializeScript()
+```
+
+---
+
+## Troubleshooting
+
+### Common Issues
+
+**Script not loading:**
+- Check for syntax errors in your Lua code
+- Verify the script is in the correct directory (`client.GetScriptsPath()`)
+- Check the GLD console for error messages
+
+**Callbacks not firing:**
+- Ensure you've registered the callback with `client.add_callback()`
+- Check that the event name is spelled correctly
+- Verify any prerequisites (e.g., buttons must be added before their callbacks work)
+
+**HTTP requests failing:**
+- Check your internet connection
+- Verify the URL is correct
+- Some sites may require specific headers or cookies
+- Use `gldconsole.print()` to debug response content
+
+**File operations not working:**
+- Verify paths exist and are accessible
+- Check file permissions
+- Use forward slashes or double backslashes in Windows paths
+- Test with `file.exists()` before operations
+
+**DLL injection failing:**
+- Ensure the target process is running
+- Verify the DLL architecture matches the process (32-bit vs 64-bit)
+- Check that the DLL path is correct
+- Try increasing the injection delay
+
+---
+
+## Appendix: Function Quick Reference
+
+### Global
+- `print(str)` - Print to output
+- `exec(path, delay?, args?, inno?, proc?)` - Execute program
+- `sleep(ms)` - Pause execution
+
+### Client
+- `client.add_callback(event, func)` - Register callback
+- `client.load_script(name)` - Load script
+- `client.unload_script(name)` - Unload script
+- `client.create_script(name, code)` - Create script
+- `client.auto_script_update(url, version)` - Enable auto-update
+- `client.log(title, text)` - Log message
+- `client.quit()` - Exit GLD
+- `client.GetVersion()` - Get version string
+- `client.GetVersionFloat()` - Get version as float
+- `client.GetVersionDouble()` - Get version as double
+- `client.CleanSearchTextureCache()` - Clear search cache
+- `client.CleanLibraryTextureCache()` - Clear library cache
+- `client.GetScriptsPath()` - Get scripts directory
+- `client.GetDefaultSavePath()` - Get saves directory
+- `client.GetScreenHeight()` - Get screen height
+- `client.GetScreenWidth()` - Get screen width
+
+### Menu
+- `menu.set_dpi(dpi)` - Set DPI scale
+- `menu.set_visible(bool)` - Show/hide menu
+- `menu.is_main_window_active()` - Check if main window is active
+- `menu.next_line()` - New line
+- `menu.add_check_box(name)` - Add checkbox
+- `menu.add_button(name)` - Add button
+- `menu.add_text(text)` - Add text label
+- `menu.add_input_text(name)` - Add text input
+- `menu.add_input_int(name)` - Add int input
+- `menu.add_input_float(name)` - Add float input
+- `menu.add_combo_box(name, options)` - Add dropdown
+- `menu.add_slider_int(name, min, max)` - Add int slider
+- `menu.add_slider_float(name, min, max)` - Add float slider
+- `menu.add_color_picker(name)` - Add color picker
+- `menu.get_bool(name)` - Get checkbox value
+- `menu.get_text(name)` - Get text value
+- `menu.get_int(name)` - Get int value
+- `menu.get_float(name)` - Get float value
+- `menu.get_color(name)` - Get color value
+- `menu.set_bool(name, val)` - Set checkbox
+- `menu.set_text(name, val)` - Set text
+- `menu.set_int(name, val)` - Set int
+- `menu.set_float(name, val)` - Set float
+- `menu.set_color(name, val)` - Set color
+
+### Notifications
+- `Notifications.push(title, text)` - Show notification
+- `Notifications.push_success(title, text)` - Show success
+- `Notifications.push_error(title, text)` - Show error
+- `Notifications.push_warning(title, text)` - Show warning
+
+### Utils
+- `utils.AttachConsole()` - Show debug console
+- `utils.DetachConsole()` - Hide debug console
+- `utils.ConsolePrint(log, fmt, ...)` - Print to console
+- `utils.GetTimeString()` - Get time string
+- `utils.GetTimestamp()` - Get timestamp
+- `utils.GetTimeUnix()` - Get Unix time
+- `utils.Log(fmt, ...)` - Log to file
+
+### HTTP
+- `http.get(url, headers)` - GET request
+- `http.post(url, params, headers)` - POST request
+- `http.ArchivedotOrgResolver(url)` - Resolve Archive.org
+- `http.mediafireresolver(url)` - Resolve MediaFire
+- `http.resolvepixeldrain(url)` - Resolve Pixeldrain
+- `http.CloudFlareSolver(url)` - Solve Cloudflare
+- `http.byetresolver(url)` - Resolve Byet
+
+### File
+- `file.append(path, data)` - Append to file
+- `file.write(path, data)` - Write file
+- `file.read(path)` - Read file
+- `file.delete(path)` - Delete file
+- `file.exists(path)` - Check if exists
+- `file.exec(path, delay?, args?, inno?, proc?)` - Execute
+- `file.listfolders(path)` - List folders
+- `file.listexecutables(path)` - List EXEs
+- `file.listexecutablesrecursive(path)` - List EXEs recursive
+- `file.listcompactedfiles(path)` - List archives
+- `file.getusername()` - Get Windows username
+- `file.create_directory(path)` - Create directory
+- `file.copy_file(src, dst)` - Copy file
+- `file.move_file(src, dst)` - Move file
+- `file.get_filename(path)` - Get filename
+- `file.get_extension(path)` - Get extension
+- `file.get_parent_path(path)` - Get parent directory
+- `file.list_directory(path)` - List directory contents
+
+### Game
+- `game.getgamename()` - Get selected game name
+
+### DLL
+- `dll.inject(proc, dll, delay)` - Inject DLL (64-bit)
+- `dll.injectx86(proc, dll, delay)` - Inject DLL (32-bit)
+- `dll.innohook(proc)` - Hook Inno Setup
+
+### Browser
+- `browser.open(url)` - Open URL in browser
+
+### Communication
+- `communication.receiveSearchResults(table)` - Send search results
+- `communication.RefreshScriptResults()` - Refresh results
+
+### Steam API
+- `SteamApi.GetAppID(name)` - Get App ID
+- `SteamApi.GetSystemRequirements(appid)` - Get requirements
+- `SteamApi.GetGameData(appid)` - Get game data
+- `SteamApi.OpenSteam()` - Open Steam
+- `SteamApi.IsSteamRunning()` - Check if running
+
+### Download
+- `Download.DownloadFile(url)` - Download with UI
+- `Download.GetFileNameFromUrl(url)` - Extract filename
+- `Download.DirectDownload(url, path)` - Direct download
+- `Download.DownloadImage(url)` - Download image
+- `Download.ChangeDownloadPath(path)` - Set download path
+- `Download.GetDownloadPath()` - Get download path
+- `Download.ChangeMaxActiveDownloads(max)` - Set max concurrent downloads
+- `Download.GetMaxActiveDownloads()` - Get max concurrent downloads
+- `Download.SetMaxConnections(max)` - Set connections per download
+- `Download.GetMaxConnections()` - Get connections per download
+
+### Game Library
+- `GameLibrary.launch(id)` - Launch game
+- `GameLibrary.close()` - Close game
+- `GameLibrary.addGame(exe, img, name, args, noid?)` - Add game
+- `GameLibrary.changeGameinfo(id, exe?, img?, name?, args?)` - Update game
+- `GameLibrary.removeGame(id)` - Remove game
+- `GameLibrary.GetGameIdFromName(name)` - Get ID from name
+- `GameLibrary.GetGameNameFromId(id)` - Get name from ID
+- `GameLibrary.GetGamePath(id)` - Get game path
+- `GameLibrary.GetGameList()` - List all games
+
+### Settings
+- `settings.save()` - Save settings
+- `settings.load()` - Load settings
+
+### Zip
+- `zip.extract(src, dst, del, pass)` - Extract archive
+
+### GLD Console
+- `gldconsole.print(text)` - Print to console
+- `gldconsole.show()` - Show console
+- `gldconsole.close()` - Close console
+
+### Save
+- `save.Backup(name)` - Backup saves
+- `save.Restore(name)` - Restore saves
+- `save.BackupAll()` - Backup all
+- `save.RestoreAll()` - Restore all
+- `save.Download(name)` - Download from cloud
+- `save.Upload(name)` - Upload to cloud
+- `save.UploadAll()` - Upload all
+- `save.DownloadAll()` - Download all
+- `save.RefreshBackup()` - Refresh backup list
+- `save.RefreshRestore()` - Refresh restore list
+- `save.RefreshCloud()` - Refresh cloud list
+- `save.RefreshAll()` - Refresh all lists
+- `save.GetBackupGamesList()` - Get backup list
+- `save.GetRestoreGamesList()` - Get restore list
+- `save.GetCloudGamesList()` - Get cloud list
+
+---
+
+## Additional Resources
+
+- **Script Examples**: Check the scripts directory for more examples
+- **Community**: Join the Project-GLD community for support and script sharing
+- **Updates**: Keep your Project-GLD installation updated for the latest API features
+
+---
+
+**Document Version:** 6.0  
+**Compatible with:** Project-GLD 6.95+  
+**Last Updated:** 2025
