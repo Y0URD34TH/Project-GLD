@@ -1,4 +1,6 @@
 -- to view examples and lua params go in this github page: https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.md
+local VERSION = "1.0.0"
+client.auto_script_update("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/refs/heads/main/Scripts/%5B1click%5D%20SteamRip%20(Alternative).lua", VERSION)
 function extractDomainNUC(url)
     local pattern = "^[^:]+://([^/]+)"
     local domain = string.match(url, pattern)
@@ -190,7 +192,7 @@ local function webScrape1clickNUC(gameName)
 end
 local version = client.GetVersionDouble()
 local defaultdir = "C:/Games"
-if version < 6.00 then
+if version < 6.95 then
     Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
 else
     Notifications.push_success("Lua Script", "2clicks Script Loaded and Working")
@@ -295,6 +297,8 @@ else
     client.add_callback("on_extractioncompleted", onextractioncompleted)
     client.add_callback("on_cfdone", cfcallback)
 end
+
+
 
 
 

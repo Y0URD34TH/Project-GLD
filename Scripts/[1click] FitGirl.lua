@@ -1,4 +1,6 @@
-local sourcelink = "https://hydralinks.cloud/sources/fitgirl.json"
+local VERSION = "1.0.0"
+client.auto_script_update("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/refs/heads/main/Scripts/%5B1click%5D%20FitGirl.lua", VERSION)
+local sourcelink = "https://hydralinks.pages.dev/sources/fitgirl.json"
 local function endsWith(str, pattern)
     return string.sub(str, -string.len(pattern)) == pattern
 end
@@ -14,6 +16,20 @@ end
 
 function replace_symbol2(input, replacement)
     return string.gsub(input, ":", replacement)
+end
+local function extractDomain(url)
+    -- Check if it's a magnet link
+    if url:match("^magnet:") then
+        return "Torrent"
+    end
+    
+    -- Extract domain from URL
+    local domain = url:match("^https?://([^/]+)") or url:match("^//([^/]+)")
+    if domain then
+        -- Remove www. prefix if present
+        domain = domain:gsub("^www%.", "")
+    end
+    return domain or "Unknown"
 end
 
 local function substituteRomanNumerals(gameName)
@@ -215,7 +231,8 @@ local function search_game(downloads, game_name, name_script)
                 ScriptName = name_script
             }
             for index, uri in ipairs(download.uris) do
-                table.insert(patchresult.links, { name = "Download Option " .. tostring(index), link = uri, addtodownloadlist = true })       
+                local domain = extractDomain(uri)
+                table.insert(patchresult.links, { name = "Download in " .. domain, link = uri, addtodownloadlist = true })
             end
             table.insert(results, patchresult)
         end
@@ -225,7 +242,7 @@ local function search_game(downloads, game_name, name_script)
 end
 
 local version = client.GetVersionDouble()
-if version < 6.00 then
+if version < 6.95 then
     Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
 else
     Notifications.push_success("Lua Script", "FitGirl Script Loaded and Working")
@@ -341,6 +358,8 @@ client.add_callback("on_scriptselected", requestfromsource)
 client.add_callback("on_downloadclick", ondownloadclick)
 client.add_callback("on_downloadcompleted", ondownloadcompleted)
 end
+
+
 
 
 

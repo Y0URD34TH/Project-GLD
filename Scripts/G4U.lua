@@ -1,12 +1,5 @@
---1.02
-local function checkVersion(str, comparison)
-    local serverversion = str:sub(3, 6)
-    return serverversion == comparison
-end
-local scriptsfolder = client.GetScriptsPath()
-local updtheaders = {
-    ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-}
+local VERSION = "1.0.0"
+client.auto_script_update("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/G4U.lua", VERSION)
 local function extractGameName(url)
     -- Attempt to find the game name in the pattern "/%d+%-([%a%d%-]+)%-"
     local start_index, end_index, game_name = url:find("/%d+%-([%a%d%-]+)%-")
@@ -21,17 +14,6 @@ local function extractGameName(url)
             return nil
         end
     end
-end
-
-local version = "1.02"
-local githubversion = http.get("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/G4U.lua", updtheaders)
-
-local outdated = false
-if checkVersion(githubversion, version) then
-outdated = false
-else
-outdated = true
-    Notifications.push_warning("Script Outdated", "This script is outdated. Please update it!")
 end
 
 function extractDomain(url)
@@ -152,28 +134,10 @@ end
 
 local version = client.GetVersionDouble()
 
-if version < 2.14 then
-     Notifications.push_error("Lua Script", "Program is outdated. Please update the app to use this script!")
-   if outdated then 
-	menu.add_button("Update G4U")
-    local function updatebutton()
-       Download.DirectDownload("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/G4U.lua", scriptsfolder .. "G4U.lua")
-	   client.unload_script("G4U.lua")
-	   client.load_script("G4U.lua")
-    end
-	client.add_callback("on_button_Update G4U", updatebutton)
-	end
+if version < 6.95 then
+     Notifications.push_error("Lua Script", "Program is outdated. Please update the app to use this script!")  
 else
    Notifications.push_success("Lua Script", "G4U script is loaded and working!")
-  if outdated then 
-	menu.add_button("Update G4U")
-    local function updatebutton()
-       Download.DirectDownload("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/G4U.lua", scriptsfolder .. "G4U.lua")
-	   client.unload_script("G4U.lua")
-	   client.load_script("G4U.lua")
-    end
-	client.add_callback("on_button_Update G4U", updatebutton)
-	end
 	local function g4u()
 local gamename = game.getgamename()  
 local results = webScrapeg4u(gamename)
@@ -181,3 +145,5 @@ communication.receiveSearchResults(results)
 end
 client.add_callback("on_scriptselected", g4u)
 end
+
+

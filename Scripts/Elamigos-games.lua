@@ -1,8 +1,5 @@
---1.12
-local function checkVersion(str, comparison)
-    local serverversion = str:sub(3, 6)
-    return serverversion == comparison
-end
+local VERSION = "1.0.0"
+client.auto_script_update("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/Elamigos-games.lua", VERSION)
 local cfcookieseg = ""
 
 local headers = {
@@ -21,7 +18,6 @@ communication.RefreshScriptResults()
 end
 end
 
-local scriptsfolder = client.GetScriptsPath()
 local function webScrapeElAmigosGames(gameName)
     local searchUrl = "https://www.elamigos-games.net/?q=" .. gameName
     searchUrl = searchUrl:gsub(" ", "%%20")
@@ -66,39 +62,13 @@ local function webScrapeElAmigosGames(gameName)
 
     return gameResults
 end
-local version = "1.12"
-local githubversion = http.get("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/Elamigos-games.lua", headers)
-local outdated = false
-if checkVersion(githubversion, version) then
-outdated = false
-else
-outdated = true
-    Notifications.push_warning("Oudated Script", "Please update the script.")
-end
+
 local version = client.GetVersionDouble()
 
-if version < 2.14 then
+if version < 6.95 then
     Notifications.push_error("Lua Script", "Program is outdated. Please update the app to use this script!")
-	if outdated then 
-	menu.add_button("Update Elamigos-games")
-    local function updatebutton()
-       Download.DirectDownload("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/Elamigos-games.lua", scriptsfolder .. "Elamigos-games.lua")
-	   client.unload_script("Elamigos-games.lua")
-	   client.load_script("Elamigos-games.lua")
-    end
-	client.add_callback("on_button_Update Elamigos-games", updatebutton)
-	end
 else
     Notifications.push_success("Lua Script", "Elamigos-games script is loaded and working!")
-	if outdated then 
-	menu.add_button("Update Elamigos-games")
-    local function updatebutton()
-       Download.DirectDownload("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/Elamigos-games.lua", scriptsfolder .. "Elamigos-games.lua")
-	   client.unload_script("Elamigos-games.lua")
-	   client.load_script("Elamigos-games.lua")
-    end
-	client.add_callback("on_button_Update Elamigos-games", updatebutton)
-	end
 local function elamigos()
  if cfcookieseg == nil or cfcookieseg == "" then
         http.CloudFlareSolver("https://www.elamigos-games.net/")
@@ -111,5 +81,7 @@ end
 client.add_callback("on_scriptselected", elamigos)
 client.add_callback("on_cfdone", cfcallback)
 end
+
+
 
 

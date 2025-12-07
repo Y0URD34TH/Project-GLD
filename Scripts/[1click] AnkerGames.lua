@@ -1,3 +1,5 @@
+local VERSION = "1.0.0"
+client.auto_script_update("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/refs/heads/main/Scripts/%5B1click%5D%20AnkerGames.lua", VERSION)
 local function scrapAnkerGames(gameName, name_script)
     Notifications.push_warning("Anker Script", "Downloads takes 10 seconds to add and more 10 to start!")
     local searchUrl = "https://ankergames.net/search/" .. gameName:gsub(" ", "%%20")
@@ -29,7 +31,7 @@ end
 
 local version = client.GetVersionDouble()
 local defaultdir = "C:/Games"
-if version < 6.22 then -- 3.50
+if version < 6.95 then -- 3.50
     Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
 else
     Notifications.push_success("Lua Script", "Anker Script Loaded and Working")
@@ -135,6 +137,8 @@ else
     client.add_callback("on_downloadcompleted", ondownloadcompleted)
     client.add_callback("on_extractioncompleted", onextractioncompleted)
 end
+
+
 
 
 

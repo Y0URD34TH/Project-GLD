@@ -1,3 +1,5 @@
+local VERSION = "1.0.0"
+client.auto_script_update("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/refs/heads/main/Scripts/online-fix%20(Page).lua", VERSION)
 local function urlencodeNUC(str)
     if str then
         str = string.gsub(str, "\n", "\r\n")
@@ -56,7 +58,7 @@ end
 
 local version = client.GetVersionDouble()
 
-if version < 2.14 then
+if version < 6.95 then
     Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
 else
     Notifications.push_success("Lua Script", "onlinefix Script Loaded and Working")
@@ -72,6 +74,8 @@ end
 
 client.add_callback("on_scriptselected", mainNUC)
 end
+
+
 
 
 

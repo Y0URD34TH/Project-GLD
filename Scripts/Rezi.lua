@@ -1,48 +1,11 @@
---1.17
-local function checkVersion(str, comparison)
-    local serverversion = str:sub(3, 6)
-    return serverversion == comparison
-end
-local scriptsfolder = client.GetScriptsPath()
-local updtheaders = {
-    ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-}
-
-local version = "1.17"
-local githubversion = http.get("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/Rezi.lua", updtheaders)
-
-local outdated = false
-if checkVersion(githubversion, version) then
-outdated = false
-else
-outdated = true
-    Notifications.push_warning("Oudated Script", "Please update the script.")
-end
-
+local VERSION = "1.0.0"
+client.auto_script_update("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/Rezi.lua", VERSION)
 local version = client.GetVersionDouble()
 
-if version < 2.14 then
+if version < 6.95 then
    Notifications.push_error("Lua Script", "Program is outdated. Please update the app to use this script!")
-   if outdated then 
-	menu.add_button("Update Rezi")
-    local function updatebutton()
-       Download.DirectDownload("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/Rezi.lua", scriptsfolder .. "Rezi.lua")
-	   client.unload_script("Rezi.lua")
-	   client.load_script("Rezi.lua")
-    end
-	client.add_callback("on_button_Update Rezi", updatebutton)
-	end
 else
    Notifications.push_success("Lua Script", "Rezi Script script is loaded and working!")
-  if outdated then 
-	menu.add_button("Update Rezi")
-    local function updatebutton()
-       Download.DirectDownload("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/Rezi.lua", scriptsfolder .. "Rezi.lua")
-	   client.unload_script("Rezi.lua")
-	   client.load_script("Rezi.lua")
-    end
-	client.add_callback("on_button_Update Rezi", updatebutton)
-	end
 local statebool = false
 
 local function request()
@@ -110,3 +73,5 @@ local function request()
 end
 client.add_callback("on_scriptselected", request)--on a game is selected in menu callback
 end
+
+

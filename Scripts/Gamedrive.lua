@@ -1,23 +1,6 @@
---1.00
-local function checkVersion(str, comparison)
-    local serverversion = str:sub(3, 6)
-    return serverversion == comparison
-end
-local scriptsfolder = client.GetScriptsPath()
-local updtheaders = {
-    ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-}
+local VERSION = "1.0.0"
+client.auto_script_update("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/Gamedrive.lua", VERSION)
 
-local version = "1.00"
-local githubversion = http.get("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/Gamedrive.lua", updtheaders)
-
-local outdated = false
-if checkVersion(githubversion, version) then
-outdated = false
-else
-outdated = true
-    Notifications.push_warning("Outdated Script", "Please update the script.")
-end
 local function extractGameName(url)
     local pattern = "gamedrive.org/(.-)/"
     local fullName = string.match(url, pattern)
@@ -152,28 +135,10 @@ end
 
 local version = client.GetVersionDouble()
 
-if version < 2.14 then
+if version < 6.95 then
     Notifications.push_error("Lua Script", "Program is outdated. Please update the app to use this script!")
-   if outdated then 
-	menu.add_button("Update Gamedrive")
-    local function updatebutton()
-       Download.DirectDownload("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/Gamedrive.lua", scriptsfolder .. "Gamedrive.lua")
-	   client.unload_script("Gamedrive.lua")
-	   client.load_script("Gamedrive.lua")
-    end
-	client.add_callback("on_button_Update Gamedrive", updatebutton)
-	end
 else
    Notifications.push_success("Lua Script", "Gamedrive script is loaded and working!")
-  if outdated then 
-	menu.add_button("Update Gamedrive")
-    local function updatebutton()
-       Download.DirectDownload("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/main/Scripts/Gamedrive.lua", scriptsfolder .. "Gamedrive.lua")
-	   client.unload_script("Gamedrive.lua")
-	   client.load_script("Gamedrive.lua")
-    end
-	client.add_callback("on_button_Update Gamedrive", updatebutton)
-	end
 local function gamedrive()
 local gamename = game.getgamename()  
 local results = webScrapegamedrive(gamename)
@@ -181,3 +146,5 @@ communication.receiveSearchResults(results)
 end
 client.add_callback("on_scriptselected", gamedrive)
 end
+
+
