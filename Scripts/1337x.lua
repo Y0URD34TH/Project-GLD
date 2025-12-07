@@ -43,7 +43,7 @@ local provider = 0
 local searchprovider = ""
 local version = client.GetVersionDouble()
 
-if version < 3.52 then
+if version < 6.95 then
     Notifications.push_error("Lua Script", "Program is outdated. Please update the app to use this script!")
 else
     Notifications.push_success("Lua Script", "1337x script is loaded and working!")
@@ -235,4 +235,5 @@ end
     client.add_callback("on_present", checkboxcall)
 	client.add_callback("on_cfdone", cfcallback)
 end
+
 
