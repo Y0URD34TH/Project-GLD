@@ -112,24 +112,16 @@ https://github.com/user-attachments/assets/b078f7a2-f542-4c3f-ad08-50ba4173d5ac
 - [**Steamrip**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/%5B1click%5D%20SteamRip.lua) / [**Alternative**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/%5B1click%5D%20SteamRip%20(Alternative).lua) [📥]
 - [**Online-fix**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/%5B1click%5D%20Online-Fix.lua) [🧲]
 - [**Rezi**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Rezi.lua) [📥]
-
-✅ **Preinstalled:**
-- [**Images and Videos**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Images&Videos.lua) [🎬]
-- [**Prowlarr**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Prowlarr.lua) [🧲]
-- **[Steam](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Steam.lua)** [📥]
-- **[Hydra_Sources](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Hydra_Sources.lua)** [🧲]
+- **[Dodi](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/%5B1click%5D%20DODI.lua)** [🧲]
 
 🗂️ **Other:**
-- **[Dodi](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/%5B1click%5D%20DODI.lua)** [🧲]
 - **[GOG-games](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/GOG-games.lua )** [🧲]
 - [**G4U**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/G4U.lua) [📥]
 - [**Elamigos**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Elamigos-games.lua) [📥]
 - **[Xatab](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Xatab.lua)** [🧲]
 - **[Tiny-repacks](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Tiny-repacks.lua)** [🧲]
-- **[Steam Amiga](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Steam-Amiga.lua)** [🧲]
 - **[KaOsKrew](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/KaOsKrew.lua)** [🧲]
 - **[Empress](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Empress.lua)** [🧲]
-- [**GameBounty**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/GameBounty.lua) [📥]
 - [**Gamedrive**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Gamedrive.lua) [📥]
 - [**1337x**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/1337x.lua) **[🧲] [⚠️] ONLY DOWNLOAD FROM TRUSTED UPLOADERS!!!**
 
@@ -176,9 +168,9 @@ If you contact us via [Discord](kPHb6xz4v7) or [make an issue on GitHub](https:/
 ## Acknowledgements
 
 * [ImGui](https://github.com/ocornut/imgui)
-* [Rezi](https://rezi.one/)
 * [CURL](https://github.com/curl/curl)
 * [libtorrent](https://www.libtorrent.org/)
+* [Mile.Aria2](https://github.com/ProjectMile/Mile.Aria2/tree/main)
 * [vcpkg](https://vcpkg.io/en/)
 * [Lua](https://www.lua.org/)
 * [nlohmann/json](https://github.com/nlohmann/json)
