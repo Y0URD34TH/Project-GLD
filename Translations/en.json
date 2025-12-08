@@ -1,4 +1,4 @@
-{
+﻿{
  "Manually select your DPI size (app scale) here.": "",
   "DPI Scale": "DPI scale",
   "Automatic adapts GLD DPI size based on resolution.": "Automatically adapts GLD's DPI size based on your resolution.",
@@ -375,9 +375,7 @@
   "Rename Script Popup": "Rename script popup",
   "Delete Theme": "Delete theme",
   "Source Link": "Source link",
-  "Link of the Source (compatilbe with hydra Sources) to be added": "Link of the source (compatible with Hydra sources) to be added",
   "Add source": "",
-  "Create an Script for the source link specified\nFormat needs to be the same as hydra ones and must be json!": "Create a script for the specified source link.\nFormat must be .json and the same as Hydra ones!",
   "It will erease the game folder!!!\nIf the game is not in an own folder dont do it!!!": "It will erase the game folder!!!\nIf the game is not in its own folder, don't do it!",
   "Max timeout": "",
   "Torrent max time out (in seconds) for connecting to peers before restarting download.\nLess than 5 seconds makes it goes off.": "Max timeout (in seconds) for connecting to peers before the download restarts.\nLess than 5 seconds makes it turn off.",
@@ -625,5 +623,18 @@
     "Scan for games installed in the computer.\nYou can right click to edit search locations.": "Scan for games installed in the computer.\nYou can right click to edit search locations.",
     "Show only installed": "Show only installed",
     "Size": "Size",
-    "View and modify game scan paths.\nIt's used into library to add new games when you click in scan.": "View and modify game scan paths.\nIt's used into library to add new games when you click in scan."
+    "View and modify game scan paths.\nIt's used into library to add new games when you click in scan.": "View and modify game scan paths.\nIt's used at library to add new games when you click on scan.",
+    "Change Path": "Change path",
+    "Clear": "Clear",
+    "Conections: %d": "Conections: %d",
+    "Create an Script for the source link specified\nFormat needs to be json!": "Create a script for the specified source\nFormat needs to be .json!",
+    "Divide the download in parts and multiply it speed.": "Divide the download in parts to multiply its speed.",
+    "Download Speed History": "Download speed history",
+    "Download in Torrent": "Download torrent",
+    "Download in gofile.io": "Download in gofile.io",
+    "Link of the Source (compatilbe with External Sources) to be added": "Link of the source (compatible with external sources) to be added",
+    "Max Connections": "Max connections",
+    "Refresh games size.": "Refresh size of games.",
+    "Search History": "Search history",
+    "Suggestions": "Suggestions"
 }
