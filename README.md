@@ -19,13 +19,21 @@
 
 ## Table of Content
 
-* [Features](#features)
 * [Project Showcase](#project-showcase)
+* [Features](#features)
 * [Getting Started](#getting-started)
 * [Authors](#authors)
 * [Sponsors](#sponsors)
 * [How to Sponsor](#how-to-sponsor)
 * [Acknowledgements](#acknowledgements)
+
+## Project Showcase
+
+
+
+https://github.com/user-attachments/assets/49e184cc-084f-43e5-acec-08b0af13736a
+
+
 
 ## Features
 
@@ -92,11 +100,6 @@ Project GLD offers a variety of features to explore and utilize for your use cas
 * KEY(L1 | LB) = open image change popup
 * KEY(R2 | RT) = add game from favorites
 * KEY(L2 | LT) = quit from popup (similar to esc key)
-
-## Project Showcase
-
-
-https://github.com/user-attachments/assets/b078f7a2-f542-4c3f-ad08-50ba4173d5ac
 
 
 ## Getting Started
