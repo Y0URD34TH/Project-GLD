@@ -1,31 +1,8 @@
-V6.95
+V6.97
 
-New features:
-Added auto suggest and search history at Search tab
-Added Discord RPC support
-Changed DDL download manager to aria2
-Made the download manager resume downloads automatically after reopening GLD
-Added Discord to game list on game scan
-Added a setting to control maximum amount of connections (1-16)
-Added a method to check if main window is active via Lua API
-Added the ability to right click on install button to set the .exe path
-
-Bug fixes:
-Fixed locked achievements being empty or not showing up
-Fixed changing game size when changing game folder to a folder of size 0
-Fixed GLD not exiting properly when system turns off and when closed by window management or task manager
-Fixed high CPU usage when minimized 
-Fixed online-fix script automatic install 
-Fixed how can it fit achievement displaying all the time
-Fixed crash on download manager when adding multiple files
-Fixed issues with max active downloads
-Fixed quit on game launch (Lua)
-
-General improvements:
-Improved & simplified automatic save backup in games
-Improve game size and did game size caching
-Made achievements load faster
-Added a way to automatically update scripts
-
-(gld may freeze while auto updating and its normal!!!)
-(gld pode congelar ao se auto atualizar, isso é normal!!!)
+All main scripts are now 1 click
+Added the ability to rename a game in library by double clicking on its name
+Fixed age rating not showing properly & added brazilian age ratings
+Fixed issues with 2 torrent downloads from same source at same time
+Improved a lot of shit related to downloads
+Improved size of lua elements in lua content
