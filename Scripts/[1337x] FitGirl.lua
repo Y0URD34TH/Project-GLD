@@ -171,7 +171,7 @@ else
                             sizeSeedsInfo = sizeSeedsInfo .. " | Uploader: " .. uploaderName
                             
                             local searchResult = {
-                                name = torrentName,
+                                name = "[" .. size .. "] " .. torrentName,
                                 links = {},
                                 ScriptName = "[1337x] FitGirl",  -- Changed script name
                                 tooltip = sizeSeedsInfo,
