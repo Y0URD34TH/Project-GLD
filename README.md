@@ -110,23 +110,15 @@ Project GLD offers a variety of features to explore and utilize for your use cas
 
 ### Currently available scripts:
 
-⭐ **Recommended:**
-- **[FitGirl](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/%5B1click%5D%20FitGirl.lua)** [🧲]
-- [**Steamrip**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/%5B1click%5D%20SteamRip.lua) / [**Alternative**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/%5B1click%5D%20SteamRip%20(Alternative).lua) [📥]
-- [**Online-fix**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/%5B1click%5D%20Online-Fix.lua) [🧲]
-- [**Rezi**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Rezi.lua) [📥]
-- **[Dodi](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/%5B1click%5D%20DODI.lua)** [🧲]
+All scripts are 1 click download and do automatic setup/extraction on download completion, and then add the game to the library after install/extraction.
 
-🗂️ **Other:**
-- **[GOG-games](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/GOG-games.lua )** [🧲]
-- [**G4U**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/G4U.lua) [📥]
-- [**Elamigos**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Elamigos-games.lua) [📥]
-- **[Xatab](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Xatab.lua)** [🧲]
-- **[Tiny-repacks](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Tiny-repacks.lua)** [🧲]
-- **[KaOsKrew](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/KaOsKrew.lua)** [🧲]
-- **[Empress](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Empress.lua)** [🧲]
-- [**Gamedrive**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Gamedrive.lua) [📥]
-- [**1337x**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/1337x.lua) **[🧲] [⚠️] ONLY DOWNLOAD FROM TRUSTED UPLOADERS!!!**
+⭐ **Recommended:**
+- **[FitGirl](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/FitGirl.lua) / [1337x version](https://github.com/Y0URD34TH/Project-GLD/blob/Update-V6.97/Scripts/%5B1337x%5D%20FitGirl.lua)** [🧲]
+- [**Online-fix**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Online-Fix.lua) [🧲]
+- **[Dodi](https://github.com/Y0URD34TH/Project-GLD/blob/Update-V6.97/Scripts/%5B1337x%5D%20DODI.lua)** [🧲]
+- [**Steamrip**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/SteamRip.lua) [📥]
+- **[AnkerGames](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/AnkerGames.lua)** [📥]
+- **[Atop-Games](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Atop-Games.lua)** [📥]
 
 For instructions on how to use Lua for making scripts, please refer to [this guide](https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.md).
 
