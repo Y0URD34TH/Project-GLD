@@ -95,7 +95,7 @@ local function webScrapeAtop(gameName)
             name       = "[" .. details.size .. "] " .. page.title,
             links      = {},
             tooltip    = "Size: " ..
-                details.size .. " Version: " .. details.version .. " Released By: " .. details.release_group,
+                details.size .. " Version: " .. (details.version or "N/A") .. " Released By: " .. (details.release_group or "Unknown"),
             ScriptName = "Atop-Games"
         }
         local linksDL = HtmlWrapper.findAttribute(pageResponse, "a", "class", "shortc-button small blue ",
