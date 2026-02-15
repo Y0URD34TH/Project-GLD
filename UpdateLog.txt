@@ -1,8 +1,8 @@
-V6.97
+V6.99
 
-All main scripts are now 1 click
-Added the ability to rename a game in library by double clicking on its name
-Fixed age rating not showing properly & added brazilian age ratings
-Fixed issues with 2 torrent downloads from same source at same time
-Improved a lot of shit related to downloads
-Improved size of lua elements in lua content
+Improved browser
+Resolved a lot of filehosts 
+Script speed got significantly improved thanks to new scraping methods
+Added torrent file selection tree
+Improved LUA API
+Added a search bar at the scripts tab
