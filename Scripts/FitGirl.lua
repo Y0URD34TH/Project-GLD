@@ -1,4 +1,4 @@
-local VERSION = "1.0.1"
+local VERSION = "1.2.1"
 client.auto_script_update("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/refs/heads/main/Scripts/FitGirl.lua", VERSION)
 local function sanitizeMagnet(magnet)
     if not magnet then return "" end
@@ -139,83 +139,88 @@ else
     Notifications.push_success("Lua Script", "FitGirl Script Loaded")
 
     local function scraper()
-        local gamename = game.getgamename()
-        local searchUrl = "https://fitgirl-repacks.site/?s=" .. gamename:gsub(" ", "+")
+    local gamename = game.getgamename()
+    local searchUrl = "https://fitgirl-repacks.site/?s=" .. gamename:gsub(" ", "+")
 
-        local htmlContent = http.get(searchUrl, {})
-        local results = {}
+    local htmlContent = http.get(searchUrl, {})
+    local results = {}
 
-        -- Extract game page URLs using HtmlWrapper
-        local gameLinks = HtmlWrapper.findAttribute(
-            htmlContent,
-            "a",
-            "rel",
-            "bookmark",
-            "href"
-        )
+    -- Parse search page
+    local searchDoc = html.parse(htmlContent)
 
-        local count = 0
-        for _, linkData in ipairs(gameLinks) do
-            count = count + 1
-            if count > 3 then break end -- Limit to 3 for speed
-            local gamePageUrl = linkData
-            if not gamePageUrl then goto continue end
+    -- Find game links
+    local gameLinks = searchDoc:css("a[rel='bookmark']")
 
-            local gameHtml = http.get(gamePageUrl, {})
+    local count = 0
+    for _, linkNode in ipairs(gameLinks) do
+        count = count + 1
+        if count > 3 then break end
 
-            -- Extract game title using HtmlWrapper
-            local gameTitle = gameHtml:match('entry%-title">([^<]+)<')
+        local gamePageUrl = linkNode:attr("href")
+        if not gamePageUrl then goto continue end
 
-            if not gameTitle then goto continue end
+        local gameHtml = http.get(gamePageUrl, {})
+        local doc = html.parse(gameHtml)
 
-            gameTitle = sanitizeString(gameTitle)
+        -- ───────── TITLE ─────────
+        local titleNode = doc:css("h1.entry-title")[1]
+        if not titleNode then goto continue end
 
-            -- Extract repack size
-            local repackSize = gameHtml:match("Repack Size:%s*<strong>([^<]+)</strong>")
-            if not repackSize then
-                repackSize = gameHtml:match("Original Size:%s*<strong>([^<]+)</strong>")
+        local gameTitle = sanitizeString(titleNode:text())
+
+        -- ───────── SIZE ─────────
+        local repackSize = "Unknown"
+
+        for _, strong in ipairs(doc:css("strong")) do
+            local txt = strong:text()
+            if txt:find("GB") or txt:find("MB") then
+                repackSize = sanitizeString(txt)
+                break
             end
-            repackSize = repackSize and sanitizeString(repackSize) or "Unknown"
+        end
 
-            -- Extract version from title
-            local gameVersion = gameTitle:match("[vV]([%d%.]+)") or "Unknown"
+        -- ───────── VERSION ─────────
+        local gameVersion = gameTitle:match("[vV]([%d%.]+)") or "Unknown"
 
-            -- Extract upload date
-            local uploadDate = gameHtml:match('datetime="([^"]+)"')
-            if uploadDate then
-                uploadDate = uploadDate:match("(%d+/%d+/%d+)") or uploadDate
-            else
-                uploadDate = "Unknown"
-            end
+        -- ───────── DATE ─────────
+        local dateNode = doc:css("time[datetime]")[1]
+        local uploadDate = dateNode and dateNode:attr("datetime") or "Unknown"
 
-            local searchResult = {
-                name = "[" .. repackSize .. "] " .. gameTitle,
-                links = {},
-                tooltip = "Size: " .. repackSize .. " | Version: " .. gameVersion .. " | Date: " .. uploadDate,
-                ScriptName = "fitgirl"
-            }
+        local searchResult = {
+            name = "[" .. repackSize .. "] " .. gameTitle,
+            links = {},
+            tooltip = "Size: " .. repackSize ..
+                      " | Version: " .. gameVersion ..
+                      " | Date: " .. uploadDate,
+            ScriptName = "fitgirl"
+        }
 
-            -- Extract magnet links with simple pattern
-            local magnetCount = 0
-            for magnet in gameHtml:gmatch('href="(magnet:%?[^"]+)"') do
+        -- ───────── MAGNET LINKS ─────────
+        local magnetCount = 0
+        for _, a in ipairs(doc:css("a[href^='magnet:?']")) do
+            local magnet = a:attr("href")
+            if magnet then
                 magnetCount = magnetCount + 1
-                local linkName = magnetCount == 1 and "Download" or "Download " .. magnetCount
                 table.insert(searchResult.links, {
-                    link = ensureMagnetHasName(sanitizeMagnet(magnet), gameTitle),
-                    name = linkName,
+                    link = ensureMagnetHasName(
+                        sanitizeMagnet(magnet),
+                        gameTitle
+                    ),
+                    name = magnetCount == 1 and "Download" or ("Download " .. magnetCount),
                     addtodownloadlist = true
                 })
             end
-
-            if magnetCount > 0 then
-                table.insert(results, searchResult)
-            end
-            communication.receiveSearchResults(results)
-            ::continue::
         end
 
+        if magnetCount > 0 then
+            table.insert(results, searchResult)
+            communication.receiveSearchResults(results)
+        end
 
+        ::continue::
     end
+end
+
     
     local expectedurl = ""
     local imagelink = ""
@@ -309,6 +314,8 @@ else
     client.add_callback("on_downloadcompleted", ondownloadcompleted)
     client.add_callback("on_scriptselected", scraper)
 end
+
+
 
 
 

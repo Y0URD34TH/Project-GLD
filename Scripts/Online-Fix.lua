@@ -1,4 +1,4 @@
-local VERSION = "1.0.1"
+local VERSION = "1.2.1"
 client.auto_script_update(
     "https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/refs/heads/main/Scripts/Online-Fix.lua",
     VERSION
@@ -91,66 +91,90 @@ local function requestOnlineFix()
         return
     end
 
+    -- Parse search results with HTML parser
+    local searchDoc = html.parse(searchHtml)
     local gamePages = {}
-    for url in searchHtml:gmatch('href="([^"]*/games/[^"]*)"') do
-        if not url:find("http") then
-            url = "https://" .. BASE_URL .. url
+    
+    -- Find all game links using CSS selector for big-link class
+    local bigLinks = searchDoc:css('a.big-link')
+    for i = 1, #bigLinks do
+        local url = bigLinks[i]:attr("href")
+        if url then
+            -- Ensure full URL
+            if not url:find("http") then
+                url = "https://" .. BASE_URL .. url
+            end
+            gamePages[url] = true
         end
-        gamePages[url] = true
     end
     
     for gameUrl in pairs(gamePages) do
         local gameHtml = http.get(gameUrl, headers)
         if gameHtml then
+            local gameDoc = html.parse(gameHtml)
             local version = extractVersion(gameHtml)
             local uploadDate = extractUploadDate(gameHtml)
 
-            for folder in gameHtml:gmatch('href="([^"]+/torrents/[^"]*)"') do
-                if not folder:find("http") then
-                    folder = "https://" .. BASE_URL .. folder
-                end
+            -- Find torrent folder links using HTML parser
+            local torrentFolderLinks = gameDoc:css('a[href*="/torrents/"]')
+            
+            for i = 1, #torrentFolderLinks do
+                local folder = torrentFolderLinks[i]:attr("href")
+                if folder then
+                    if not folder:find("http") then
+                        folder = "https://" .. BASE_URL .. folder
+                    end
 
-                local folderHtml = http.get(folder, headers)
-                if folderHtml then
-                    for torrent in folderHtml:gmatch('href="([^"]+%.torrent)"') do
-                        if not torrent:find("http") then
-                            torrent = folder .. torrent
-                        end
-
-                        if not processed[torrent] then
-                            processed[torrent] = true
-
-                            local magnet, _, size = torrentToMagnet(torrent)
-                            local name = getReadableNameFromTorrent(torrent)
-
-                            -- FILTER
-                            local include = false
-                            local lowerName = name:lower()
-                            for _, word in ipairs(queryWords) do
-                                if lowerName:find(word, 1, true) then
-                                    include = true
-                                    break
+                    local folderHtml = http.get(folder, headers)
+                    if folderHtml then
+                        local folderDoc = html.parse(folderHtml)
+                        
+                        -- Find all torrent file links
+                        local torrentLinks = folderDoc:css('a[href$=".torrent"]')
+                        
+                        for j = 1, #torrentLinks do
+                            local torrent = torrentLinks[j]:attr("href")
+                            if torrent then
+                                if not torrent:find("http") then
+                                    torrent = folder .. torrent
                                 end
-                            end
-                            if not include then
-                                goto continue
-                            end
 
-                            table.insert(results, {
-                                name = "[" .. size .. "] " .. name .. (version ~= "" and (" | " .. version) or ""),
-                                links = {{
-                                    name = magnet and "Download (Magnet)" or "Download Torrent",
-                                    link = magnet or torrent,
-                                    addtodownloadlist = magnet ~= nil
-                                }},
-                                ScriptName = "Online-Fix",
-                                tooltip =
-                                    "Size: " .. size ..
-                                    " | Upload Date: " .. uploadDate ..
-                                    (version ~= "" and (" | Version: " .. version) or "")
-                            })
+                                if not processed[torrent] then
+                                    processed[torrent] = true
+
+                                    local magnet, _, size = torrentToMagnet(torrent)
+                                    local name = getReadableNameFromTorrent(torrent)
+
+                                    -- FILTER
+                                    local include = false
+                                    local lowerName = name:lower()
+                                    for _, word in ipairs(queryWords) do
+                                        if lowerName:find(word, 1, true) then
+                                            include = true
+                                            break
+                                        end
+                                    end
+                                    if not include then
+                                        goto continue
+                                    end
+
+                                    table.insert(results, {
+                                        name = "[" .. size .. "] " .. name .. (version ~= "" and (" | " .. version) or ""),
+                                        links = {{
+                                            name = magnet and "Download (Magnet)" or "Download Torrent",
+                                            link = magnet or torrent,
+                                            addtodownloadlist = magnet ~= nil
+                                        }},
+                                        ScriptName = "Online-Fix",
+                                        tooltip =
+                                            "Size: " .. size ..
+                                            " | Upload Date: " .. uploadDate ..
+                                            (version ~= "" and (" | Version: " .. version) or "")
+                                    })
+                                end
+                                ::continue::
+                            end
                         end
-                        ::continue::
                     end
                 end
             end
@@ -227,3 +251,4 @@ if client.GetVersionDouble() >= 6.96 then
 
     Notifications.push_success("Online-Fix", "Script v" .. VERSION .. " loaded")
 end
+
