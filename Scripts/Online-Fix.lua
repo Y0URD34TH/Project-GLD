@@ -1,4 +1,4 @@
-local VERSION = "1.2.1"
+local VERSION = "1.2.2"
 client.auto_script_update(
     "https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/refs/heads/main/Scripts/Online-Fix.lua",
     VERSION
@@ -221,22 +221,45 @@ end
 
 local function onextractioncompleted(origin, path)
     if origin ~= pathcheck then return end
+
     path = path:gsub("/", "\\")
     local folders = file.listfolders(path)
     if not folders or not folders[1] then return end
+
     local base = path .. "\\" .. folders[1]
-    local exe = file.listexecutables(base)
-    exe = exe and exe[1] or file.listexecutablesrecursive(base)[1]
+
+    -- Try non-recursive first
+    local exeList = file.listexecutables(base)
+    local exe = exeList and exeList[1]
+
+    -- If not found, try recursive
+    if not exe then
+        exeList = file.listexecutablesrecursive(base)
+        exe = exeList and exeList[1]
+    end
+
     if not exe then return end
+
+    -- 🔥 FORCE FULL PATH
+    if not exe:match("^[A-Za-z]:\\") then
+        exe = base .. "\\" .. exe
+    end
 
     local id = GameLibrary.GetGameIdFromName(gamename)
     if id == -1 then
-        GameLibrary.addGame(exe, Download.DownloadImage(imagelink), gamename, "")
+        GameLibrary.addGame(
+            exe,
+            Download.DownloadImage(imagelink),
+            gamename,
+            ""
+        )
     else
         GameLibrary.changeGameinfo(id, exe)
     end
+
     Notifications.push_success("Online-Fix", "Game Successfully Installed!")
 end
+
 
 -- ======================================================
 
@@ -251,4 +274,6 @@ if client.GetVersionDouble() >= 6.96 then
 
     Notifications.push_success("Online-Fix", "Script v" .. VERSION .. " loaded")
 end
+
+
 
