@@ -354,9 +354,16 @@ input["mouse_click"] = ns_input::mouse_click;           // void mouse_click(int 
 input["mouse_down"] = ns_input::mouse_down;             // void mouse_down(int button = 0, int delay = 0)
 input["mouse_up"] = ns_input::mouse_up;                 // void mouse_up(int button = 0, int delay = 0)
 input["mouse_wheel"] = ns_input::mouse_wheel;           // void mouse_wheel(int delta, int delay = 0)
-
+// you need to have vigem driver to be able to use virtual gamepad, you can download it there: https://vigembusdriver.com/download/
+input["InitializeVirtualGamePad"] = ns_input::InitializeVirtualGamePad; // void InitializeVirtualGamePad() //only eneeded ocne (when script is loaded)
+input["SendVirtualGamePadKeyPress"] = ns_input::SendVirtualGamePadKeyPress; // void SendVirtualGamePadKeyPress(int gm_code, int holdtime = 100) // you need to sleep before each one of these!
+input["SendVirtualGamePadTriggerPress"] = ns_input::SendVirtualGamePadTriggerPress; // void SendVirtualGamePadTriggerPress(bool righttrigger, int value, int holdtime = 100) // value is from 0 to 255, you need to sleep before each one of these!
+input["SendVirtualGamePadThumbMove"] = ns_input::SendVirtualGamePadThumbMove; // void SendVirtualGamePadThumbMove(bool rightstick, int xvalue, int yvalue, int holdtime = 100) you need to sleep before each one of these! (gamepad stick)
+input["CleanupVirtualGamePad"] = ns_input::CleanupVirtualGamePad; // void CleanupVirtualGamePad() you dont really need this
 auto vk = lua.create_table();
 register_virtual_keys(vk); // register all windows keyboard virtual keys into lua
+auto gp = lua.create_table();
+register_gamepad_keys(gp); // register all windows gamepad virtual keys into lua
 
 auto base64 = lua.create_table();
 base64["encode"] = ns_base64::encode; // 	std::string encode(std::string& in)
@@ -384,6 +391,7 @@ lua[("save")] = saves;
 lua[("browser")] = browser;
 lua["input"] = input;
 lua["VK"] = vk;
+lua["GP"] = gp;
 lua["base64"] = base64;
 /* (each different callabck is separate by new line on these comments)
 * LUA CALLBACKS:
@@ -473,3 +481,4 @@ lua["base64"] = base64;
 						g_Options.onbrowserBeforeDownloadogUrl = result.get<std::string>(0); -- its needed for resolvers to reutnr here the original url of input
 				}
 */
+

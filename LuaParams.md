@@ -1,38 +1,38 @@
-# Project-GLD Lua API Documentation
+# Project-GLD Lua API — Complete Documentation
 
-**Version:** 6.99+  
-**Last Updated:** February 2026
+---
 
 ## Table of Contents
 
-1. [Overview](#overview)
-2. [Core Libraries](#core-libraries)
-3. [Global Functions](#global-functions)
-4. [Namespace Reference](#namespace-reference)
-   - [client](#client-namespace)
-   - [notifications](#notifications-namespace)
-   - [menu](#menu-namespace)
-   - [utils](#utils-namespace)
-   - [http](#http-namespace)
-   - [file](#file-namespace)
-   - [game](#game-namespace)
-   - [browser](#browser-namespace)
-   - [communication](#communication-namespace)
-   - [SteamApi](#steamapi-namespace)
-   - [Download](#download-namespace)
-   - [GameLibrary](#gamelibrary-namespace)
-   - [settings](#settings-namespace)
-   - [zip](#zip-namespace)
-   - [dll](#dll-namespace)
-   - [gldconsole](#gldconsole-namespace)
-   - [save](#save-namespace)
-   - [input](#input-namespace)
-   - [VK](#vk-virtual-keys)
-   - [base64](#base64-namespace)
-5. [HTML/XML Parsing](#htmlxml-parsing)
-6. [JSON Parsing](#json-parsing)
-7. [Callback System](#callback-system)
-8. [Types Reference](#types-reference)
+1. [Global Functions](#1-global-functions)
+2. [client](#2-client)
+3. [menu](#3-menu)
+4. [notifications](#4-notifications)
+5. [http](#5-http)
+6. [file](#6-file)
+7. [browser](#7-browser)
+8. [GLDBrowser Usertype](#8-gldbrowser-usertype)
+9. [download](#9-download)
+10. [input](#10-input)
+11. [VK — Virtual Keys](#11-vk--virtual-keys)
+12. [GP — Gamepad Keys](#12-gp--gamepad-keys)
+13. [html & xml Parsers](#13-html--xml-parsers)
+14. [utils](#14-utils)
+15. [gldconsole](#15-gldconsole)
+16. [game](#16-game)
+17. [GameLibrary](#17-gamelibrary)
+18. [communication](#18-communication)
+19. [SteamApi](#19-steamapi)
+20. [dll](#20-dll)
+21. [zip](#21-zip)
+22. [save](#22-save)
+23. [settings](#23-settings)
+24. [base64](#24-base64)
+25. [GameInfo Usertype](#25-gameinfo-usertype)
+26. [JsonWrapper Usertype](#26-jsonwrapper-usertype)
+27. [HtmlWrapper Usertype (Legacy)](#27-htmlwrapper-usertype-legacy)
+28. [Lua Callbacks Reference](#28-lua-callbacks-reference)
+29. [Full Examples](#29-full-examples)
 
 ---
 
@@ -78,4489 +78,1681 @@ All standard Lua libraries are available:
 
 ---
 
-## Global Functions
+## 1. Global Functions
 
-### print
+These functions are available globally without any table prefix.
+
+### `print(...)`
 ```lua
 print(...)
 ```
-Prints to console (only when debugging is active).
-
-**Parameters:**
-- `...` - Variable number of arguments to print
-
-**Example:**
-```lua
-print("Hello", "World", 123)
-```
+Prints values to the debug console. Only useful during development when a console is attached.
 
 ---
 
-### exec
+### `exec(execpath [, delay [, commandline [, isinnosetup [, innoproc]]]])`
 ```lua
-exec(execpath, delay, commandline, isinnosetup, innoproccess)
+exec(execpath, delay, commandline, isinnosetup, innoproc)
 ```
-Execute an external program.
+Executes a file (e.g., an `.exe`).
 
-**Parameters:**
-- `execpath` (string) - Path to executable
-- `delay` (int, optional) - Delay in milliseconds before execution (default: 0)
-- `commandline` (string, optional) - Command line arguments (default: "")
-- `isinnosetup` (bool, optional) - Whether the executable is an Inno Setup installer (default: false)
-- `innoproccess` (string, optional) - Process name to monitor for Inno Setup (default: "")
-
-**Example:**
-```lua
-exec("C:\\Games\\MyGame.exe", 1000, "--fullscreen", false, "")
-```
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `execpath` | string | required | Full path to the executable |
+| `delay` | int | `0` | Milliseconds to wait before launching |
+| `commandline` | string | `""` | Command-line arguments |
+| `isinnosetup` | bool | `false` | Set to `true` for InnoSetup installers |
+| `innoproc` | string | `""` | Process name for InnoSetup hook |
 
 ---
 
-### system
+### `system(command [, delay])`
 ```lua
 system(command, delay)
 ```
-Execute a system command (CMD command).
-
-**Parameters:**
-- `command` (string) - Command to execute
-- `delay` (int, optional) - Delay in milliseconds before execution (default: 0)
-
-**Example:**
-```lua
-system("tasklist", 0)
-```
+Runs a system command (CMD).
 
 ---
 
-### system_output
+### `system_output(command [, delay])`
 ```lua
-local result = system_output(command, delay)
+local output = system_output("whoami")
 ```
-Execute a system command and capture its output.
-
-**Parameters:**
-- `command` (string) - Command to execute
-- `delay` (int, optional) - Delay in milliseconds (default: 0)
-
-**Returns:**
-- `string` - Command output
-
-**Example:**
-```lua
-local output = system_output("ipconfig", 0)
-print(output)
-```
+Runs a system command and returns the stdout as a string.
 
 ---
 
-### sleep
+### `sleep(ms)`
 ```lua
-sleep(ms)
+sleep(500) -- wait 500ms
 ```
-Pause execution for a specified duration.
-
-**Parameters:**
-- `ms` (int) - Milliseconds to sleep
-
-**Example:**
-```lua
-sleep(1000)  -- Wait 1 second
-```
+Pauses execution for `ms` milliseconds.
 
 ---
 
-### beep
+### `beep([frequency [, duration]])`
 ```lua
-beep(frequency, duration)
+beep(1000, 300)
 ```
-Play a system beep sound.
+Plays a beep sound.
 
-**Parameters:**
-- `frequency` (int, optional) - Frequency in Hz (default: 1000)
-- `duration` (int, optional) - Duration in milliseconds (default: 500)
-
-**Example:**
-```lua
-beep(440, 1000)  -- A4 note for 1 second
-```
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `frequency` | int | `1000` | Frequency in Hz |
+| `duration` | int | `500` | Duration in ms |
 
 ---
 
-### xor_decrypt
+### `xor_encrypt(plain)`
 ```lua
-local plaintext = xor_decrypt(hex)
+local encrypted = xor_encrypt("hello")
 ```
-Decrypt a hex-encoded XOR encrypted string.
-
-**Parameters:**
-- `hex` (string) - Hex-encoded encrypted string
-
-**Returns:**
-- `string` - Decrypted plaintext
-
-**Example:**
-```lua
-local decrypted = xor_decrypt("48656C6C6F")
-```
+Encrypts a plain string using XOR and returns a hex string.
 
 ---
 
-### xor_encrypt
+### `xor_decrypt(hex)`
 ```lua
-local encrypted = xor_encrypt(plain)
+local plain = xor_decrypt("2f3a...")
 ```
-Encrypt a string using XOR encryption and return as hex.
-
-**Parameters:**
-- `plain` (string) - Plaintext to encrypt
-
-**Returns:**
-- `string` - Hex-encoded encrypted string
-
-**Example:**
-```lua
-local encrypted = xor_encrypt("Hello")
-```
+Decrypts an XOR-encrypted hex string back to plain text.
 
 ---
 
-### __nil_callback
-```lua
-__nil_callback()
-```
-Placeholder function for nil callbacks. Used internally by the system.
+## 2. client
 
----
+General GLD client functions.
 
-## Namespace Reference
-
-## client Namespace
-
-The `client` namespace handles core application functionality including script management, callbacks, and system information.
-
-### client.add_callback
-```lua
-client.add_callback(eventname, func)
-```
-Register a callback function for a specific event.
-
-**Parameters:**
-- `eventname` (string) - Name of the event (see [Callback System](#callback-system))
-- `func` (function) - Callback function to execute
-
-**Example:**
+### `client.add_callback(eventname, func)`
 ```lua
 client.add_callback("on_gamesearch", function()
-    print("Game search triggered")
+    -- called every time the user searches a game
 end)
 ```
+Registers a Lua function to be called when the named event fires. See [Lua Callbacks Reference](#28-lua-callbacks-reference) for all available event names.
 
 ---
 
-### client.load_script
-```lua
-client.load_script(name)
-```
-Load and execute a Lua script.
-
-**Parameters:**
-- `name` (string) - Script name (without .lua extension)
-
-**Example:**
+### `client.load_script(name)`
 ```lua
 client.load_script("myscript")
 ```
+Loads a script by name.
 
 ---
 
-### client.unload_script
-```lua
-client.unload_script(name)
-```
-Unload a currently running script.
-
-**Parameters:**
-- `name` (string) - Script name to unload
-
-**Example:**
+### `client.unload_script(name)`
 ```lua
 client.unload_script("myscript")
 ```
+Unloads a script by name.
 
 ---
 
-### client.create_script
+### `client.create_script(name, data)`
 ```lua
-client.create_script(name, data)
+client.create_script("myscript", lua_code_string)
 ```
-Create a new script file with the given content.
-
-**Parameters:**
-- `name` (string) - Script filename
-- `data` (string) - Lua code content
-
-**Example:**
-```lua
-client.create_script("helper.lua", [[
-    function greet()
-        print("Hello!")
-    end
-]])
-```
+Creates a new script with the given name and Lua source code string.
 
 ---
 
-### client.auto_script_update
-```lua
-client.auto_script_update(scripturl, scriptversion)
-```
-Enable automatic script updates from a remote URL.
-
-**Parameters:**
-- `scripturl` (string) - URL to download script from
-- `scriptversion` (string) - Local version string (expects `local VERSION = "x.x.x"` in script)
-
-**Example:**
+### `client.auto_script_update(scripturl, scriptversion)`
 ```lua
 local VERSION = "1.0.0"
-client.auto_script_update("https://example.com/script.lua", VERSION)
+client.auto_script_update("https://example.com/myscript.lua", VERSION)
 ```
+Automatically updates the script from a URL if the version differs. `scriptversion` must match a `local VERSION = ""` variable defined in the script.
 
 ---
 
-### client.log
+### `client.log(title, text)`
 ```lua
-client.log(title, text)
+client.log("Debug", "Something happened")
 ```
-Write a log entry to the application log.
-
-**Parameters:**
-- `title` (string) - Log title
-- `text` (string) - Log message
-
-**Example:**
-```lua
-client.log("Script Started", "Initialization complete")
-```
+Logs a message shown in the GLD UI.
 
 ---
 
-### client.quit
+### `client.quit()`
 ```lua
 client.quit()
 ```
-Exit the application.
-
-**Example:**
-```lua
-client.quit()
-```
+Exits Project-GLD.
 
 ---
 
-### client.GetVersion
+### `client.GetVersion()`
 ```lua
-local version = client.GetVersion()
+local v = client.GetVersion() -- e.g. "2.15"
 ```
-Get the current application version as a string.
-
-**Returns:**
-- `string` - Version string (e.g., "2.15")
-
-**Example:**
-```lua
-local ver = client.GetVersion()
-print("Version: " .. ver)
-```
+Returns the GLD version as a string.
 
 ---
 
-### client.GetVersionFloat
+### `client.GetVersionFloat()`
 ```lua
-local version = client.GetVersionFloat()
+local v = client.GetVersionFloat() -- e.g. 2.15
 ```
-Get the current application version as a float.
-
-**Returns:**
-- `float` - Version number
-
-**Example:**
-```lua
-local ver = client.GetVersionFloat()
-if ver >= 2.15 then
-    print("Version check passed")
-end
-```
+Returns the GLD version as a float.
 
 ---
 
-### client.GetVersionDouble
+### `client.GetVersionDouble()`
 ```lua
-local version = client.GetVersionDouble()
+local v = client.GetVersionDouble()
 ```
-Get the current application version as a double.
-
-**Returns:**
-- `double` - Version number
-
-**Example:**
-```lua
-local ver = client.GetVersionDouble()
-```
+Returns the GLD version as a double.
 
 ---
 
-### client.CleanSearchTextureCache
-```lua
-client.CleanSearchTextureCache()
-```
-Clear the texture cache for search results.
-
-**Example:**
-```lua
-client.CleanSearchTextureCache()
-```
+### `client.CleanSearchTextureCache()`
+Clears the texture cache used by the search/game-search tab.
 
 ---
 
-### client.CleanLibraryTextureCache
-```lua
-client.CleanLibraryTextureCache()
-```
-Clear the texture cache for the game library.
-
-**Example:**
-```lua
-client.CleanLibraryTextureCache()
-```
+### `client.CleanLibraryTextureCache()`
+Clears the texture cache used by the game library tab.
 
 ---
 
-### client.GetScriptsPath
+### `client.GetScriptsPath()`
 ```lua
 local path = client.GetScriptsPath()
 ```
-Get the path to the scripts directory.
-
-**Returns:**
-- `string` - Full path to scripts folder
-
-**Example:**
-```lua
-local scriptsPath = client.GetScriptsPath()
-print("Scripts located at: " .. scriptsPath)
-```
+Returns the full path to the scripts directory.
 
 ---
 
-### client.GetDefaultSavePath
+### `client.GetDefaultSavePath()`
 ```lua
 local path = client.GetDefaultSavePath()
 ```
-Get the default save file path.
-
-**Returns:**
-- `string` - Default save path
-
-**Example:**
-```lua
-local savePath = client.GetDefaultSavePath()
-```
+Returns the default save/download path.
 
 ---
 
-### client.GetScreenHeight
-```lua
-local height = client.GetScreenHeight()
-```
-Get the screen height in pixels.
-
-**Returns:**
-- `int` - Screen height
-
-**Example:**
+### `client.GetScreenHeight()`
 ```lua
 local h = client.GetScreenHeight()
 ```
+Returns the screen height in pixels.
 
 ---
 
-### client.GetScreenWidth
-```lua
-local width = client.GetScreenWidth()
-```
-Get the screen width in pixels.
-
-**Returns:**
-- `int` - Screen width
-
-**Example:**
+### `client.GetScreenWidth()`
 ```lua
 local w = client.GetScreenWidth()
 ```
+Returns the screen width in pixels.
 
 ---
 
-## notifications Namespace
+## 3. menu
 
-The `notifications` namespace provides functions to display toast notifications to the user.
+Used to build custom UI elements and read/write their values.
 
-### notifications.push
+> **Note:** Buttons use the `on_button_(button_name)` client callback. You must call `client.add_callback("on_button_mybutton", fn)` **after** adding the button with `menu.add_button`.
+
+### Adding Elements
+
+#### `menu.add_check_box(name)`
 ```lua
-notifications.push(title, text)
+menu.add_check_box("Enable Feature")
 ```
-Display a standard notification.
-
-**Parameters:**
-- `title` (string) - Notification title
-- `text` (string) - Notification message
-
-**Example:**
-```lua
-notifications.push("Download Complete", "Your file is ready")
-```
+Adds a checkbox. Read with `menu.get_bool(name)`.
 
 ---
 
-### notifications.push_success
+#### `menu.add_button(name)`
 ```lua
-notifications.push_success(title, text)
+menu.add_button("Do Action")
+client.add_callback("on_button_Do Action", function()
+    -- fired when clicked
+end)
 ```
-Display a success notification (typically green).
-
-**Parameters:**
-- `title` (string) - Notification title
-- `text` (string) - Notification message
-
-**Example:**
-```lua
-notifications.push_success("Success", "Installation completed successfully")
-```
+Adds a clickable button.
 
 ---
 
-### notifications.push_error
+#### `menu.add_text(text)`
 ```lua
-notifications.push_error(title, text)
+menu.add_text("Hello World")
 ```
-Display an error notification (typically red).
-
-**Parameters:**
-- `title` (string) - Notification title
-- `text` (string) - Notification message
-
-**Example:**
-```lua
-notifications.push_error("Error", "Failed to connect to server")
-```
+Adds a static text label.
 
 ---
 
-### notifications.push_warning
+#### `menu.add_input_text(name)`
 ```lua
-notifications.push_warning(title, text)
+menu.add_input_text("Username")
 ```
-Display a warning notification (typically yellow).
-
-**Parameters:**
-- `title` (string) - Notification title
-- `text` (string) - Notification message
-
-**Example:**
-```lua
-notifications.push_warning("Warning", "Low disk space detected")
-```
+Adds a text input field. Read with `menu.get_text(name)`.
 
 ---
 
-## menu Namespace
-
-The `menu` namespace allows scripts to create custom UI elements and interact with user settings.
-
-### menu.set_dpi
+#### `menu.add_input_int(name, min, max)`
 ```lua
-menu.set_dpi(dpi)
+menu.add_input_int("Count", 0, 100)
 ```
-Set the UI DPI scaling.
+Adds an integer input. Read with `menu.get_int(name)`.
 
-**Parameters:**
-- `dpi` (double) - DPI scale factor
+---
 
-**Example:**
+#### `menu.add_input_float(name, min, max)`
+```lua
+menu.add_input_float("Speed", 0.0, 10.0)
+```
+Adds a float input. Read with `menu.get_float(name)`.
+
+---
+
+#### `menu.add_combo_box(name, labels)`
+```lua
+menu.add_combo_box("Region", {"US", "EU", "ASIA"})
+```
+Adds a dropdown combo box. Read index with `menu.get_int(name)`.
+
+---
+
+#### `menu.add_slider_int(name)`
+```lua
+menu.add_slider_int("Volume")
+```
+Adds an integer slider. Read with `menu.get_int(name)`.
+
+---
+
+#### `menu.add_slider_float(name)`
+```lua
+menu.add_slider_float("Opacity")
+```
+Adds a float slider. Read with `menu.get_float(name)`.
+
+---
+
+#### `menu.add_color_picker(name)`
+```lua
+menu.add_color_picker("Text Color")
+```
+Adds a color picker. Read with `menu.get_color(name)`.
+
+---
+
+#### `menu.add_keybind(name, default_key)`
+```lua
+menu.add_keybind("Toggle Key", VK.F5)
+```
+Adds a keybind selector. Read with `menu.get_keybind(name)`.
+
+---
+
+#### `menu.next_line()`
+Forces the next element to appear on the same line as the previous (inline layout).
+
+---
+
+### Getting Values
+
+| Function | Returns | Notes |
+|----------|---------|-------|
+| `menu.get_bool(name)` | `bool` | For checkboxes |
+| `menu.get_text(name)` | `string` | For input text |
+| `menu.get_int(name)` | `int` | For int inputs, sliders, combos |
+| `menu.get_float(name)` | `float` | For float inputs/sliders |
+| `menu.get_color(name)` | `Color` | For color pickers |
+| `menu.get_keybind(name)` | `int` | VK code of the bound key |
+
+---
+
+### Setting Values
+
+| Function | Notes |
+|----------|-------|
+| `menu.set_bool(name, value)` | Set checkbox state |
+| `menu.set_text(name, value)` | Set text field |
+| `menu.set_int(name, value)` | Set integer field |
+| `menu.set_float(name, value)` | Set float field |
+| `menu.set_color(name, value)` | Set color |
+| `menu.set_keybind(name, value)` | Set keybind (VK code) |
+
+---
+
+### Menu Visibility & DPI
+
+#### `menu.set_visible(visible)`
+```lua
+menu.set_visible(false) -- hides the GLD menu
+```
+
+#### `menu.set_dpi(dpi)`
 ```lua
 menu.set_dpi(1.5)
 ```
+Sets the DPI scale of the menu.
+
+#### `menu.is_main_window_active()`
+```lua
+if menu.is_main_window_active() then ... end
+```
+Returns `true` if the GLD main window is focused.
 
 ---
 
-### menu.set_visible
-```lua
-menu.set_visible(visible)
-```
-Show or hide the menu.
+## 4. notifications
 
-**Parameters:**
-- `visible` (bool) - true to show, false to hide
+Push toast notifications to the GLD UI.
 
-**Example:**
+### `notifications.push(title, text)`
 ```lua
-menu.set_visible(true)
+notifications.push("Info", "Download started")
 ```
 
----
-
-### menu.is_main_window_active
+### `notifications.push_success(title, text)`
 ```lua
-local active = menu.is_main_window_active()
-```
-Check if the main window is currently active.
-
-**Returns:**
-- `bool` - true if main window is active
-
-**Example:**
-```lua
-if menu.is_main_window_active() then
-    print("Window is focused")
-end
+notifications.push_success("Done", "Download complete!")
 ```
 
----
-
-### menu.next_line
+### `notifications.push_error(title, text)`
 ```lua
-menu.next_line()
+notifications.push_error("Error", "Something went wrong")
 ```
-Add a line break in the menu layout.
 
-**Example:**
+### `notifications.push_warning(title, text)`
 ```lua
-menu.add_button("Button 1")
-menu.next_line()
-menu.add_button("Button 2")
+notifications.push_warning("Warning", "Low disk space")
 ```
 
 ---
 
-### menu.add_check_box
+## 5. http
+
+HTTP request functions.
+
+> All functions accept an optional `headers` table (`{ ["Key"] = "Value" }`). The body parameters accept plain strings (JSON, form data, etc.).
+
+### `http.get(url [, headers])`
 ```lua
-menu.add_check_box(name)
+local res = http.get("https://example.com/api", {["Authorization"] = "Bearer token"})
 ```
-Add a checkbox control to the menu.
+Performs an HTTP GET and returns the response body as a string.
 
-**Parameters:**
-- `name` (string) - Unique identifier for the checkbox
+---
 
-**Example:**
+### `http.post(url, body [, headers])`
 ```lua
-menu.add_check_box("enable_feature")
+local res = http.post("https://example.com/api", '{"key":"value"}', {["Content-Type"] = "application/json"})
 ```
 
 ---
 
-### menu.add_button
+### `http.put(url, body [, headers])`
+### `http.patch(url, body [, headers])`
+### `http.delete(url [, headers])`
+### `http.head(url [, headers])`
+### `http.options(url [, headers])`
+
+All follow the same pattern as `get`/`post` above.
+
+---
+
+### `http.request(method, url, body [, headers])`
 ```lua
-menu.add_button(name)
+local res = http.request("POST", "https://example.com", body, headers)
 ```
-Add a button control to the menu. Use `on_button_` + name callback to handle clicks.
+Generic request method for any HTTP verb.
 
-**Parameters:**
-- `name` (string) - Button label and identifier
+---
 
-**Example:**
+### `http.CloudFlareSolver(url)`
 ```lua
-menu.add_button("Download")
-
-client.add_callback("on_button_Download", function()
-    print("Download button clicked")
+http.CloudFlareSolver("https://cf-protected-site.com")
+client.add_callback("on_cfdone", function(cookie, resolved_url)
+    -- use cookie + specific User-Agent below
 end)
 ```
+Opens a Cloudflare challenge solver. When done, fires the `on_cfdone` callback with `(cookie, url)`.
 
----
-
-### menu.add_text
-```lua
-menu.add_text(text)
-```
-Add static text to the menu.
-
-**Parameters:**
-- `text` (string) - Text to display
-
-**Example:**
-```lua
-menu.add_text("Configuration Options:")
-```
-
----
-
-### menu.add_input_text
-```lua
-menu.add_input_text(name)
-```
-Add a text input field to the menu.
-
-**Parameters:**
-- `name` (string) - Unique identifier for the input
-
-**Example:**
-```lua
-menu.add_input_text("username")
-```
-
----
-
-### menu.add_input_int
-```lua
-menu.add_input_int(name, min, max)
-```
-Add an integer input field to the menu.
-
-**Parameters:**
-- `name` (string) - Unique identifier
-- `min` (int) - Minimum value
-- `max` (int) - Maximum value
-
-**Example:**
-```lua
-menu.add_input_int("max_downloads", 1, 10)
-```
-
----
-
-### menu.add_input_float
-```lua
-menu.add_input_float(name, min, max)
-```
-Add a floating-point input field to the menu.
-
-**Parameters:**
-- `name` (string) - Unique identifier
-- `min` (float) - Minimum value
-- `max` (float) - Maximum value
-
-**Example:**
-```lua
-menu.add_input_float("volume", 0.0, 1.0)
-```
-
----
-
-### menu.add_combo_box
-```lua
-menu.add_combo_box(name, labels)
-```
-Add a dropdown combo box to the menu.
-
-**Parameters:**
-- `name` (string) - Unique identifier
-- `labels` (table) - Array of string options
-
-**Example:**
-```lua
-menu.add_combo_box("quality", {"Low", "Medium", "High", "Ultra"})
-```
-
----
-
-### menu.add_slider_int
-```lua
-menu.add_slider_int(name, min, max)
-```
-Add an integer slider to the menu.
-
-**Parameters:**
-- `name` (string) - Unique identifier
-- `min` (int) - Minimum value
-- `max` (int) - Maximum value
-
-**Example:**
-```lua
-menu.add_slider_int("connections", 1, 16)
-```
-
----
-
-### menu.add_slider_float
-```lua
-menu.add_slider_float(name, min, max)
-```
-Add a floating-point slider to the menu.
-
-**Parameters:**
-- `name` (string) - Unique identifier
-- `min` (float) - Minimum value
-- `max` (float) - Maximum value
-
-**Example:**
-```lua
-menu.add_slider_float("opacity", 0.0, 1.0)
-```
-
----
-
-### menu.add_color_picker
-```lua
-menu.add_color_picker(name)
-```
-Add a color picker control to the menu.
-
-**Parameters:**
-- `name` (string) - Unique identifier
-
-**Example:**
-```lua
-menu.add_color_picker("theme_color")
-```
-
----
-
-### menu.add_keybind
-```lua
-menu.add_keybind(name, default_key)
-```
-Add a keybind control to the menu.
-
-**Parameters:**
-- `name` (string) - Unique identifier
-- `default_key` (int) - Default virtual key code
-
-**Example:**
-```lua
-menu.add_keybind("hotkey", 0x70)  -- F1 key
-```
-
----
-
-### Getters
-
-### menu.get_bool
-```lua
-local value = menu.get_bool(name)
-```
-Get the value of a checkbox.
-
-**Returns:**
-- `bool` - Checkbox state
-
-**Example:**
-```lua
-if menu.get_bool("enable_feature") then
-    -- Feature is enabled
-end
-```
-
----
-
-### menu.get_text
-```lua
-local value = menu.get_text(name)
-```
-Get the value of a text input.
-
-**Returns:**
-- `string` - Input text
-
-**Example:**
-```lua
-local username = menu.get_text("username")
-```
-
----
-
-### menu.get_int
-```lua
-local value = menu.get_int(name)
-```
-Get the value of an integer input or slider.
-
-**Returns:**
-- `int` - Integer value
-
-**Example:**
-```lua
-local maxDl = menu.get_int("max_downloads")
-```
-
----
-
-### menu.get_float
-```lua
-local value = menu.get_float(name)
-```
-Get the value of a float input or slider.
-
-**Returns:**
-- `float` - Float value
-
-**Example:**
-```lua
-local volume = menu.get_float("volume")
-```
-
----
-
-### menu.get_color
-```lua
-local color = menu.get_color(name)
-```
-Get the value of a color picker.
-
-**Returns:**
-- `Color` - Color object
-
-**Example:**
-```lua
-local color = menu.get_color("theme_color")
-```
-
----
-
-### menu.get_keybind
-```lua
-local key = menu.get_keybind(name)
-```
-Get the virtual key code of a keybind.
-
-**Returns:**
-- `int` - Virtual key code
-
-**Example:**
-```lua
-local hotkey = menu.get_keybind("hotkey")
-```
-
----
-
-### Setters
-
-### menu.set_bool
-```lua
-menu.set_bool(name, value)
-```
-Set the value of a checkbox.
-
-**Parameters:**
-- `name` (string) - Checkbox identifier
-- `value` (bool) - New state
-
-**Example:**
-```lua
-menu.set_bool("enable_feature", true)
-```
-
----
-
-### menu.set_text
-```lua
-menu.set_text(name, value)
-```
-Set the value of a text input.
-
-**Parameters:**
-- `name` (string) - Input identifier
-- `value` (string) - New text
-
-**Example:**
-```lua
-menu.set_text("username", "Player1")
-```
-
----
-
-### menu.set_int
-```lua
-menu.set_int(name, value)
-```
-Set the value of an integer input or slider.
-
-**Parameters:**
-- `name` (string) - Input identifier
-- `value` (int) - New value
-
-**Example:**
-```lua
-menu.set_int("max_downloads", 5)
-```
-
----
-
-### menu.set_float
-```lua
-menu.set_float(name, value)
-```
-Set the value of a float input or slider.
-
-**Parameters:**
-- `name` (string) - Input identifier
-- `value` (float) - New value
-
-**Example:**
-```lua
-menu.set_float("volume", 0.8)
-```
-
----
-
-### menu.set_color
-```lua
-menu.set_color(name, value)
-```
-Set the value of a color picker.
-
-**Parameters:**
-- `name` (string) - Color picker identifier
-- `value` (Color) - New color
-
-**Example:**
-```lua
-menu.set_color("theme_color", Color)
-```
-
----
-
-### menu.set_keybind
-```lua
-menu.set_keybind(name, value)
-```
-Set the virtual key code of a keybind.
-
-**Parameters:**
-- `name` (string) - Keybind identifier
-- `value` (int) - Virtual key code
-
-**Example:**
-```lua
-menu.set_keybind("hotkey", 0x71)  -- F2 key
-```
-
----
-
-## utils Namespace
-
-The `utils` namespace provides utility functions for console management, logging, and time operations.
-
-### utils.AttachConsole
-```lua
-utils.AttachConsole()
-```
-Attach a console window for debugging output.
-
-**Example:**
-```lua
-utils.AttachConsole()
-```
-
----
-
-### utils.DetachConsole
-```lua
-utils.DetachConsole()
-```
-Detach and close the console window.
-
-**Example:**
-```lua
-utils.DetachConsole()
-```
-
----
-
-### utils.ConsolePrint
-```lua
-utils.ConsolePrint(logToFile, fmt, ...)
-```
-Print formatted text to console (requires AttachConsole first).
-
-**Parameters:**
-- `logToFile` (bool) - Whether to also log to file
-- `fmt` (string) - Format string
-- `...` - Format arguments
-
-**Example:**
-```lua
-utils.AttachConsole()
-utils.ConsolePrint(true, "Value: %d", 42)
-```
-
----
-
-### utils.GetTimeString
-```lua
-local time = utils.GetTimeString()
-```
-Get current time as a formatted string.
-
-**Returns:**
-- `string` - Time string
-
-**Example:**
-```lua
-local time = utils.GetTimeString()
-print("Current time: " .. time)
-```
-
----
-
-### utils.GetTimestamp
-```lua
-local timestamp = utils.GetTimestamp()
-```
-Get current timestamp as a string.
-
-**Returns:**
-- `string` - Timestamp string
-
-**Example:**
-```lua
-local ts = utils.GetTimestamp()
-```
-
----
-
-### utils.GetTimeUnix
-```lua
-local unix = utils.GetTimeUnix()
-```
-Get current Unix timestamp.
-
-**Returns:**
-- `int` - Unix timestamp (seconds since epoch)
-
-**Example:**
-```lua
-local now = utils.GetTimeUnix()
-```
-
----
-
-### utils.Log
-```lua
-utils.Log(fmt, ...)
-```
-Write to Project-GLD.log file. Consider using `gldconsole.print` instead for better logging.
-
-**Parameters:**
-- `fmt` (string) - Format string
-- `...` - Format arguments
-
-**Example:**
-```lua
-utils.Log("Script error: %s", errorMsg)
-```
-
----
-
-## http Namespace
-
-The `http` namespace provides HTTP client functionality for making web requests.
-
-### http.get
-```lua
-local response = http.get(link, headers)
-```
-Perform an HTTP GET request.
-
-**Parameters:**
-- `link` (string) - URL to request
-- `headers` (table) - Optional table of headers
-
-**Returns:**
-- `string` - Response body
-
-**Example:**
-```lua
-local response = http.get("https://api.example.com/data", {
-    ["User-Agent"] = "Project-GLD/2.15",
-    ["Accept"] = "application/json"
-})
-```
-
----
-
-### http.post
-```lua
-local response = http.post(link, body, headers)
-```
-Perform an HTTP POST request.
-
-**Parameters:**
-- `link` (string) - URL to request
-- `body` (string) - Request body
-- `headers` (table) - Optional table of headers
-
-**Returns:**
-- `string` - Response body
-
-**Example:**
-```lua
-local response = http.post("https://api.example.com/submit", 
-    '{"key":"value"}',
-    {["Content-Type"] = "application/json"}
-)
-```
-
----
-
-### http.put
-```lua
-local response = http.put(link, body, headers)
-```
-Perform an HTTP PUT request.
-
-**Parameters:**
-- `link` (string) - URL to request
-- `body` (string) - Request body
-- `headers` (table) - Optional table of headers
-
-**Returns:**
-- `string` - Response body
-
-**Example:**
-```lua
-local response = http.put("https://api.example.com/update/123", '{"data":"updated"}', {})
-```
-
----
-
-### http.patch
-```lua
-local response = http.patch(link, body, headers)
-```
-Perform an HTTP PATCH request.
-
-**Parameters:**
-- `link` (string) - URL to request
-- `body` (string) - Request body
-- `headers` (table) - Optional table of headers
-
-**Returns:**
-- `string` - Response body
-
-**Example:**
-```lua
-local response = http.patch("https://api.example.com/resource/1", '{"field":"value"}', {})
-```
-
----
-
-### http.delete
-```lua
-local response = http.delete(link, headers)
-```
-Perform an HTTP DELETE request.
-
-**Parameters:**
-- `link` (string) - URL to request
-- `headers` (table) - Optional table of headers
-
-**Returns:**
-- `string` - Response body
-
-**Example:**
-```lua
-local response = http.delete("https://api.example.com/item/456", {})
-```
-
----
-
-### http.head
-```lua
-local response = http.head(link, headers)
-```
-Perform an HTTP HEAD request.
-
-**Parameters:**
-- `link` (string) - URL to request
-- `headers` (table) - Optional table of headers
-
-**Returns:**
-- `string` - Response headers
-
-**Example:**
-```lua
-local headers = http.head("https://example.com/file.zip", {})
-```
-
----
-
-### http.options
-```lua
-local response = http.options(link, headers)
-```
-Perform an HTTP OPTIONS request.
-
-**Parameters:**
-- `link` (string) - URL to request
-- `headers` (table) - Optional table of headers
-
-**Returns:**
-- `string` - Response body
-
-**Example:**
-```lua
-local options = http.options("https://api.example.com", {})
-```
-
----
-
-### http.request
-```lua
-local response = http.request(method, link, body, headers)
-```
-Perform a custom HTTP request.
-
-**Parameters:**
-- `method` (string) - HTTP method (GET, POST, etc.)
-- `link` (string) - URL to request
-- `body` (string) - Request body
-- `headers` (table) - Optional table of headers
-
-**Returns:**
-- `string` - Response body
-
-**Example:**
-```lua
-local response = http.request("CUSTOM", "https://api.example.com", "", {})
-```
-
----
-
-### http.CloudFlareSolver
-```lua
-http.CloudFlareSolver(url)
-```
-Solve Cloudflare challenges and obtain cookies. Results are returned via the `on_cfdone` callback.
-
-**Parameters:**
-- `url` (string) - URL protected by Cloudflare
-
-**Important:** Use the following User-Agent with the returned cookie:
-`Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 ProjectGLD/2.15`
-
-**Example:**
-```lua
-client.add_callback("on_cfdone", function(cookie, url)
-    print("Cloudflare solved for: " .. url)
-    print("Cookie: " .. cookie)
-    
-    -- Now make requests with the cookie
-    local response = http.get(url, {
-        ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 ProjectGLD/2.15",
-        ["Cookie"] = cookie
-    })
-end)
-
-http.CloudFlareSolver("https://protected-site.com")
-```
-
----
-
-### http.byetresolver
-```lua
-local result = http.byetresolver(url)
+**Required User-Agent after solving:**
 ```
-Alternative resolver for protected URLs.
-
-**Parameters:**
-- `url` (string) - URL to resolve
-
-**Returns:**
-- `string` - Resolved content
-
-**Example:**
-```lua
-local content = http.byetresolver("https://example.com")
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 ProjectGLD/2.15
 ```
 
 ---
-
-## file Namespace
 
-The `file` namespace provides comprehensive file system operations.
-
-### file.append
-```lua
-file.append(path, data)
-```
-Append data to a file.
-
-**Parameters:**
-- `path` (string) - File path
-- `data` (string) - Data to append
-
-**Example:**
+### `http.byetresolver(url)`
 ```lua
-file.append("C:\\log.txt", "New log entry\n")
+local resolved = http.byetresolver("https://byethost.example.com/file")
 ```
+Resolves Byet/iFastNet hosted download links.
 
 ---
 
-### file.write
-```lua
-file.write(path, data)
-```
-Write data to a file (overwrites existing content).
+## 6. file
 
-**Parameters:**
-- `path` (string) - File path
-- `data` (string) - Data to write
+File system operations.
 
-**Example:**
+### `file.write(path, data)`
 ```lua
-file.write("C:\\config.json", '{"setting":true}')
+file.write("C:/myfile.txt", "Hello World")
 ```
+Writes (overwrites) data to a file.
 
 ---
-
-### file.read
-```lua
-local content = file.read(path)
-```
-Read the entire contents of a file.
-
-**Parameters:**
-- `path` (string) - File path
 
-**Returns:**
-- `string` - File contents
-
-**Example:**
+### `file.append(path, data)`
 ```lua
-local config = file.read("C:\\config.json")
-local data = JsonWrapper.parse(config)
+file.append("C:/log.txt", "new line\n")
 ```
+Appends data to a file.
 
 ---
-
-### file.delete
-```lua
-file.delete(path)
-```
-Delete a file.
 
-**Parameters:**
-- `path` (string) - File path
-
-**Example:**
+### `file.read(path)`
 ```lua
-file.delete("C:\\temp\\cache.tmp")
+local contents = file.read("C:/myfile.txt")
 ```
+Returns the full contents of a file as a string.
 
 ---
-
-### file.exists
-```lua
-local exists = file.exists(path)
-```
-Check if a file or directory exists.
 
-**Parameters:**
-- `path` (string) - File or directory path
-
-**Returns:**
-- `bool` - true if exists
-
-**Example:**
+### `file.delete(path)`
 ```lua
-if file.exists("C:\\Games\\game.exe") then
-    print("Game is installed")
-end
+file.delete("C:/myfile.txt")
 ```
+Deletes a file.
 
 ---
 
-### file.exec
-```lua
-file.exec(execpath, delay, commandline, isinnosetup, innoproccess)
-```
-Execute a file. Same as global `exec` function.
-
-**Parameters:**
-- `execpath` (string) - Path to executable
-- `delay` (int, optional) - Delay in milliseconds (default: 0)
-- `commandline` (string, optional) - Command line arguments (default: "")
-- `isinnosetup` (bool, optional) - Inno Setup installer flag (default: false)
-- `innoproccess` (string, optional) - Process name for Inno Setup (default: "")
-
-**Example:**
+### `file.exists(path)`
 ```lua
-file.exec("C:\\Setup.exe", 0, "/SILENT", true, "setup.exe")
+if file.exists("C:/myfile.txt") then ... end
 ```
+Returns `true` if the file exists.
 
 ---
 
-### file.listfolders
-```lua
-local folders = file.listfolders(path)
-```
-List all folders in a directory.
-
-**Parameters:**
-- `path` (string) - Directory path
-
-**Returns:**
-- `table` - Array of folder names
-
-**Example:**
-```lua
-local folders = file.listfolders("C:\\Games")
-for _, folder in ipairs(folders) do
-    print(folder)
-end
-```
+### `file.exec(execpath [, delay [, commandline [, isinnosetup [, innoproc]]]])`
+Same as the global `exec()` but scoped under `file`.
 
 ---
 
-### file.listexecutables
+### `file.listfolders(path)`
 ```lua
-local exes = file.listexecutables(path)
+local folders = file.listfolders("C:/Games")
+for _, f in ipairs(folders) do print(f) end
 ```
-List all executable files in a directory.
+Returns a list of subdirectory names in the given path.
 
-**Parameters:**
-- `path` (string) - Directory path
-
-**Returns:**
-- `table` - Array of executable filenames
-
-**Example:**
-```lua
-local exes = file.listexecutables("C:\\Games\\MyGame")
-```
-
 ---
-
-### file.listexecutablesrecursive
-```lua
-local exes = file.listexecutablesrecursive(path)
-```
-Recursively list all executable files in a directory and subdirectories.
 
-**Parameters:**
-- `path` (string) - Directory path
+### `file.listexecutables(path)`
+Returns a list of `.exe` files in the given path.
 
-**Returns:**
-- `table` - Array of executable file paths
-
-**Example:**
-```lua
-local allExes = file.listexecutablesrecursive("C:\\Games")
-```
-
 ---
-
-### file.listcompactedfiles
-```lua
-local archives = file.listcompactedfiles(path)
-```
-List all compressed archive files (zip, rar, 7z, tar, etc.) in a directory.
 
-**Parameters:**
-- `path` (string) - Directory path
+### `file.listexecutablesrecursive(path)`
+Returns a list of `.exe` files in the given path and all subdirectories.
 
-**Returns:**
-- `table` - Array of archive filenames
-
-**Example:**
-```lua
-local archives = file.listcompactedfiles("C:\\Downloads")
-```
-
 ---
-
-### file.getusername
-```lua
-local username = file.getusername
-```
-Get the current Windows username (note: this is a property, not a function).
-
-**Returns:**
-- `string` - Windows username
 
-**Example:**
-```lua
-local user = file.getusername
-print("Current user: " .. user)
-```
+### `file.listcompactedfiles(path)`
+Returns a list of archive files (`.zip`, `.rar`, `.7z`, `.tar`, etc.) in the path.
 
 ---
-
-### file.create_directory
-```lua
-file.create_directory(path)
-```
-Create a new directory.
 
-**Parameters:**
-- `path` (string) - Directory path to create
-
-**Example:**
+### `file.getusername()`
 ```lua
-file.create_directory("C:\\Games\\MyGame\\Saves")
+local user = file.getusername()
 ```
+Returns the current Windows username.
 
 ---
-
-### file.copy_file
-```lua
-file.copy_file(src, dst)
-```
-Copy a file from source to destination.
 
-**Parameters:**
-- `src` (string) - Source file path
-- `dst` (string) - Destination file path
-
-**Example:**
+### `file.create_directory(path)`
 ```lua
-file.copy_file("C:\\game.cfg", "C:\\backup\\game.cfg")
+file.create_directory("C:/MyFolder/SubFolder")
 ```
+Creates a directory (and any needed parents).
 
 ---
-
-### file.move_file
-```lua
-file.move_file(src, dst)
-```
-Move a file from source to destination.
 
-**Parameters:**
-- `src` (string) - Source file path
-- `dst` (string) - Destination file path
-
-**Example:**
+### `file.copy_file(src, dst)`
 ```lua
-file.move_file("C:\\temp\\file.txt", "C:\\final\\file.txt")
+file.copy_file("C:/src.txt", "C:/dst.txt")
 ```
 
 ---
-
-### file.get_filename
-```lua
-local filename = file.get_filename(path)
-```
-Extract the filename from a path.
-
-**Parameters:**
-- `path` (string) - Full file path
 
-**Returns:**
-- `string` - Filename with extension
-
-**Example:**
+### `file.move_file(src, dst)`
 ```lua
-local name = file.get_filename("C:\\Games\\game.exe")
--- Returns: "game.exe"
+file.move_file("C:/old.txt", "C:/new.txt")
 ```
 
 ---
-
-### file.get_extension
-```lua
-local ext = file.get_extension(path)
-```
-Extract the file extension from a path.
 
-**Parameters:**
-- `path` (string) - File path
-
-**Returns:**
-- `string` - File extension (without dot)
-
-**Example:**
+### `file.get_filename(path)`
 ```lua
-local ext = file.get_extension("document.pdf")
--- Returns: "pdf"
+local name = file.get_filename("C:/Games/game.exe") -- "game.exe"
 ```
 
 ---
-
-### file.get_parent_path
-```lua
-local parent = file.get_parent_path(path)
-```
-Get the parent directory of a path.
-
-**Parameters:**
-- `path` (string) - File or directory path
 
-**Returns:**
-- `string` - Parent directory path
-
-**Example:**
+### `file.get_extension(path)`
 ```lua
-local parent = file.get_parent_path("C:\\Games\\MyGame\\game.exe")
--- Returns: "C:\\Games\\MyGame"
+local ext = file.get_extension("C:/file.zip") -- ".zip"
 ```
 
 ---
-
-### file.list_directory
-```lua
-local items = file.list_directory(path)
-```
-List all items (files and folders) in a directory.
-
-**Parameters:**
-- `path` (string) - Directory path
 
-**Returns:**
-- `table` - Lua table containing directory contents
-
-**Example:**
+### `file.get_parent_path(path)`
 ```lua
-local items = file.list_directory("C:\\Games")
+local parent = file.get_parent_path("C:/Games/game.exe") -- "C:/Games"
 ```
 
 ---
-
-## game Namespace
-
-The `game` namespace provides functions for interacting with game information within search results.
-
-### game.getgamename
-```lua
-local name = game.getgamename()
-```
-Get the name of the currently selected game (must be called from within game page context).
 
-**Returns:**
-- `string` - Game name
-
-**Example:**
+### `file.list_directory(path)`
 ```lua
-client.add_callback("on_gameselected", function()
-    local gameName = game.getgamename()
-    print("Selected game: " .. gameName)
-end)
+local entries = file.list_directory("C:/Games")
 ```
+Returns a table of all entries (files and folders) in the directory.
 
 ---
-
-## browser Namespace
 
-The `browser` namespace provides functions to create and manage CEF (Chromium Embedded Framework) browser instances.
+## 7. browser
 
-### browser.CreateBrowser
-```lua
-local browserInstance = browser.CreateBrowser(browser_name, browser_url)
-```
-Create a new browser instance. Browser names are unique - only one browser per name can exist.
+Manage embedded Chromium (CEF) browser windows inside GLD.
 
-**Parameters:**
-- `browser_name` (string) - Unique identifier for the browser
-- `browser_url` (string) - Initial URL to load
+> Browser names are **unique**. Only one browser per name can exist at a time. Keep this in mind when building download resolvers, as the download manager may launch multiple downloads simultaneously.
 
-**Returns:**
-- `GLDBrowser*` - Browser instance
-
-**Example:**
+### `browser.CreateBrowser(name, url)`
 ```lua
-local myBrowser = browser.CreateBrowser("resolver", "https://example.com")
+local b = browser.CreateBrowser("myBrowser", "https://example.com")
 ```
+Creates a new browser with the given name and navigates to `url`. Returns a `GLDBrowser` object.
 
 ---
-
-### browser.GetBrowserByName
-```lua
-local browserInstance = browser.GetBrowserByName(name)
-```
-Retrieve an existing browser instance by name.
-
-**Parameters:**
-- `name` (string) - Browser identifier
 
-**Returns:**
-- `GLDBrowser*` - Browser instance or nil
-
-**Example:**
+### `browser.GetBrowserByName(name)`
 ```lua
-local myBrowser = browser.GetBrowserByName("resolver")
-if myBrowser then
-    myBrowser:ChangeBrowserURL("https://newurl.com")
-end
+local b = browser.GetBrowserByName("myBrowser")
 ```
+Returns an existing `GLDBrowser` by name, or `nil`.
 
 ---
-
-### browser.GetBrowserByID
-```lua
-local browserInstance = browser.GetBrowserByID(id)
-```
-Retrieve an existing browser instance by ID.
 
-**Parameters:**
-- `id` (int) - Browser ID
-
-**Returns:**
-- `GLDBrowser*` - Browser instance or nil
-
-**Example:**
+### `browser.GetBrowserByID(id)`
 ```lua
-local browserInstance = browser.GetBrowserByID(1)
+local b = browser.GetBrowserByID(1)
 ```
+Returns a `GLDBrowser` by its integer ID.
 
 ---
-
-### browser.set_visible
-```lua
-browser.set_visible(visible, browser_name)
-```
-Show or hide a browser window.
-
-**Parameters:**
-- `visible` (bool) - true to show, false to hide
-- `browser_name` (string) - Browser identifier
 
-**Example:**
+### `browser.set_visible(visible, name)`
 ```lua
-browser.set_visible(true, "resolver")
+browser.set_visible(true, "myBrowser")
 ```
+Shows or hides a browser window to the user.
 
 ---
-
-### browser.IsBrowserVisible
-```lua
-local visible = browser.IsBrowserVisible(browser_name)
-```
-Check if a browser is currently visible.
-
-**Parameters:**
-- `browser_name` (string) - Browser identifier
 
-**Returns:**
-- `bool` - true if visible
-
-**Example:**
+### `browser.IsBrowserVisible(name)`
 ```lua
-if browser.IsBrowserVisible("resolver") then
-    print("Browser is shown to user")
-end
+if browser.IsBrowserVisible("myBrowser") then ... end
 ```
+Returns `true` if the browser is visible.
 
 ---
-
-### browser.EnableCaptchaDetection
-```lua
-browser.EnableCaptchaDetection(browser_name)
-```
-Enable automatic CAPTCHA detection (default is on).
 
-**Parameters:**
-- `browser_name` (string) - Browser identifier
-
-**Example:**
+### `browser.EnableCaptchaDetection(name)`
 ```lua
-browser.EnableCaptchaDetection("resolver")
+browser.EnableCaptchaDetection("myBrowser")
 ```
+Enables captcha detection for this browser (default is on).
 
 ---
-
-### browser.DisableCaptchaDetection
-```lua
-browser.DisableCaptchaDetection(browser_name)
-```
-Disable automatic CAPTCHA detection. Use if stuck on Cloudflare "Just a moment" page.
 
-**Parameters:**
-- `browser_name` (string) - Browser identifier
-
-**Example:**
+### `browser.DisableCaptchaDetection(name)`
 ```lua
-browser.DisableCaptchaDetection("resolver")
+browser.DisableCaptchaDetection("myBrowser")
 ```
+Disables captcha detection. Useful if you're getting stuck on Cloudflare "Just a moment" pages.
 
 ---
-
-### browser.IsCaptchaDetectionOn
-```lua
-local enabled = browser.IsCaptchaDetectionOn(browser_name)
-```
-Check if CAPTCHA detection is enabled.
-
-**Parameters:**
-- `browser_name` (string) - Browser identifier
-
-**Returns:**
-- `bool` - true if enabled
 
-**Example:**
+### `browser.IsCaptchaDetectionOn(name)`
 ```lua
-if browser.IsCaptchaDetectionOn("resolver") then
-    print("CAPTCHA detection is active")
-end
+if browser.IsCaptchaDetectionOn("myBrowser") then ... end
 ```
 
 ---
 
-## GLDBrowser Type
+## 8. GLDBrowser Usertype
 
-The `GLDBrowser` type represents a CEF browser instance with full control over navigation, content, and behavior.
+An instance returned by `browser.CreateBrowser()` or `browser.GetBrowserByName()`.
 
 ### Properties
 
-#### burl
-```lua
-local url = browserInstance.burl
-```
-Current browser URL (property).
-
-#### name
-```lua
-local name = browserInstance.name
-```
-Browser instance name (property).
-
-#### is_rendering
-```lua
-local rendering = browserInstance.is_rendering
-```
-Whether the browser is currently rendering (property).
-
-### Browser State Methods
-
-#### HasBrowser
-```lua
-local has = browserInstance:HasBrowser()
-```
-Check if browser instance is valid.
-
-**Returns:**
-- `bool` - true if browser exists
+| Property | Type | Description |
+|----------|------|-------------|
+| `burl` | string | Current URL of the browser |
+| `name` | string | Browser name |
+| `is_rendering` | bool | Whether the browser is actively rendering |
 
 ---
 
-#### CanGoBack
-```lua
-local can = browserInstance:CanGoBack()
-```
-Check if browser can navigate backwards.
+### State Queries
 
-**Returns:**
-- `bool` - true if back navigation is possible
-
----
-
-#### CanGoForward
-```lua
-local can = browserInstance:CanGoForward()
-```
-Check if browser can navigate forwards.
-
-**Returns:**
-- `bool` - true if forward navigation is possible
+| Method | Returns | Description |
+|--------|---------|-------------|
+| `HasBrowser()` | bool | Browser instance exists |
+| `CanGoBack()` | bool | History allows back navigation |
+| `CanGoForward()` | bool | History allows forward navigation |
+| `IsLoading()` | bool | Page is currently loading |
+| `GetID()` | int | Browser integer ID |
+| `HasBrowserAndFocusedFrame()` | bool | Browser + focused frame exist |
+| `HasBrowserAndMainFrame()` | bool | Browser + main frame exist |
+| `HasBrowserAndHost()` | bool | Browser + host exist |
 
 ---
 
-#### IsLoading
-```lua
-local loading = browserInstance:IsLoading()
-```
-Check if page is currently loading.
+### Navigation
 
-**Returns:**
-- `bool` - true if loading
-
----
-
-#### GetID
-```lua
-local id = browserInstance:GetID()
-```
-Get the browser's unique ID.
-
-**Returns:**
-- `int` - Browser ID
+| Method | Description |
+|--------|-------------|
+| `ChangeBrowserURL(url)` | Navigate to a new URL |
+| `ReloadBrowserPage()` | Reload current page |
+| `ReloadIgnoreCache()` | Hard reload (bypass cache) |
+| `GoBackBrowser()` | Go back in history |
+| `GoForwardBrowser()` | Go forward in history |
+| `CancelLoading()` | Stop loading the current page |
+| `CloseBrowser()` | Close and destroy the browser |
+| `BrowserUrl()` | Returns the current URL string |
 
 ---
 
-### Navigation Methods
+### Content
 
-#### ChangeBrowserURL
-```lua
-browserInstance:ChangeBrowserURL(url)
-```
-Navigate to a new URL.
-
-**Parameters:**
-- `url` (string) - URL to navigate to
-
-**Example:**
-```lua
-myBrowser:ChangeBrowserURL("https://example.com")
-```
+| Method | Description |
+|--------|-------------|
+| `GetPageTitle()` | Returns the page title string |
+| `GetBrowserSource(callback)` | Calls `callback(source)` with the page HTML source |
+| `ExecuteJavaScriptOnMainFrame(code)` | Runs JS in the main frame |
+| `ExecuteJavaScriptOnFocusedFrame(code)` | Runs JS in the focused frame |
 
 ---
 
-#### ReloadBrowserPage
-```lua
-browserInstance:ReloadBrowserPage()
-```
-Reload the current page.
+### Clipboard
 
-**Example:**
-```lua
-myBrowser:ReloadBrowserPage()
-```
-
----
-
-#### ReloadIgnoreCache
-```lua
-browserInstance:ReloadIgnoreCache()
-```
-Reload the current page, ignoring cache.
-
-**Example:**
-```lua
-myBrowser:ReloadIgnoreCache()
-```
+| Method | Description |
+|--------|-------------|
+| `Copy()` | Copy selection |
+| `Cut()` | Cut selection |
+| `Paste()` | Paste |
+| `PasteAsPlainText()` | Paste without formatting |
+| `Undo()` | Undo |
+| `Redo()` | Redo |
+| `SelectAll()` | Select all |
 
 ---
 
-#### GoBackBrowser
-```lua
-browserInstance:GoBackBrowser()
-```
-Navigate backwards in history.
+### View
 
-**Example:**
-```lua
-if myBrowser:CanGoBack() then
-    myBrowser:GoBackBrowser()
-end
-```
-
----
-
-#### GoForwardBrowser
-```lua
-browserInstance:GoForwardBrowser()
-```
-Navigate forwards in history.
-
-**Example:**
-```lua
-if myBrowser:CanGoForward() then
-    myBrowser:GoForwardBrowser()
-end
-```
+| Method | Description |
+|--------|-------------|
+| `ZoomIn()` | Zoom in |
+| `ZoomOut()` | Zoom out |
+| `ZoomReset()` | Reset zoom |
+| `MuteAudio(mute)` | Mute/unmute audio |
+| `Print()` | Print the page |
+| `Resize()` | Resize the browser view |
+| `ViewSource()` | Open page source |
+| `SavePageAs()` | Save page dialog |
 
 ---
 
-#### CancelLoading
-```lua
-browserInstance:CancelLoading()
-```
-Cancel the current page load.
+### Search
 
-**Example:**
-```lua
-myBrowser:CancelLoading()
-```
+| Method | Description |
+|--------|-------------|
+| `Find(text, forward, matchCase, findNext)` | Find text on page |
+| `StopFinding(clearSelection)` | Stop find and optionally clear selection |
 
 ---
 
-#### CloseBrowser
-```lua
-local closed = browserInstance:CloseBrowser()
-```
-Close and destroy the browser instance.
+### Downloads
 
-**Returns:**
-- `bool` - true if successfully closed
-
-**Example:**
-```lua
-myBrowser:CloseBrowser()
-```
+| Method | Description |
+|--------|-------------|
+| `AddDownload(url)` | Add a URL to the GLD download manager |
+| `DownloadImage(imageUrl)` | Download an image via browser |
 
 ---
 
-#### BrowserUrl
-```lua
-local url = browserInstance:BrowserUrl()
-```
-Get the current URL.
+### DevTools
 
-**Returns:**
-- `string` - Current URL
-
-**Example:**
-```lua
-local currentUrl = myBrowser:BrowserUrl()
-```
+| Method | Description |
+|--------|-------------|
+| `ShowDevTools()` | Open DevTools panel |
+| `CloseDevTools()` | Close DevTools |
+| `InspectElementAt(x, y)` | Inspect element at pixel coordinates |
 
 ---
 
-### Content Methods
+### Popups & LocalStorage
 
-#### GetPageTitle
-```lua
-local title = browserInstance:GetPageTitle()
-```
-Get the current page title.
-
-**Returns:**
-- `string` - Page title
-
-**Example:**
-```lua
-local title = myBrowser:GetPageTitle()
-```
+| Method | Description |
+|--------|-------------|
+| `OpenBrowserPopup(url, title)` | Open a popup browser window |
+| `ClearLocalStorage()` | Clear all localStorage for this browser |
+| `SetCustomLocalStorageValueForURL(url, key, value)` | Set a localStorage key for a specific URL |
+| `RemoveCustomLocalStorageValueForURL(url, key)` | Remove a localStorage key for a specific URL |
 
 ---
 
-#### GetBrowserSource
-```lua
-browserInstance:GetBrowserSource(callback)
-```
-Get the page source HTML asynchronously.
+## 9. download
 
-**Parameters:**
-- `callback` (function) - Callback function that receives the HTML source
+Manage file downloads.
 
-**Example:**
-```lua
-myBrowser:GetBrowserSource(function(source)
-    print("Page source length: " .. #source)
-    -- Parse HTML here
-    local doc = html.parse(source)
-end)
-```
-
----
-
-### JavaScript Execution
-
-#### ExecuteJavaScriptOnMainFrame
-```lua
-browserInstance:ExecuteJavaScriptOnMainFrame(javascript_code)
-```
-Execute JavaScript in the main frame.
-
-**Parameters:**
-- `javascript_code` (string) - JavaScript code to execute
-
-**Example:**
-```lua
-myBrowser:ExecuteJavaScriptOnMainFrame([[
-    document.querySelector('#username').value = 'testuser';
-    document.querySelector('#submit').click();
-]])
-```
-
----
-
-#### ExecuteJavaScriptOnFocusedFrame
-```lua
-browserInstance:ExecuteJavaScriptOnFocusedFrame(javascript_code)
-```
-Execute JavaScript in the currently focused frame.
-
-**Parameters:**
-- `javascript_code` (string) - JavaScript code to execute
-
-**Example:**
-```lua
-myBrowser:ExecuteJavaScriptOnFocusedFrame("alert('Hello from focused frame');")
-```
-
----
-
-### Clipboard Operations
-
-#### Copy
-```lua
-browserInstance:Copy()
-```
-Copy selected content to clipboard.
-
----
-
-#### Cut
-```lua
-browserInstance:Cut()
-```
-Cut selected content to clipboard.
-
----
-
-#### Paste
-```lua
-browserInstance:Paste()
-```
-Paste from clipboard.
-
----
-
-#### PasteAsPlainText
-```lua
-browserInstance:PasteAsPlainText()
-```
-Paste from clipboard as plain text.
-
----
-
-#### Undo
-```lua
-browserInstance:Undo()
-```
-Undo last action.
-
----
-
-#### Redo
-```lua
-browserInstance:Redo()
-```
-Redo last undone action.
-
----
-
-#### SelectAll
-```lua
-browserInstance:SelectAll()
-```
-Select all content on the page.
-
----
-
-### View Control
-
-#### ZoomIn
-```lua
-browserInstance:ZoomIn()
-```
-Increase zoom level.
-
----
-
-#### ZoomOut
-```lua
-browserInstance:ZoomOut()
-```
-Decrease zoom level.
-
----
-
-#### ZoomReset
-```lua
-browserInstance:ZoomReset()
-```
-Reset zoom to 100%.
-
----
-
-#### MuteAudio
-```lua
-browserInstance:MuteAudio(mute)
-```
-Mute or unmute browser audio.
-
-**Parameters:**
-- `mute` (bool) - true to mute, false to unmute
-
----
-
-#### Print
-```lua
-browserInstance:Print()
-```
-Open print dialog.
-
----
-
-#### Resize
-```lua
-browserInstance:Resize()
-```
-Trigger browser resize event.
-
----
-
-#### ViewSource
-```lua
-browserInstance:ViewSource()
-```
-Show page source in new window.
-
----
-
-#### SavePageAs
-```lua
-browserInstance:SavePageAs()
-```
-Open save page dialog.
-
----
-
-### Search Operations
-
-#### Find
-```lua
-browserInstance:Find(searchText, forward, matchCase, findNext)
-```
-Search for text on the page.
-
-**Parameters:**
-- `searchText` (string) - Text to find
-- `forward` (bool) - Search direction (true = forward)
-- `matchCase` (bool) - Case-sensitive search
-- `findNext` (bool) - Find next occurrence
-
-**Example:**
-```lua
-myBrowser:Find("download", true, false, false)
-```
-
----
-
-#### StopFinding
-```lua
-browserInstance:StopFinding(clearSelection)
-```
-Stop the current find operation.
-
-**Parameters:**
-- `clearSelection` (bool) - Whether to clear the selection
-
----
-
-### Download Operations
-
-#### AddDownload
-```lua
-browserInstance:AddDownload(url)
-```
-Add a URL to the download queue.
-
-**Parameters:**
-- `url` (string) - URL to download
-
-**Example:**
-```lua
-myBrowser:AddDownload("https://example.com/file.zip")
-```
-
----
-
-#### DownloadImage
-```lua
-browserInstance:DownloadImage(imageUrl)
-```
-Download an image.
-
-**Parameters:**
-- `imageUrl` (string) - Image URL
-
-**Example:**
-```lua
-myBrowser:DownloadImage("https://example.com/image.jpg")
-```
-
----
-
-### Developer Tools
-
-#### ShowDevTools
-```lua
-browserInstance:ShowDevTools()
-```
-Open developer tools window.
-
----
-
-#### CloseDevTools
-```lua
-browserInstance:CloseDevTools()
-```
-Close developer tools window.
-
----
-
-#### InspectElementAt
-```lua
-browserInstance:InspectElementAt(x, y)
-```
-Inspect element at specific coordinates.
-
-**Parameters:**
-- `x` (int) - X coordinate
-- `y` (int) - Y coordinate
-
----
-
-### Popup Management
-
-#### OpenBrowserPopup
-```lua
-browserInstance:OpenBrowserPopup(url, title)
-```
-Open a popup window.
-
-**Parameters:**
-- `url` (string) - URL for popup
-- `title` (string) - Popup window title
-
----
-
-### Local Storage
-
-#### ClearLocalStorage
-```lua
-browserInstance:ClearLocalStorage()
-```
-Clear all local storage data.
-
----
-
-#### SetCustomLocalStorageValueForURL
-```lua
-browserInstance:SetCustomLocalStorageValueForURL(url, key, value)
-```
-Set a custom local storage value for a URL.
-
-**Parameters:**
-- `url` (string) - Target URL
-- `key` (string) - Storage key
-- `value` (string) - Storage value
-
----
-
-#### RemoveCustomLocalStorageValueForURL
-```lua
-browserInstance:RemoveCustomLocalStorageValueForURL(url, key)
-```
-Remove a custom local storage value.
-
-**Parameters:**
-- `url` (string) - Target URL
-- `key` (string) - Storage key
-
----
-
-## communication Namespace
-
-The `communication` namespace handles communication between scripts and the UI.
-
-### communication.receiveSearchResults
-```lua
-communication.receiveSearchResults(resultsTable)
-```
-Send search results to be displayed in the UI.
-
-**Parameters:**
-- `resultsTable` (table) - Lua table containing search results
-
-**Example:**
-```lua
-local results = {
-    {name = "Game 1", image = "url1"},
-    {name = "Game 2", image = "url2"}
-}
-communication.receiveSearchResults(results)
-```
-
----
-
-### communication.RefreshScriptResults
-```lua
-communication.RefreshScriptResults()
-```
-Refresh the display of search results.
-
-**Example:**
-```lua
-communication.RefreshScriptResults()
-```
-
----
-
-## SteamApi Namespace
-
-The `SteamApi` namespace provides functions to interact with Steam's API.
-
-### SteamApi.GetAppID
-```lua
-local appid = SteamApi.GetAppID(name)
-```
-Get Steam App ID from game name.
-
-**Parameters:**
-- `name` (string) - Game name
-
-**Returns:**
-- `string` - Steam App ID
-
-**Example:**
-```lua
-local appid = SteamApi.GetAppID("Counter-Strike 2")
-print("App ID: " .. appid)
-```
-
----
-
-### SteamApi.GetSystemRequirements
-```lua
-local requirements = SteamApi.GetSystemRequirements(appid)
-```
-Get system requirements for a Steam game.
-
-**Parameters:**
-- `appid` (string) - Steam App ID
-
-**Returns:**
-- `string` - System requirements (JSON format)
-
-**Example:**
-```lua
-local reqs = SteamApi.GetSystemRequirements("730")
-local data = JsonWrapper.parse(reqs)
-```
-
----
-
-### SteamApi.GetGameData
-```lua
-local gameData = SteamApi.GetGameData(appid)
-```
-Get comprehensive game data from Steam.
-
-**Parameters:**
-- `appid` (string) - Steam App ID
-
-**Returns:**
-- `string` - Game data (JSON format)
-
-**Example:**
-```lua
-local data = SteamApi.GetGameData("730")
-local parsed = JsonWrapper.parse(data)
-```
-
----
-
-### SteamApi.OpenSteam
-```lua
-SteamApi.OpenSteam()
-```
-Launch the Steam client.
-
-**Example:**
-```lua
-SteamApi.OpenSteam()
-```
-
----
-
-### SteamApi.IsSteamRunning
-```lua
-local running = SteamApi.IsSteamRunning()
-```
-Check if Steam is currently running.
-
-**Returns:**
-- `bool` - true if Steam is running
-
-**Example:**
-```lua
-if not SteamApi.IsSteamRunning() then
-    SteamApi.OpenSteam()
-end
-```
-
----
-
-## Download Namespace
-
-The `Download` namespace manages file downloads with resume support and multi-connection capabilities.
-
-### Download.DownloadFile
-```lua
-Download.DownloadFile(downloadurl)
-```
-Download a file to the default download path.
-
-**Parameters:**
-- `downloadurl` (string) - URL to download
-
-**Example:**
+### `Download.DownloadFile(url)`
 ```lua
 Download.DownloadFile("https://example.com/file.zip")
 ```
+Adds a URL to the GLD download queue.
 
 ---
 
-### Download.GetFileNameFromUrl
+### `Download.GetFileNameFromUrl(url)`
 ```lua
-local filename = Download.GetFileNameFromUrl(url)
-```
-Extract filename from a URL.
-
-**Parameters:**
-- `url` (string) - URL
-
-**Returns:**
-- `string` - Extracted filename
-
-**Example:**
-```lua
-local name = Download.GetFileNameFromUrl("https://example.com/files/game.zip")
--- Returns: "game.zip"
+local name = Download.GetFileNameFromUrl("https://example.com/file.zip") -- "file.zip"
 ```
 
 ---
 
-### Download.DirectDownload
+### `Download.DirectDownload(url, path)`
 ```lua
-Download.DirectDownload(downloadurl, downloadpath)
+Download.DirectDownload("https://example.com/file.zip", "C:/Downloads/file.zip")
 ```
-Download a file to a specific path.
+Downloads directly to a specified path.
 
-**Parameters:**
-- `downloadurl` (string) - URL to download
-- `downloadpath` (string) - Full destination path
+---
 
-**Example:**
+### `Download.DownloadImage(imageurl)`
 ```lua
-Download.DirectDownload("https://example.com/file.zip", "C:\\Downloads\\file.zip")
+local localpath = Download.DownloadImage("https://example.com/img.jpg")
+```
+Downloads an image and returns the local file path.
+
+---
+
+### `Download.ChangeDownloadPath(path)`
+```lua
+Download.ChangeDownloadPath("D:/Downloads")
 ```
 
 ---
 
-### Download.DownloadImage
-```lua
-local imagePath = Download.DownloadImage(imageurl)
-```
-Download an image and return its local path.
-
-**Parameters:**
-- `imageurl` (string) - Image URL
-
-**Returns:**
-- `string` - Local path to downloaded image
-
-**Example:**
-```lua
-local imgPath = Download.DownloadImage("https://example.com/cover.jpg")
-```
-
----
-
-### Download.ChangeDownloadPath
-```lua
-Download.ChangeDownloadPath(path)
-```
-Change the default download directory.
-
-**Parameters:**
-- `path` (string) - New download directory path
-
-**Example:**
-```lua
-Download.ChangeDownloadPath("D:\\Games\\Downloads")
-```
-
----
-
-### Download.GetDownloadPath
+### `Download.GetDownloadPath()`
 ```lua
 local path = Download.GetDownloadPath()
 ```
-Get the current default download path.
-
-**Returns:**
-- `string` - Download directory path
-
-**Example:**
-```lua
-local dlPath = Download.GetDownloadPath()
-```
 
 ---
 
-### Download.ChangeMaxActiveDownloads
-```lua
-Download.ChangeMaxActiveDownloads(maxdownloads)
-```
-Set maximum number of simultaneous downloads.
-
-**Parameters:**
-- `maxdownloads` (int) - Maximum active downloads
-
-**Example:**
+### `Download.ChangeMaxActiveDownloads(max)`
 ```lua
 Download.ChangeMaxActiveDownloads(3)
 ```
 
 ---
 
-### Download.GetMaxActiveDownloads
-```lua
-local max = Download.GetMaxActiveDownloads()
-```
-Get the maximum number of simultaneous downloads.
-
-**Returns:**
-- `int` - Maximum active downloads
-
-**Example:**
+### `Download.GetMaxActiveDownloads()`
 ```lua
 local max = Download.GetMaxActiveDownloads()
 ```
 
 ---
 
-### Download.SetMaxConnections
-```lua
-Download.SetMaxConnections(maxconnections)
-```
-Set maximum connections per download.
+### `Download.SetMaxConnections(n)`
+### `Download.GetMaxConnections()`
 
-**Parameters:**
-- `maxconnections` (int) - Maximum connections
-
-**Example:**
-```lua
-Download.SetMaxConnections(8)
-```
+Controls the number of simultaneous connections per download.
 
 ---
 
-### Download.GetMaxConnections
+### `Download.TorrentContentToMagnet(torrentcontent)`
 ```lua
-local max = Download.GetMaxConnections()
+local magnet = Download.TorrentContentToMagnet(torrent_file_contents_string)
 ```
-Get the maximum connections per download.
-
-**Returns:**
-- `int` - Maximum connections
-
-**Example:**
-```lua
-local max = Download.GetMaxConnections()
-```
+Converts torrent file content (as a string) to a magnet link.
 
 ---
 
-### Download.TorrentContentToMagnet
+### `Download.TorrentToMagnet(filepath)`
 ```lua
-local magnet = Download.TorrentContentToMagnet(torrentcontent)
+local magnet = Download.TorrentToMagnet("C:/file.torrent")
 ```
-Convert torrent file content to magnet link.
-
-**Parameters:**
-- `torrentcontent` (string) - Raw torrent file content
-
-**Returns:**
-- `string` - Magnet link
-
-**Example:**
-```lua
-local torrentData = file.read("C:\\file.torrent")
-local magnet = Download.TorrentContentToMagnet(torrentData)
-```
+Converts a `.torrent` file path to a magnet link.
 
 ---
 
-### Download.TorrentToMagnet
+### `Download.SetHistoryUrl(url, ogurl)`
 ```lua
-local magnet = Download.TorrentToMagnet(filepath)
+Download.SetHistoryUrl(resolved_url, original_url)
 ```
-Convert torrent file to magnet link.
+Associates a resolved download URL with the original URL so that GLD can resume interrupted downloads correctly.
 
-**Parameters:**
-- `filepath` (string) - Path to torrent file
-
-**Returns:**
-- `string` - Magnet link
-
-**Example:**
-```lua
-local magnet = Download.TorrentToMagnet("C:\\file.torrent")
-```
+> **Important:** If a download is cancelled and restarted via the browser, you must call `SetHistoryUrl` again so GLD can resume it after an app restart. `ogurl` is the unresolved original URL.
 
 ---
 
-### Download.SetHistoryUrl
+## 10. input
+
+Keyboard, mouse, and virtual gamepad input simulation and detection.
+
+### Keyboard Detection
+
+#### `input.is_key_down(vk_code)`
 ```lua
-Download.SetHistoryUrl(url, ogurl)
+if input.is_key_down(VK.F5) then ... end
 ```
-Set download history URL for resume support. Use this when resolving downloads to enable resume functionality if the app is closed.
+Returns `true` while the key is held down.
 
-**Parameters:**
-- `url` (string) - Resolved download URL
-- `ogurl` (string) - Original unresolved URL
-
-**Example:**
+#### `input.is_key_pressed(vk_code)`
 ```lua
--- In on_beforedownload callback
-Download.SetHistoryUrl(resolvedUrl, originalUrl)
+if input.is_key_pressed(VK.SPACE) then ... end
 ```
+Returns `true` on the frame the key is first pressed.
 
----
+#### `input.get_key_state(vk_code)`
+Returns the raw `GetKeyState` short value.
 
-## GameLibrary Namespace
-
-The `GameLibrary` namespace manages the user's game library.
-
-### GameLibrary.launch
-```lua
-local success = GameLibrary.launch(id)
-```
-Launch a game from the library.
-
-**Parameters:**
-- `id` (int) - Game ID
-
-**Returns:**
-- `bool` - true if successfully launched
-
-**Example:**
-```lua
-local gameId = GameLibrary.GetGameIdFromName("My Game")
-if GameLibrary.launch(gameId) then
-    print("Game launched")
-end
-```
+#### `input.is_key_toggled(vk_code)`
+Returns `true` if the key is in a toggled-on state (e.g., Caps Lock).
 
 ---
 
-### GameLibrary.close
+### Keyboard Simulation
+
+#### `input.key_press(vk_code [, delay [, delay2]])`
 ```lua
-GameLibrary.close()
+input.key_press(VK.RETURN)
+input.key_press(VK.KEY_A, 100, 50) -- wait 100ms before, hold 50ms before release
 ```
-Close the currently running game.
+Simulates a full key press (down + up).
 
-**Example:**
-```lua
-GameLibrary.close()
-```
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `delay` | `0` | Milliseconds before pressing |
+| `delay2` | `50` | Milliseconds between down and up |
 
----
+#### `input.key_down(vk_code [, delay])`
+Sends a keydown event.
 
-### GameLibrary.addGame
-```lua
-GameLibrary.addGame(exePath, imagePath, gamename, commandline, disableigdbid)
-```
-Add a game to the library.
-
-**Parameters:**
-- `exePath` (string) - Path to game executable
-- `imagePath` (string) - Path to game cover image
-- `gamename` (string) - Display name
-- `commandline` (string) - Launch arguments
-- `disableigdbid` (bool, optional) - Disable IGDB lookup (default: false)
-
-**Example:**
-```lua
-GameLibrary.addGame(
-    "C:\\Games\\MyGame\\game.exe",
-    "C:\\Games\\MyGame\\cover.jpg",
-    "My Awesome Game",
-    "--fullscreen",
-    false
-)
-```
+#### `input.key_up(vk_code [, delay])`
+Sends a keyup event.
 
 ---
 
-### GameLibrary.changeGameinfo
-```lua
-GameLibrary.changeGameinfo(id, exePath, imagePath, gamename, commandline)
-```
-Update game information in the library.
+### Mouse
 
-**Parameters:**
-- `id` (int) - Game ID
-- `exePath` (string, optional) - New executable path (default: "")
-- `imagePath` (string, optional) - New image path (default: "")
-- `gamename` (string, optional) - New name (default: "")
-- `commandline` (string, optional) - New arguments (default: "")
-
-**Example:**
-```lua
-local id = GameLibrary.GetGameIdFromName("My Game")
-GameLibrary.changeGameinfo(id, "", "C:\\new_cover.jpg", "Updated Name", "")
-```
-
----
-
-### GameLibrary.removeGame
-```lua
-GameLibrary.removeGame(id)
-```
-Remove a game from the library.
-
-**Parameters:**
-- `id` (int) - Game ID
-
-**Example:**
-```lua
-local id = GameLibrary.GetGameIdFromName("Old Game")
-GameLibrary.removeGame(id)
-```
-
----
-
-### GameLibrary.GetGameIdFromName
-```lua
-local id = GameLibrary.GetGameIdFromName(name)
-```
-Get game ID by name.
-
-**Parameters:**
-- `name` (string) - Game name
-
-**Returns:**
-- `int` - Game ID (or -1 if not found)
-
-**Example:**
-```lua
-local id = GameLibrary.GetGameIdFromName("Counter-Strike 2")
-```
-
----
-
-### GameLibrary.GetGameNameFromId
-```lua
-local name = GameLibrary.GetGameNameFromId(id)
-```
-Get game name by ID.
-
-**Parameters:**
-- `id` (int) - Game ID
-
-**Returns:**
-- `string` - Game name
-
-**Example:**
-```lua
-local name = GameLibrary.GetGameNameFromId(5)
-```
-
----
-
-### GameLibrary.GetGamePath
-```lua
-local path = GameLibrary.GetGamePath(id)
-```
-Get the executable path for a game.
-
-**Parameters:**
-- `id` (int) - Game ID
-
-**Returns:**
-- `string` - Path to game executable
-
-**Example:**
-```lua
-local path = GameLibrary.GetGamePath(5)
-```
-
----
-
-### GameLibrary.GetGameList
-```lua
-local games = GameLibrary.GetGameList()
-```
-Get all games in the library.
-
-**Returns:**
-- `table` - Array of game information tables
-
-**Example:**
-```lua
-local games = GameLibrary.GetGameList()
-for _, game in ipairs(games) do
-    print(game.name, game.exePath)
-end
-```
-
----
-
-## settings Namespace
-
-The `settings` namespace manages application settings persistence.
-
-### settings.save
-```lua
-settings.save()
-```
-Save current settings to disk.
-
-**Example:**
-```lua
-settings.save()
-```
-
----
-
-### settings.load
-```lua
-settings.load()
-```
-Load settings from disk.
-
-**Example:**
-```lua
-settings.load()
-```
-
----
-
-## zip Namespace
-
-The `zip` namespace handles archive extraction.
-
-### zip.extract
-```lua
-zip.extract(source, destination, deleteaftercomplete, pass)
-```
-Extract a compressed archive. Completion is signaled via the `on_extractioncompleted` callback.
-
-**Parameters:**
-- `source` (string) - Path to archive file
-- `destination` (string) - Extraction destination
-- `deleteaftercomplete` (bool) - Delete archive after extraction
-- `pass` (string) - Archive password (empty string if no password)
-
-**Example:**
-```lua
-client.add_callback("on_extractioncompleted", function(origin, destination)
-    print("Extracted: " .. origin)
-    print("To: " .. destination)
-end)
-
-zip.extract("C:\\Downloads\\game.zip", "C:\\Games\\", false, "")
-```
-
----
-
-## dll Namespace
-
-The `dll` namespace provides DLL injection capabilities for modding and tool integration.
-
-### dll.inject
-```lua
-local success = dll.inject(processexename, dllpath, delay)
-```
-Inject a 64-bit DLL into a running process.
-
-**Parameters:**
-- `processexename` (string) - Target process name (e.g., "game.exe")
-- `dllpath` (string) - Path to DLL file
-- `delay` (int) - Delay in milliseconds before injection
-
-**Returns:**
-- `bool` - true if injection succeeded
-
-**Example:**
-```lua
-sleep(5000)  -- Wait for game to start
-local success = dll.inject("game.exe", "C:\\Mods\\trainer.dll", 1000)
-if success then
-    notifications.push_success("Mod Loaded", "Trainer injected successfully")
-end
-```
-
----
-
-### dll.injectx86
-```lua
-local success = dll.injectx86(processexename, dllpath, delay)
-```
-Inject a 32-bit DLL into a running process.
-
-**Parameters:**
-- `processexename` (string) - Target process name
-- `dllpath` (string) - Path to 32-bit DLL file
-- `delay` (int) - Delay in milliseconds
-
-**Returns:**
-- `bool` - true if injection succeeded
-
-**Example:**
-```lua
-local success = dll.injectx86("game32.exe", "C:\\Mods\\mod32.dll", 500)
-```
-
----
-
-### dll.innohook
-```lua
-local success = dll.innohook(processname)
-```
-Hook into an Inno Setup installer to extract files. Results are returned via the `on_setupcompleted` callback.
-
-**Parameters:**
-- `processname` (string) - Installer process name
-
-**Returns:**
-- `bool` - true if hook succeeded
-
-**Example:**
-```lua
-client.add_callback("on_setupcompleted", function(from, to)
-    print("Installer extracted from: " .. from)
-    print("To: " .. to)
-end)
-
-dll.innohook("setup.exe")
-```
-
----
-
-## gldconsole Namespace
-
-The `gldconsole` namespace provides the recommended logging interface for scripts.
-
-### gldconsole.print
-```lua
-gldconsole.print(fmt)
-```
-Print a message to the GLD console (recommended over `utils.Log`).
-
-**Parameters:**
-- `fmt` (string) - Message to log
-
-**Example:**
-```lua
-gldconsole.print("Script initialized")
-gldconsole.print("Processing: " .. filename)
-```
-
----
-
-### gldconsole.show
-```lua
-gldconsole.show()
-```
-Show the console window.
-
-**Example:**
-```lua
-gldconsole.show()
-```
-
----
-
-### gldconsole.close
-```lua
-gldconsole.close()
-```
-Close the console window.
-
-**Example:**
-```lua
-gldconsole.close()
-```
-
----
-
-## save Namespace
-
-The `save` namespace manages game save file backup, restore, and cloud sync operations.
-
-### save.Backup
-```lua
-save.Backup(name)
-```
-Backup saves for a specific game.
-
-**Parameters:**
-- `name` (string) - Game name
-
-**Example:**
-```lua
-save.Backup("Elden Ring")
-```
-
----
-
-### save.Restore
-```lua
-save.Restore(name)
-```
-Restore saves for a specific game.
-
-**Parameters:**
-- `name` (string) - Game name
-
-**Example:**
-```lua
-save.Restore("Elden Ring")
-```
-
----
-
-### save.BackupAll
-```lua
-save.BackupAll()
-```
-Backup saves for all games.
-
-**Example:**
-```lua
-save.BackupAll()
-```
-
----
-
-### save.RestoreAll
-```lua
-save.RestoreAll()
-```
-Restore saves for all games.
-
-**Example:**
-```lua
-save.RestoreAll()
-```
-
----
-
-### save.Download
-```lua
-save.Download(name)
-```
-Download saves from cloud for a specific game.
-
-**Parameters:**
-- `name` (string) - Game name
-
-**Example:**
-```lua
-save.Download("Dark Souls III")
-```
-
----
-
-### save.Upload
-```lua
-save.Upload(name)
-```
-Upload saves to cloud for a specific game.
-
-**Parameters:**
-- `name` (string) - Game name
-
-**Example:**
-```lua
-save.Upload("Dark Souls III")
-```
-
----
-
-### save.UploadAll
-```lua
-save.UploadAll()
-```
-Upload all game saves to cloud.
-
-**Example:**
-```lua
-save.UploadAll()
-```
-
----
-
-### save.DownloadAll
-```lua
-save.DownloadAll()
-```
-Download all game saves from cloud.
-
-**Example:**
-```lua
-save.DownloadAll()
-```
-
----
-
-### save.RefreshBackup
-```lua
-save.RefreshBackup()
-```
-Refresh the backup saves list.
-
-**Example:**
-```lua
-save.RefreshBackup()
-```
-
----
-
-### save.RefreshRestore
-```lua
-save.RefreshRestore()
-```
-Refresh the restore saves list.
-
-**Example:**
-```lua
-save.RefreshRestore()
-```
-
----
-
-### save.RefreshCloud
-```lua
-save.RefreshCloud()
-```
-Refresh the cloud saves list.
-
-**Example:**
-```lua
-save.RefreshCloud()
-```
-
----
-
-### save.RefreshAll
-```lua
-save.RefreshAll()
-```
-Refresh all save lists.
-
-**Example:**
-```lua
-save.RefreshAll()
-```
-
----
-
-### save.GetBackupGamesList
-```lua
-local games = save.GetBackupGamesList()
-```
-Get list of games with local backups.
-
-**Returns:**
-- `table` - Array of game names
-
-**Example:**
-```lua
-local games = save.GetBackupGamesList()
-for _, game in ipairs(games) do
-    print("Backup available: " .. game)
-end
-```
-
----
-
-### save.GetRestoreGamesList
-```lua
-local games = save.GetRestoreGamesList()
-```
-Get list of games that can be restored.
-
-**Returns:**
-- `string` - Game names (format TBD)
-
-**Example:**
-```lua
-local games = save.GetRestoreGamesList()
-```
-
----
-
-### save.GetCloudGamesList
-```lua
-local games = save.GetCloudGamesList()
-```
-Get list of games with cloud saves.
-
-**Returns:**
-- `table` - Array of game names
-
-**Example:**
-```lua
-local cloudGames = save.GetCloudGamesList()
-```
-
----
-
-## input Namespace
-
-The `input` namespace provides keyboard and mouse input simulation and detection.
-
-### Keyboard Input Detection
-
-#### input.is_key_down
-```lua
-local down = input.is_key_down(vk_code)
-```
-Check if a key is currently pressed.
-
-**Parameters:**
-- `vk_code` (int) - Virtual key code
-
-**Returns:**
-- `bool` - true if key is down
-
-**Example:**
-```lua
-if input.is_key_down(VK.VK_CONTROL) then
-    print("Control key is held")
-end
-```
-
----
-
-#### input.is_key_pressed
-```lua
-local pressed = input.is_key_pressed(vk_code)
-```
-Check if a key was just pressed (single detection).
-
-**Parameters:**
-- `vk_code` (int) - Virtual key code
-
-**Returns:**
-- `bool` - true if key was just pressed
-
-**Example:**
-```lua
-if input.is_key_pressed(VK.VK_F5) then
-    print("F5 pressed")
-end
-```
-
----
-
-#### input.get_key_state
-```lua
-local state = input.get_key_state(vk_code)
-```
-Get the state of a key.
-
-**Parameters:**
-- `vk_code` (int) - Virtual key code
-
-**Returns:**
-- `short` - Key state value
-
-**Example:**
-```lua
-local state = input.get_key_state(VK.VK_CAPITAL)
-```
-
----
-
-#### input.is_key_toggled
-```lua
-local toggled = input.is_key_toggled(vk_code)
-```
-Check if a toggle key is active (e.g., Caps Lock, Num Lock).
-
-**Parameters:**
-- `vk_code` (int) - Virtual key code
-
-**Returns:**
-- `bool` - true if toggled on
-
-**Example:**
-```lua
-if input.is_key_toggled(VK.VK_CAPITAL) then
-    print("Caps Lock is ON")
-end
-```
-
----
-
-### Keyboard Input Simulation
-
-#### input.key_press
-```lua
-input.key_press(vk_code, delay, delay2)
-```
-Simulate a key press (down then up).
-
-**Parameters:**
-- `vk_code` (int) - Virtual key code
-- `delay` (int, optional) - Delay before press in ms (default: 0)
-- `delay2` (int, optional) - Hold duration in ms (default: 50)
-
-**Example:**
-```lua
-input.key_press(VK.VK_RETURN, 0, 50)  -- Press Enter
-```
-
----
-
-#### input.key_down
-```lua
-input.key_down(vk_code, delay)
-```
-Simulate key down event.
-
-**Parameters:**
-- `vk_code` (int) - Virtual key code
-- `delay` (int, optional) - Delay before press in ms (default: 0)
-
-**Example:**
-```lua
-input.key_down(VK.VK_SHIFT, 0)
-```
-
----
-
-#### input.key_up
-```lua
-input.key_up(vk_code, delay)
-```
-Simulate key up event.
-
-**Parameters:**
-- `vk_code` (int) - Virtual key code
-- `delay` (int, optional) - Delay before release in ms (default: 0)
-
-**Example:**
-```lua
-input.key_up(VK.VK_SHIFT, 0)
-```
-
----
-
-### Mouse Operations
-
-#### input.get_mouse_pos
+#### `input.get_mouse_pos()`
 ```lua
 local pos = input.get_mouse_pos()
+print(pos.x, pos.y)
 ```
-Get current mouse position.
+Returns a table with `x` and `y` fields.
 
-**Returns:**
-- `table` - Table with `x` and `y` coordinates
-
-**Example:**
+#### `input.set_mouse_pos(x, y)`
 ```lua
-local pos = input.get_mouse_pos()
-print("Mouse at: " .. pos.x .. ", " .. pos.y)
+input.set_mouse_pos(960, 540)
 ```
+Moves the mouse cursor to the given screen coordinates.
 
----
-
-#### input.set_mouse_pos
+#### `input.mouse_click([button [, delay [, delay2]]])`
 ```lua
-input.set_mouse_pos(x, y)
+input.mouse_click(0) -- left click
+input.mouse_click(1) -- right click
+input.mouse_click(2) -- middle click
 ```
-Set mouse cursor position.
+Simulates a mouse button click.
 
-**Parameters:**
-- `x` (int) - X coordinate
-- `y` (int) - Y coordinate
+#### `input.mouse_down([button [, delay]])`
+#### `input.mouse_up([button [, delay]])`
 
-**Example:**
+Sends mouse button down/up events separately.
+
+#### `input.mouse_wheel(delta [, delay])`
 ```lua
-input.set_mouse_pos(100, 200)
-```
-
----
-
-#### input.mouse_click
-```lua
-input.mouse_click(button, delay, delay2)
-```
-Simulate a mouse click.
-
-**Parameters:**
-- `button` (int, optional) - Mouse button (0=left, 1=right, 2=middle, default: 0)
-- `delay` (int, optional) - Delay before click in ms (default: 0)
-- `delay2` (int, optional) - Hold duration in ms (default: 50)
-
-**Example:**
-```lua
-input.mouse_click(0, 0, 50)  -- Left click
-input.mouse_click(1, 0, 50)  -- Right click
+input.mouse_wheel(120)  -- scroll up
+input.mouse_wheel(-120) -- scroll down
 ```
 
 ---
 
-#### input.mouse_down
-```lua
-input.mouse_down(button, delay)
-```
-Simulate mouse button down event.
+### Virtual Gamepad
 
-**Parameters:**
-- `button` (int, optional) - Mouse button (default: 0)
-- `delay` (int, optional) - Delay in ms (default: 0)
+> Requires **ViGEm Bus Driver**: https://vigembusdriver.com/download/
 
-**Example:**
+#### `input.InitializeVirtualGamePad()`
 ```lua
-input.mouse_down(0, 0)  -- Left button down
+input.InitializeVirtualGamePad()
 ```
+Initializes a virtual Xbox controller. Call once when the script loads.
+
+#### `input.SendVirtualGamePadKeyPress(gp_code [, holdtime])`
+```lua
+sleep(100)
+input.SendVirtualGamePadKeyPress(GP.A)
+sleep(100)
+input.SendVirtualGamePadKeyPress(GP.B, 200) -- hold for 200ms
+```
+Simulates pressing an Xbox controller button. `gp_code` is from the `GP` table.
+
+> **Important:** You must call `sleep()` before each virtual gamepad call.
+
+#### `input.SendVirtualGamePadTriggerPress(righttrigger, value [, holdtime])`
+```lua
+sleep(100)
+input.SendVirtualGamePadTriggerPress(false, 255) -- left trigger, full press
+input.SendVirtualGamePadTriggerPress(true, 128)  -- right trigger, half press
+```
+`value` is `0`–`255`.
+
+#### `input.SendVirtualGamePadThumbMove(rightstick, xvalue, yvalue [, holdtime])`
+```lua
+sleep(100)
+input.SendVirtualGamePadThumbMove(false, 32767, 0) -- left stick, full right
+```
+Moves an analog stick. Values are typically `-32768` to `32767`.
+
+#### `input.CleanupVirtualGamePad()`
+Releases the virtual gamepad. Usually not needed.
 
 ---
 
-#### input.mouse_up
-```lua
-input.mouse_up(button, delay)
-```
-Simulate mouse button up event.
+## 11. VK — Virtual Keys
 
-**Parameters:**
-- `button` (int, optional) - Mouse button (default: 0)
-- `delay` (int, optional) - Delay in ms (default: 0)
+The `VK` table contains Windows Virtual Key constants. Use these with `input.*` functions.
 
-**Example:**
-```lua
-input.mouse_up(0, 0)  -- Left button up
-```
+### Mouse Buttons
+| Key | Description |
+|-----|-------------|
+| `VK.LBUTTON` | Left mouse button |
+| `VK.RBUTTON` | Right mouse button |
+| `VK.MBUTTON` | Middle mouse button |
+| `VK.XBUTTON1` | X1 mouse button |
+| `VK.XBUTTON2` | X2 mouse button |
+| `VK.CANCEL` | Control-break |
+
+### Common Keys
+| Key | Description |
+|-----|-------------|
+| `VK.BACK` | Backspace |
+| `VK.TAB` | Tab |
+| `VK.RETURN` | Enter |
+| `VK.SHIFT` | Shift |
+| `VK.CONTROL` | Ctrl |
+| `VK.MENU` | Alt |
+| `VK.ESCAPE` | Escape |
+| `VK.SPACE` | Spacebar |
+| `VK.CAPITAL` | Caps Lock |
+| `VK.PAUSE` | Pause |
+
+### Navigation
+| Key | Description |
+|-----|-------------|
+| `VK.LEFT` | Left Arrow |
+| `VK.RIGHT` | Right Arrow |
+| `VK.UP` | Up Arrow |
+| `VK.DOWN` | Down Arrow |
+| `VK.HOME` | Home |
+| `VK.END` | End |
+| `VK.PRIOR` | Page Up |
+| `VK.NEXT` | Page Down |
+| `VK.INSERT` | Insert |
+| `VK.DELETE` | Delete |
+
+### Number Keys
+`VK.KEY_0` through `VK.KEY_9`
+
+### Letter Keys
+`VK.KEY_A` through `VK.KEY_Z`
+
+### Function Keys
+`VK.F1` through `VK.F24`
+
+### Numpad
+`VK.NUMPAD0` through `VK.NUMPAD9`, `VK.MULTIPLY`, `VK.ADD`, `VK.SUBTRACT`, `VK.DECIMAL`, `VK.DIVIDE`, `VK.SEPARATOR`
+
+### Modifier Variants
+| Key | Description |
+|-----|-------------|
+| `VK.LSHIFT` | Left Shift |
+| `VK.RSHIFT` | Right Shift |
+| `VK.LCONTROL` | Left Ctrl |
+| `VK.RCONTROL` | Right Ctrl |
+| `VK.LMENU` | Left Alt |
+| `VK.RMENU` | Right Alt |
+| `VK.LWIN` | Left Windows key |
+| `VK.RWIN` | Right Windows key |
+
+### Media & Volume
+| Key | Description |
+|-----|-------------|
+| `VK.VOLUME_MUTE` | Mute |
+| `VK.VOLUME_DOWN` | Volume Down |
+| `VK.VOLUME_UP` | Volume Up |
+| `VK.MEDIA_NEXT_TRACK` | Next Track |
+| `VK.MEDIA_PREV_TRACK` | Previous Track |
+| `VK.MEDIA_STOP` | Stop |
+| `VK.MEDIA_PLAY_PAUSE` | Play/Pause |
+
+### Browser Keys
+`VK.BROWSER_BACK`, `VK.BROWSER_FORWARD`, `VK.BROWSER_REFRESH`, `VK.BROWSER_STOP`, `VK.BROWSER_SEARCH`, `VK.BROWSER_FAVORITES`, `VK.BROWSER_HOME`
+
+### OEM / Punctuation Keys
+| Key | Character |
+|-----|-----------|
+| `VK.OEM_1` | `;:` |
+| `VK.OEM_PLUS` | `=+` |
+| `VK.OEM_COMMA` | `,<` |
+| `VK.OEM_MINUS` | `-_` |
+| `VK.OEM_PERIOD` | `.>` |
+| `VK.OEM_2` | `/?` |
+| `VK.OEM_3` | `` `~ `` |
+| `VK.OEM_4` | `[{` |
+| `VK.OEM_5` | `\|` |
+| `VK.OEM_6` | `]}` |
+| `VK.OEM_7` | `'"` |
+| `VK.OEM_102` | `<>` or `\|` (102-key keyboard) |
+
+### Lock Keys
+`VK.NUMLOCK`, `VK.SCROLL`
+
+### Other
+`VK.APPS`, `VK.SLEEP`, `VK.SNAPSHOT` (Print Screen), `VK.HELP`, `VK.SELECT`, `VK.PRINT`, `VK.EXECUTE`
 
 ---
 
-#### input.mouse_wheel
-```lua
-input.mouse_wheel(delta, delay)
-```
-Simulate mouse wheel scroll.
+## 12. GP — Gamepad Keys
 
-**Parameters:**
-- `delta` (int) - Scroll amount (positive=up, negative=down)
-- `delay` (int, optional) - Delay in ms (default: 0)
+Xbox controller button constants for use with `input.SendVirtualGamePadKeyPress()`.
 
-**Example:**
-```lua
-input.mouse_wheel(120, 0)   -- Scroll up
-input.mouse_wheel(-120, 0)  -- Scroll down
-```
+| Key | Description |
+|-----|-------------|
+| `GP.A` | A button |
+| `GP.B` | B button |
+| `GP.X` | X button |
+| `GP.Y` | Y button |
+| `GP.DPAD_UP` | D-Pad Up |
+| `GP.DPAD_DOWN` | D-Pad Down |
+| `GP.DPAD_LEFT` | D-Pad Left |
+| `GP.DPAD_RIGHT` | D-Pad Right |
+| `GP.START` | Start button |
+| `GP.BACK` | Back button |
+| `GP.GUIDE` | Guide/Home button |
+| `GP.LEFT_THUMB` | Left thumbstick click |
+| `GP.RIGHT_THUMB` | Right thumbstick click |
+| `GP.LEFT_SHOULDER` | Left bumper (LB) |
+| `GP.RIGHT_SHOULDER` | Right bumper (RB) |
 
 ---
 
-## VK (Virtual Keys)
+## 13. html & xml Parsers
 
-The `VK` table contains all Windows virtual key codes for use with input functions. Access keys via `VK.VK_*`.
+### HTML Parser
 
-### Common Virtual Keys
-
+#### `html.parse(html_string)`
 ```lua
--- Letters
-VK.VK_A through VK.VK_Z  -- 0x41 to 0x5A
-
--- Numbers
-VK.VK_0 through VK.VK_9  -- 0x30 to 0x39
-
--- Function Keys
-VK.VK_F1 through VK.VK_F24  -- 0x70 to 0x87
-
--- Control Keys
-VK.VK_BACK         -- Backspace
-VK.VK_TAB          -- Tab
-VK.VK_RETURN       -- Enter
-VK.VK_SHIFT        -- Shift
-VK.VK_CONTROL      -- Ctrl
-VK.VK_MENU         -- Alt
-VK.VK_PAUSE        -- Pause
-VK.VK_CAPITAL      -- Caps Lock
-VK.VK_ESCAPE       -- Esc
-VK.VK_SPACE        -- Space
-
--- Navigation
-VK.VK_PRIOR        -- Page Up
-VK.VK_NEXT         -- Page Down
-VK.VK_END          -- End
-VK.VK_HOME         -- Home
-VK.VK_LEFT         -- Left Arrow
-VK.VK_UP           -- Up Arrow
-VK.VK_RIGHT        -- Right Arrow
-VK.VK_DOWN         -- Down Arrow
-
--- Editing
-VK.VK_INSERT       -- Insert
-VK.VK_DELETE       -- Delete
-
--- Numpad
-VK.VK_NUMPAD0 through VK.VK_NUMPAD9
-VK.VK_MULTIPLY     -- Numpad *
-VK.VK_ADD          -- Numpad +
-VK.VK_SUBTRACT     -- Numpad -
-VK.VK_DECIMAL      -- Numpad .
-VK.VK_DIVIDE       -- Numpad /
-
--- Lock Keys
-VK.VK_NUMLOCK      -- Num Lock
-VK.VK_SCROLL       -- Scroll Lock
-
--- Windows Keys
-VK.VK_LWIN         -- Left Windows key
-VK.VK_RWIN         -- Right Windows key
-```
-
-**Example Usage:**
-```lua
--- Check if Ctrl+S is pressed
-if input.is_key_down(VK.VK_CONTROL) and input.is_key_pressed(VK.VK_S) then
-    print("Save shortcut detected")
+local doc = html.parse("<html><body><h1>Hello</h1></body></html>")
+local root = doc:root()
+local body = doc:body()
+local nodes = doc:css("h1")
+for i = 1, #nodes do
+    print(nodes[i]:text())
 end
-
--- Simulate Alt+F4
-input.key_down(VK.VK_MENU, 0)
-input.key_press(VK.VK_F4, 0, 50)
-input.key_up(VK.VK_MENU, 0)
 ```
-
----
-
-## base64 Namespace
-
-The `base64` namespace provides base64 encoding and decoding utilities.
-
-### base64.encode
-```lua
-local encoded = base64.encode(in)
-```
-Encode a string to base64.
-
-**Parameters:**
-- `in` (string) - String to encode
-
-**Returns:**
-- `string` - Base64 encoded string
-
-**Example:**
-```lua
-local encoded = base64.encode("Hello World")
-print(encoded)  -- SGVsbG8gV29ybGQ=
-```
-
----
-
-### base64.decode
-```lua
-local decoded = base64.decode(in)
-```
-Decode a base64 string.
-
-**Parameters:**
-- `in` (string) - Base64 encoded string
-
-**Returns:**
-- `string` - Decoded string
-
-**Example:**
-```lua
-local decoded = base64.decode("SGVsbG8gV29ybGQ=")
-print(decoded)  -- Hello World
-```
-
----
-
-### base64.encode_shifted
-```lua
-local encoded = base64.encode_shifted(in)
-```
-Encode a string to base64 with a custom shift (obfuscation).
-
-**Parameters:**
-- `in` (string) - String to encode
-
-**Returns:**
-- `string` - Shifted base64 encoded string
-
-**Example:**
-```lua
-local encoded = base64.encode_shifted("Secret")
-```
-
----
-
-### base64.decode_shifted
-```lua
-local decoded = base64.decode_shifted(in)
-```
-Decode a shifted base64 string.
-
-**Parameters:**
-- `in` (string) - Shifted base64 string
-
-**Returns:**
-- `string` - Decoded string
-
-**Example:**
-```lua
-local decoded = base64.decode_shifted(encoded)
-```
-
----
-
-## HTML/XML Parsing
-
-Project-GLD provides modern HTML and XML parsing capabilities using lexbor and libxml2.
-
-### HTML Parsing
-
-#### html.parse
-```lua
-local doc = html.parse(html)
-```
-Parse an HTML string into a document object.
-
-**Parameters:**
-- `html` (string) - HTML string to parse
-
-**Returns:**
-- `HtmlDocument` - Document object
-
-**Example:**
-```lua
-local htmlContent = [[
-<html>
-<body>
-    <div class="content">
-        <h1>Title</h1>
-        <p>Paragraph</p>
-    </div>
-</body>
-</html>
-]]
-
-local doc = html.parse(htmlContent)
-```
+Parses an HTML string and returns an `HtmlDocument`.
 
 ---
 
 ### HtmlDocument Methods
 
-#### doc:css
-```lua
-local nodes = doc:css(selector)
-```
-Select elements using CSS selectors.
-
-**Parameters:**
-- `selector` (string) - CSS selector
-
-**Returns:**
-- `table` - Array of HtmlNode objects
-
-**Example:**
-```lua
-local nodes = doc:css("div.content h1")
-for i, node in ipairs(nodes) do
-    print(node:text())
-end
-```
-
----
-
-#### doc:root
-```lua
-local root = doc:root()
-```
-Get the root element.
-
-**Returns:**
-- `HtmlNode` - Root node
-
-**Example:**
-```lua
-local root = doc:root()
-```
-
----
-
-#### doc:body
-```lua
-local body = doc:body()
-```
-Get the body element.
-
-**Returns:**
-- `HtmlNode` - Body node
-
-**Example:**
-```lua
-local body = doc:body()
-```
+| Method | Returns | Description |
+|--------|---------|-------------|
+| `doc:css(selector)` | table of `HtmlNode` | Query with CSS selector |
+| `doc:root()` | `HtmlNode` | Root `<html>` node |
+| `doc:body()` | `HtmlNode` | `<body>` node |
 
 ---
 
 ### HtmlNode Methods
 
-#### node:tag
-```lua
-local tagName = node:tag()
-```
-Get the element's tag name.
-
-**Returns:**
-- `string` - Tag name (lowercase)
-
-**Example:**
-```lua
-local tag = node:tag()  -- "div", "p", "span", etc.
-```
+| Method | Returns | Description |
+|--------|---------|-------------|
+| `node:tag()` | string | Tag name (e.g., `"h1"`) |
+| `node:text()` | string | Inner text content |
+| `node:attr(name)` | string or nil | Attribute value |
+| `node:parent()` | `HtmlNode` | Parent node |
+| `node:children()` | table of `HtmlNode` | Child nodes |
 
 ---
 
-#### node:text
+### XML Parser
+
+#### `xml.parse(xml_string)`
 ```lua
-local text = node:text()
+local doc = xml.parse("<root><item id='1'>Value</item></root>")
+local root = doc:root()
+local items = doc:xpath("//item")
 ```
-Get the text content of the node.
-
-**Returns:**
-- `string` - Text content
-
-**Example:**
-```lua
-local text = node:text()
-print("Content: " .. text)
-```
-
----
-
-#### node:attr
-```lua
-local value = node:attr(name)
-```
-Get an attribute value.
-
-**Parameters:**
-- `name` (string) - Attribute name
-
-**Returns:**
-- `string` or `nil` - Attribute value if exists
-
-**Example:**
-```lua
-local href = node:attr("href")
-local className = node:attr("class")
-```
-
----
-
-#### node:parent
-```lua
-local parent = node:parent()
-```
-Get the parent node.
-
-**Returns:**
-- `HtmlNode` - Parent node
-
-**Example:**
-```lua
-local parent = node:parent()
-```
-
----
-
-#### node:children
-```lua
-local children = node:children()
-```
-Get child nodes.
-
-**Returns:**
-- `table` - Array of HtmlNode objects
-
-**Example:**
-```lua
-local children = node:children()
-for i, child in ipairs(children) do
-    print(child:tag())
-end
-```
-
----
-
-### HTML Parsing Example
-
-```lua
--- Fetch and parse a web page
-local response = http.get("https://example.com/downloads", {})
-local doc = html.parse(response)
-
--- Find all download links
-local links = doc:css("a.download-link")
-for i, link in ipairs(links) do
-    local url = link:attr("href")
-    local title = link:text()
-    print("Found: " .. title .. " - " .. url)
-end
-
--- Navigate DOM structure
-local content = doc:css("div#main-content")[1]
-if content then
-    local heading = content:children()[1]
-    print("First heading: " .. heading:text())
-end
-```
-
----
-
-### XML Parsing
-
-#### xml.parse
-```lua
-local doc = xml.parse(xml)
-```
-Parse an XML string into a document object.
-
-**Parameters:**
-- `xml` (string) - XML string to parse
-
-**Returns:**
-- `XmlDocument` - Document object
-
-**Example:**
-```lua
-local xmlContent = [[
-<?xml version="1.0"?>
-<root>
-    <item id="1">Value</item>
-</root>
-]]
-
-local doc = xml.parse(xmlContent)
-```
+Parses XML and returns an `XmlDocument`.
 
 ---
 
 ### XmlDocument Methods
 
-#### doc:xpath
-```lua
-local nodes = doc:xpath(expr)
-```
-Query using XPath expressions.
-
-**Parameters:**
-- `expr` (string) - XPath expression
-
-**Returns:**
-- `table` - Array of XmlNode objects
-
-**Example:**
-```lua
-local nodes = doc:xpath("//item[@id='1']")
-for i, node in ipairs(nodes) do
-    print(node:text())
-end
-```
-
----
-
-#### doc:root
-```lua
-local root = doc:root()
-```
-Get the root element.
-
-**Returns:**
-- `XmlNode` - Root node
-
-**Example:**
-```lua
-local root = doc:root()
-```
+| Method | Returns | Description |
+|--------|---------|-------------|
+| `doc:xpath(expr)` | table of `XmlNode` | Query with XPath |
+| `doc:root()` | `XmlNode` | Root element |
 
 ---
 
 ### XmlNode Methods
 
-#### node:name
+| Method | Returns | Description |
+|--------|---------|-------------|
+| `node:name()` | string | Element tag name |
+| `node:text()` | string | Text content |
+| `node:attr(name)` | string or nil | Attribute value |
+
+---
+
+### Legacy HTML Parser (HtmlWrapper — Deprecated)
+
 ```lua
-local name = node:name()
+local result = HtmlWrapper.findAttribute(htmlString, tagName, termKey, termValue, desiredKey)
 ```
-Get the element name.
+Kept for backwards compatibility. Use `html.parse()` instead.
 
-**Returns:**
-- `string` - Element name
+---
 
-**Example:**
+## 14. utils
+
+Utility and debugging functions.
+
+### `utils.AttachConsole()`
+Attaches a Windows console window for debug output.
+
+### `utils.DetachConsole()`
+Detaches the console window.
+
+### `utils.ConsolePrint(logToFile, fmt, ...)`
 ```lua
-local name = node:name()
+utils.ConsolePrint(true, "Value: %d", 42)
+```
+Prints to the attached console. Set `logToFile` to `true` to also write to log file. Must call `AttachConsole()` first.
+
+### `utils.GetTimeString()`
+Returns the current time as a human-readable string.
+
+### `utils.GetTimestamp()`
+Returns a timestamp string.
+
+### `utils.GetTimeUnix()`
+Returns the current Unix timestamp as an integer.
+
+### `utils.Log(fmt, ...)`
+```lua
+utils.Log("Something happened: %s", "info")
+```
+Writes to `Project-GLD.log` in the same folder as the GLD executable. Prefer `gldconsole.print()` for interactive logging.
+
+---
+
+## 15. gldconsole
+
+In-app debug console. Preferred logging method.
+
+### `gldconsole.print(text)`
+```lua
+gldconsole.print("Script started")
+```
+Prints a message to the GLD built-in console.
+
+### `gldconsole.show()`
+Opens/shows the GLD console window.
+
+### `gldconsole.close()`
+Closes/hides the GLD console window.
+
+---
+
+## 16. game
+
+Access information about the currently viewed game in the search/game page.
+
+### `game.getgamename()`
+```lua
+local name = game.getgamename()
+```
+Returns the name of the game currently selected/displayed in the search tab.
+
+---
+
+## 17. GameLibrary
+
+Manage the GLD game library.
+
+### `GameLibrary.launch(id)`
+```lua
+GameLibrary.launch(3)
+```
+Launches the game with the given library ID. Returns `true` on success.
+
+---
+
+### `GameLibrary.close(id)`
+Closes/stops the running game.
+
+---
+
+### `GameLibrary.addGame(exePath, imagePath, gamename, commandline [, disableigdbid])`
+```lua
+GameLibrary.addGame("C:/Games/mygame.exe", "C:/img.jpg", "My Game", "", false)
+```
+Adds a game to the library.
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `exePath` | string | Path to the executable |
+| `imagePath` | string | Path to the cover image |
+| `gamename` | string | Display name |
+| `commandline` | string | Launch arguments |
+| `disableigdbid` | bool | Disable IGDB ID lookup |
+
+---
+
+### `GameLibrary.changeGameinfo(id [, exePath [, imagePath [, gamename [, commandline]]]])`
+```lua
+GameLibrary.changeGameinfo(3, "", "", "New Name", "")
+```
+Updates info for a library game. Pass empty strings to leave fields unchanged.
+
+---
+
+### `GameLibrary.removeGame(id)`
+```lua
+GameLibrary.removeGame(3)
 ```
 
 ---
 
-#### node:text
+### `GameLibrary.GetGameIdFromName(name)`
 ```lua
-local text = node:text()
-```
-Get the text content.
-
-**Returns:**
-- `string` - Text content
-
-**Example:**
-```lua
-local text = node:text()
+local id = GameLibrary.GetGameIdFromName("My Game")
 ```
 
 ---
 
-#### node:attr
+### `GameLibrary.GetGameNameFromId(id)`
 ```lua
-local value = node:attr(name)
-```
-Get an attribute value.
-
-**Parameters:**
-- `name` (string) - Attribute name
-
-**Returns:**
-- `string` or `nil` - Attribute value
-
-**Example:**
-```lua
-local id = node:attr("id")
+local name = GameLibrary.GetGameNameFromId(3)
 ```
 
 ---
 
-### Legacy HTML Parser (Deprecated)
-
-The old Gumbo-based parser is still available but deprecated. Use `html.parse()` instead.
-
+### `GameLibrary.GetGamePath(id)`
 ```lua
--- DEPRECATED - Use html.parse() instead
-local result = HtmlWrapper.findAttribute(htmlString, elementTagName, 
-    elementTermKey, elementTermValue, desiredResultKey)
+local path = GameLibrary.GetGamePath(3)
 ```
+Returns the executable path for the game.
 
 ---
 
-## JSON Parsing
-
-### JsonWrapper.parse
+### `GameLibrary.GetGameList()`
 ```lua
-local data = JsonWrapper.parse(jsonString)
+local list = GameLibrary.GetGameList()
+for _, g in ipairs(list) do
+    print(g.name, g.id)
+end
 ```
-Parse a JSON string into a Lua table.
-
-**Parameters:**
-- `jsonString` (string) - JSON string to parse
-
-**Returns:**
-- `table` or `sol::object` - Parsed data
-
-**Example:**
-```lua
-local jsonText = '{"name":"Game","version":1.5,"tags":["action","rpg"]}'
-local data = JsonWrapper.parse(jsonText)
-
-print(data.name)      -- "Game"
-print(data.version)   -- 1.5
-print(data.tags[1])   -- "action"
-```
+Returns a table of all library games. Each entry has the same fields as `GameInfo`.
 
 ---
 
-## Callback System
+## 18. communication
 
-Project-GLD uses an event-driven callback system. Register callbacks using `client.add_callback(eventname, function)`.
+Used by search/download scripts to pass results back to GLD's UI.
 
-### Available Callbacks
-
-#### on_launch
+### `communication.receiveSearchResults(resultsTable)`
 ```lua
-client.add_callback("on_launch", function()
-    -- Called when GLD is launched
-    -- Warning: May be called before script is fully loaded
-end)
-```
-
----
-
-#### on_present
-```lua
-client.add_callback("on_present", function()
-    -- Main application loop - called every frame
-    -- Use for continuous operations
-end)
-```
-
----
-
-#### on_gameselected
-```lua
-client.add_callback("on_gameselected", function()
-    -- Called when a game is selected in search
-end)
-```
-
----
-
-#### on_gamelaunch
-```lua
-client.add_callback("on_gamelaunch", function(gameInfo)
-    -- Called when a game is launched
-    -- gameInfo: GameInfo object with properties:
-    --   - id (string)
-    --   - name (string)
-    --   - initoptions (string)
-    --   - imagePath (string)
-    --   - exePath (string)
-end)
-```
-
-**Example:**
-```lua
-client.add_callback("on_gamelaunch", function(gameInfo)
-    print("Launching: " .. gameInfo.name)
-    print("Executable: " .. gameInfo.exePath)
-end)
-```
-
----
-
-#### on_gamesearch
-```lua
-client.add_callback("on_gamesearch", function()
-    -- Called when a game search is performed
-end)
-```
-
----
-
-#### on_extractioncompleted
-```lua
-client.add_callback("on_extractioncompleted", function(origin, destination)
-    -- Called when zip.extract completes
-    -- origin: Source archive file path (string)
-    -- destination: Extraction destination path (string)
-end)
-```
-
-**Example:**
-```lua
-client.add_callback("on_extractioncompleted", function(origin, dest)
-    print("Extracted: " .. origin)
-    print("To: " .. dest)
-    notifications.push_success("Extract Complete", "Files ready")
-end)
-```
-
----
-
-#### on_downloadclick
-```lua
-client.add_callback("on_downloadclick", function(item, url, scriptname)
-    -- Called when download button is clicked in game page
-    -- item: JSON data as string
-    -- url: Download URL (string)
-    -- scriptname: Name of script handling download (string)
-end)
-```
-
-**Example:**
-```lua
-client.add_callback("on_downloadclick", function(item, url, scriptname)
-    local data = JsonWrapper.parse(item)
-    print("Download requested: " .. url)
-end)
-```
-
----
-
-#### on_cfdone
-```lua
-client.add_callback("on_cfdone", function(cookie, url)
-    -- Called when http.CloudFlareSolver completes
-    -- cookie: Cloudflare cookie string
-    -- url: Original URL that was solved (string)
-end)
-```
-
-**Example:**
-```lua
-client.add_callback("on_cfdone", function(cookie, url)
-    print("Cloudflare cookie: " .. cookie)
-    -- Use cookie in subsequent requests
-    local response = http.get(url, {
-        ["Cookie"] = cookie,
-        ["User-Agent"] = "Mozilla/5.0 ... ProjectGLD/2.15"
-    })
-end)
-```
-
----
-
-#### on_downloadcompleted
-```lua
-client.add_callback("on_downloadcompleted", function(path, url)
-    -- Called when a download finishes
-    -- path: Local file path where file was saved (string)
-    -- url: Original download URL (string)
-end)
-```
-
-**Example:**
-```lua
-client.add_callback("on_downloadcompleted", function(path, url)
-    print("Downloaded to: " .. path)
-    
-    -- Auto-extract if it's an archive
-    if path:match("%.zip$") then
-        local dest = path:gsub("%.zip$", "\\")
-        zip.extract(path, dest, true, "")
-    end
-end)
-```
-
----
-
-#### on_setupcompleted
-```lua
-client.add_callback("on_setupcompleted", function(from, to)
-    -- Called when dll.innohook completes
-    -- from: Source file being extracted (string)
-    -- to: Destination path (string)
-end)
-```
-
-**Example:**
-```lua
-client.add_callback("on_setupcompleted", function(from, to)
-    print("Inno Setup extracted from: " .. from)
-    print("To: " .. to)
-end)
-```
-
----
-
-#### on_captchasolved
-```lua
-client.add_callback("on_captchasolved", function(browserID)
-    -- Called when CAPTCHA is solved in a browser
-    -- browserID: Browser ID (int)
-end)
-```
-
-**Example:**
-```lua
-client.add_callback("on_captchasolved", function(browserID)
-    local browser = browser.GetBrowserByID(browserID)
-    print("CAPTCHA solved in: " .. browser.name)
-end)
-```
-
----
-
-#### on_captchadetected
-```lua
-client.add_callback("on_captchadetected", function(browserID)
-    -- Called when CAPTCHA is detected in a browser
-    -- browserID: Browser ID (int)
-end)
-```
-
----
-
-#### on_scriptselected
-```lua
-client.add_callback("on_scriptselected", function()
-    -- Called when a script is selected in search tab
-end)
-```
-
----
-
-#### on_quit
-```lua
-client.add_callback("on_quit", function()
-    -- Called when GLD is exiting
-    -- Warning: Only use if absolutely necessary
-end)
-```
-
----
-
-#### on_browserloaded
-```lua
-client.add_callback("on_browserloaded", function(browserID)
-    -- Called when browser finishes loading a page
-    -- Equivalent to CefLoadHandler::OnLoadEnd
-    -- browserID: Browser ID (int)
-end)
-```
-
-**Example:**
-```lua
-client.add_callback("on_browserloaded", function(browserID)
-    local browser = browser.GetBrowserByID(browserID)
-    browser:GetBrowserSource(function(html)
-        -- Process page content
-        local doc = html.parse(html)
-    end)
-end)
-```
-
----
-
-#### on_browserconsolemessage
-```lua
-client.add_callback("on_browserconsolemessage", function(browserID, message)
-    -- Called when browser outputs console message
-    -- browserID: Browser ID (int)
-    -- message: Console message content (string)
-end)
-```
-
----
-
-#### on_beforedownload
-```lua
-client.add_callback("on_beforedownload", function(url)
-    -- Called before download starts - for download resolvers
-    -- url: Original download URL (string)
-    -- Return: returnurl (string), name (string), headers (table)
-    -- Return nil to keep original values
-    -- Return "cancel" as URL to cancel download
-    
-    return resolvedUrl, filename, headers
-end)
-```
-
-**Example:**
-```lua
-client.add_callback("on_beforedownload", function(url)
-    if url:match("example.com") then
-        -- Resolve the download
-        local browser = browser.CreateBrowser("resolver", url)
-        
-        -- Wait for redirect and get final URL
-        sleep(3000)
-        local finalUrl = browser:BrowserUrl()
-        browser:CloseBrowser()
-        
-        -- Set history for resume support
-        Download.SetHistoryUrl(finalUrl, url)
-        
-        return finalUrl, "file.zip", {}
-    end
-    
-    return nil, nil, nil  -- Don't modify
-end)
-```
-
----
-
-#### on_browserbeforeresourceload
-```lua
-client.add_callback("on_browserbeforeresourceload", function(browserID, url, method, referrer, resourceType)
-    -- Called before browser loads a resource
-    -- browserID: Browser ID (int)
-    -- url: Resource URL (string)
-    -- method: HTTP method (string)
-    -- referrer: Referrer URL (string)
-    -- resourceType: Type of resource (string)
-end)
-```
-
----
-
-#### on_browserbeforedownload
-```lua
-client.add_callback("on_browserbeforedownload", function(browserID, url, suggestedName, size)
-    -- Called when browser initiates a download
-    -- browserID: Browser ID (int)
-    -- url: Download URL (string)
-    -- suggestedName: Suggested filename (string)
-    -- size: File size if known (string)
-    -- Return: originalUrl (string) - needed for resolvers
-    
-    return originalUrl
-end)
-```
-
----
-
-#### on_button_[name]
-```lua
-client.add_callback("on_button_Download", function()
-    -- Called when menu button is clicked
-    -- Replace [name] with actual button name
-end)
-```
-
-**Example:**
-```lua
-menu.add_button("Start Download")
-
-client.add_callback("on_button_Start Download", function()
-    Download.DownloadFile("https://example.com/file.zip")
-end)
-```
-
----
-
-## Types Reference
-
-### GameInfo
-
-Object containing game information.
-
-**Properties:**
-- `id` (string) - Unique game identifier
-- `name` (string) - Display name
-- `initoptions` (string) - Initialization options
-- `imagePath` (string) - Path to game cover image
-- `exePath` (string) - Path to game executable
-
----
-
-### Color
-
-Object representing an RGB color (exact structure TBD).
-
----
-
-## Complete Example Scripts
-
-### Example 1: Simple Download Script
-
-```lua
--- Register for game search event
-client.add_callback("on_gamesearch", function()
-    -- Create search results
-    local results = {
-        {
-            name = "My Game",
-            image = "https://example.com/cover.jpg",
-            downloadUrl = "https://example.com/download"
-        }
+communication.receiveSearchResults({
+    {
+        title = "Game Title",
+        magneturl = "magnet:?xt=...",
+        filesize = "10 GB",
+        uploadDate = "2024-01-01",
+        uriOnline = "https://...",
+        image = "https://img.jpg"
     }
-    
-    -- Send to UI
-    communication.receiveSearchResults(results)
-end)
+})
+```
+Sends a list of search result items to display in the GLD search results panel.
 
--- Handle download click
-client.add_callback("on_downloadclick", function(item, url, scriptname)
-    gldconsole.print("Starting download: " .. url)
-    Download.DownloadFile(url)
-end)
+---
 
--- Handle completion
-client.add_callback("on_downloadcompleted", function(path, url)
-    notifications.push_success("Complete", "Downloaded to: " .. path)
-    
-    -- Auto-extract
-    if path:match("%.zip$") then
-        local dest = path:gsub("%.zip$", "\\")
-        zip.extract(path, dest, true, "")
-    end
-end)
+### `communication.RefreshScriptResults()`
+Forces the search results UI to refresh/redraw.
 
--- Handle extraction
+---
+
+## 19. SteamApi
+
+Interact with Steam data.
+
+### `SteamApi.GetAppID(name)`
+```lua
+local appid = SteamApi.GetAppID("Half-Life 2")
+```
+Searches for a game and returns its Steam App ID string.
+
+---
+
+### `SteamApi.GetSystemRequirements(appid)`
+```lua
+local reqs = SteamApi.GetSystemRequirements("220")
+```
+Returns the system requirements as a string for the given App ID.
+
+---
+
+### `SteamApi.GetGameData(appid)`
+```lua
+local data = SteamApi.GetGameData("220")
+```
+Returns full game metadata (JSON string) for the given App ID.
+
+---
+
+### `SteamApi.OpenSteam()`
+Launches the Steam application.
+
+---
+
+### `SteamApi.IsSteamRunning()`
+```lua
+if SteamApi.IsSteamRunning() then ... end
+```
+Returns `true` if Steam is currently running.
+
+---
+
+## 20. dll
+
+DLL injection utilities.
+
+### `dll.inject(processexename, dllpath, delay)`
+```lua
+dll.inject("GameProcess.exe", "C:/myhook.dll", 300)
+```
+Injects a 64-bit DLL into the given process. Returns `true` on success.
+
+| Parameter | Description |
+|-----------|-------------|
+| `processexename` | e.g., `"GoW.exe"` |
+| `dllpath` | Full path to the DLL |
+| `delay` | Milliseconds to wait before injecting |
+
+---
+
+### `dll.injectx86(processexename, dllpath, delay)`
+Same as `inject` but for 32-bit (x86) processes/DLLs.
+
+---
+
+### `dll.innohook(processname)`
+```lua
+dll.innohook("setup.exe")
+client.add_callback("on_setupcompleted", function(from, to)
+    print("Extracted from:", from, "to:", to)
+end)
+```
+Hooks an InnoSetup installer process. Fires the `on_setupcompleted` callback when done.
+
+---
+
+## 21. zip
+
+Archive extraction.
+
+### `zip.extract(source, destination, deleteaftercomplete, pass)`
+```lua
+zip.extract("C:/archive.zip", "C:/extracted", false, "")
+zip.extract("C:/archive.rar", "C:/extracted", true, "mypassword")
+
 client.add_callback("on_extractioncompleted", function(origin, dest)
-    notifications.push_success("Extracted", "Ready to play!")
+    print("Extracted:", origin, "->", dest)
+end)
+```
+Extracts an archive. Supports zip, rar, 7z, tar, and more.
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `source` | string | Path to the archive |
+| `destination` | string | Extraction destination folder |
+| `deleteaftercomplete` | bool | Delete archive after extraction |
+| `pass` | string | Password (empty string if none) |
+
+> Fires the `on_extractioncompleted` callback with `(origin_file, destination_path)` when done.
+
+---
+
+## 22. save
+
+Save game backup and cloud sync.
+
+### Local Backup
+
+| Function | Description |
+|----------|-------------|
+| `save.Backup(name)` | Backup saves for a game by name |
+| `save.Restore(name)` | Restore saves for a game by name |
+| `save.BackupAll()` | Backup all tracked games |
+| `save.RestoreAll()` | Restore all tracked games |
+
+### Cloud Sync
+
+| Function | Description |
+|----------|-------------|
+| `save.Upload(name)` | Upload saves to cloud |
+| `save.Download(name)` | Download saves from cloud |
+| `save.UploadAll()` | Upload all to cloud |
+| `save.DownloadAll()` | Download all from cloud |
+
+### Refresh
+
+| Function | Description |
+|----------|-------------|
+| `save.RefreshBackup()` | Refresh backup list |
+| `save.RefreshRestore()` | Refresh restore list |
+| `save.RefreshCloud()` | Refresh cloud list |
+| `save.RefreshAll()` | Refresh all lists |
+
+### Queries
+
+| Function | Returns | Description |
+|----------|---------|-------------|
+| `save.GetBackupGamesList()` | table | List of games with backups |
+| `save.GetRestoreGamesList()` | string | List of restorable games |
+| `save.GetCloudGamesList()` | table of strings | List of cloud-synced games |
+
+---
+
+## 23. settings
+
+Persist GLD settings.
+
+### `settings.save()`
+Saves the current GLD settings to disk.
+
+### `settings.load()`
+Loads GLD settings from disk.
+
+---
+
+## 24. base64
+
+Base64 encoding and decoding.
+
+### `base64.encode(data)`
+```lua
+local encoded = base64.encode("Hello World")
+```
+
+### `base64.decode(data)`
+```lua
+local decoded = base64.decode("SGVsbG8gV29ybGQ=")
+```
+
+### `base64.encode_shifted(data)`
+Encodes using a shifted variant (for obfuscation).
+
+### `base64.decode_shifted(data)`
+Decodes a shifted base64 string.
+
+---
+
+## 25. GameInfo Usertype
+
+Represents a game entry. Passed to `on_gamelaunch` callback.
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `id` | string | Game ID |
+| `name` | string | Game name |
+| `initoptions` | string | Launch options/init config |
+| `imagePath` | string | Path or URL to cover image |
+| `exePath` | string | Path to executable |
+
+**Example:**
+```lua
+client.add_callback("on_gamelaunch", function(gameinfo)
+    print("Launching:", gameinfo.name)
+    print("Exe:", gameinfo.exePath)
+end)
+```
+
+---
+
+## 26. JsonWrapper Usertype
+
+### `JsonWrapper.parse(jsonString)`
+```lua
+local data = JsonWrapper.parse('{"key": "value"}')
+print(data.key) -- "value"
+```
+Parses a JSON string and returns a Lua table (sol::object).
+
+---
+
+## 27. HtmlWrapper Usertype (Legacy)
+
+> **Deprecated.** Use `html.parse()` instead.
+
+### `HtmlWrapper.findAttribute(html, tagName, termKey, termValue, desiredKey)`
+```lua
+local result = HtmlWrapper.findAttribute(html, "a", "class", "download-link", "href")
+```
+Finds an attribute in an HTML element. Uses the Gumbo HTML parser (old).
+
+---
+
+## 28. Lua Callbacks Reference
+
+Register callbacks with:
+```lua
+client.add_callback("event_name", function(...)
+    -- handler
+end)
+```
+
+| Event | Arguments | Description |
+|-------|-----------|-------------|
+| `on_launch` | — | GLD is launched. May fire before the script fully loads — not recommended for most use cases |
+| `on_present` | — | Main loop tick. Fires every frame |
+| `on_quit` | — | GLD is exiting. Use sparingly |
+| `on_gamesearch` | — | User searched for a game |
+| `on_gameselected` | — | User selected a game in search |
+| `on_scriptselected` | — | A script is selected in the search/game tab |
+| `on_gamelaunch` | `GameInfo` | A game was launched. Receives the `GameInfo` object |
+| `on_downloadclick` | `item_json, url, scriptname` | User clicked "Download" on a game page. All args are strings |
+| `on_downloadcompleted` | `path, url` | A download finished. Args are strings |
+| `on_beforedownload` | `url` | Called before a download starts. Return `(resolved_url, name, headers)` to modify the download, or `nil` to keep original |
+| `on_extractioncompleted` | `origin, destination` | A `zip.extract()` completed. Both args are strings |
+| `on_setupcompleted` | `from, to` | `dll.innohook()` completed. Both are strings |
+| `on_cfdone` | `cookie, url` | Cloudflare solver completed. Both are strings |
+| `on_browserloaded` | `browserID` | A browser finished loading a page (equivalent to `OnLoadEnd`) |
+| `on_browserconsolemessage` | `browserID, message` | A browser emitted a console message |
+| `on_browserbeforeresourceload` | `browserID, url, method, referrer, resourceType` | Browser is about to load a resource |
+| `on_browserbeforedownload` | `browserID, url, suggestedName, size` | Browser is about to download a file. Return `(originalUrl)` to set the base URL for resolvers |
+| `on_captchadetected` | `browserID` | Captcha was detected in a browser |
+| `on_captchasolved` | `browserID` | Captcha was solved in a browser |
+| `on_button_(name)` | — | A menu button named `name` was clicked |
+
+---
+
+### `on_beforedownload` — Download Resolver Pattern
+
+```lua
+client.add_callback("on_beforedownload", function(url)
+    -- Resolve the URL however you need
+    local resolved = resolve_my_url(url)
+    local headers = {"Referer: https://example.com"}
     
-    -- Find game executable
-    local exes = file.listexecutablesrecursive(dest)
-    if #exes > 0 then
-        GameLibrary.addGame(exes[1], "", "My Game", "", false)
+    -- Return: resolved_url, display_name, headers_table
+    -- Return nil to keep original
+    return resolved, "filename.zip", headers
+    
+    -- Cancel a download:
+    -- return "cancel"
+end)
+```
+
+---
+
+## 29. Full Examples
+
+### Example 1: Basic Search Script
+
+```lua
+local VERSION = "1.0.0"
+client.auto_script_update("https://example.com/myscript.lua", VERSION)
+
+client.add_callback("on_gamesearch", function()
+    local gamename = game.getgamename()
+    gldconsole.print("Searching for: " .. gamename)
+
+    local response = http.get("https://myapi.com/search?q=" .. gamename, {})
+    local data = JsonWrapper.parse(response)
+
+    local results = {}
+    for _, item in ipairs(data.results) do
+        table.insert(results, {
+            title = item.title,
+            magneturl = item.magnet,
+            filesize = item.size,
+            uploadDate = item.date,
+            uriOnline = item.page,
+            image = item.image
+        })
     end
+
+    communication.receiveSearchResults(results)
 end)
 ```
 
@@ -4569,222 +1761,129 @@ end)
 ### Example 2: Download Resolver with Browser
 
 ```lua
--- Resolve protected downloads
 client.add_callback("on_beforedownload", function(url)
-    if not url:match("mycdn.com") then
-        return nil, nil, nil  -- Not our CDN
+    if not url:find("myhost.com") then return nil end
+
+    local b = browser.CreateBrowser("resolver_" .. os.time(), url)
+    browser.set_visible(false, b.name)
+
+    -- Wait for the page to load
+    sleep(3000)
+
+    local resolved = nil
+    b:GetBrowserSource(function(src)
+        local doc = html.parse(src)
+        local links = doc:css("a.download-btn")
+        if links[1] then
+            resolved = links[1]:attr("href")
+        end
+    end)
+
+    sleep(500)
+    b:CloseBrowser()
+
+    if resolved then
+        return resolved, nil, {"Referer: " .. url}
     end
-    
-    gldconsole.print("Resolving: " .. url)
-    
-    -- Create hidden browser
-    local resolver = browser.CreateBrowser("resolver_" .. os.time(), url)
-    browser.set_visible(false, resolver.name)
-    
-    -- Wait for page to load and redirect
-    sleep(5000)
-    
-    -- Get final URL
-    local finalUrl = resolver:BrowserUrl()
-    gldconsole.print("Resolved to: " .. finalUrl)
-    
-    -- Clean up
-    resolver:CloseBrowser()
-    
-    -- Set history for resume
-    Download.SetHistoryUrl(finalUrl, url)
-    
-    return finalUrl, nil, {}
+    return nil
 end)
 ```
 
 ---
 
-### Example 3: Web Scraper with HTML Parser
+### Example 3: Custom Menu + Keybind
 
 ```lua
-client.add_callback("on_gamesearch", function()
-    local searchTerm = game.getgamename()
-    
-    -- Fetch search results page
-    local html = http.get("https://example.com/search?q=" .. searchTerm, {
-        ["User-Agent"] = "Mozilla/5.0 ..."
-    })
-    
-    -- Parse HTML
-    local doc = html.parse(html)
-    
-    -- Find all game entries
-    local games = doc:css("div.game-item")
-    local results = {}
-    
-    for i, gameDiv in ipairs(games) do
-        local title = gameDiv:css("h2.title")[1]:text()
-        local image = gameDiv:css("img")[1]:attr("src")
-        local link = gameDiv:css("a.download")[1]:attr("href")
-        
-        table.insert(results, {
-            name = title,
-            image = image,
-            downloadUrl = link
-        })
+menu.add_check_box("Auto-Download")
+menu.add_keybind("Toggle Key", VK.F8)
+menu.add_button("Run Now")
+
+client.add_callback("on_button_Run Now", function()
+    if menu.get_bool("Auto-Download") then
+        notifications.push("Script", "Auto-download is enabled!")
     end
-    
-    communication.receiveSearchResults(results)
+end)
+
+client.add_callback("on_present", function()
+    local key = menu.get_keybind("Toggle Key")
+    if input.is_key_pressed(key) then
+        local current = menu.get_bool("Auto-Download")
+        menu.set_bool("Auto-Download", not current)
+        notifications.push_success("Toggled", "Auto-Download: " .. tostring(not current))
+    end
 end)
 ```
 
 ---
 
-### Example 4: Cloudflare Solver
+### Example 4: Virtual Gamepad Macro
 
 ```lua
--- Handle protected URLs
-client.add_callback("on_beforedownload", function(url)
-    if url:match("protected-site.com") then
-        gldconsole.print("Solving Cloudflare...")
-        http.CloudFlareSolver(url)
-        
-        -- Will continue in on_cfdone callback
-        return "cancel", nil, {}  -- Cancel for now
+input.InitializeVirtualGamePad()
+
+local function press_sequence()
+    sleep(200)
+    input.SendVirtualGamePadKeyPress(GP.A, 100)
+    sleep(300)
+    input.SendVirtualGamePadKeyPress(GP.B, 100)
+    sleep(300)
+    input.SendVirtualGamePadThumbMove(false, 32767, 0, 500) -- push left stick right
+    sleep(600)
+end
+
+client.add_callback("on_present", function()
+    if input.is_key_pressed(VK.F9) then
+        press_sequence()
     end
-    return nil, nil, nil
+end)
+```
+
+---
+
+### Example 5: File Download + Extraction
+
+```lua
+client.add_callback("on_downloadcompleted", function(path, url)
+    if path:find("%.zip$") then
+        gldconsole.print("Download done, extracting: " .. path)
+        zip.extract(path, "C:/Games/MyGame", true, "")
+    end
 end)
 
--- Cloudflare solved
+client.add_callback("on_extractioncompleted", function(origin, dest)
+    gldconsole.print("Extraction complete: " .. dest)
+    GameLibrary.addGame(dest .. "/game.exe", "", "My Game", "", false)
+    notifications.push_success("Done", "Game installed!")
+end)
+```
+
+---
+
+### Example 6: Cloudflare Bypass
+
+```lua
+local cf_cookie = nil
+local cf_url = nil
+
 client.add_callback("on_cfdone", function(cookie, url)
-    gldconsole.print("Cloudflare solved!")
-    
-    -- Now download with cookie
-    local response = http.get(url, {
-        ["Cookie"] = cookie,
+    cf_cookie = cookie
+    cf_url = url
+    gldconsole.print("CF solved for: " .. url)
+end)
+
+local function get_with_cf(url)
+    if cf_cookie == nil then
+        http.CloudFlareSolver(url)
+        -- Wait for on_cfdone then retry
+        return nil
+    end
+    return http.get(url, {
+        ["Cookie"] = cf_cookie,
         ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 ProjectGLD/2.15"
     })
-    
-    -- Parse to find real download link
-    local doc = html.parse(response)
-    local dlLink = doc:css("a#download-button")[1]:attr("href")
-    
-    Download.DownloadFile(dlLink)
-end)
-```
-
----
-
-### Example 5: Menu Configuration
-
-```lua
--- Create configuration menu
-menu.add_text("Download Settings")
-menu.next_line()
-
-menu.add_slider_int("max_connections", 1, 16)
-menu.set_int("max_connections", 8)
-
-menu.add_slider_int("max_downloads", 1, 5)
-menu.set_int("max_downloads", 3)
-
-menu.add_check_box("auto_extract")
-menu.set_bool("auto_extract", true)
-
-menu.add_button("Apply Settings")
-
--- Handle button click
-client.add_callback("on_button_Apply Settings", function()
-    local connections = menu.get_int("max_connections")
-    local downloads = menu.get_int("max_downloads")
-    local autoExtract = menu.get_bool("auto_extract")
-    
-    Download.SetMaxConnections(connections)
-    Download.ChangeMaxActiveDownloads(downloads)
-    
-    notifications.push_success("Settings Applied", 
-        string.format("Connections: %d, Downloads: %d", connections, downloads))
-end)
-```
-
----
-
-## Best Practices
-
-1. **Error Handling**: Always wrap risky operations in `pcall`:
-```lua
-local success, result = pcall(function()
-    return http.get(url, {})
-end)
-
-if success then
-    -- Process result
-else
-    gldconsole.print("Error: " .. tostring(result))
 end
 ```
 
-2. **Resource Cleanup**: Always close browsers and files when done:
-```lua
-local browser = browser.CreateBrowser("temp", url)
--- ... use browser ...
-browser:CloseBrowser()
-```
-
-3. **User Feedback**: Keep users informed:
-```lua
-gldconsole.print("Processing download...")
-notifications.push("Status", "Please wait...")
-```
-
-4. **Logging**: Use `gldconsole.print` for debugging:
-```lua
-gldconsole.print("Debug: " .. variableName)
-```
-
-5. **Settings Persistence**: Save important settings:
-```lua
-menu.set_int("last_used", value)
-settings.save()
-```
-
 ---
 
-## Troubleshooting
-
-### Common Issues
-
-**Browser not loading:**
-- Check if URL is valid
-- Ensure network access is allowed
-- Try disabling CAPTCHA detection for Cloudflare pages
-
-**Download not starting:**
-- Verify URL is accessible
-- Check if download resolver is needed
-- Ensure download path exists
-
-**HTML parsing returns empty:**
-- Verify page loaded completely
-- Check if JavaScript rendering is required
-- Try using browser.GetBrowserSource instead of http.get
-
-**Script not executing:**
-- Check for syntax errors
-- Verify callbacks are registered before events fire
-- Use gldconsole.print for debugging
-
----
-
-## Version History
-
-- **6.99**: Current version with full CEF integration, HTML/XML parsers
-- Earlier versions: See legacy documentation
-
----
-
-## Additional Resources
-
-- Project-GLD Forums: [Link TBD]
-- Example Scripts Repository: [Link TBD]
-- Community Discord: [Link TBD]
-
----
-
-**End of Documentation**
+*End of Project-GLD Lua API Documentation*

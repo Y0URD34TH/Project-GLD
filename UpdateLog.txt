@@ -1,8 +1,7 @@
-V6.99
+V7.00
 
-Improved browser
-Resolved a lot of filehosts 
-Script speed got significantly improved thanks to new scraping methods
-Added torrent file selection tree
-Improved LUA API
-Added a search bar at the scripts tab
+Added support for multi-part downloads
+Added virtual gamepad support
+Added support for gamepad emulation
+Fixed a lot of bugs related to the download manager
+Fixed the bug which would crash GLD if you sorted games by size
