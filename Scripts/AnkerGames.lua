@@ -1,4 +1,4 @@
-local VERSION = "1.2.0"
+local VERSION = "1.2.1"
 client.auto_script_update("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/refs/heads/main/Scripts/AnkerGames.lua", VERSION)
 
 -- Track multiple pending downloads
@@ -173,7 +173,8 @@ else
 
             pendingResolvers[resolverBrowser:GetID()] = {
                 originalUrl = url,
-                resolved = false
+                resolved = false,
+                name = browserName
             }
             
             -- Cancel the original download - we'll resolve it first
@@ -200,24 +201,32 @@ else
             resolverInfo.resolved = true
             
             -- Execute the automation script to click download buttons
-            local fullAutomation = [=[
-                // Click main button
-                document.querySelector('button[class*="bg-[var(--primary-color)]"]')?.click();
-                
-                // Wait for modal then click download
-                let attempts = 0;
-                const tryClick = setInterval(() => {
-                    const btn = document.querySelector('a.download-button');
-                    if (btn && !btn.disabled) {
-                        btn.click();
-                        clearInterval(tryClick);
-                    } else if (attempts++ > 10) { // 10 attempts (about 2 seconds)
-                        clearInterval(tryClick);
-                        console.error('Failed to find active download button');
-                    }
-                }, 200);
-            ]=]
-            
+local fullAutomation = [=[
+    // Helper to dispatch Alpine events properly
+    function dispatchAlpine(el, event) {
+        el.dispatchEvent(new CustomEvent(event, { bubbles: true }));
+    }
+
+    // Step 1: Trigger the modal via Alpine custom event
+    const btn = document.querySelector('button[class*="bg-[var(--primary-color)]"]');
+    if (btn) {
+        btn.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+    }
+
+    // Step 2: Wait 1 second, then poll for the download button
+    setTimeout(() => {
+        let attempts = 0;
+        const tryClick = setInterval(() => {
+            const dlBtn = document.querySelector('a.download-button');
+            if (dlBtn && !dlBtn.hasAttribute('disabled')) {
+                dlBtn.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+                clearInterval(tryClick);
+            } else if (attempts++ > 30) {
+                clearInterval(tryClick);
+            }
+        }, 200);
+    }, 1000);
+]=]
             resolverBrowser:ExecuteJavaScriptOnMainFrame(fullAutomation)
             resolverBrowser:ExecuteJavaScriptOnFocusedFrame(fullAutomation)
             Notifications.push_success("Anker Resolver", "Automation script executed!")
@@ -319,3 +328,6 @@ else
     client.add_callback("on_downloadcompleted", ondownloadcompleted)
     client.add_callback("on_extractioncompleted", onextractioncompleted)
 end
+
+
+
