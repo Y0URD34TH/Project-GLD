@@ -1,7 +1,5 @@
-V7.00
+V7.01
 
-Added support for multi-part downloads
-Added virtual gamepad support
-Added support for gamepad emulation
-Fixed a lot of bugs related to the download manager
-Fixed the bug which would crash GLD if you sorted games by size
+Fixed Discord RPC bug
+Removed redundant buttons from browser (save as)
+Fixed the way buttons on script list look when theres a scrollbar
