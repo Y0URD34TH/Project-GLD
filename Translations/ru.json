@@ -683,5 +683,8 @@
     "Torrent: %s": "Торрент: %s",
     "Total Size: %s | Selected: %s | Files: %d/%d": "Общий размер: %s | Выбрано: %s | Файлы: %d/%d",
     "Use Discord RPC": "Использовать Discord RPC",
-    "View Page Source": "Просмотреть исходный код страницы"
+    "View Page Source": "Просмотреть исходный код страницы",
+    "File Name: %s  [%zu parts]": "Имя файла: %s  [%zu частей]",
+    "Show download speed in bits": "Отображать скорость загрузки в битах",
+    "If disabled, download speed will be shown in bytes.": "Если отключено, скорость загрузки будет отображаться в байтах."
 }

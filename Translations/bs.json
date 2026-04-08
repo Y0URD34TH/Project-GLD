@@ -683,5 +683,8 @@
     "Torrent: %s": "Torrent: %s",
     "Total Size: %s | Selected: %s | Files: %d/%d": "Ukupna veličina: %s | Odabrano: %s | Datoteke: %d/%d",
     "Use Discord RPC": "Koristi Discord RPC",
-    "View Page Source": "Prikaži izvorni kod stranice"
+    "View Page Source": "Prikaži izvorni kod stranice",
+    "File Name: %s  [%zu parts]": "Naziv datoteke: %s  [%zu dijelova]",
+    "Show download speed in bits": "Prikaži brzinu preuzimanja u bitovima",
+    "If disabled, download speed will be shown in bytes.": "Ako je onemogućeno, brzina preuzimanja će biti prikazana u bajtovima."
 }

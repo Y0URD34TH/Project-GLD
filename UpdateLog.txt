@@ -1,5 +1,7 @@
-V7.01
+V7.02
 
-Fixed Discord RPC bug
-Removed redundant buttons from browser (save as)
-Fixed the way buttons on script list look when theres a scrollbar
+Added option to show download speed in bits instead of bytes
+Show which parts are downloading at multi part download
+Show command line input only when game is installed
+Fix DPI Scaling at shutdown timer popup
+Fix lua cleanup

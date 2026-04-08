@@ -683,5 +683,8 @@
     "Torrent: %s": "Torrent: %s",
     "Total Size: %s | Selected: %s | Files: %d/%d": "Tamaño total: %s | Seleccionado: %s | Archivos: %d/%d",
     "Use Discord RPC": "Usar Discord RPC",
-    "View Page Source": "Ver código fuente de la página"
+    "View Page Source": "Ver código fuente de la página",
+    "File Name: %s  [%zu parts]": "Nombre del archivo: %s  [%zu partes]",
+    "Show download speed in bits": "Mostrar velocidad de descarga en bits",
+    "If disabled, download speed will be shown in bytes.": "Si está desactivado, la velocidad de descarga se mostrará en bytes."
 }
