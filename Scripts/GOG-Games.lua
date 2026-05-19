@@ -37,10 +37,6 @@ local function infohashToMagnet(infohash, title)
         .. "&tr=" .. TRACKERS
 end
 
-local function slugFromName(name)
-    return name:lower():gsub("[^%w%s]", ""):gsub("%s+", "_")
-end
-
 local function scrapeFilehostLinks(slug)
     local links = {}
     local pageHeaders = {
@@ -177,19 +173,46 @@ else
 
     local function scraper()
         local gname = game.getgamename()
-        local slug  = slugFromName(gname)
         local results = {}
 
+        -- 1. Format the search query (Turns "The Witcher 2" into "The+Witcher+2")
+        local search_query = gname:gsub(" ", "+")
+
+        -- 2. Ask the website's search API for the exact game
+        local search_url = "https://gog-games.to/search?search=" .. search_query
+        local search_response = http.get(search_url, headers)
+        
+        if not search_response or search_response == "" then
+            Notifications.push_warning("GOG-Games", "Search API failed for: " .. gname)
+            communication.receiveSearchResults({})
+            return
+        end
+
+        -- 3. Parse the JSON response and grab the official slug from the first result
+        local search_ok, search_data = pcall(function() return JsonWrapper.parse(search_response) end)
+        
+        -- Safely extract the first result (handles both direct arrays and nested 'data' objects)
+        local first_result = search_data and (search_data[1] or (search_data["data"] and search_data["data"][1]))
+        
+        if not search_ok or not first_result or not first_result["slug"] then
+            Notifications.push_warning("GOG-Games", "Game not found in database: " .. gname)
+            communication.receiveSearchResults({})
+            return
+        end
+
+        local slug = first_result["slug"]
+
+        -- 4. Hand the verified slug off to the original script logic
         local response = http.get(BASE_API .. "/query-game/" .. slug, headers)
         if not response or response == "" then
-            Notifications.push_warning("GOG-Games", "No response from API for: " .. gname)
+            Notifications.push_warning("GOG-Games", "No response from API for slug: " .. slug)
             communication.receiveSearchResults({})
             return
         end
 
         local ok, data = pcall(function() return JsonWrapper.parse(response) end)
         if not ok or not data or not data["game_info"] then
-            Notifications.push_warning("GOG-Games", "Game not found: " .. gname)
+            Notifications.push_warning("GOG-Games", "Game data not found for slug: " .. slug)
             communication.receiveSearchResults({})
             return
         end
@@ -290,4 +313,3 @@ else
     client.add_callback("on_downloadclick",     ondownloadclick)
     client.add_callback("on_downloadcompleted", ondownloadcompleted)
 end
-
