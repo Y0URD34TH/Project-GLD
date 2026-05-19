@@ -29,8 +29,8 @@ local function scrapAnkerGames(gameName, name_script)
         local ariaLabel = card:attr("aria-label")
         
         if href and ariaLabel then
-            -- Extract title from aria-label (format: "Title - View details")
-            local title = ariaLabel:match("(.+)%s*%-%s*View details")
+        	-- Extract title from aria-label (handles both standard hyphen and em dash)
+        	local title = ariaLabel:match("(.+)%s*—%s*View details") or ariaLabel:match("(.+)%s*%-%s*View details")
             
             if title and href:match("^https://ankergames%.net/game/") then
                 -- Fetch the game details page
@@ -202,26 +202,34 @@ else
             
             -- Execute the automation script to click download buttons
 local fullAutomation = [=[
-    // Helper to dispatch Alpine events properly
-    function dispatchAlpine(el, event) {
-        el.dispatchEvent(new CustomEvent(event, { bubbles: true }));
-    }
-
-    // Step 1: Trigger the modal via Alpine custom event
-    const btn = document.querySelector('button[class*="bg-[var(--primary-color)]"]');
-    if (btn) {
+    // Step 1: Find the initial download span by its text and font class
+    const spans = Array.from(document.querySelectorAll('span.font-medium'));
+    const firstSpan = spans.find(s => s.textContent.trim() === 'Download');
+    
+    if (firstSpan) {
+        // Find the actual clickable button that wraps this text
+        const btn = firstSpan.closest('button, a') || firstSpan;
         btn.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
     }
 
-    // Step 2: Wait 1 second, then poll for the download button
+    // Step 2: Wait 1 second, then poll for the final download button
     setTimeout(() => {
         let attempts = 0;
         const tryClick = setInterval(() => {
-            const dlBtn = document.querySelector('a.download-button');
-            if (dlBtn && !dlBtn.hasAttribute('disabled')) {
-                dlBtn.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
-                clearInterval(tryClick);
-            } else if (attempts++ > 30) {
+            // Find the span that uses Alpine.js for the loading state
+            const finalSpan = document.querySelector('span[x-text*="isLoading"]');
+            
+            if (finalSpan) {
+                // Alpine changes the text to 'Download' when the timer finishes
+                if (finalSpan.textContent.trim() === 'Download') {
+                    const dlBtn = finalSpan.closest('button, a') || finalSpan;
+                    dlBtn.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+                    clearInterval(tryClick);
+                }
+            } 
+            
+            // Give up after roughly 6 seconds (30 attempts * 200ms)
+            if (attempts++ > 30) {
                 clearInterval(tryClick);
             }
         }, 200);
@@ -328,6 +336,3 @@ local fullAutomation = [=[
     client.add_callback("on_downloadcompleted", ondownloadcompleted)
     client.add_callback("on_extractioncompleted", onextractioncompleted)
 end
-
-
-
