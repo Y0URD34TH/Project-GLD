@@ -1,4 +1,4 @@
-local VERSION = "1.2.1"
+local VERSION = "1.2.2"
 client.auto_script_update("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/refs/heads/main/Scripts/AnkerGames.lua", VERSION)
 
 -- Track multiple pending downloads
