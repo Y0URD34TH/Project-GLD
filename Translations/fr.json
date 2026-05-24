@@ -686,5 +686,7 @@
     "View Page Source": "Afficher le code source de la page",
     "File Name: %s  [%zu parts]": "Nom du fichier : %s  [%zu parties]",
     "Show download speed in bits": "Afficher la vitesse de téléchargement en bits",
-    "If disabled, download speed will be shown in bytes.": "Si cette option est désactivée, la vitesse de téléchargement sera affichée en octets."
+    "If disabled, download speed will be shown in bytes.": "Si cette option est désactivée, la vitesse de téléchargement sera affichée en octets.",
+    "Get IGDB ID": "Obtenir l’identifiant IGDB",
+    "Toggle advanced game filters.\nYou can filter games by genre, theme and mode.": "Activer les filtres avancés des jeux.\nVous pouvez filtrer les jeux par genre, thème et mode."
 }

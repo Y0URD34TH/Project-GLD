@@ -686,5 +686,7 @@
     "View Page Source": "Просмотреть исходный код страницы",
     "File Name: %s  [%zu parts]": "Имя файла: %s  [%zu частей]",
     "Show download speed in bits": "Отображать скорость загрузки в битах",
-    "If disabled, download speed will be shown in bytes.": "Если отключено, скорость загрузки будет отображаться в байтах."
+    "If disabled, download speed will be shown in bytes.": "Если отключено, скорость загрузки будет отображаться в байтах.",
+    "Get IGDB ID": "Получить ID IGDB",
+    "Toggle advanced game filters.\nYou can filter games by genre, theme and mode.": "Переключить расширенные фильтры игр.\nВы можете фильтровать игры по жанру, тематике и режиму."
 }

@@ -1,7 +1,5 @@
-V7.02
+V7.30
 
-Added option to show download speed in bits instead of bytes
-Show which parts are downloading at multi part download
-Show command line input only when game is installed
-Fix DPI Scaling at shutdown timer popup
-Fix lua cleanup
+Added game library filters for genre, theme and mode
+Fixed game scanner crashing on different filesystems
+Fixed some download bugs

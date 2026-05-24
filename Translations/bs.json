@@ -686,5 +686,7 @@
     "View Page Source": "Prikaži izvorni kod stranice",
     "File Name: %s  [%zu parts]": "Naziv datoteke: %s  [%zu dijelova]",
     "Show download speed in bits": "Prikaži brzinu preuzimanja u bitovima",
-    "If disabled, download speed will be shown in bytes.": "Ako je onemogućeno, brzina preuzimanja će biti prikazana u bajtovima."
+    "If disabled, download speed will be shown in bytes.": "Ako je onemogućeno, brzina preuzimanja će biti prikazana u bajtovima.",
+    "Get IGDB ID": "Preuzmi IGDB ID",
+    "Toggle advanced game filters.\nYou can filter games by genre, theme and mode.": "Uključi napredne filtere igara.\nMožete filtrirati igre po žanru, temi i modu."
 }
