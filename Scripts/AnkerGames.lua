@@ -1,17 +1,10 @@
 -- Project GLD Provider Script: AnkerGames
-local VERSION = "1.3.0"
+local VERSION = "1.3.1"
 client.auto_script_update("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/refs/heads/main/Scripts/AnkerGames.lua", VERSION)
 
 local searchprovider = "ankergames.net"
 local BASE_URL = "https://ankergames.net"
 local version = client.GetVersionDouble()
-
-local session_headers = {
-    ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
-    ["Accept"] = "application/json, text/html",
-    ["X-Requested-With"] = "XMLHttpRequest"
-}
-
 local pendingResolvers = {}
 local imagelink = ""
 local gamename = ""
@@ -19,9 +12,14 @@ local expectedurl = ""
 local pathcheck = ""
 local defaultdir = "C:/Games"
 local pass = ""
+local session_headers = {
+    ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+    ["Accept"] = "application/json, text/html",
+    ["X-Requested-With"] = "XMLHttpRequest"
+}
 
 -- ============================================================================
--- PHASE 1: SEARCH LOGIC
+-- UTILITIES
 -- ============================================================================
 local function updateSession()
     local response = http.get(BASE_URL .. "/csrf-token", session_headers)
@@ -40,7 +38,10 @@ local function sanitize(str)
     return str:lower():gsub("[%s%p]", "")
 end
 
-local function ankersearch()
+-- ============================================================================
+-- PHASE 1: SEARCH LOGIC
+-- ============================================================================
+local function ankergamessearch()
     settings.save()
     updateSession()
     Notifications.push_success("AnkerGames", "Mr. Ghost's AnkerGames Script loaded.")
@@ -108,9 +109,9 @@ local function ankersearch()
 end
 
 -- ============================================================================
--- PHASE 2: HYBRID FAST-FETCH RESOLVER
+-- PHASE 2: DOWNLOAD ENGINE
 -- ============================================================================
-local function ondownloadclick(gamejson, downloadurl, scriptname)       
+local function ondownloadclick(gamejson, url, scriptname)    
     if scriptname == "AnkerGames" then
         local success, jsonResults = pcall(JsonWrapper.parse, gamejson)
         if success and jsonResults then
@@ -134,33 +135,28 @@ local function ondownloadclick(gamejson, downloadurl, scriptname)
     end
 end
 
-local function on_beforedownload(url)
+local function onbeforedownload(url)
     if url:match("^https://ankergames%.net/game/") then
         Notifications.push_warning("AnkerGames", "Download will start in few seconds.")
-        
         local browserName = "AnkerResolver_" .. tostring(os.time()) .. "_" .. tostring(math.random(1000, 9999))
         local resolverBrowser = browser.CreateBrowser(browserName, url)
         browser.set_visible(false, browserName)
-
         pendingResolvers[resolverBrowser:GetID()] = {
             originalUrl = url,
             name = browserName
         }
-        
         return "cancel", nil, nil
     end
     return nil, nil, nil
 end
 
-local function on_browserloaded(browserID)
+local function onbrowserloaded(browserID)
     local resolverBrowser = browser.GetBrowserByID(browserID)
     if not resolverBrowser then return end
             
     if pendingResolvers[browserID] then
-        -- This JS skips the 10s wait and hits the API immediately using the browser's native session state
         local fastFetchAutomation = [=[
             if (document.title.includes("Just a moment") || document.title.includes("Cloudflare")) {
-                // Let Cloudflare finish solving before proceeding
             } else {
                 let match = document.body.innerHTML.match(/generateDownloadUrl\(\s*(\d+)\s*\)/);
                 if (match && match[1]) {
@@ -190,14 +186,13 @@ local function on_browserloaded(browserID)
     end
 end
 
-local function on_browserbeforedownload(browserID, downloadUrl, suggestedName, size)
+local function onbrowserbeforedownload(browserID, downloadUrl, suggestedName, size)
     local resolverBrowser = browser.GetBrowserByID(browserID)
     if not resolverBrowser then return nil end
             
     if pendingResolvers[browserID] then
         local resolverInfo = pendingResolvers[browserID]
         
-        --expectedurl = downloadUrl
 	expectedurl = resolverInfo.originalUrl
         Download.SetHistoryUrl(downloadUrl, resolverInfo.originalUrl)
         
@@ -216,11 +211,11 @@ local function ondownloadcompleted(path, url)
     if expectedurl == url then
         local gamenametopath = gamename
         gamenametopath = gamenametopath:gsub(":", "")
-        defaultdir = menu.get_text("Anker Game Dir") .. "/" .. gamenametopath .. "/"
+        defaultdir = menu.get_text("AnkerGames Dir") .. "/" .. gamenametopath .. "/"
         path = path:gsub("\\", "/")
         pathcheck = path
-	pass = menu.get_text("Pass")
-        local deleteafterextraction = menu.get_bool("Delete After Extraction")
+	pass = menu.get_text("Password AnkerGames")
+        local deleteafterextraction = menu.get_bool("Delete After Extraction AnkerGames")
         zip.extract(path, defaultdir, deleteafterextraction, pass)
 	settings.save()
     end
@@ -243,10 +238,10 @@ local function onextractioncompleted(origin, path)
                 if gameidl == -1 then
                     local imagePath = Download.DownloadImage(imagelink)
                     GameLibrary.addGame(fullExecutablePath, imagePath, gamename, "")
-                    Notifications.push_success("Anker Script", "Game Successfully Installed!")
+                    Notifications.push_success("AnkerGames", "Game Successfully Installed!")
                 else
                     GameLibrary.changeGameinfo(gameidl, fullExecutablePath)
-                    Notifications.push_success("Anker Script", "Game Successfully Installed!")
+                    Notifications.push_success("AnkerGames", "Game Successfully Installed!")
                 end
             else
                 local executables2 = file.listexecutablesrecursive(fullFolderPath)
@@ -256,10 +251,10 @@ local function onextractioncompleted(origin, path)
                     if gameidl == -1 then
                         local imagePath = Download.DownloadImage(imagelink)
                         GameLibrary.addGame(firstExecutable, imagePath, gamename, "")
-                        Notifications.push_success("Anker Script", "Game Successfully Installed!")
+                        Notifications.push_success("AnkerGames", "Game Successfully Installed!")
                     else
                         GameLibrary.changeGameinfo(gameidl, firstExecutable)
-                        Notifications.push_success("Anker Script", "Game Successfully Installed!")
+                        Notifications.push_success("AnkerGames", "Game Successfully Installed!")
                     end
                 end
             end
@@ -273,19 +268,21 @@ end
 if version < 7.00 then
     Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
 else
-    Notifications.push_success("Lua Script", "Anker Script Loaded and Working")
-    menu.add_input_text("Anker Game Dir")
-    menu.set_text("Anker Game Dir", defaultdir)
-    menu.add_input_text("Pass")
-    menu.set_text("Pass", "")
-    menu.add_check_box("Delete After Extraction")
+    Notifications.push_success("Lua Script", "AnkerGames Script Loaded and Working")
+    menu.add_text("=== AnkerGames ===")
+    menu.add_input_text("AnkerGames Dir")
+    menu.set_text("AnkerGames Dir", defaultdir)
+    menu.add_input_text("Password AnkerGames")
+    menu.set_text("Password AnkerGames", "")
+    menu.add_check_box("Delete After Extraction AnkerGames")
+    menu.add_text("===============")
     settings.load()
     
-    client.add_callback("on_scriptselected", ankersearch)
+    client.add_callback("on_scriptselected", ankergamessearch)
     client.add_callback("on_downloadclick", ondownloadclick)
-    client.add_callback("on_beforedownload", on_beforedownload)
-    client.add_callback("on_browserloaded", on_browserloaded)
-    client.add_callback("on_browserbeforedownload", on_browserbeforedownload)
+    client.add_callback("on_beforedownload", onbeforedownload)
+    client.add_callback("on_browserloaded", onbrowserloaded)
+    client.add_callback("on_browserbeforedownload", onbrowserbeforedownload)
     client.add_callback("on_downloadcompleted", ondownloadcompleted)
     client.add_callback("on_extractioncompleted", onextractioncompleted)
 end
