@@ -1,5 +1,6 @@
-V7.30
+V7.35
 
-Added game library filters for genre, theme and mode
-Fixed game scanner crashing on different filesystems
-Fixed some download bugs
+Fixed stuttering when using 16 connections
+Updated Downloader
+Fixed file extraction unknown method error
+Updated extraction library
