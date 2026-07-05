@@ -41,7 +41,7 @@ Project GLD offers a variety of features to explore and utilize for your use cas
 
 ### [📁] Game Library
 * Achievement support (pop-up notification + sound on completion)
-* Playtime tracking and sorting based on playtime, last played, favorites, ID, or alphabetically
+* Playtime tracking, sorting by playtime/last played/size/alphabetically & filtering by genre/theme/mode
 * Support for joystick configuration, command-line arguments & shortcuts
 
 ### **[🔎] Game Search**
@@ -56,12 +56,12 @@ Project GLD offers a variety of features to explore and utilize for your use cas
 
 ### **[🎮] Game Download**
 * Download a game from any source via Lua scripts
-* Have the game automatically extracted/setup and placed in library with the correct .exe path (works for 1click, 2clicks, FitGirl, Dodi, and Online-fix scripts)
-* Built-in download manager and Real-Debrid & TorBox support
+* Have the game automatically extracted/setup and placed in library with the correct .exe path
+* Built-in download manager based on aria2 with lots of file host resolvers, resulting in max download speed
 * Start multiple downloads at the same time
 
 ### **[🧲] Torrent Client**
-* Minimalist built-in torrent client based on Libtorrent
+* Minimalist built-in torrent client based on Libtorrent, with Real-Debrid & TorBox support
 * VPN bind/killswitch available
 * Download confirmation on torrents (optional)
 
@@ -104,7 +104,8 @@ Project GLD offers a variety of features to explore and utilize for your use cas
 
 ## Getting Started
 
-* To install scripts, simply navigate to the Installers tab in GLD. Alternatively, you can place a script file in "Documents/Project-GLD/Scripts".
+* To install scripts, simply navigate to the Installers tab in GLD (📁). Alternatively, you can place a script file in "Documents/Project-GLD/Scripts".
+* Once you've installed the scripts you wanted, head to the Search tab (🔍) and search for a game. Click on it and select the script you'd like to download it with in the bottom right corner. Once you click on download, it will be automatically downloaded, extracted/set up & added to your library.
 * To back up your game library and favorites list go to "Documents/Project-GLD/GameList".
 * Settings are saved in the "Documents/Project-GLD/Configs" folder.
 
@@ -118,7 +119,7 @@ All scripts are 1 click download and do automatic setup/extraction on download c
 - **[Dodi](https://github.com/Y0URD34TH/Project-GLD/blob/Update-V6.97/Scripts/%5B1337x%5D%20DODI.lua)** [🧲]
 - [**Steamrip**](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/SteamRip.lua) [📥]
 - **[AnkerGames](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/AnkerGames.lua)** [📥]
-- **[Atop-Games](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/Atop-Games.lua)** [📥]
+- **[GOG-Games](https://github.com/Y0URD34TH/Project-GLD/blob/main/Scripts/GOG-Games.lua)** [🧲]
 
 For instructions on how to use Lua for making scripts, please refer to [this guide](https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.md).
 
@@ -126,22 +127,22 @@ See our Lua Documentation [here](https://github.com/Y0URD34TH/Project-GLD/blob/m
 
 ### Prerequisites
 
-* [DirectX](https://www.microsoft.com/pt-br/download/details.aspx?id=35)
+* [DirectX](https://www.microsoft.com/en-us/download/details.aspx?id=35)
 * [Microsoft Visual C++ Redist (x86 and x64)](https://www.techpowerup.com/download/visual-c-redistributable-runtime-package-all-in-one/)
 
 ### Installation
 
 1. Download the program [here](https://github.com/Y0URD34TH/Project-GLD/releases/latest/download/GLDSetup.exe).
 
-2. Install the program.
+2. Run the installer.
 
 3. Enjoy!
 
 ## Authors
 
 * [jma](https://github.com/Y0URD34TH) - *Lead Developer / Founder*
-* [qiracy](https://github.com/qiracy) - *Tester / Translator / Designer*
-* [argonptg](https://github.com/argonptg) - *Translator / Designer / Profile system developer*
+* [qiracy](https://github.com/qiracy) - *Tester / Developer / Designer*
+* [argonptg](https://github.com/argonptg) - *Designer / Profile system developer*
 
 ## Sponsors
 
@@ -156,7 +157,7 @@ Thanks to those kind people and organizations, GLD got the funds to keep on goin
 
 Want to sponsor GLD yourself? 
 
-Feel free to send us donations via our Bitcoin wallet: `bc1q4tuvrhftmgwff90q5czupehksh237upeng364c`. 
+Feel free to send us donations via our Kofi: https://ko-fi.com/projectgld
 
 If you contact us via [Discord](kPHb6xz4v7) or [make an issue on GitHub](https://github.com/Y0URD34TH/Project-GLD/issues) with proof of payment, we will prioritize a feature of your choice! You will also obtain a special role in our Discord server, as well as our eternal gratitude.
 
