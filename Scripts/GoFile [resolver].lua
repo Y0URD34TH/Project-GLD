@@ -1,4 +1,4 @@
-local VERSION = "1.0.0"
+local VERSION = "1.0.1"
 client.auto_script_update("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/refs/heads/main/Scripts/GoFile%20%5Bresolver%5D.lua", VERSION)
 local pendingGofileResolvers = {} -- Table to track browser instances by browser ID
 
@@ -7,7 +7,6 @@ if gldversion < 6.95 then
     Notifications.push_error("Lua Script", "Program is Outdated. Please Update to use this Script")
 else
     Notifications.push_success("Lua Script", "Gofile Resolver Loaded and Working")
-    
     -- Download resolver for Gofile
     local function on_beforedownload(url)
         -- Check if this is a Gofile URL
@@ -16,7 +15,6 @@ else
             
             -- Generate unique browser name for this download
             local browserName = "GofileResolver_" .. tostring(os.time()) .. "_" .. tostring(math.random(1000, 9999))
-            
             -- Create hidden browser for this download
             local resolverBrowser = browser.CreateBrowser(browserName, url)
             browser.set_visible(false, browserName)
@@ -51,25 +49,94 @@ else
             -- Mark as resolved to prevent multiple executions
             resolverInfo.resolved = true
             
-            -- Execute the automation script to click download button
-            local fullAutomation = [=[
-                // Click download button on Gofile
-                let attempts = 0;
-                const tryDownload = setInterval(() => {
-                    // Find the download button with class 'item_download'
-                    const downloadBtn = document.querySelector('button.item_download');
-                    
-                    if (downloadBtn && !downloadBtn.disabled) {
-                        console.log('Clicking Gofile download button');
-                        downloadBtn.click();
-                        clearInterval(tryDownload);
-                    } else if (attempts++ > 50) { // 50 attempts (about 10 seconds)
-                        clearInterval(tryDownload);
-                        console.error('Download button not found');
-                    }
-                }, 200);
-            ]=]
+local fullAutomation = [=[
+    (function() {
+        // ---- Force page to think it's visible ----
+        function forcePageVisible() {
+            Object.defineProperty(document, 'visibilityState', {
+                get: function() { return 'visible'; },
+                configurable: true
+            });
+            Object.defineProperty(document, 'hidden', {
+                get: function() { return false; },
+                configurable: true
+            });
+            document.dispatchEvent(new Event('visibilitychange'));
+            window.dispatchEvent(new Event('focus'));
             
+            // Override hasFocus
+            try {
+                if (document.hasFocus) {
+                    document.hasFocus = function() { return true; };
+                }
+            } catch(e) {}
+            
+            // For webkit browsers
+            Object.defineProperty(document, 'webkitVisibilityState', {
+                get: function() { return 'visible'; },
+                configurable: true
+            });
+            document.dispatchEvent(new Event('webkitvisibilitychange'));
+        }
+
+        // ---- Force the page to render/load content ----
+        function forceContentLoad() {
+            // Trigger scroll events to lazy-load content
+            window.scrollTo(0, 1);
+            window.scrollTo(0, 0);
+            
+            // Force reflow
+            document.body.offsetHeight;
+            
+            // Dispatch events that might trigger content loading
+            window.dispatchEvent(new Event('resize'));
+            window.dispatchEvent(new Event('scroll'));
+            
+            // If the page uses IntersectionObserver, trigger it
+            const observer = new IntersectionObserver(() => {});
+            document.querySelectorAll('*').forEach(el => {
+                observer.observe(el);
+            });
+            setTimeout(() => observer.disconnect(), 100);
+        }
+
+        // ---- Main execution ----
+        // Force visibility FIRST
+        forcePageVisible();
+        
+        // Wait a moment for the page to initialize
+        setTimeout(() => {
+            // Force content to load
+            forceContentLoad();
+            
+            // Now look for the button
+            let attempts = 0;
+            const checkButton = setInterval(() => {
+                const btn = document.querySelector('button[data-action="download"]');
+                if (btn) {
+                    clearInterval(checkButton);
+                    console.log('[Gofile] Button found in DOM!');
+                    
+                    // Check if it's visible
+                    if (btn.offsetParent !== null) {
+                        console.log('[Gofile] Button is visible!');
+                        btn.click();
+                        console.log('[Gofile] Button clicked!');
+                    } else {
+                        console.log('[Gofile] Button exists but is hidden');
+                        // Try to remove hidden class
+                        btn.classList.remove('hidden');
+                        btn.style.display = '';
+                        btn.click();
+                    }
+                } else if (++attempts > 60) { // 12 seconds
+                    clearInterval(checkButton);
+                    console.warn('[Gofile] Button not found after 12 seconds');
+                }
+            }, 200);
+        }, 1000); // Wait 1 second for page JS to initialize
+    })();
+]=]          
             resolverBrowser:ExecuteJavaScriptOnMainFrame(fullAutomation)
             resolverBrowser:ExecuteJavaScriptOnFocusedFrame(fullAutomation)
             Notifications.push_success("Gofile Resolver", "Automation script executed!")
