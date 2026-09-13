@@ -1,6 +1,8 @@
-V7.35
+V8.00
 
-Fixed stuttering when using 16 connections
-Updated Downloader
-Fixed file extraction unknown method error
-Updated extraction library
+Added the GLD player
+Added movie/show search via TMDB integration
+Added some scripts for movie/show torrents
+Fixed captcha scripts
+Fixed broken downloads resuming issues
+Removed non-games (such as bundles) from game search results
