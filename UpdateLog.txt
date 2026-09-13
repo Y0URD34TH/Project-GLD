@@ -1,5 +1,7 @@
 V8.00
 
+AUTO UPDATE IS NOT POSSIBLE FOR THIS VERSION!
+PLEASE REINSTALL FROM GITHUB!
 Added the GLD player
 Added movie/show search via TMDB integration
 Added some scripts for movie/show torrents
