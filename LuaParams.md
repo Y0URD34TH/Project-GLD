@@ -28,11 +28,13 @@
 22. [save](#22-save)
 23. [settings](#23-settings)
 24. [base64](#24-base64)
-25. [GameInfo Usertype](#25-gameinfo-usertype)
-26. [JsonWrapper Usertype](#26-jsonwrapper-usertype)
-27. [HtmlWrapper Usertype (Legacy)](#27-htmlwrapper-usertype-legacy)
-28. [Lua Callbacks Reference](#28-lua-callbacks-reference)
-29. [Full Examples](#29-full-examples)
+25. [player](#25-player)
+26. [GameInfo Usertype](#26-gameinfo-usertype)
+27. [JsonWrapper Usertype](#27-jsonwrapper-usertype)
+28. [HtmlWrapper Usertype (Legacy)](#28-htmlwrapper-usertype-legacy)
+29. [Lua Callbacks Reference](#29-lua-callbacks-reference)
+30. [Full Examples](#30-full-examples)
+31  [movie](movie)
 
 ---
 
@@ -1430,19 +1432,95 @@ Returns a table of all library games. Each entry has the same fields as `GameInf
 Used by search/download scripts to pass results back to GLD's UI.
 
 ### `communication.receiveSearchResults(resultsTable)`
+ 
+Sends a list of search result items to display in the GLD results panel.
+ 
+`resultsTable` is an array of result tables, each with the following structure:
+ 
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `name` | string | yes | Display name of the result |
+| `tooltip` | string | no | Tooltip text shown on hover |
+| `ScriptName` | string | no | Name of the script that produced this result |
+| `links` | table | no | Array of link items (see below) |
+
+#### Link Item Structure
+ 
+Each entry inside `links` is a table with:
+ 
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `name` | string | yes | Display label for the link |
+| `link` | string | yes | URL or path |
+| `addtodownloadlist` | bool | yes | If `true`, the link is added to the download queue. If `false`, it is opened directly in the video player (used for movies/streams) |
+| `isMovie` | bool | no | Marks this link as movie content. Defaults to `false` |
+ 
+#### Example
+ 
 ```lua
 communication.receiveSearchResults({
     {
-        title = "Game Title",
-        magneturl = "magnet:?xt=...",
-        filesize = "10 GB",
-        uploadDate = "2024-01-01",
-        uriOnline = "https://...",
-        image = "https://img.jpg"
+        name = "My Game v1.0",
+        tooltip = "Uploaded 2024-01-15 | 10 GB",
+        ScriptName = "MyProviderScript",
+        links = {
+            {
+                name = "Mirror 1 - Direct",
+                link = "https://example.com/file.zip",
+                addtodownloadlist = true,
+                isMovie = false
+            },
+            {
+                name = "Mirror 2 - Direct",
+                link = "https://mirror2.example.com/file.zip",
+                addtodownloadlist = true,
+                isMovie = false
+            }
+        }
+    },
+    {
+        name = "My Game v1.0 [Repack]",
+        tooltip = "Repack | 4 GB",
+        ScriptName = "MyProviderScript",
+        links = {
+            {
+                name = "Download",
+                link = "magnet:?xt=urn:btih:...",
+                addtodownloadlist = true,
+                isMovie = false
+            }
+        }
     }
 })
 ```
-Sends a list of search result items to display in the GLD search results panel.
+ 
+#### Movie Example
+ 
+When `addtodownloadlist = false`, the link opens directly in the GLD video player instead of being queued for download. Use this for streaming links.
+ 
+```lua
+communication.receiveSearchResults({
+    {
+        name = "My Movie (2024) 1080p",
+        tooltip = "1080p | H.264 | English",
+        ScriptName = "MyMovieScript",
+        links = {
+            {
+                name = "Watch 1080p",
+                link = "https://stream.example.com/movie.m3u8",
+                addtodownloadlist = false, -- opens in video player
+                isMovie = true
+            },
+            {
+                name = "Download 1080p",
+                link = "https://example.com/movie.mkv",
+                addtodownloadlist = true, -- adds to download queue
+                isMovie = true
+            }
+        }
+    }
+})
+```
 
 ---
 
@@ -1626,8 +1704,113 @@ Encodes using a shifted variant (for obfuscation).
 Decodes a shifted base64 string.
 
 ---
+ 
+## 25. player
+ 
+Controls the GLD built-in video player.
+ 
+### `player.OpenLink(url)`
+```lua
+player.OpenLink("https://stream.example.com/video.m3u8")
+```
+Opens a URL (stream or direct video link) in the GLD video player.
+ 
+---
+ 
+### `player.OpenFile(path)`
+```lua
+player.OpenFile("C:/Videos/movie.mkv")
+```
+Opens a local file in the GLD video player.
+ 
+---
+ 
+## movie
+ 
+Retrieves metadata about the movie currently being viewed in the movie search/detail page.
+ 
+> All functions return an empty string `""` when the user selected "any" / no filter.
+ 
+### `movie.getmoviename()`
+```lua
+local name = movie.getmoviename() -- e.g. "Inception"
+```
+Returns the name of the movie currently selected in the search page.
+ 
+---
+ 
+### `movie.getmoviequality()`
+```lua
+local quality = movie.getmoviequality() -- e.g. "1080p", or "" for any
+```
+Returns the selected quality filter. Empty string means no filter (any quality).
+ 
+---
+ 
+### `movie.getmovieyear()`
+```lua
+local year = movie.getmovieyear() -- e.g. "2010", or "" for any
+```
+Returns the selected year filter. Empty string means no filter.
+ 
+---
+ 
+### `movie.getmoviecodec()`
+```lua
+local codec = movie.getmoviecodec() -- e.g. "H.264", or "" for any
+```
+Returns the selected codec filter. Empty string means no filter.
+ 
+---
+ 
+### Full Movie Script Example
+ 
+```lua
+client.add_callback("on_gamesearch", function()
+    local name    = movie.getmoviename()
+    local quality = movie.getmoviequality()
+    local year    = movie.getmovieyear()
+    local codec   = movie.getmoviecodec()
+ 
+    -- Build query respecting optional filters
+    local query = "https://myapi.com/movies?q=" .. name
+    if quality ~= "" then query = query .. "&quality=" .. quality end
+    if year    ~= "" then query = query .. "&year="    .. year    end
+    if codec   ~= "" then query = query .. "&codec="   .. codec   end
+ 
+    local response = http.get(query, {})
+    local data = JsonWrapper.parse(response)
+ 
+    local results = {}
+    for _, item in ipairs(data.results) do
+        table.insert(results, {
+            name       = item.title .. " (" .. item.year .. ") " .. item.quality,
+            tooltip    = item.quality .. " | " .. item.codec,
+            ScriptName = "MyMovieScript",
+            links = {
+                {
+                    name             = "Watch Online",
+                    link             = item.stream_url,
+                    addtodownloadlist = false, -- open in player
+                    isMovie          = true
+                },
+                {
+                    name             = "Download",
+                    link             = item.download_url,
+                    addtodownloadlist = true,
+                    isMovie          = true
+                }
+            }
+        })
+    end
+ 
+    communication.receiveSearchResults(results)
+end)
+```
 
-## 25. GameInfo Usertype
+---
+
+## 26. GameInfo Usertype
 
 Represents a game entry. Passed to `on_gamelaunch` callback.
 
@@ -1649,7 +1832,7 @@ end)
 
 ---
 
-## 26. JsonWrapper Usertype
+## 27. JsonWrapper Usertype
 
 ### `JsonWrapper.parse(jsonString)`
 ```lua
@@ -1660,7 +1843,7 @@ Parses a JSON string and returns a Lua table (sol::object).
 
 ---
 
-## 27. HtmlWrapper Usertype (Legacy)
+## 28. HtmlWrapper Usertype (Legacy)
 
 > **Deprecated.** Use `html.parse()` instead.
 
@@ -1672,7 +1855,7 @@ Finds an attribute in an HTML element. Uses the Gumbo HTML parser (old).
 
 ---
 
-## 28. Lua Callbacks Reference
+## 29. Lua Callbacks Reference
 
 Register callbacks with:
 ```lua
@@ -1725,7 +1908,7 @@ end)
 
 ---
 
-## 29. Full Examples
+## 30. Full Examples
 
 ### Example 1: Basic Search Script
 
