@@ -1,6 +1,6 @@
 --to view examples and lua params go in this github page: https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.md
 
-local VERSION = "1.2"
+local VERSION = "1.3"
 local TORRENTIO_BASE = "https://torrentio.strem.fun"
 
 client.auto_script_update("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/refs/heads/main/Scripts/%5Btorrentio%5D%20TV%20Shows.lua", VERSION)
@@ -362,7 +362,7 @@ end
 -- ============================================================================
 
 local function torrentio_run()
-    local imdb_id = movie.getimdbid()
+    local imdb_id = movie.getimdbidtv()
     if not imdb_id or imdb_id == "" then
         return
     end

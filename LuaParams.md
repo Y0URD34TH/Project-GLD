@@ -1776,6 +1776,13 @@ local id = movie.gettmdbid() -- e.g. "1234567"
 Returns the tmdb of the movie currently selected in the search page.
  
 ---
+### `movie.gettmdbidtv()`
+```lua
+local id = movie.gettmdbidtv() -- e.g. "1234567"
+```
+Returns the tmdb of the tv show currently selected in the search page.
+ 
+---
 ### Full Movie Script Example
  
 ```lua

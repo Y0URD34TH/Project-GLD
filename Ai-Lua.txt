@@ -263,6 +263,7 @@
 	movie["getmoviecodec"] = ns_movie::getmoviecodec; // 	std::string getmoviecodec(sol::this_state s) gets the movie codec from serach  [into movie page] any = empty
 	movie["gettmdbid"] = ns_movie::getmovietmdbid; // 	std::string gettmdbid(sol::this_state s) gets the movie tmdb id from serach  [into movie page] any = empty
 	movie["getimdbid"] = ns_movie::getimdbid; // 	std::string getimdbid(sol::this_state s) gets the movie imdb id from serach  [into movie page] any = empty]
+	movie["getimdbidtv"] = ns_movie::getimdbidtv; // 	std::string getimdbidtv(sol::this_state s) gets the tv show imdb id from serach  [into tv show page] any = empty]
 
 	auto dll = lua.create_table();
 	dll["inject"] = ns_dll::inject; // 	bool inject(sol::this_state s, std::string processexename, std::string dllpath, int delay) // processexename ex: GoW.exe | delay ex: 300 (means 300 milliseconds)

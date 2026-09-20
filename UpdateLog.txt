@@ -1,7 +1,8 @@
-V8.01
+V8.02
 
 AUTO UPDATE IS NOT POSSIBLE FOR THIS VERSION!
 PLEASE REINSTALL FROM GITHUB!
 [ONLY IF YOU ARE UPDATING FROM VERSION LOWER THAN 8.00]
-Added get igdb id on lua
+Added get imdb id for tv shows on lua
+Added get imdb id on lua
 Added get tmdb id on lua
