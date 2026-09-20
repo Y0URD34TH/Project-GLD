@@ -1,10 +1,7 @@
-V8.00
+V8.01
 
 AUTO UPDATE IS NOT POSSIBLE FOR THIS VERSION!
 PLEASE REINSTALL FROM GITHUB!
-Added the GLD player
-Added movie/show search via TMDB integration
-Added some scripts for movie/show torrents
-Fixed captcha scripts
-Fixed broken downloads resuming issues
-Removed non-games (such as bundles) from game search results
+[ONLY IF YOU ARE UPDATING FROM VERSION LOWER THAN 8.00]
+Added get igdb id on lua
+Added get tmdb id on lua

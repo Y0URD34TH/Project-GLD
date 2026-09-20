@@ -261,6 +261,8 @@
 	movie["getmoviequality"] = ns_movie::getmoviequality; // 	std::string getmoviequality(sol::this_state s) gets the movie quality from serach  [into movie page] any = empty
 	movie["getmovieyear"] = ns_movie::getmovieyear; // 	std::string getmovieyear(sol::this_state s) gets the movie year from serach  [into movie page] any = empty
 	movie["getmoviecodec"] = ns_movie::getmoviecodec; // 	std::string getmoviecodec(sol::this_state s) gets the movie codec from serach  [into movie page] any = empty
+	movie["gettmdbid"] = ns_movie::getmovietmdbid; // 	std::string gettmdbid(sol::this_state s) gets the movie tmdb id from serach  [into movie page] any = empty
+	movie["getimdbid"] = ns_movie::getimdbid; // 	std::string getimdbid(sol::this_state s) gets the movie imdb id from serach  [into movie page] any = empty]
 
 	auto dll = lua.create_table();
 	dll["inject"] = ns_dll::inject; // 	bool inject(sol::this_state s, std::string processexename, std::string dllpath, int delay) // processexename ex: GoW.exe | delay ex: 300 (means 300 milliseconds)

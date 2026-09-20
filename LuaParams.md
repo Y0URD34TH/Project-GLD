@@ -1762,7 +1762,20 @@ local codec = movie.getmoviecodec() -- e.g. "H.264", or "" for any
 Returns the selected codec filter. Empty string means no filter.
  
 ---
+ ### `movie.getimdbid()`
+```lua
+local id = movie.getimdbid() -- e.g. "tt1234"
+```
+Returns the imdb id of the movie currently selected in the search page.
  
+---
+### `movie.gettmdbid()`
+```lua
+local id = movie.gettmdbid() -- e.g. "1234567"
+```
+Returns the tmdb of the movie currently selected in the search page.
+ 
+---
 ### Full Movie Script Example
  
 ```lua
