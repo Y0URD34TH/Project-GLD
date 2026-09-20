@@ -1,6 +1,6 @@
 --to view examples and lua params go in this github page: https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.md
 
-local VERSION = "1.1"
+local VERSION = "1.2"
 local TORRENTIO_BASE = "https://torrentio.strem.fun"
 
 client.auto_script_update("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/refs/heads/main/Scripts/%5Btorrentio%5D%20TV%20Shows.lua", VERSION)
@@ -13,12 +13,21 @@ local function torrentio_parse_title(title)
     if type(title) ~= "string" or title == "" then
         return nil, nil, nil
     end
+
     local season, episode = title:match("[Ss](%d+)[Ee](%d+)")
     if not season then
         return title, nil, nil
     end
-    local name = title:gsub("%s*%-?%s*[Ss]%d+[Ee]%d+.*$", "")
-    name = name:gsub("^%s+", ""):gsub("%s+$", "")
+
+    -- Find where the S##E## marker starts and cut everything from there
+    local marker_start = title:find("[Ss]%d+[Ee]%d+")
+    local name = title:sub(1, marker_start - 1)
+
+    -- Strip any trailing separators left over: " - ", " -", "-", "."
+    name = name:gsub("[%s%-%.]+$", "")
+    -- Strip leading whitespace
+    name = name:gsub("^%s+", "")
+
     return name, tonumber(season), tonumber(episode)
 end
 local function torrentio_url_encode(s)
