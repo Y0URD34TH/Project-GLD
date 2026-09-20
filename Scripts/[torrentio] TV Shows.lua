@@ -3,7 +3,7 @@
 local VERSION = "1.0"
 local TORRENTIO_BASE = "https://torrentio.strem.fun"
 
-client.auto_script_update("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/refs/heads/main/Scripts/%5Btorrentio%5D%20Movies%20and%20Shows.lua", VERSION)
+client.auto_script_update("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/refs/heads/main/Scripts/%5Btorrentio%5D%20TV%20Shows.lua", VERSION)
 
 -- ============================================================================
 -- HELPERS
@@ -23,14 +23,11 @@ local function torrentio_parse_title(title)
 end
 
 local function torrentio_build_url(imdb_id, season, episode)
-    if not imdb_id or imdb_id == "" then
-        return nil
-    end
-    if season and episode then
-        return TORRENTIO_BASE .. "/stream/series/" .. imdb_id ..
-            ":" .. tostring(season) .. ":" .. tostring(episode) .. ".json"
-    end
-    return TORRENTIO_BASE .. "/stream/movie/" .. imdb_id .. ".json"
+    if not imdb_id or imdb_id == "" then return nil end
+    if not season or not episode then return nil end
+    local raw_id = imdb_id .. ":" .. tostring(season) .. ":" .. tostring(episode)
+    local encoded_id = torrentio_url_encode(raw_id)
+    return TORRENTIO_BASE .. "/stream/series/" .. encoded_id .. ".json"
 end
 
 local function torrentio_fetch(imdb_id, season, episode)
