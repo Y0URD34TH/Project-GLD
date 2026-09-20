@@ -1,6 +1,6 @@
 --to view examples and lua params go in this github page: https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.md
 
-local VERSION = "1.0"
+local VERSION = "1.1"
 local TORRENTIO_BASE = "https://torrentio.strem.fun"
 
 client.auto_script_update("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/refs/heads/main/Scripts/%5Btorrentio%5D%20TV%20Shows.lua", VERSION)
@@ -21,7 +21,12 @@ local function torrentio_parse_title(title)
     name = name:gsub("^%s+", ""):gsub("%s+$", "")
     return name, tonumber(season), tonumber(episode)
 end
-
+local function torrentio_url_encode(s)
+    if type(s) ~= "string" then return "" end
+    return (s:gsub("([^%w%-%._~])", function(c)
+        return string.format("%%%02X", string.byte(c))
+    end))
+end
 local function torrentio_build_url(imdb_id, season, episode)
     if not imdb_id or imdb_id == "" then return nil end
     if not season or not episode then return nil end
