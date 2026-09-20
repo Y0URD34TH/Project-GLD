@@ -58,11 +58,6 @@ local function ankersearch()
 
     updateSession()
 
-    Notifications.push_success(
-        "AnkerGames",
-        "Mr. Ghost's AnkerGames Script loaded."
-    )
-
     local getgamename = game.getgamename()
 
     if not getgamename or getgamename == "" then
