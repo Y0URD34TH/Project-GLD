@@ -1,6 +1,6 @@
 local VERSION = "1.5.5"
 client.auto_script_update(
-    "https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/refs/heeads/main/Scripts/AnkerGames.lua",
+    "https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/refs/heads/main/Scripts/AnkerGames.lua",
     VERSION
 )
 
