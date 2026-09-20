@@ -1,4 +1,4 @@
-local VERSION = "1.5.2"
+local VERSION = "1.5.5"
 client.auto_script_update(
     "https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/refs/heeads/main/Scripts/AnkerGames.lua",
     VERSION
@@ -56,8 +56,12 @@ end
 local function ankersearch()
     settings.save()
 
-    
     updateSession()
+
+    Notifications.push_success(
+        "AnkerGames",
+        "Mr. Ghost's AnkerGames Script loaded."
+    )
 
     local getgamename = game.getgamename()
 
@@ -78,25 +82,132 @@ local function ankersearch()
         return
     end
 
+    local topThisWeekPos = htmlContent:find("Top this week", 1, true)
+    if topThisWeekPos then
+        htmlContent = htmlContent:sub(1, topThisWeekPos - 1)
+    end
+
     local results = {}
     local doc = html.parse(htmlContent)
+
+    -- Recursively collect all text from a node and its descendants.
+    -- Needed because the size/year live in <span> children of the <p>,
+    -- so node:text() on the <p> alone returns nothing.
+    local function collectText(node)
+        local parts = {}
+        local function walk(n)
+            local txt = n:text()
+            if txt and txt ~= "" then
+                table.insert(parts, txt)
+            end
+            local kids = n:children()
+            if kids then
+                for i = 1, #kids do
+                    walk(kids[i])
+                end
+            end
+        end
+        walk(node)
+        return table.concat(parts, " ")
+    end
+
+    local function scanNodeForMeta(node, meta)
+        local tag = node:tag()
+
+        if tag == "p" then
+            local txt = collectText(node)
+            if meta.year == "" then
+                local y = txt:match("(%d%d%d%d)")
+                if y then meta.year = y end
+            end
+            if meta.size == "" then
+                local s = txt:match("(%d+%.%d+%s*GB)")
+                if not s then s = txt:match("(%d+%.%d+%s*MB)") end
+                if s then meta.size = s end
+            end
+            if meta.version == "" then
+                local v = txt:match("(V%s+[%d%.]+)")
+                if v then meta.version = v end
+            end
+        elseif tag == "span" then
+            if meta.version == "" then
+                local t = node:attr("title")
+                if t and t:match("^%s*V%s") then
+                    meta.version = t:match("^%s*(.-)%s*$") or t
+                else
+                    local txt = node:text() or ""
+                    local v = txt:match("^%s*(V%s+[%d%.]+)%s*$")
+                    if v then meta.version = v end
+                end
+            end
+        end
+
+        local kids = node:children()
+        if kids then
+            for i = 1, #kids do
+                scanNodeForMeta(kids[i], meta)
+            end
+        end
+    end
 
     local gameLinks = doc:css('a[href*="/game/"][title]')
 
     for i = 1, #gameLinks do
         local link = gameLinks[i]
 
-        local name = link:attr("title")
+        local title = link:attr("title")
         local href = link:attr("href")
 
-        if name and href then
+        if title and href then
             local slug = href:match("/game/([^/?#]+)")
 
             if slug then
+                -- Walk up from <a> to the enclosing <article> card.
+                local card = link:parent()
+                for _ = 1, 4 do
+                    if card and card:tag() ~= "article" then
+                        local up = card:parent()
+                        if up then card = up else break end
+                    else
+                        break
+                    end
+                end
+
+                local meta = { version = "", size = "", year = "" }
+
+                if card then
+                    scanNodeForMeta(card, meta)
+                end
+
+                -- Build display name: "Title [Size] "
+                local displayName
+                if meta.size ~= "" then
+                    displayName =  " [" .. meta.size .. "] " .. title
+                else
+                    displayName = title .. " "
+                end
+
+                -- Build tooltip: version | size | year
+                local tooltipParts = {}
+                if meta.version ~= "" then
+                    table.insert(tooltipParts, meta.version)
+                end
+                if meta.size ~= "" then
+                    table.insert(tooltipParts, meta.size)
+                end
+                if meta.year ~= "" then
+                    table.insert(tooltipParts, meta.year)
+                end
+
+                local tooltip = table.concat(tooltipParts, " | ")
+                if tooltip == "" then
+                    tooltip = "AnkerGames"
+                end
+
                 local searchResult = {
-                    name = name,
+                    name = displayName,
                     links = {},
-                    tooltip = "AnkerGames",
+                    tooltip = tooltip,
                     ScriptName = "AnkerGames"
                 }
 
@@ -342,6 +453,8 @@ else
     
 
 end
+
+
 
 
 
