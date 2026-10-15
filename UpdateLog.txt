@@ -1,8 +1,10 @@
-V8.02
+V8.05
 
-AUTO UPDATE IS NOT POSSIBLE FOR THIS VERSION!
-PLEASE REINSTALL FROM GITHUB!
-[ONLY IF YOU ARE UPDATING FROM VERSION LOWER THAN 8.00]
-Added get imdb id for tv shows on lua
-Added get imdb id on lua
-Added get tmdb id on lua
+fixed duplicates on tv episodes
+fixed seek bar not working correctly in torrents
+fixed torrent downloading entire season instead of only episode
+fixed torrent downloader logic for faster playing
+fixed sub settings
+added more player settings
+removed j and l for navigation
+[if your GLD is older than V8.00 auto updated is not possible]
