@@ -250,7 +250,7 @@ end
 -- MAGNET BUILDER
 -- ============================================================================
 
-local function torrentio_build_magnet(infoHash, filename, sources)
+local function torrentio_build_magnet(infoHash, filename, sources, fileIdx)
     if not infoHash or infoHash == "" then return nil end
     local magnet = "magnet:?xt=urn:btih:" .. infoHash
     if filename and filename ~= "" then
@@ -269,6 +269,10 @@ local function torrentio_build_magnet(infoHash, filename, sources)
                 magnet = magnet .. "&tr=" .. enc
             end
         end
+    end
+    -- select only the wanted file (0-based index, from Torrentio)
+    if fileIdx ~= nil and tonumber(fileIdx) then
+        magnet = magnet .. "&so=" .. math.floor(tonumber(fileIdx))
     end
     return magnet
 end
@@ -293,7 +297,7 @@ local function torrentio_push_results(streams, want_quality, want_codec, want_ye
         local blob = (raw_name .. " " .. raw_title .. " " .. filename):lower()
 
         if torrentio_passes_filters(blob, want_quality, want_codec, want_year) then
-            local magnet = torrentio_build_magnet(infoHash, filename, stream["sources"])
+local magnet = torrentio_build_magnet(infoHash, filename, stream["sources"], stream["fileIdx"])
             if magnet then
                 -- Split the raw title into clean text + stats
                 local clean_title, stats_from_split = torrentio_split_title(raw_title)
@@ -389,4 +393,6 @@ local function torrentio_run()
 end
 
 client.add_callback("on_scriptselected", torrentio_run)
+
+
 

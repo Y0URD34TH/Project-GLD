@@ -306,7 +306,6 @@ local function do_disable()
     if menu.get_bool("Automatically Restart") then
        warn("VBS Disabler", "Done! On boot press F7 in Startup Settings to disable driver signature enforcement.")
        info("VBS Disabler", "A restart will automatically happen in 5 seconds")
-       sleep(5000)
        system("shutdown /r /t 0")
     else
        warn("VBS Disabler", "Done! Restart your PC. On boot press F7 in Startup Settings to disable driver signature enforcement.")
@@ -530,6 +529,8 @@ client.add_callback("on_button_Check Status", function()
 end)
 
 gldconsole.print("[VBS Disabler] Script loaded v" .. VERSION .. " – use the menu buttons.")
+
+
 
 
 

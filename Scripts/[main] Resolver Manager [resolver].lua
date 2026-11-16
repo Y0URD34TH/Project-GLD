@@ -70,18 +70,18 @@ local function check_and_download_resolvers()
                 if file.exists(full_path) then
                     downloaded_count = downloaded_count + 1
                     table.insert(newly_downloaded, resolver.name)
-                    gldconsole.print("[Resolver Checker] ✓ Successfully downloaded: " .. resolver.name)
+                    gldconsole.print("[Resolver Checker] Successfully downloaded: " .. resolver.name)
                 else
                     table.insert(failed_downloads, resolver.name)
-                    gldconsole.print("[Resolver Checker] ✗ Failed to verify: " .. resolver.name)
+                    gldconsole.print("[Resolver Checker] Failed to verify: " .. resolver.name)
                 end
             else
                 table.insert(failed_downloads, resolver.name)
-                gldconsole.print("[Resolver Checker] ✗ Failed to download: " .. resolver.name)
+                gldconsole.print("[Resolver Checker] Failed to download: " .. resolver.name)
             end
             
         else
-            gldconsole.print("[Resolver Checker] ✓ Exists: " .. resolver.name)
+            gldconsole.print("[Resolver Checker] Exists: " .. resolver.name)
         end
     end
     
@@ -232,4 +232,3 @@ gldconsole.print("[Resolver Checker] Script loaded! Version: " .. VERSION)
 gldconsole.print("[Resolver Checker] Use the menu buttons to check or update resolvers")
 
 check_and_download_resolvers()
-

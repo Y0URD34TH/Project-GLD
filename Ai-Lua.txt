@@ -231,7 +231,7 @@
 	http["request"] = ns_http::request;  // std::string request(sol::this_state s, const std::string& method, const std::string& link, const std::string& body, const sol::table& headers)
 	http[("CloudFlareSolver")] = ImGui::CloudFlareSolver; // void ImGui::CloudFlareSolver(const std::string& url)
 	http[("byetresolver")] = ns_http::byetresolver; // 	std::string byetresolver(sol::this_state s, const std::string& url)
-	//function CloudFlareSolver returns an callback at client callbacks : - `on_cfdone` execute the function when the cloudflare solver resolved the link and returns the cloudflare cookie and url of the request (you need to use the following user agent alongside with the cookie to work: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 ProjectGLD/2.15) [soo make sure to do the cliend.add_callback if you want to listen to when cloudflare resolver is done
+	//function CloudFlareSolver returns an callback at client callbacks : - `on_cfdone` execute the function when the cloudflare solver resolved the link and returns the cloudflare cookie and url of the request (you need to use the following user agent alongside with the cookie to work: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36) [soo make sure to do the cliend.add_callback if you want to listen to when cloudflare resolver is done
 
 	auto file = lua.create_table();
 	file[("append")] = ns_file::append; // void append(sol::this_state s, std::string& path, std::string& data)

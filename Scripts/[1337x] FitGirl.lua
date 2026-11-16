@@ -1,5 +1,5 @@
 --to view examples and lua params go in this github page: https://github.com/Y0URD34TH/Project-GLD/blob/main/LuaParams.md
-local VERSION = "1.2"
+local VERSION = "1.3"
 client.auto_script_update("https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/refs/heads/main/Scripts/%5B1337x%5D%20FitGirl.lua", VERSION)
 
 local function endsWith(str, pattern)
@@ -34,7 +34,7 @@ local version = client.GetVersionDouble()
 local cfCookies1337x = ""
 
 local headers = {
-    ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 ProjectGLD/2.15"
+    ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36"
 }
 
 if version < 3.52 then
@@ -51,7 +51,7 @@ else
             cfCookies1337x = cookie
             local cfclearence = "cf_clearance=" .. tostring(cfCookies1337x)
             headers = {
-                ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 ProjectGLD/2.15",
+                ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
                 ["Cookie"] = cfclearence
             }
             communication.RefreshScriptResults()
@@ -342,3 +342,4 @@ else
     client.add_callback("on_scriptselected", request1337x)
     client.add_callback("on_cfdone", cfcallback)
 end
+
