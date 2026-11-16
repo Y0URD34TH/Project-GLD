@@ -1,10 +1,12 @@
-V8.05
+V8.17
 
-fixed duplicates on tv episodes
-fixed seek bar not working correctly in torrents
-fixed torrent downloading entire season instead of only episode
-fixed torrent downloader logic for faster playing
-fixed sub settings
-added more player settings
-removed j and l for navigation
-[if your GLD is older than V8.00 auto updated is not possible]
+Updated source to C++20
+Updated CEF to 156 (newest ver) & updated CEF logic
+Added unreleased episodes to the episodes list and release date 
+Fixed AnkerGames script
+Fixed some English translations
+Fixed a crash when pressing install or see on store on movie mode
+Removed [TAB] keybind for nav in the player
+Added save button for movies/shows & fixed progress bar on player
+Updated Sol API to work for C++20
+Fixed high cpu usage while formating last played

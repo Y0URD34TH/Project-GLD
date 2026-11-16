@@ -1,4 +1,4 @@
-local VERSION = "1.5.5"
+local VERSION = "1.7.0"
 client.auto_script_update(
     "https://raw.githubusercontent.com/Y0URD34TH/Project-GLD/refs/heads/main/Scripts/AnkerGames.lua",
     VERSION
@@ -256,75 +256,153 @@ local function ondownloadclick(gamejson, downloadurl, scriptname)
 end
 
 local function on_beforedownload(url)
-    if url:match("^https://ankergames%.net/game/") then
-        Notifications.push_warning("AnkerGames", "Download will start in few seconds.")
-        
+    if url and url:match("^https://ankergames%.net/game/") then
         local browserName = "AnkerResolver_" .. tostring(os.time()) .. "_" .. tostring(math.random(1000, 9999))
         local resolverBrowser = browser.CreateBrowser(browserName, url)
-        browser.set_visible(false, browserName)
 
-        pendingResolvers[resolverBrowser:GetID()] = {
+        if not resolverBrowser then
+            Notifications.push_error(
+                "AnkerGames",
+                "Could not open the resolver browser. Download cancelled."
+            )
+            return "cancel", nil, nil
+        end
+
+        local browserID = resolverBrowser:GetID()
+
+        pendingResolvers[browserID] = {
             originalUrl = url,
-            name = browserName
+            name = browserName,
+            notified = false
         }
-        
+
+        -- The page may require normal user interaction or a verification step.
+        -- Keep the browser visible so the user can complete the site's own flow.
+        browser.set_visible(false, browserName)
+        local disablecatpchadetection = menu.get_bool("Disable captcha window Anker")
+        if disablecatpchadetection then
+           browser.DisableCaptchaDetection(browserName)
+        end
+        Notifications.push_warning(
+            "AnkerGames",
+            "Download can take up to 10 seconds to start!"
+        )
+
+        -- Cancel the original navigation/download; the resolver browser handles the page.
         return "cancel", nil, nil
     end
+
     return nil, nil, nil
 end
 
+
+
 local function on_browserloaded(browserID)
     local resolverBrowser = browser.GetBrowserByID(browserID)
-    if not resolverBrowser then return end
-            
-    if pendingResolvers[browserID] then
-        local fastFetchAutomation = [=[
-            if (document.title.includes("Just a moment") || document.title.includes("Cloudflare")) {
-                // Let Cloudflare finish solving before proceeding
-            } else {
-                let match = document.body.innerHTML.match(/generateDownloadUrl\(\s*(\d+)\s*\)/);
-                if (match && match[1]) {
-                    let downloadId = match[1];
-                    let token = document.querySelector('meta[name="csrf-token"]')?.content || '';
-                    
-                    fetch('/generate-download-url/' + downloadId, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': token,
-                            'X-Requested-With': 'XMLHttpRequest'
-                        },
-                        body: JSON.stringify({'g-recaptcha-response': 'development-mode'})
-                    })
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data && data.download_url) {
-                            window.location.href = data.download_url;
-                        }
-                    }).catch(err => console.error(err));
-                }
-            }
-        ]=]
-        resolverBrowser:ExecuteJavaScriptOnMainFrame(fastFetchAutomation)
+    if not resolverBrowser or not pendingResolvers[browserID] then
+        return
     end
+
+    local js = [=[
+        (() => {
+            if (window.__ankerAutomationStarted) return;
+            window.__ankerAutomationStarted = true;
+
+            const setStatus = (message) => {
+                window.__ankerStatus = message;
+                console.log("[AnkerResolver] " + message);
+            };
+
+            setStatus("Waiting for page");
+
+            let attempts = 0;
+            const timer = setInterval(() => {
+                attempts++;
+
+                // Find and click the button that opens the download modal.
+                const openButton = [...document.querySelectorAll("button")]
+                    .find(button =>
+                        (button.getAttribute("@click") || "")
+                            .includes("open-download-modal")
+                    );
+
+                if (!openButton) {
+                    if (attempts >= 120) {
+                        clearInterval(timer);
+                        setStatus("Open button not found");
+                    }
+                    return;
+                }
+
+                clearInterval(timer);
+                setStatus("Opening download modal");
+                openButton.click();
+
+                // Wait for Alpine to render the modal's Download link.
+                let modalAttempts = 0;
+                const modalTimer = setInterval(() => {
+                    modalAttempts++;
+
+                    const downloadLink =
+                        document.querySelector("a.download-button");
+
+                    if (downloadLink) {
+                        clearInterval(modalTimer);
+
+                        if (downloadLink.disabled ||
+                            downloadLink.getAttribute("aria-disabled") === "true") {
+                            setStatus("Download link is disabled");
+                            return;
+                        }
+
+                        setStatus("Clicking download link");
+                        downloadLink.click();
+
+                        setTimeout(() => {
+                            setStatus("Download link click dispatched");
+                        }, 500);
+
+                        return;
+                    }
+
+                    if (modalAttempts >= 80) {
+                        clearInterval(modalTimer);
+                        setStatus("Download link not found");
+                    }
+                }, 250);
+            }, 250);
+        })();
+    ]=]
+
+    resolverBrowser:ExecuteJavaScriptOnMainFrame(js)
 end
+
 
 local function on_browserbeforedownload(browserID, downloadUrl, suggestedName, size)
     local resolverBrowser = browser.GetBrowserByID(browserID)
-    if not resolverBrowser then return nil end
-            
-    if pendingResolvers[browserID] then
-        local resolverInfo = pendingResolvers[browserID]
-        
-        expectedurl = resolverInfo.originalUrl
-        Download.SetHistoryUrl(downloadUrl, resolverInfo.originalUrl)
-        
-        resolverBrowser:CloseBrowser()
-        pendingResolvers[browserID] = nil
-        
-        return resolverInfo.originalUrl
+    if not resolverBrowser then
+        return nil
     end
-    return nil
+
+    local resolverInfo = pendingResolvers[browserID]
+    if not resolverInfo then
+        return nil
+    end
+
+    if not downloadUrl or downloadUrl == "" then
+        Notifications.push_error("AnkerGames", "The resolver did not provide a download URL.")
+        return nil
+    end
+
+    expectedurl = resolverInfo.originalUrl
+    Download.SetHistoryUrl(downloadUrl, resolverInfo.originalUrl)
+
+    -- Remove the pending entry before closing, so a late callback cannot reuse it.
+    pendingResolvers[browserID] = nil
+    resolverBrowser:CloseBrowser()
+
+    Notifications.push_success("AnkerGames", "Download link received. Starting download.")
+    return resolverInfo.originalUrl
 end
 
 -- ============================================================================
@@ -408,7 +486,8 @@ else
     menu.set_text("Pass", "")
 
     menu.add_check_box("Delete After Extraction")
-
+    menu.add_check_box("Disable captcha window Anker")
+    
     settings.load()
 
     client.add_callback(
@@ -448,8 +527,3 @@ else
     
 
 end
-
-
-
-
-
